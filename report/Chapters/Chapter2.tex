@@ -1,0 +1,41 @@
+
+\chapter{Hidden Markov Models}
+\label{chap:HMM} 
+\lhead{Chapter 2. \emph{HMMs} }
+
+\section{Mathematical Description}
+
+A description of the Hidden Markov Model (HMM) - a Markov Model whose internal
+state is unknown, but which emits a symbol from an alphabet with a distribution
+dependant on the state.
+
+%\subsection{Subsection 2}
+
+\section{Use for Gene Prediction}
+
+A description of how HMMs have been successfully used to predict genes in a
+number of studies.
+
+\section{Use for Promoter Discovery}
+
+How HMMs can also be used to score putative promoter regions, and how this is
+distinct from the case with genes.
+
+\section{Implementation}
+
+A description of the implementation and the algorithms required for HMMs,
+including:
+\begin{itemize}
+  \item Training the model transition and emission probabilities from a data
+    set
+  \item Efficiently representing an HMM in memory
+  \item Calculating a score for a sequence given a set of transition and
+    emission probabilities
+  \item Choosing a decision threshold for promoter regions
+\end{itemize}
+
+\section{Results}
+
+Results of the HMM implementation, both in \emph{Marchantia} and on test
+genomes (where promoter annotation data is already available).
+
