@@ -20,7 +20,7 @@ def loadnuclear(f):
 	def shouldignore(rec):
 		for i in ignore:
 			if (rec.id.lower().find(i) >= 0 or rec.name.lower().find(i) >= 0 or
-					rec.desc.lower().find(i)):
+					rec.description.lower().find(i) >= 0):
 				return True
 		return False
 
