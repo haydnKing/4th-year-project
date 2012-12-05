@@ -9,9 +9,10 @@ TargetDir = os.path.join(os.path.dirname(__file__), 'Genomes/')
 TestDir = os.path.join(os.path.dirname(__file__), 'Test Proteins/')
 
 def loadmodels():
+	"""Load all the models from a file"""
 	modelfiles = [ os.path.join(HMMDir, "PPR_{}.hmm".format(i)) for i in
 			range(4)]
-	return [hmmfile.read(f) for f in modelfiles]
+	return [hmmfile.read(f)[0] for f in modelfiles]
 
 def gettargetnames():
 	"""get the filenames of all the available target genomes"""
