@@ -2,10 +2,16 @@
 
 import os, os.path, re
 from Bio import SeqIO
+from pyHMMER import HMMER, hmmfile
 
 HMMDir = os.path.join(os.path.dirname(__file__), 'HMMs/')
 TargetDir = os.path.join(os.path.dirname(__file__), 'Genomes/')
 TestDir = os.path.join(os.path.dirname(__file__), 'Test Proteins/')
+
+def loadmodels():
+	modelfiles = [ os.path.join(HMMDir, "PPR_{}.hmm".format(i)) for i in
+			range(4)]
+	return [hmmfile.read(f) for f in modelfiles]
 
 def gettargetnames():
 	"""get the filenames of all the available target genomes"""
