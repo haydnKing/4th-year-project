@@ -9,9 +9,11 @@ models = utils.loadmodels()
 def extract():
 	"""Extract all PPRs targeted to the chloroplast and clean the gaps"""
 	pprs = simple_extract_all()
-	print "Found {} PPRs".format(len(pprs))
+	print "Before Clean"
+	show_stats(pprs)
 	r = clean_all(pprs)
-	print "Added {} extra motifs, {} gaps remain".format(*r)
+	print "Cleaning added {} extra motifs, {} gaps remain".format(*r)
+	show_stats(pprs)
 	return pprs
 
 def simple_extract_all(localization='C'):
@@ -91,3 +93,23 @@ def clean_all(pprs):
 		ret = [a+b for a,b in zip(ret,r)]
 
 	return ret
+
+def show_stats(pprs):
+	"""Display some useful stats about the PPRs"""
+	print "{} PPRs".format(len(pprs))
+	lrange = [10000, 0]
+	for p in pprs:
+		l = len(p.features)
+		if l < lrange[0]:
+			lrange[0] = len(p.features)
+		if l > lrange[1]:
+			lrange[1] = l
+	
+	print "Shortest: {}, Longest: {}".format(*lrange)
+	hist = [0,] * (lrange[1])
+	for p in pprs:
+		hist[len(p.features)-1] += 1
+	
+	for i,h in enumerate(hist):
+		print "{:5d}|{}".format(i+1, '*'*h)
+	
