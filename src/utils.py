@@ -52,3 +52,13 @@ def _open_seq(f):
 		return SeqIO.parse(f, 'fasta')
 	else:
 		raise ValueError('Could not detect file type for \'{}\''.format(f))
+
+def get_tail_consensus():
+	return (SeqIO.read(os.path.join(HMMDir, 'E.fasta'), 'fasta'),
+		SeqIO.read(os.path.join(HMMDir, 'E+.fasta'), 'fasta'),
+		SeqIO.read(os.path.join(HMMDir, 'DYW.fasta'), 'fasta'))
+
+def get_tail_models():
+	return (hmmfile.read(os.path.join(HMMDir, 'E.hmm'))[0],
+		hmmfile.read(os.path.join(HMMDir, 'E+.hmm'))[0],
+		hmmfile.read(os.path.join(HMMDir, 'DYW.hmm'))[0])
