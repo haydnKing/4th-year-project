@@ -6,9 +6,9 @@ from Bio.SeqFeature import SeqFeature, FeatureLocation
 
 models = utils.loadmodels()
 
-def extract():
+def extract(localization='C'):
 	"""Extract all PPRs targeted to the chloroplast and clean the gaps"""
-	pprs = simple_extract_all()
+	pprs = simple_extract_all(localization)
 	print "Before Clean"
 	show_stats(pprs)
 	r = clean_all(pprs)
@@ -41,6 +41,27 @@ def simple_extract(filename, localization = None):
 		pprs = t
 
 	return pprs
+
+def get_c_terminus(pprs):
+	"""Return a list of the c-termini of each protein"""
+	ret = []
+	if isinstance(pprs, SeqRecord):
+		pprs = [pprs,]
+	
+	for i,ppr in enumerate(pprs):
+		last = 0
+		for motif in ppr.features:
+			if 'PPR' in motif.type and int(motif.location.end) > last:
+				last = int(motif.location.end)
+		#make sure the c-terminus is in frame
+		last = last - (last % 3)
+		#extract and translate the c-terminus
+		ret.append(SeqRecord(ppr.seq[last:].translate(), id=str(i), name="C-Terminus",
+			description="C-Terminus from PPR {}".format(i)))
+
+	if len(ret) == 1:
+		return ret[0]
+	return ret
 
 import itertools
 def pairwise(iterable):
