@@ -9,14 +9,12 @@ models = utils.loadmodels()
 def extract(localization='C'):
 	"""Extract all PPRs targeted to the chloroplast and clean the gaps"""
 	pprs = simple_extract_all(localization)
-	print "Before Clean"
-	show_stats(pprs)
 	r = clean_all(pprs)
 	print "Cleaning added {} extra motifs, {} gaps remain".format(*r)
 	show_stats(pprs)
 	return pprs
 
-def simple_extract_all(localization='C'):
+def simple_extract_all(localization=None):
 	files = utils.gettargetnames()
 	pprs = []
 	for f in files:
@@ -27,7 +25,7 @@ def simple_extract(filename, localization = None):
 	sources = utils.loadnuclear(filename)
 	target = utils.loadchloroplast(filename)
 
-	search = HMMER.hmmsearch(hmm = models[0], targets = sources)
+	search = HMMER.hmmsearch(hmm = models, targets = sources)
 	pprs = search.getProteins(maxgap=100, mingap=0, minlen=4, max_5_prime=500,
 			max_3_prime=500)
 
