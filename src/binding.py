@@ -2,12 +2,10 @@
 
 from pyHMMER.hmmfile import HMM
 
-#offsets of each model compared with the actual motif start
-offsets = {'PPR':-2, 'PPR_1':5, 'PPR_2':1, 'PPR_3':-1,}
+
 
 def get_1_6(ppr):
-	"""Return the amino acids at the 1 and 6 positions of each domain
-	corrected for the offsets of each HMM
+	"""Return the amino acids at the 1 and 6 positions
 
 	-  ppr: a SeqRecord with annotated PPR repeat domains 
 
@@ -15,10 +13,8 @@ def get_1_6(ppr):
 	"""
 	ret = []
 	for motif in ppr.features:
-		if not motif.type in offsets:
-			continue
-		start = int(motif.location.start) + 3*offsets[motif.type]
-		seq = ppr.seq[start:start*15].translate()
+		start = int(motif.location.start)
+		seq = ppr.seq[start:start+15].translate()
 		ret.append( (seq[0],seq[5]) )
 	return ret
 
