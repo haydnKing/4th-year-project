@@ -1,6 +1,6 @@
 """Produce an HMM predicting the binding specificity of an HMM"""
 
-from pyHMMER.hmmfile import HMM
+from pyHMMER import hmmfile
 from utils import pairwise
 
 
@@ -27,7 +27,7 @@ def print_1_6(code):
 
 def build_model(ppr):
 	"""Build a model from the list of 1 and 6 amino acids"""
-	hmm = HMM('PPR Target', 'DNA')
+	hmm = hmmfile.HMM('PPR Target', 'DNA')
 	code = get_code(ppr)
 
 	for a,b in pairwise(code):
@@ -39,7 +39,6 @@ def build_model(ppr):
 		else:
 			emit = equal
 		
-		print "hmm.addState(transition={}, emission={})".format(tr,emit)
 		hmm.addState(transition=tr, emission=emit)
 
 	hmm.clean()
