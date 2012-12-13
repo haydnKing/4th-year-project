@@ -42,7 +42,7 @@ def loadchloroplast(f):
 	"""Load the chloroplast sequence from f"""
 	c = 'chloroplast'
 	for rec in _open_seq(f):
-		if (rec.name.find(c) >=0 or rec.id.find(c)):
+		if (rec.name.find(c) >=0 or rec.id.find(c) >= 0):
 			return rec
 
 def _open_seq(f):
