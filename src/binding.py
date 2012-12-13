@@ -1,21 +1,21 @@
 """Produce an HMM predicting the binding specificity of an HMM"""
 
 from pyHMMER.hmmfile import HMM
+from utils import pairwise
 
 
-
-def get_1_6(ppr):
+def get_code(ppr):
 	"""Return the amino acids at the 1 and 6 positions
 
 	-  ppr: a SeqRecord with annotated PPR repeat domains 
 
-	-  return: [(1_1, 6_1,), (2_1, 6_1,), ...]
+	-  return: [(1_1, 6_1, type,), (2_1, 6_1, type), ...]
 	"""
 	ret = []
 	for motif in ppr.features:
 		start = int(motif.location.start)
-		seq = ppr.seq[start:start+15].translate()
-		ret.append( (seq[0],seq[5]) )
+		seq = ppr.seq[start:start+18].translate()
+		ret.append( (seq[0],seq[5],motif.qualifiers['type']) )
 	return ret
 
 def print_1_6(code):
@@ -23,9 +23,28 @@ def print_1_6(code):
 	print "6 : {}".format("".join([x[1] for x in code]))
 	print "1 :{}".format("".join([x[0] for x in code]))
 
-def build_model(code):
+
+
+def build_model(ppr):
 	"""Build a model from the list of 1 and 6 amino acids"""
-	pass
+	hmm = HMM('PPR Target', 'DNA')
+	code = get_code(ppr)
+
+	for a,b in pairwise(code):
+		s = a[1] + b[0]
+		if a[2] == 'P' and s in Ptype:
+			emit = Ptype[s]
+		elif a[2] == 'S' and s in Stype:
+			emit = Stype[s]
+		else:
+			emit = equal
+		
+		print "hmm.addState(transition={}, emission={})".format(tr,emit)
+		hmm.addState(transition=tr, emission=emit)
+
+	hmm.clean()
+	return hmm
+		
 
 def get_binding(pprs):
 	"""return a list of models where the nth model refers to the predicted
@@ -35,7 +54,13 @@ def get_binding(pprs):
 
 	- return: a list of pyHMMER.hmmfile.HMM objects
 	"""
-	pass
+	ret = []
+	for p in pprs:
+		ret.append(build_model(p))
+	return ret
+
+equal = {'A': 1, 'C': 1, 'G': 1, 'T':1,}
+tr = {'MM': 7, 'MI': 1, 'MD': 0, 'IM': 4, 'II': 6, 'DM': 1, 'DD': 0,}
 
 Ptype = {
 	'TD': {'A': 2,  'C': 0 , 'G': 23, 'T': 1,},

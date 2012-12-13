@@ -1,5 +1,6 @@
 """Extract and clean PPRs from targets"""
 import utils, targetp
+from utils import pairwise
 from pyHMMER import HMMER
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
@@ -62,12 +63,7 @@ def get_c_terminus(pprs):
 		return ret[0]
 	return ret
 
-import itertools
-def pairwise(iterable):
-	"s -> (s0,s1), (s1,s2), (s2, s3), ..."
-	a, b = itertools.tee(iterable)
-	next(b, None)
-	return itertools.izip(a, b)
+
 
 def find_gaps(ppr, mingap=30, maxgap=None):
 	"""Find all the gaps between PPR motifs which are gte maxgap"""
