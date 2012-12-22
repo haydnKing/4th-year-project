@@ -156,12 +156,48 @@ e = mc^2
 %	APPENDICES
 %----------------------------------------------------------------------------------------
 
+\begin{center}
+  \large\textsc{Appendices}
+\end{center}
+
 \appendix
 
 \section{Hidden Markov Models and the HMMER Package}
 \label{sec:HMMs}
 
-\lipsum[9]
+A Hidden Markov Model (HMM) is a statistical model of a Markov Process where
+the sequence of states is unknown but a symbol is emitted from each state. 
+An HMM has a set of $N$ states, 
+$\Omega = \omega_{1 \ldots N}$ and an alphabet of $M$ symbols, 
+$\Psi = \psi_{1 \ldots M}$. 
+The probability of emitting the symbol $\psi_i$ from state $\omega_j$ is 
+defined as $\theta_{\psi_i | \omega_j}$.
+Similarly, the probability of transitioning from state $\omega_j$ to state
+$\omega_i$ is given by $\phi_{\omega_i | \omega_j}$.
+The model results in a sequence of states $x(t) \in \Omega$ which are not
+observed, and a sequence of symbols $y(t) \in \Psi$ which are observed for some
+range of $t$.
+
+HMMs have proved useful in a number of fields, but have been particularly
+useful in modeling biological sequences. 
+In general, bioinformaticians use a special case of the HMM called a
+profile-HMM or a pHMM.
+A pHMM is an HMM whose network topology is fixed, as shown in.
+They contain a number of nodes, each of which contains an emission state, an
+insert state and a mute delete state, which either emit a single symbol, emit
+one or more symbols or emit no symbols before moving to the next node
+respectively.
+
+Profile-HMMs have numerous practical advantages over general HMMs. 
+Firstly,there is a significant reduction in the number of transition states
+which must calculated and stored and secondly it possible to automatically
+generate a pHMM from a sequence alignment using the Expectation-Maximisation
+algorithm as the topology is fixed. More information is available about HMMs
+and other aspects of bioinformatics in \cite{Durbin1998}.
+
+Many of the algorithms required to build and manipulate pHMMs are implemented
+in the \textsc{hmmer}\cite{HMMERguide} package, a free and open source software 
+package available from \href{http://hmmer.janelia.org/}{hmmer.janelia.org}.
 
 \section{Molecular Biology}
 \label{sec:mbio}
