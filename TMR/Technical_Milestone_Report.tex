@@ -99,28 +99,144 @@ Study of the Pentatricopeptide Repeat (PPR) Protein}} % Article title
 
 \section{Introduction and Motivation}
 
-\lettrine[nindent=0em,lines=3]{L} orem ipsum dolor sit amet, consectetur adipiscing elit.
-\lipsum[2-3] % Dummy text
+\lettrine[nindent=0em,lines=3]{S} ynthetic biology is a relatively new
+engineering discipline whose goal is to apply standard engineering techniques
+such as standardisation, characterisation and encapsulation of function to 
+biology.
+Synbio aims to use design principles to combine existing phenomena to build 
+new, artificial forms of life.
+The field is often confused with its spiritual predecessor, genetic 
+engineering, which although similar in some respects does not design new
+organisms, but tinkers with existing ones without trying to understand the
+underlying principals.
+For a brief introduction to those principals, see appendix~\ref{sec:mbio}.
+
+Synbio is often referred to as programming, but with DNA instead of computer
+code.
+An example project which captures this idea is Tabor's bacterial edge
+detector\cite{edgeDetector}.
+Bacteria were programmed to produce a colourless chemical messenger in the 
+absence of light and to produce a dark pigment in the presence of light and the
+chemical messenger.
+When a film these bacteria is exposed to a pattern of light and dark, the
+messenger diffuses out from the dark regions and into the light, where it
+stimulates the production of the pigment, leading to an edge detection effect.
+
+While this and other such simple demonstration shows some of the potential 
+of synbio, they lacks immediate application and are somewhat limited.
+A major problem in expanding this work is the lack of targeted reporter
+molecules.
+In the edge-detector example, two molecular signal are produced when light is not 
+present -- AHL, a cell-to-cell signalling molecule and cl, a
+transcriptional repressor molecule.
+Both AHL and cl affect the promoter $P_{lux-\lambda}$; while AHL stimulates
+expression, cl strongly represses it.
+With expression of the dark pigment being driven by $P_{lux-\lambda}$, 
+both light and AHL are required to cause the pigment to be produced.
+
+The effect of the molecules AHL and cl on $P_{lux-\lambda}$ is one of a small
+but growing number of well understood control motifs.
+Since reusing the same promoter/signal in the same cell is impossible due to 
+cross-talk, there are simply not enough signalling modalities available to
+perform more complex calculations within the cell.
+Indeed, it is often the case that signalling molecules have multiple functions
+within the cell such that changing the concentration of one molecule to suit
+our goals may cause a seemingly unrelated are of the cells metabolism to
+malfunction with undesirable consequences.
+
+Another successful synbio project is the effort to produce artemisinin (the
+most effective known anti-malarial) in a cheaper and more scalable way.
+Artemisinin is found naturally in sweet wormwood, but it is slow and expensive
+to extract directly from the plant and chemical synthesis is also an expensive
+and laborious process.
+Synthetic biologists were able to extract the metabolic pathway responsible for
+the biosynthesis of artemisinic acid (a natural precursor) and insert it into 
+yeast\cite{yeast}.
+Artemisinin produced in this manner has yet to be approved for sale, but it is
+hoped that it should be available at some point during 2013, at a considerably
+lower price than any other method of production.
+
+The major limiting factor in this project was yield.
+In order to produce a useful amount of the drug, the pathway involved had to be
+up-regulated, which led to a difficult balance -- too little and very little
+artemisinic acid would be produced, too high and too much of the cell's
+energy would be used, causing the cells to grow slowly if at all.
+As well as this, growing yeast on an industrial scale relatively expensive.
+It is desirable therefore search for host platforms which are better suited to
+biosynthesis than yeast, in order to maximise the yield to cost ratio.
+
+Chloroplasts are a major centre for biosynthesis in plants as they perform
+photosynthesis to provide energy for the plant.
+The result of an ancient symbiosis, up to 1000 of these primitive cells can be 
+found within each plant cell, where they make an excellent target for synbio.
+They are similar to previous synbio hosts, but with access to the more
+sophisticated plant cell machinery and superb potential for biosynthesis.
+The native enzyme, RuBisCO, is expressed in the chloroplasts where it makes up
+up to 50\% of soluble leaf protein.
+Achieving anything remotely close to this figure in a project such as the
+production of artemisinin would help reduce the vast number of people who die 
+of this treatable disease each year (roughly 2,000 deaths a day in 2010
+\cite{malaria}).
 
 %------------------------------------------------
 
-\section{Background}
+\section{Project Background}
 
-Maecenas sed ultricies felis. Sed imperdiet dictum arcu a egestas. 
-\begin{compactitem}
-\item Donec dolor arcu, rutrum id molestie in, viverra sed diam
-\item Curabitur feugiat
-\item turpis sed auctor facilisis
-\item arcu eros accumsan lorem, at posuere mi diam sit amet tortor
-\item Fusce fermentum, mi sit amet euismod rutrum
-\item sem lorem molestie diam, iaculis aliquet sapien tortor non nisi
-\item Pellentesque bibendum pretium aliquet
-\end{compactitem}
-\lipsum[4] % Dummy text
+Understanding how gene expression is controlled in chloroplasts is a key step
+in achieving this goal.
+Unlike previous synbio targets, chloroplast genes are generally expressed
+constitutively (continuously) leading to constant mRNA levels rather than 
+being controlled by promoter regulation\cite{Sugita1996}.
+
+PPR proteins are a class of signalling protein found almost exclusively in
+plants\cite{Small2000}. 
+They are synthesised in the nucleus and sent to organelles such as the 
+chloroplast where each one binds to a specific RNA sequence.
+Depending on whether the protein binds to the untranslated region within the
+RNA message or over the ribosome binding site, expression is either increased 
+(by preventing exonucleases from destroying the mRNA) or decreased by reducing 
+ribosome activity\cite{Pfalz2009}.
+
+PPR proteins are made up of a short targeting region followed by a series of
+repeating regions which form the RNA binding site.
+Often, the protein also contains a tail region which can be classified as
+belonging to one of 3 different categories, 
+but the function of which is hitherto unknown\cite{Lurin2004}.
+
+Discovering the target region of a given PPR protein is a difficult problem as
+nothing is known of the 3D structure of the repeat domains.
+Statistical analysis of a large set of experimentally verified PPR/RNA pairs
+has shown a strong link between the amino acids at position 6 in repeat domain
+$n$ and position 1 in repeat domain $n+1$ (hitherto refered to position 1')
+and the bound nucleotide at position $n$\cite{Barkan2012}.
+Weight was added to this conjecture after a PPR protein with known binding
+target was mutated such as to change its binding preference in a predictable
+way\cite{Barkan2012}.
+
+Ultimately, being able to design a PPR protein to bind to an arbitrary RNA
+sequence with a pre-specified affinity would be of great use to synthetic
+biology.
+It would both improve our knowledge of the chloroplast and give us the
+necessary tools to control expression within it and provide a convenient way to
+precisely control the expression of a gene without the possibility of 
+cross-talk or interference.
+
+Unfortunately, such an undertaking is infeasible for such a short project, and
+so the goals of this project are:
+\begin{itemize}
+  \item Find and predict the binding targets of PPR proteins from several plant 
+    genomes and compare those which correspond to
+    similar binding targets and discover which features of the protein are
+    preserved
+  \item Verify that PPR-style control can be performed in a bacterial setting
+    such as in \textit{E. coli}, by designing and performing a simple test 
+    with known PPR/RNA binding pairs
+\end{itemize}
+
 
 %------------------------------------------------
 
-\section{Results}
+\section{Preliminary Results}
 
 \begin{table}[H]
 \caption{Example table}
@@ -202,13 +318,68 @@ package available from \href{http://hmmer.janelia.org/}{hmmer.janelia.org}.
 \section{Molecular Biology}
 \label{sec:mbio}
 
-\lipsum[10]
+Molecular biology is the study of the molecular basis of biology.
+While the field itself is rather broad, much of it is underpinned by what is
+refered to as the central dogma of molecular biology.
+This central dogma describes the flow of information within a cell and the
+processes and control mechanisms which regulate this process.
+Naturally, many of these processes are highly complicated and poorly
+understood, but much progress has been made since the discovery of DNA in the
+1960s to understand these processes.
+Below is a brief introduction, aimed at the information or control engineer.
+
+Molecules of DNA are the cell's long term storage mechanism -- recent research
+estimates the half-life of DNA to be 521 years\cite{DNAhalflife}.
+The first process is called \textit{translation}, where the DNA molecule is
+'read' by an RNA polymerase, producing an RNA copy of a section of the DNA.
+The RNA molecule is called messenger-RNA as it is a short-lived (minutes to
+hours) message.
+This message is read by a ribosome, a molecule which translates the mRNA into a
+protein, a process refered to as \textit{translation}.
+Proteins then fold into a very specific shape determined by their 
+sequence, and go on to perform many important functions within the cell.
+The processes of transcription and translation are typically very tightly
+controlled by the cell, as this is the main way of influencing the levels of
+various proteins within the cell.
+
+DNA consists of a sequence of four different nucleotides recorded as G,A,T and C.
+When DNA is transcribed to mRNA, thymine is replaced with uracil, such that the
+RNA alphabet is represented as G,A,U and C.
+Proteins are a sequence of amino acids, where each acid comes from an alphabet
+of 20 amino acids.
+Each acid is coded for by 3 base pairs of RNA, which are referred to
+collectively as a codon.
+Since there are $4^3$ possible codons and only 20 amino acids, the code is
+over complete -- several different codons map to the same amino acid.
+As well as coding for amino acids, three special codons (UAG, UAA and UGA) are
+known as stop codons as they terminate the translation of the protein.
+
+The DNA region which codes for a protein is called a gene, and is marked by a
+promoter region, to which the RNA polymerase binds at the start of
+transcription.
+Control is often achieved by modulating the activity of the promoter, either to
+enhance or hinder the binding of RNA polymerase.
+In prokaryotes, the promoter region is usually a short distance upstream from
+the gene or genes to be transcribed, such that the mRNA sequence contains a
+short untranslated region, followed by one or more genes and then another short
+untranslated region.
+
+Ribosomes bind to the mRNA, reading the gene and creating the appropriate
+protein before detaching from the mRNA.
+mRNA is more fragile than DNA but is also targeted by exonucleases, a class of
+enzyme which degrade the RNA molecule, preventing it from producing more
+protein.
+Similar process exist which degrade proteins over time, recycling their amino
+acids to form new proteins.
+These degradation processes mean that a gene must continue to be transcribed at
+a constant rate for the concentration of its protein to remain stable.
+
 
 %----------------------------------------------------------------------------------------
 %	REFERENCE LIST
 %----------------------------------------------------------------------------------------
 
-\bibliographystyle{plain}
+\bibliographystyle{unsrt}
 
 \bibliography{references}
 
