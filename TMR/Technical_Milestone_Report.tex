@@ -207,7 +207,7 @@ Discovering the target region of a given PPR protein is a difficult problem as
 nothing is known of the 3D structure of the repeat domains.
 Statistical analysis of a large set of experimentally verified PPR/RNA pairs
 has shown a strong link between the amino acids at position 6 in repeat domain
-$n$ and position 1 in repeat domain $n+1$ (hitherto refered to position 1')
+$n$ and position 1 in repeat domain $n+1$ (hitherto referred to as position 1')
 and the bound nucleotide at position $n$\cite{Barkan2012}.
 Weight was added to this conjecture after a PPR protein with known binding
 target was mutated such as to change its binding preference in a predictable
@@ -238,29 +238,18 @@ so the goals of this project are:
 
 \section{Preliminary Results}
 
-\begin{table}[H]
-\caption{Example table}
-\centering
-\begin{tabular}{llr}
-\toprule
-\multicolumn{2}{c}{Name} \\
-\cmidrule(r){1-2}
-First name & Last Name & Grade \\
-\midrule
-John & Doe & $7.5$ \\
-Richard & Miles & $2$ \\
-\bottomrule
-\end{tabular}
-\end{table}
+The first challenge was to discover and annotate PPR proteins within a genome.
+Many genomes have PPR proteins which have been discovered and experimentally
+verified, but although in these cases the location of the protein has been
+marked, the location of the internal PPR motifs has not.
+Locating these motifs accurately is important as it is required in order to
+identify the amino acids at positions 6 and 1', and therefore predict likely
+binding domains.
 
-\lipsum[5] % Dummy text
+The method used to locate these motifs was Hidden Markov Model (HMM) search, 
+using the HMMER package, a free and open-source HMM software package.
+For a brief introduction to HMMs, see Appendix~\ref{sec:HMMs}.
 
-\begin{equation}
-\label{eq:emc}
-e = mc^2
-\end{equation}
-
-\lipsum[6] % Dummy text
 
 %------------------------------------------------
 
