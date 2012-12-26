@@ -236,7 +236,7 @@ so the goals of this project are:
 
 %------------------------------------------------
 
-\section{Preliminary Results}
+\section{Completed Work}
 
 The first challenge was to discover and annotate PPR proteins within a genome.
 Many genomes have PPR proteins which have been discovered and experimentally
@@ -250,12 +250,69 @@ The method used to locate these motifs was Hidden Markov Model (HMM) search,
 using the HMMER package, a free and open-source HMM software package.
 For a brief introduction to HMMs, see Appendix~\ref{sec:HMMs}.
 
+The basic approach used is similar to \cite{Lurin2004}, where an HMM is used to
+detect PPR motifs and clusters of motifs are then extracted as putative
+proteins.
+The models used were those available in the Pfam database; a large collection
+of protein families maintained by the Sanger institute.
+Four versions of the PPR model exist in Pfam, and it was found that the latest,
+PPR\_3 (retrieved from \url{http://pfam.sanger.ac.uk/family/PF13812}) gave the
+best accuracy when annotating a known test protein.
+As in \cite{Lurin2004}, it was expected that this model would give a large
+number of false positives within an entire genome as it is statistically likely
+that a PPR-like sequence will occur at random within the genome.
+This is unlikely to prove a problem as we are searching for a sequence of
+several motifs close together within the same reading frame, which is unlikely
+to occur by chance.
+
+In order to extract a protein from a HMMER search, a fair amount of
+post-processing must be done, and indeed, searching for a protein model within
+a DNA sequence is not natively supported by HMMER.
+As outlined in appendix~\ref{sec:mbio}, DNA is translated into a sequence of
+amino acids by a 3:1 code -- i.e. three nucleotides of DNA produce one amino
+acid in a protein.
+This means that there are six possible reading frames, 3 forward and 3 reverse
+which must be searched in order to search the entirety of the protein space.
+This is referred to as a six-frame translation and is not handled natively by
+HMMER; it is left to the user to perform.
+In order to overcome these limitations, I have begun work on pyHMMER, a python
+wrapper for HMMER.
+pyHMMER accepts python objects as inputs and converts to HMMER's
+native format, taking six-frame translations as necessary and parses HMMER's
+file output, returning it as a python object.
+pyHMMER is licensed under the GPL, and is available from
+\url{https://github.com/haydnKing/pyHMMER}.
+
+Having discovered PPR motifs within a genome, clusters of motifs are discovered
+where:
+\begin{itemize}
+  \item Each motif is a certain maximum distance from another within the
+    cluster
+  \item Each motif is within the same reading frame
+  \item None of the motifs overlap
+\end{itemize}
+Having discovered such clusters, the protein can be extracted by searching
+upstream for an in-frame start codon (\textsc{atg}) and a downstream stop codon
+(one of \textsc{tag}, \textsc{taa} or \textsc{tga}).
+If the distance from start to stop codon is too large, then the protein is
+discarded as a false positive.
+
+These putative proteins are then annotated and categorised.
+Large gaps in the sequence of motifs are searched for reluctant motif regions
+and small gaps between the motifs are removed.
+The subgroup to which the PPR protein belongs is identified using a
+\textsc{jackhmmer} search of the tail sequence using consensus sequences 
+from \cite{Lurin2004}.
+The organelle to which the protein is targeted is also predicted, using the
+targetP prediction program.
 
 %------------------------------------------------
+\section{Preliminary Results}
 
+
+%------------------------------------------------
 \section{Further Work}
 
-\lipsum[7-8] % Dummy text
 
 %----------------------------------------------------------------------------------------
 %	APPENDICES
