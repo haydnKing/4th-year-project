@@ -20,7 +20,11 @@
 
 \documentclass[twoside,a4paper]{article}
 
-\usepackage{lipsum} % Package to generate dummy text throughout this template
+\usepackage{lipsum}
+
+\usepackage{tikz,pgf}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.7}
 
 \usepackage{textcomp}
 \usepackage[sc]{mathpazo} % Use the Palatino font
@@ -309,6 +313,75 @@ targetP prediction program.
 %------------------------------------------------
 \section{Preliminary Results}
 
+The strategy outlined above has been tested using the genome of 
+\textit{Arabidopsis thaliana} (chosen as it is well studied and the focus of
+\cite{Lurin2004}). 
+Table~\ref{tab:CHR} shows the number of PPR proteins
+extracted from each chromosome compared with those already known.
+These numbers correlate well, although more proteins are discovered than have
+been verified, suggesting that some are false positives.
+As discussed above, this seems unlikely -- it is more plausible that several
+single proteins are registering as multiple proteins.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c|c|c}
+    Chromosome & Found & Known \\
+    \hline
+    1 & 98 & 78 \\
+    2 & 42 & 32 \\
+    3 & 59 & 50 \\
+    4 & 36 & 37 \\
+    5 & 60 & 57 \\
+    \hline
+    $\Sigma$ & 295 & 254 \\
+  \end{tabular}
+  \caption{Number of PPR proteins found in each chromosome of 
+    \textit{Arabidopsis thaliana} and the number shown in the TAIR10 genome
+    release}
+  \label{tab:CHR}
+\end{table}
+
+Shown in Figure~\ref{fig:ppr} is the number of PPR proteins discovered plotted
+by number of repeats.
+The majority of the proteins have between 3 and 10 repeats, with few having
+greater than 15 repeats.
+The large number of shorter proteins present a potential problem -- if we were
+to predict a specific binding sequence that is 5bp in length, the change of
+that sequence happening at random is ${1/4}^5 \approx 10^{-4}$.
+The chances of this sequence happening at random in the chloroplast is quite
+high, as the chloroplast is around 120,000bp in length.
+This problem is made worse by the fact that we aren't searching for a specific
+sequence, rather a set of sequences whose probability of having been generated
+by our HMM is above a certain threshold.
+We must, therefore, be wary of false positives when searching for binding 
+targets for short PPR proteins.
+
+We cannot hope to distinguish false and true positives analytically as it is
+known that some PPR proteins will bind to more than one
+sequence\cite{Barkan2012}.
+It is concievable, then, that short PPR proteins do have multiple binding sites
+within the chloroplast genome -- this would even be desirable, as it would
+allow control of several genes with only one protein.
+
+\begin{figure}[H]
+  \begin{tikzpicture}
+    \begin{axis}[ybar, 
+      enlargelimits=0.15,
+      width=7cm, height=5cm,
+      xlabel={Number of Repeats},
+      ylabel={Occurrences},
+      bar width = 1,]
+      \addplot 
+      coordinates {(3,30) (4,25) (5,31) (6,33) (7,29) (8,33) (9,30) (10,22)
+        (11,20) (12,18) (13,6) (14,7) (15,6) (16,2) (17,1) (20,1) (23,1)};
+    \end{axis}
+  \end{tikzpicture}
+
+  \caption{Number of PPR motifs found in the PPR proteins of
+    \textit{Arabidopsis thaliana}}
+  \label{fig:ppr}
+\end{figure}
 
 %------------------------------------------------
 \section{Further Work}
