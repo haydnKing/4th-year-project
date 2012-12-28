@@ -312,6 +312,7 @@ targetP prediction program.
 
 %------------------------------------------------
 \section{Preliminary Results}
+\label{sec:results}
 
 The strategy outlined above has been tested using the genome of 
 \textit{Arabidopsis thaliana} (chosen as it is well studied and the focus of
@@ -386,6 +387,62 @@ allow control of several genes with only one protein.
 %------------------------------------------------
 \section{Further Work}
 
+The remaining work of the project can be largely divided into three areas:
+\begin{enumerate}
+  \item Verify the work presented above \& account for the extra proteins
+    discovered \label{todo:verify}
+  \item Predict target regions within the chloroplast genome
+    \label{todo:predict}
+    \begin{enumerate}
+      \item Build HMMs to model the target region using the statistics
+        presented in \cite{Barkan2012}
+      \item Search the chloroplast for potential binding sites
+      \item Attempt to discover similar binding sites in closely related plants
+        and perform alignments of the PPR proteins involved
+      \item Use the alignments to discover the important features of the PPR
+        protein which determine binding
+    \end{enumerate}
+  \item Verify whether PPR/mRNA based expression control is effective within
+    prokaryotic bacteria such as \textit{E. coli}
+    \label{todo:wet}
+    \begin{enumerate}
+      \item Design and build an inducible system to express a well 
+        characterised PPR protein
+      \item Design genes which will produce mRNA including with the PPR target
+        incorporated in both positive and negative arrangements
+      \item Measure the concentration of the test protein in response to
+        induction (i.e. in response to the presence of the PPR)
+    \end{enumerate}
+\end{enumerate}
+
+Item~\ref{todo:verify} refers to the problems discussed in 
+section~\ref{sec:results} above, regarding the discovery of more PPR proteins 
+than are known to exist in the genome.
+This will involve careful comparison of the proteins which have been found and
+those which are known to exist, and should not present much challenge.
+
+This work is continued in item~\ref{todo:predict}, where the binding targets of
+the proteins are predicted.
+Building an HMM from known parameters is already implemented in pyHMMER, and
+the relevant statistics are available in the literature\cite{Barkan2012}, so
+this step should be trivial.
+Actually discovering targets within the chloroplast may present more
+difficulty; there is no guarantee that this step will work -- it is possible
+that there might be no matches or that there are so many matches that the
+prediction is meaningless.
+In either scenario, the only direct way of overcoming the issue would be to
+vary the model parameters, making it either more or less open to variation
+depending on the specific situation.
+
+The purpose of Item~\ref{todo:wet} is to demonstrate that PPR-based control can
+be used for synthetic biology.
+While understanding this phenomenon would still be useful to those looking at
+the chloroplast, it would have a far greater appeal if it was known to be
+effective in more classical settings as well.
+Although the test outlined is relatively simple in theory, performing this
+experiment in the lab may prove to be time-consuming and difficult.
+It is hoped that this will be feasible within the scope as it would clearly
+contribute greatly to the value of the project.
 
 %----------------------------------------------------------------------------------------
 %	APPENDICES
