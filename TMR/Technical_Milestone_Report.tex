@@ -34,11 +34,11 @@
 
 \usepackage[hmarginratio=1:1,top=32mm,columnsep=20pt]{geometry} % Document margins
 \usepackage{multicol} % Used for the two-column layout of the document
-\usepackage{hyperref} % For hyperlinks in the PDF
 
 \usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats in tables or figures
 \usepackage{booktabs} % Horizontal rules in tables
 \usepackage{float} % Required for tables and figures in the multi-column environment - they need to be placed in specific locations with the [H] (e.g. \begin{table}[H])
+\usepackage{hyperref} % For hyperlinks in the PDF
 
 \usepackage{lettrine} % The lettrine is the first enlarged letter at the beginning of the text
 \usepackage{paralist} % Used for the compactitem environment which makes bullet points with less space between them
@@ -102,7 +102,7 @@ elsewhere.
 Each member of this family binds preferentially to a small number of RNA
 sequences, either stabilising the mRNA or preventing translation depending on
 the specific binding location.
-It is hoped that understanding the laws governing PPR/RNA interaction would
+It is hoped that understanding the principles governing PPR/RNA interaction would
 allow novel proteins to be designed allowing precise expression control without
 cross talk, both in plant organelles and in more conventional synthetic biology
 settings.
@@ -118,7 +118,7 @@ settings.
 \section{Introduction and Motivation}
 
 \lettrine[nindent=0em,lines=3]{S}ynthetic biology is a relatively new
-engineering discipline whose goal is to apply standard engineering techniques
+engineering discipline with the goal of applying standard engineering techniques
 such as standardisation, characterisation and encapsulation of function to 
 biology.
 Synbio aims to use these design principles to combine existing phenomena to 
@@ -136,7 +136,7 @@ detector\cite{edgeDetector}.
 Bacteria were programmed to produce a colourless chemical messenger in the 
 absence of light and to produce a dark pigment in the presence of light and the
 chemical messenger.
-When a film these bacteria is exposed to a pattern of light and dark, the
+When a film of these bacteria is exposed to a pattern of light and dark, the
 messenger diffuses out from the dark regions and into the light, where it
 stimulates the production of the pigment, leading to an edge detection effect.
 
@@ -145,14 +145,14 @@ of synbio, they lack immediate application and are somewhat limited.
 A major problem in expanding this work is the lack of targeted reporter
 molecules.
 In the edge-detector example, two molecular signals are produced when light is 
-not present -- AHL, a cell-to-cell signalling molecule and cl, a
+not present -- AHL, a cell-to-cell signalling molecule and cI, a
 transcriptional repressor molecule.
-Both AHL and cl are known to affect the promoter $P_{lux-\lambda}$; while AHL 
-stimulates expression, cl strongly represses it.
+Both AHL and cI are known to affect the promoter $P_{lux-\lambda}$; while AHL 
+stimulates expression, cI strongly represses it.
 With expression of the dark pigment being driven by $P_{lux-\lambda}$, 
 both light and AHL are required to cause the pigment to be produced.
 
-The effect of the molecules AHL and cl on $P_{lux-\lambda}$ is one of a small
+The effect of the molecules AHL and cI on $P_{lux-\lambda}$ is one of a small
 but growing number of well understood control motifs.
 Since reusing the same promoter/signal in the same cell is impossible due to 
 cross-talk, there are simply not enough signalling modalities available to
@@ -162,7 +162,7 @@ within the cell such that changing the concentration of one molecule to suit
 our goals may cause a seemingly unrelated area of the cell's metabolism to
 malfunction with undesirable consequences.
 
-A more applicable successful synbio project is the effort to produce 
+A more applicable synbio project was the effort to produce 
 artemisinin (the most effective known anti-malarial) in a cheaper and more 
 scalable way.
 Artemisinin is found naturally in sweet wormwood, but it is slow and expensive
@@ -218,12 +218,12 @@ ribosome activity\cite{Pfalz2009}.
 
 PPR proteins are made up of a short targeting region followed by a series of
 repeating regions which form the RNA binding site.
-Often, the protein also contains a tail region which can be classified as
-belonging to one of 3 different categories, 
-but the function of which is hitherto unknown\cite{Lurin2004}.
+They may also contain a tail region which can be classified as
+belonging to one of 3 different categories. 
+The function of the tail region is hitherto unknown\cite{Lurin2004}.
 
-Discovering the target region of a given PPR protein is a difficult problem as
-nothing is known of the 3D structure of the repeat domains.
+The 3D structure of the repeating domain is not known, which making it harder
+to identify the regions responsible for target binding.
 Statistical analysis of a large set of experimentally verified PPR/RNA pairs
 has shown a strong link between the amino acids at position 6 in repeat domain
 $n$ and position 1 in repeat domain $n+1$ (hitherto referred to as position 1')
@@ -240,8 +240,7 @@ necessary tools to control expression within it and provide a convenient way to
 precisely control the expression of a gene without the possibility of 
 cross-talk or interference.
 
-Unfortunately, such an undertaking is infeasible for such a short project, and
-so the goals of this project are:
+As a first step towards this goal, the project has the following goals:
 \begin{itemize}
   \item Find and predict the binding targets of PPR proteins from several plant 
     genomes and compare those which correspond to
@@ -284,8 +283,8 @@ This is unlikely to prove a problem as we are searching for a sequence of
 several motifs close together within the same reading frame, which is unlikely
 to occur by chance.
 
-In order to extract a protein from a HMMER search, a fair amount of
-post-processing must be done, and indeed, searching for a protein model within
+Extracting a protein from a HMMER search requires considerable
+post-processing, as, for example, searching for a protein model within
 a DNA sequence is not natively supported by HMMER.
 As outlined in appendix~\ref{sec:mbio}, DNA is translated into a sequence of
 amino acids by a 3:1 code -- i.e. three nucleotides of DNA produce one amino
@@ -311,9 +310,9 @@ where:
   \item None of the motifs overlap
 \end{itemize}
 Having discovered such clusters, the protein can be extracted by searching
-upstream for an in-frame start codon (\textsc{atg}) and a downstream stop codon
-(one of \textsc{tag}, \textsc{taa} or \textsc{tga}).
-If the distance from start to stop codon is too large, then the protein is
+upstream for an in-frame start sequence (\textsc{atg}) and a downstream stop 
+sequence (one of \textsc{tag}, \textsc{taa} or \textsc{tga}).
+If the distance from start to stop sequence is too large, then the protein is
 discarded as a false positive.
 
 These putative proteins are then annotated and categorised.
@@ -441,8 +440,8 @@ the proteins are predicted.
 Building an HMM from known parameters is already implemented in pyHMMER, and
 the relevant statistics are available in the literature\cite{Barkan2012}, so
 this step should be trivial.
-Actually discovering targets within the chloroplast may present more
-difficulty; there is no guarantee that this step will work -- it is possible
+Actually discovering targets within the chloroplast is likely to present more
+difficulties and is therefore not guaranteed to work; it is possible
 that there might be no matches or that there are so many matches that the
 prediction is meaningless.
 In either scenario, the only direct way of overcoming the issue would be to
@@ -451,9 +450,9 @@ depending on the specific situation.
 
 The purpose of Item~\ref{todo:wet} is to demonstrate that PPR-based control can
 be used for synthetic biology.
-While understanding this phenomenon would still be useful to those looking at
+While understanding this phenomenon would still be useful to those studying
 the chloroplast, it would have a far greater appeal if it was known to be
-effective in more classical settings as well.
+effective in more established synbio systems as well.
 Although the test outlined is relatively simple in theory, performing this
 experiment in the lab may prove to be time-consuming and difficult.
 It is hoped that this will be feasible within the scope as it would clearly
@@ -512,7 +511,8 @@ package available from \href{http://hmmer.janelia.org/}{hmmer.janelia.org}.
 
 Molecular biology is the study of the molecular basis of biology.
 While the field itself is rather broad, much of it is underpinned by what is
-referred to as the central dogma of molecular biology.
+referred to as the central dogma of molecular biology -- 
+DNA makes RNA makes proteins.
 This central dogma describes the flow of information within a cell and the
 processes and control mechanisms which regulate this process.
 Naturally, many of these processes are highly complicated and poorly
@@ -522,7 +522,7 @@ Below is a brief introduction, aimed at the information or control engineer.
 
 Molecules of DNA are the cell's long term storage mechanism -- recent research
 estimates the half-life of DNA to be 521 years\cite{DNAhalflife}.
-The first process is called \textit{translation}, where the DNA molecule is
+The first process is called \textit{transcription}, where the DNA molecule is
 'read' by an RNA polymerase, producing an RNA copy of a section of the DNA.
 The RNA molecule is called messenger-RNA as it is a short-lived (minutes to
 hours) message.
