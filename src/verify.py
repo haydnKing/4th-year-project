@@ -80,4 +80,7 @@ def compare():
 		print "Chromosome {}".format(i+1)
 		compare_chromosomes(f,k)
 
+if __name__ == "__main__":
+	compare()
+
 

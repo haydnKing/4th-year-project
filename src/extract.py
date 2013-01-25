@@ -22,7 +22,7 @@ def simple_extract_all(localization=None):
 
 def simple_extract(target, localization = None):
 
-	search = HMMER.hmmsearch(hmm = models[3], targets = target)
+	search = HMMER.hmmsearch(hmm = models[3], targets = target, domE=100.0)
 	pprs = search.getProteins(maxgap=200, mingap=-10, minlen=3, max_5_prime=1000,
 			max_3_prime=1000)
 
