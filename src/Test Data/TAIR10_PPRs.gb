@@ -1,0 +1,2260 @@
+LOCUS       Chr1               0 bp    DNA              UNK 01-JAN-1980
+DEFINITION  PPRs annotated in Chromosome 1
+ACCESSION   chr1
+VERSION     chr1
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     gene            338291..340077
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE27361.1]"
+                     /locus_tag="AT1G01970"
+                     /gene="AT1G01970"
+     gene            complement(360918..363094)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE27372.1]"
+                     /locus_tag="AT1G02060"
+                     /gene="AT1G02060"
+     gene            408622..410611
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE27393.1]"
+                     /locus_tag="AT1G02150"
+                     /gene="AT1G02150"
+     gene            474500..476511
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE27421.1]"
+                     /locus_tag="AT1G02370"
+                     /gene="AT1G02370"
+     gene            493683..495158
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE27428.1]"
+                     /locus_tag="AT1G02420"
+                     /gene="AT1G02420"
+     gene            complement(743885..746479)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE27529.1]"
+                     /locus_tag="AT1G03100"
+                     /gene="AT1G03100"
+     gene            complement(876258..877547)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE27580.1]"
+                     /locus_tag="AT1G03510"
+                     /gene="AT1G03510"
+     gene            883782..885611
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE27584.1]"
+                     /locus_tag="AT1G03540"
+                     /gene="AT1G03540"
+     gene            complement(890156..892410)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE27586.1]"
+                     /locus_tag="AT1G03560"
+                     /gene="AT1G03560"
+     gene            complement(1362867..1364962)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE27750.1]"
+                     /locus_tag="AT1G04840"
+                     /gene="AT1G04840"
+     gene            complement(1453216..1454260)
+                     /note="Pseudogene of AT2G32630pentatricopeptide (PPR)
+                     repeat-containing protein.[Source:TAIR;Acc:AT1G05061]"
+                     /locus_tag="AT1G05061"
+                     /gene="AT1G05061"
+     gene            1671936..1673856
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE27863.1]"
+                     /locus_tag="AT1G05600"
+                     /gene="AT1G05600"
+     gene            1864796..1866472
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE27946.1]"
+                     /locus_tag="AT1G06140"
+                     /gene="AT1G06140"
+     gene            complement(1918088..1919760)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE27970.1]"
+                     /locus_tag="AT1G06270"
+                     /gene="AT1G06270"
+     gene            complement(2014003..2016054)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE28008.1]"
+                     /locus_tag="AT1G06580"
+                     /gene="AT1G06580"
+     gene            complement(2056575..2060242)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE28027.1]"
+                     /locus_tag="AT1G06710"
+                     /gene="AT1G06710"
+     gene            complement(2336523..2339391)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE28146.1]"
+                     /locus_tag="AT1G07590"
+                     /gene="AT1G07590"
+     gene            complement(2397442..2400508)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE28171.1]"
+                     /locus_tag="AT1G07740"
+                     /gene="AT1G07740"
+     gene            complement(2514192..2516605)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE28239.1]"
+                     /locus_tag="OTP82"
+                     /gene="AT1G08070"
+     gene            complement(2733657..2735819)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE28317.1]"
+                     /locus_tag="AT1G08610"
+                     /gene="AT1G08610"
+     gene            complement(2966120..2967718)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE28410.1]"
+                     /locus_tag="AT1G09190"
+                     /gene="AT1G09190"
+     gene            complement(2977792..2979466)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE28415.1]"
+                     /locus_tag="AT1G09220"
+                     /gene="AT1G09220"
+     gene            3035443..3037560
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE28438.1]"
+                     /locus_tag="AT1G09410"
+                     /gene="AT1G09410"
+     gene            complement(3134107..3135930)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE28479.1]"
+                     /locus_tag="AT1G09680"
+                     /gene="AT1G09680"
+     gene            complement(3190288..3192414)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE28499.1]"
+                     /locus_tag="AT1G09820"
+                     /gene="AT1G09820"
+     gene            3218133..3219929
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE28512.1]"
+                     /locus_tag="AT1G09900"
+                     /gene="AT1G09900"
+     gene            3388747..3390150
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE28566.1]"
+                     /locus_tag="AT1G10330"
+                     /gene="AT1G10330"
+     gene            3639878..3644162
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE28662.1]"
+                     /locus_tag="AT1G10910"
+                     /gene="AT1G10910"
+     gene            complement(3791454..3793883)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE28713.1]"
+                     /locus_tag="CRR22"
+                     /gene="AT1G11290"
+     gene            complement(3912902..3914407)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE28763.1]"
+                     /locus_tag="AT1G11630"
+                     /gene="AT1G11630"
+     gene            3948714..3951359
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE28773.1]"
+                     /locus_tag="AT1G11710"
+                     /gene="AT1G11710"
+     gene            complement(4013121..4014681)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE28810.1]"
+                     /locus_tag="AT1G11900"
+                     /gene="AT1G11900"
+     gene            complement(4183066..4186124)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE28864.1]"
+                     /locus_tag="AT1G12300"
+                     /gene="AT1G12300"
+     gene            complement(4294594..4297084)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE28902.1]"
+                     /locus_tag="AT1G12620"
+                     /gene="AT1G12620"
+     gene            complement(4323556..4326333)
+                     /note="helicase domain and pentatricopeptide repeat-
+                     containing protein [Source:EMBL;Acc:AEE28915.1]"
+                     /locus_tag="AT1G12700"
+                     /gene="AT1G12700"
+     gene            4353906..4355929
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE28927.1]"
+                     /locus_tag="AT1G12775"
+                     /gene="AT1G12775"
+     gene            4447647..4449200
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE28962.1]"
+                     /locus_tag="AT1G13040"
+                     /gene="AT1G13040"
+     gene            4601261..4603298
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE29013.1]"
+                     /locus_tag="AT1G13410"
+                     /gene="AT1G13410"
+     gene            complement(4731056..4733707)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE29070.1]"
+                     /locus_tag="AT1G13800"
+                     /gene="AT1G13800"
+     gene            4954080..4955702
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE29168.1]"
+                     /locus_tag="AT1G14470"
+                     /gene="AT1G14470"
+     gene            5318011..5320594
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE29328.1]"
+                     /locus_tag="AT1G15480"
+                     /gene="AT1G15480"
+     gene            5329111..5331711
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE29331.1]"
+                     /locus_tag="ATECB2"
+                     /gene="AT1G15510"
+     gene            5760772..5762619
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE29504.1]"
+                     /locus_tag="AT1G16830"
+                     /gene="AT1G16830"
+     gene            6064525..6066720
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE29616.1]"
+                     /locus_tag="AT1G17630"
+                     /gene="AT1G17630"
+     gene            6363172..6366235
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE29720.1]"
+                     /locus_tag="AT1G18485"
+                     /gene="AT1G18485"
+     gene            6528984..6532614
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE29779.1]"
+                     /locus_tag="AT1G18900"
+                     /gene="AT1G18900"
+     gene            6666249..6668963
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE29826.1]"
+                     /locus_tag="AT1G19290"
+                     /gene="AT1G19290"
+     gene            6759965..6762778
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE29864.1]"
+                     /locus_tag="NFD5"
+                     /gene="AT1G19520"
+     gene            complement(6819564..6822711)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE29891.1]"
+                     /locus_tag="AT1G19720"
+                     /gene="AT1G19720"
+     gene            7009570..7011852
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE29953.1]"
+                     /locus_tag="AT1G20230"
+                     /gene="AT1G20230"
+     gene            7029629..7031535
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE29959.1]"
+                     /locus_tag="AT1G20300"
+                     /gene="AT1G20300"
+     gene            complement(8128086..8130242)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE30315.1]"
+                     /locus_tag="AT1G22960"
+                     /gene="AT1G22960"
+     gene            8324698..8326697
+                     /note="pentatricopeptide repeat-containing protein-like
+                     protein [Source:EMBL;Acc:AEE30388.1]"
+                     /locus_tag="AT1G23450"
+                     /gene="AT1G23450"
+     gene            8894428..8896800
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE30612.1]"
+                     /locus_tag="AT1G25360"
+                     /gene="AT1G25360"
+     gene            9151732..9154740
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE30694.1]"
+                     /locus_tag="AT1G26460"
+                     /gene="AT1G26460"
+     gene            9158380..9159897
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE30697.1]"
+                     /locus_tag="AT1G26500"
+                     /gene="AT1G26500"
+     gene            complement(9319756..9321474)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE30756.1]"
+                     /locus_tag="AT1G26900"
+                     /gene="AT1G26900"
+     gene            complement(9756674..9757963)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE30900.1]"
+                     /locus_tag="AT1G28000"
+                     /gene="AT1G28000"
+     gene            complement(9768395..9771157)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE30903.1]"
+                     /locus_tag="AT1G28020"
+                     /gene="AT1G28020"
+     gene            complement(10080042..10081604)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE31014.1]"
+                     /locus_tag="AT1G28690"
+                     /gene="AT1G28690"
+     gene            10387673..10389100
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE31120.1]"
+                     /locus_tag="AT1G29710"
+                     /gene="AT1G29710"
+     gene            10846513..10850628
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE31250.1]"
+                     /locus_tag="EMB88"
+                     /gene="AT1G30610"
+     gene            complement(11253936..11255737)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE31355.1]"
+                     /locus_tag="AT1G31430"
+                     /gene="AT1G31430"
+     gene            complement(11394690..11396018)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE31393.1]"
+                     /locus_tag="AT1G31790"
+                     /gene="AT1G31790"
+     gene            11423906..11426714
+                     /note="pentatricopeptide (PPR) repeat-containing protein
+                     [Source:EMBL;Acc:AEE31404.1]"
+                     /locus_tag="AT1G31840"
+                     /gene="AT1G31840"
+     gene            complement(11461855..11463848)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE31416.1]"
+                     /locus_tag="AT1G31920"
+                     /gene="AT1G31920"
+     gene            11695611..11697896
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE31484.1]"
+                     /locus_tag="AT1G32415"
+                     /gene="AT1G32415"
+     gene            complement(12089403..12091687)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE31586.1]"
+                     /locus_tag="AT1G33350"
+                     /gene="AT1G33350"
+     gene            12441393..12443256
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE31678.1]"
+                     /locus_tag="AT1G34160"
+                     /gene="AT1G34160"
+     gene            16153609..16154468
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE31938.1]"
+                     /locus_tag="AT1G43010"
+                     /gene="AT1G43010"
+     gene            complement(16687637..16689502)
+                     /note="pentatricopeptide repeat-containing protein-like
+                     protein [Source:EMBL;Acc:AEE32010.1]"
+                     /locus_tag="AT1G43980"
+                     /gene="AT1G43980"
+     gene            17668285..17669713
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE32230.1]"
+                     /locus_tag="AT1G47940"
+                     /gene="AT1G47940"
+     gene            18622026..18624250
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE32531.1]"
+                     /locus_tag="AT1G50270"
+                     /gene="AT1G50270"
+     gene            19603811..19606287
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE32830.1]"
+                     /locus_tag="AT1G52620"
+                     /gene="AT1G52620"
+     gene            complement(19608731..19610452)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE32833.1]"
+                     /locus_tag="AT1G52640"
+                     /gene="AT1G52640"
+     gene            19896027..19897442
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE32926.1]"
+                     /locus_tag="AT1G53330"
+                     /gene="AT1G53330"
+     gene            20001263..20003416
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE32968.1]"
+                     /locus_tag="AT1G53600"
+                     /gene="AT1G53600"
+     gene            complement(20791675..20793564)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE33276.1]"
+                     /locus_tag="AT1G55630"
+                     /gene="AT1G55630"
+     gene            20901346..20902800
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE33315.1]"
+                     /locus_tag="AT1G55890"
+                     /gene="AT1G55890"
+     gene            21195804..21197721
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE33410.1]"
+                     /locus_tag="AT1G56570"
+                     /gene="AT1G56570"
+     gene            21253817..21255931
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE33423.1]"
+                     /locus_tag="AT1G56690"
+                     /gene="AT1G56690"
+     gene            complement(21939752..21941784)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE33607.1]"
+                     /locus_tag="CRR28"
+                     /gene="AT1G59720"
+     gene            complement(22366701..22368714)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE33730.1]"
+                     /locus_tag="AT1G60770"
+                     /gene="AT1G60770"
+     gene            complement(22865004..22866615)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE33898.1]"
+                     /locus_tag="PPR336"
+                     /gene="AT1G61870"
+     gene            23056653..23058114
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE33957.1]"
+                     /locus_tag="AT1G62350"
+                     /gene="AT1G62350"
+     gene            complement(23176930..23179248)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE33981.1]"
+                     /locus_tag="AT1G62590"
+                     /gene="AT1G62590"
+     gene            complement(23207090..23209913)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE33993.1]"
+                     /locus_tag="AT1G62680"
+                     /gene="AT1G62680"
+     gene            23227532..23229150
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE33997.1]"
+                     /locus_tag="AT1G62720"
+                     /gene="AT1G62720"
+     gene            23299057..23300958
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE34020.1]"
+                     /locus_tag="AT1G62910"
+                     /gene="AT1G62910"
+     gene            23301576..23303162
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE34021.1]"
+                     /locus_tag="AT1G62914"
+                     /gene="AT1G62914"
+     gene            23306534..23308683
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE34023.1]"
+                     /locus_tag="AT1G62930"
+                     /gene="AT1G62930"
+     gene            complement(23385324..23387167)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE34050.1]"
+                     /locus_tag="AT1G63070"
+                     /gene="AT1G63070"
+     gene            complement(23387631..23390816)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE34051.1]"
+                     /locus_tag="AT1G63080"
+                     /gene="AT1G63080"
+     gene            23412730..23415149
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE34059.1]"
+                     /locus_tag="AT1G63130"
+                     /gene="AT1G63130"
+     gene            23419396..23421579
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE34062.1]"
+                     /locus_tag="AT1G63150"
+                     /gene="AT1G63150"
+     gene            23450654..23452311
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE34073.1]"
+                     /locus_tag="AT1G63230"
+                     /gene="AT1G63230"
+     gene            complement(23488884..23489530)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE34086.1]"
+                     /locus_tag="AT1G63320"
+                     /gene="AT1G63320"
+     gene            23489840..23491519
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE34087.1]"
+                     /locus_tag="AT1G63330"
+                     /gene="AT1G63330"
+     gene            23507320..23509053
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE34095.1]"
+                     /locus_tag="AT1G63400"
+                     /gene="AT1G63400"
+     gene            23587005..23588421
+                     /note="pentatricopeptide (PPR) repeat-containing protein
+                     [Source:EMBL;Acc:AEE34121.1]"
+                     /locus_tag="AT1G63630"
+                     /gene="AT1G63630"
+     gene            23791585..23795563
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE34192.1]"
+                     /locus_tag="AT1G64100"
+                     /gene="AT1G64100"
+     gene            23866053..23867711
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE34225.1]"
+                     /locus_tag="AT1G64310"
+                     /gene="AT1G64310"
+     gene            23933380..23936867
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE34240.1]"
+                     /locus_tag="AT1G64430"
+                     /gene="AT1G64430"
+     gene            complement(23984790..23986731)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE34255.1]"
+                     /locus_tag="AT1G64580"
+                     /gene="AT1G64580"
+     gene            24737719..24739353
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE34498.1]"
+                     /locus_tag="AT1G66345"
+                     /gene="AT1G66345"
+     gene            25918314..25920545
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE34864.1]"
+                     /locus_tag="AT1G68930"
+                     /gene="AT1G68930"
+     gene            25932998..25935030
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE34872.1]"
+                     /locus_tag="AT1G68980"
+                     /gene="AT1G68980"
+     gene            complement(26047372..26049348)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE34906.1]"
+                     /locus_tag="AT1G69290"
+                     /gene="AT1G69290"
+     gene            26069882..26072245
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE34914.1]"
+                     /locus_tag="AT1G69350"
+                     /gene="AT1G69350"
+     gene            complement(26805651..26807183)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE35157.1]"
+                     /locus_tag="AT1G71060"
+                     /gene="AT1G71060"
+     gene            complement(26838289..26841490)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE35173.1]"
+                     /locus_tag="AT1G71210"
+                     /gene="AT1G71210"
+     gene            complement(26917822..26920099)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE35199.1]"
+                     /locus_tag="AT1G71420"
+                     /gene="AT1G71420"
+     gene            complement(26927984..26930316)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE35203.1]"
+                     /locus_tag="AT1G71460"
+                     /gene="AT1G71460"
+     gene            complement(26932905..26935825)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE35207.1]"
+                     /locus_tag="AT1G71490"
+                     /gene="AT1G71490"
+     gene            27598106..27599812
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE35457.1]"
+                     /locus_tag="AT1G73400"
+                     /gene="AT1G73400"
+     gene            27721190..27724165
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE35500.1]"
+                     /locus_tag="AT1G73710"
+                     /gene="AT1G73710"
+     gene            27963953..27965341
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE35587.1]"
+                     /locus_tag="AT1G74400"
+                     /gene="AT1G74400"
+     gene            28020777..28023068
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE35612.1]"
+                     /locus_tag="AT1G74580"
+                     /gene="AT1G74580"
+     gene            complement(28025153..28027840)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE35614.1]"
+                     /locus_tag="AT1G74600"
+                     /gene="AT1G74600"
+     gene            28030521..28032452
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE35616.1]"
+                     /locus_tag="AT1G74630"
+                     /gene="AT1G74630"
+     gene            28086800..28089367
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE35629.1]"
+                     /locus_tag="AT1G74750"
+                     /gene="AT1G74750"
+     gene            28133933..28135667
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE35645.1]"
+                     /locus_tag="OTP43"
+                     /gene="AT1G74900"
+     gene            complement(28617639..28622731)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE35819.1]"
+                     /locus_tag="AT1G76280"
+                     /gene="AT1G76280"
+     gene            28942710..28944797
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE35925.1]"
+                     /locus_tag="AT1G77010"
+                     /gene="AT1G77010"
+     gene            complement(28992876..28993170)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE35942.1]"
+                     /locus_tag="AT1G77150"
+                     /gene="AT1G77150"
+     gene            complement(28998047..28999537)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE35944.1]"
+                     /locus_tag="AT1G77170"
+                     /gene="AT1G77170"
+     gene            complement(29068343..29069828)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE35966.1]"
+                     /locus_tag="AT1G77340"
+                     /gene="AT1G77340"
+     gene            complement(29071983..29073536)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE35969.1]"
+                     /locus_tag="AT1G77360"
+                     /gene="AT1G77360"
+     gene            29087145..29088521
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE35974.1]"
+                     /locus_tag="AT1G77405"
+                     /gene="AT1G77405"
+     gene            complement(29746972..29748944)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE36201.1]"
+                     /locus_tag="AT1G79080"
+                     /gene="AT1G79080"
+     gene            29900456..29903189
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE36250.1]"
+                     /locus_tag="EMB2217"
+                     /gene="AT1G79490"
+     gene            complement(29920083..29922676)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE36261.1]"
+                     /locus_tag="AT1G79540"
+                     /gene="AT1G79540"
+     gene            30148388..30150517
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE36363.1]"
+                     /locus_tag="AT1G80150"
+                     /gene="AT1G80150"
+     gene            30180954..30183507
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE36381.1]"
+                     /locus_tag="PPR596"
+                     /gene="AT1G80270"
+     gene            complement(30284946..30286704)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE36418.1]"
+                     /locus_tag="AT1G80550"
+                     /gene="AT1G80550"
+     gene            complement(30395194..30396921)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE36463.1]"
+                     /locus_tag="AT1G80880"
+                     /gene="AT1G80880"
+ORIGIN
+//
+LOCUS       Chr2               0 bp    DNA              UNK 01-JAN-1980
+DEFINITION  PPRs annotated in Chromosome 2
+ACCESSION   chr2
+VERSION     chr2
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     gene            167997..168479
+                     /note="pentatricopeptide (PPR) repeat-containing protein
+                     [Source:EMBL;Acc:AEC05443.1]"
+                     /locus_tag="AT2G01360"
+                     /gene="AT2G01360"
+     gene            172256..174137
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC05445.1]"
+                     /locus_tag="AT2G01390"
+                     /gene="AT2G01390"
+     gene            complement(230752..232506)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC05463.1]"
+                     /locus_tag="AT2G01510"
+                     /gene="AT2G01510"
+     gene            complement(326136..327815)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC05491.1]"
+                     /locus_tag="AT2G01740"
+                     /gene="AT2G01740"
+     gene            388055..389918
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC05509.1]"
+                     /locus_tag="EMB975"
+                     /gene="AT2G01860"
+     gene            complement(771151..773540)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC05620.1]"
+                     /locus_tag="AT2G02750"
+                     /gene="AT2G02750"
+     gene            868359..870385
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC05651.1]"
+                     /locus_tag="OTP85"
+                     /gene="AT2G02980"
+     gene            1028292..1030361
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC05694.1]"
+                     /locus_tag="AT2G03380"
+                     /gene="AT2G03380"
+     gene            1181537..1183703
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC05762.1]"
+                     /locus_tag="REME1"
+                     /gene="AT2G03880"
+     gene            complement(1706787..1708865)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC05877.1]"
+                     /locus_tag="AT2G04860"
+                     /gene="AT2G04860"
+     gene            complement(2327386..2329691)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC05991.1]"
+                     /locus_tag="AT2G06000"
+                     /gene="AT2G06000"
+     gene            5671493..5673586
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC06244.1]"
+                     /locus_tag="AT2G13600"
+                     /gene="AT2G13600"
+     gene            6814521..6816404
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC06425.1]"
+                     /locus_tag="AT2G15630"
+                     /gene="AT2G15630"
+     gene            complement(6830995..6833777)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC06430.1]"
+                     /locus_tag="AT2G15690"
+                     /gene="AT2G15690"
+     gene            complement(6888540..6891360)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC06439.1]"
+                     /locus_tag="OTP51"
+                     /gene="AT2G15820"
+     gene            complement(6951349..6952845)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC06453.1]"
+                     /locus_tag="AT2G15980"
+                     /gene="AT2G15980"
+     gene            complement(7312146..7314533)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC06546.1]"
+                     /locus_tag="AT2G16880"
+                     /gene="AT2G16880"
+     gene            7401138..7403646
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC06575.1]"
+                     /locus_tag="AT2G17033"
+                     /gene="AT2G17033"
+     gene            7462811..7466626
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC06590.1]"
+                     /locus_tag="AT2G17140"
+                     /gene="AT2G17140"
+     gene            complement(7485398..7487602)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC06598.1]"
+                     /locus_tag="AT2G17210"
+                     /gene="AT2G17210"
+     gene            7623826..7626186
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC06641.1]"
+                     /locus_tag="AT2G17525"
+                     /gene="AT2G17525"
+     gene            7674351..7676157
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC06663.1]"
+                     /locus_tag="AT2G17670"
+                     /gene="AT2G17670"
+     gene            complement(8033882..8035363)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC06777.1]"
+                     /locus_tag="AT2G18520"
+                     /gene="AT2G18520"
+     gene            complement(8203730..8206395)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC06830.1]"
+                     /locus_tag="AT2G18940"
+                     /gene="AT2G18940"
+     gene            8362435..8366144
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC06864.1]"
+                     /locus_tag="AT2G19280"
+                     /gene="AT2G19280"
+     gene            8926006..8927844
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC07060.1]"
+                     /locus_tag="AT2G20710"
+                     /gene="AT2G20710"
+     gene            complement(8927822..8930112)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC07061.1]"
+                     /locus_tag="AT2G20720"
+                     /gene="AT2G20720"
+     gene            complement(9045516..9047579)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC07122.1]"
+                     /locus_tag="AT2G21090"
+                     /gene="AT2G21090"
+     gene            9383602..9386064
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC07259.1]"
+                     /locus_tag="AT2G22070"
+                     /gene="AT2G22070"
+     gene            10888014..10890367
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC07720.1]"
+                     /locus_tag="AT2G25580"
+                     /gene="AT2G25580"
+     gene            complement(11425270..11427669)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC07887.1]"
+                     /locus_tag="AT2G26790"
+                     /gene="AT2G26790"
+     gene            complement(11783927..11786533)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC08020.1]"
+                     /locus_tag="AT2G27610"
+                     /gene="AT2G27610"
+     gene            complement(11849789..11851363)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC08046.1]"
+                     /locus_tag="AT2G27800"
+                     /gene="AT2G27800"
+     gene            complement(11938265..11939653)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC08073.1]"
+                     /locus_tag="AT2G28050"
+                     /gene="AT2G28050"
+     gene            12712884..12715852
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC08301.1]"
+                     /locus_tag="OTP81"
+                     /gene="AT2G29760"
+     gene            12847828..12849669
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC08344.1]"
+                     /locus_tag="AT2G30100"
+                     /gene="AT2G30100"
+     gene            13116474..13118808
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC08440.1]"
+                     /locus_tag="AT2G30780"
+                     /gene="AT2G30780"
+     gene            13844834..13846708
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC08707.1]"
+                     /locus_tag="AT2G32630"
+                     /gene="AT2G32630"
+     gene            14249608..14251791
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC08868.1]"
+                     /locus_tag="AT2G33680"
+                     /gene="AT2G33680"
+     gene            14275800..14277551
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC08881.1]"
+                     /locus_tag="AT2G33760"
+                     /gene="AT2G33760"
+     gene            14510482..14511891
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC08965.1]"
+                     /locus_tag="AT2G34370"
+                     /gene="AT2G34370"
+     gene            14516226..14518186
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC08968.1]"
+                     /locus_tag="AT2G34400"
+                     /gene="AT2G34400"
+     gene            complement(14760869..14763077)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC09051.1]"
+                     /locus_tag="AT2G35030"
+                     /gene="AT2G35030"
+     gene            complement(14807449..14810229)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC09069.1]"
+                     /locus_tag="AT2G35130"
+                     /gene="AT2G35130"
+     gene            15195653..15197264
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC09220.1]"
+                     /locus_tag="AT2G36240"
+                     /gene="AT2G36240"
+     gene            complement(15405068..15406573)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC09292.1]"
+                     /locus_tag="AT2G36730"
+                     /gene="AT2G36730"
+     gene            15531161..15533265
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC09330.1]"
+                     /locus_tag="AT2G36980"
+                     /gene="AT2G36980"
+     gene            complement(15637046..15639522)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC09370.1]"
+                     /locus_tag="AT2G37230"
+                     /gene="AT2G37230"
+     gene            complement(15664800..15667079)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC09382.1]"
+                     /locus_tag="AT2G37310"
+                     /gene="AT2G37310"
+     gene            15667208..15668851
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC09383.1]"
+                     /locus_tag="AT2G37320"
+                     /gene="AT2G37320"
+     gene            16091093..16092549
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC09535.1]"
+                     /locus_tag="AT2G38420"
+                     /gene="AT2G38420"
+     gene            complement(16518968..16521478)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC09698.1]"
+                     /locus_tag="AT2G39620"
+                     /gene="AT2G39620"
+     gene            16811026..16812228
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC09801.1]"
+                     /locus_tag="AT2G40240"
+                     /gene="AT2G40240"
+     gene            16987269..16989851
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC09868.1]"
+                     /locus_tag="AT2G40720"
+                     /gene="AT2G40720"
+     gene            17132853..17134593
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC09925.1]"
+                     /locus_tag="AT2G41080"
+                     /gene="AT2G41080"
+     gene            complement(17403603..17407135)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC10024.1]"
+                     /locus_tag="EMB2654"
+                     /gene="AT2G41720"
+     gene            17858698..17863466
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC10187.1]"
+                     /locus_tag="AT2G42920"
+                     /gene="AT2G42920"
+     gene            18939262..18941034
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEC10636.1]"
+                     /locus_tag="AT2G46050"
+                     /gene="AT2G46050"
+     gene            complement(19639007..19640803)
+                     /note="pentatricopeptide repeat-containing protein-like
+                     protein [Source:EMBL;Acc:AEC10922.1]"
+                     /locus_tag="AT2G48000"
+                     /gene="AT2G48000"
+ORIGIN
+//
+LOCUS       Chr3               0 bp    DNA              UNK 01-JAN-1980
+DEFINITION  PPRs annotated in Chromosome 3
+ACCESSION   chr3
+VERSION     chr3
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     gene            complement(223529..225511)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE73691.1]"
+                     /locus_tag="AT3G01580"
+                     /gene="AT3G01580"
+     gene            337965..340442
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE73749.1]"
+                     /locus_tag="AT3G02010"
+                     /gene="AT3G02010"
+     gene            complement(473881..476592)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE73793.1]"
+                     /locus_tag="AT3G02330"
+                     /gene="AT3G02330"
+     gene            513525..515925
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE73817.1]"
+                     /locus_tag="AT3G02490"
+                     /gene="AT3G02490"
+     gene            568047..570103
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE73844.1]"
+                     /locus_tag="AT3G02650"
+                     /gene="AT3G02650"
+     gene            complement(860512..863352)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE73959.1]"
+                     /locus_tag="AT3G03580"
+                     /gene="AT3G03580"
+     gene            1083974..1086385
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE74041.1]"
+                     /locus_tag="AT3G04130"
+                     /gene="AT3G04130"
+     gene            complement(1301391..1303376)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE74131.1]"
+                     /locus_tag="AT3G04750"
+                     /gene="AT3G04750"
+     gene            complement(1303575..1305878)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE74132.1]"
+                     /locus_tag="AT3G04760"
+                     /gene="AT3G04760"
+     gene            complement(1523463..1526166)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE74223.1]"
+                     /locus_tag="AT3G05340"
+                     /gene="AT3G05340"
+     gene            complement(1956409..1958299)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE74391.1]"
+                     /locus_tag="EMB2750"
+                     /gene="AT3G06430"
+     gene            2181717..2184449
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE74476.1]"
+                     /locus_tag="AT3G06920"
+                     /gene="AT3G06920"
+     gene            complement(2321740..2324382)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE74523.1]"
+                     /locus_tag="AT3G07290"
+                     /gene="AT3G07290"
+     gene            complement(2677118..2679179)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE74683.1]"
+                     /locus_tag="AT3G08820"
+                     /gene="AT3G08820"
+     gene            complement(2761195..2764281)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE74713.1]"
+                     /locus_tag="AT3G09040"
+                     /gene="AT3G09040"
+     gene            complement(2766367..2768430)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE74715.1]"
+                     /locus_tag="AT3G09060"
+                     /gene="AT3G09060"
+     gene            2958679..2961299
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE74793.1]"
+                     /locus_tag="CRM3"
+                     /gene="AT3G09650"
+     gene            3564079..3565779
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE75035.1]"
+                     /locus_tag="AT3G11380"
+                     /gene="AT3G11380"
+     gene            3608250..3610121
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE75049.1]"
+                     /locus_tag="AT3G11460"
+                     /gene="AT3G11460"
+     gene            complement(4227740..4229651)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE75302.1]"
+                     /locus_tag="AT3G13150"
+                     /gene="AT3G13150"
+     gene            complement(4229971..4231286)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE75303.1]"
+                     /locus_tag="AT3G13160"
+                     /gene="AT3G13160"
+     gene            4519647..4521533
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE75409.1]"
+                     /locus_tag="AT3G13770"
+                     /gene="AT3G13770"
+     gene            4572180..4574490
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE75430.1]"
+                     /locus_tag="AT3G13880"
+                     /gene="AT3G13880"
+     gene            complement(4779688..4782452)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE75502.1]"
+                     /locus_tag="AT3G14330"
+                     /gene="AT3G14330"
+     gene            4903012..4904229
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE75541.1]"
+                     /locus_tag="AT3G14580"
+                     /gene="AT3G14580"
+     gene            complement(4949385..4951346)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE75560.1]"
+                     /locus_tag="AT3G14730"
+                     /gene="AT3G14730"
+     gene            complement(5097153..5099222)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE75623.1]"
+                     /locus_tag="AT3G15130"
+                     /gene="AT3G15130"
+     gene            complement(5117489..5119060)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE75631.1]"
+                     /locus_tag="AT3G15200"
+                     /gene="AT3G15200"
+     gene            complement(5275401..5277991)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE75696.1]"
+                     /locus_tag="AT3G15590"
+                     /gene="AT3G15590"
+     gene            5387444..5389690
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE75748.1]"
+                     /locus_tag="AT3G15930"
+                     /gene="AT3G15930"
+     gene            5434014..5436264
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE75762.1]"
+                     /locus_tag="AT3G16010"
+                     /gene="AT3G16010"
+     gene            complement(5656371..5658335)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE75843.1]"
+                     /locus_tag="AT3G16610"
+                     /gene="AT3G16610"
+     gene            5690020..5691543
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE75855.1]"
+                     /locus_tag="AT3G16710"
+                     /gene="AT3G16710"
+     gene            complement(5768401..5770380)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE75880.1]"
+                     /locus_tag="PPR40"
+                     /gene="AT3G16890"
+     gene            complement(5949006..5949644)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE75946.1]"
+                     /locus_tag="AT3G17370"
+                     /gene="AT3G17370"
+     gene            6165449..6167515
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE76035.1]"
+                     /locus_tag="AT3G18020"
+                     /gene="AT3G18020"
+     gene            complement(6204842..6209691)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE76049.1]"
+                     /locus_tag="EMB1270"
+                     /gene="AT3G18110"
+     gene            6496198..6498234
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE76154.1]"
+                     /locus_tag="AT3G18840"
+                     /gene="AT3G18840"
+     gene            7247095..7249145
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE76417.1]"
+                     /locus_tag="AT3G20730"
+                     /gene="AT3G20730"
+     gene            7563503..7565074
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE76513.1]"
+                     /locus_tag="AT3G21470"
+                     /gene="AT3G21470"
+     gene            7812944..7815928
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE76594.1]"
+                     /locus_tag="AT3G22150"
+                     /gene="AT3G22150"
+     gene            complement(7965954..7967990)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE76643.1]"
+                     /locus_tag="AT3G22470"
+                     /gene="AT3G22470"
+     gene            complement(8017771..8019459)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE76663.1]"
+                     /locus_tag="AT3G22670"
+                     /gene="AT3G22670"
+     gene            complement(8177215..8179743)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE76706.1]"
+                     /locus_tag="AT3G23020"
+                     /gene="AT3G23020"
+     gene            8347200..8349347
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE76753.1]"
+                     /locus_tag="AT3G23330"
+                     /gene="AT3G23330"
+     gene            8672774..8674881
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE76843.1]"
+                     /locus_tag="AT3G24000"
+                     /gene="AT3G24000"
+     gene            9128516..9130321
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE76973.1]"
+                     /locus_tag="AT3G25060"
+                     /gene="AT3G25060"
+     gene            9180348..9181839
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE76993.1]"
+                     /locus_tag="AT3G25210"
+                     /gene="AT3G25210"
+     gene            complement(9500116..9502221)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE77096.1]"
+                     /locus_tag="AT3G25970"
+                     /gene="AT3G25970"
+     gene            complement(9744542..9746644)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE77176.1]"
+                     /locus_tag="AT3G26540"
+                     /gene="AT3G26540"
+     gene            complement(9791371..9792985)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE77189.1]"
+                     /locus_tag="AT3G26630"
+                     /gene="AT3G26630"
+     gene            9850570..9852864
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE77215.1]"
+                     /locus_tag="AT3G26782"
+                     /gene="AT3G26782"
+     gene            complement(10731518..10733032)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE77469.1]"
+                     /locus_tag="AT3G28640"
+                     /gene="AT3G28640"
+     gene            complement(10738715..10740930)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE77471.1]"
+                     /locus_tag="AT3G28660"
+                     /gene="AT3G28660"
+     gene            11188803..11190605
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE77553.1]"
+                     /locus_tag="AT3G29230"
+                     /gene="AT3G29230"
+     gene            11238111..11240287
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE77563.1]"
+                     /locus_tag="emb2076"
+                     /gene="AT3G29290"
+     gene            14680265..14680760
+                     /note="putative pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE77738.1]"
+                     /locus_tag="AT3G42560"
+                     /gene="AT3G42560"
+     gene            14722250..14723857
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE77742.1]"
+                     /locus_tag="AT3G42630"
+                     /gene="AT3G42630"
+     gene            complement(17160005..17162475)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE78181.1]"
+                     /locus_tag="AT3G46610"
+                     /gene="AT3G46610"
+     gene            complement(17231773..17234002)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE78205.1]"
+                     /locus_tag="CRR2"
+                     /gene="AT3G46790"
+     gene            17262983..17264475
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE78213.1]"
+                     /locus_tag="AT3G46870"
+                     /gene="AT3G46870"
+     gene            complement(17517355..17519165)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE78293.1]"
+                     /locus_tag="AT3G47530"
+                     /gene="AT3G47530"
+     gene            17651912..17654032
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE78339.1]"
+                     /locus_tag="AT3G47840"
+                     /gene="AT3G47840"
+     gene            complement(17870064..17871929)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE78391.1]"
+                     /locus_tag="AT3G48250"
+                     /gene="AT3G48250"
+     gene            18097048..18099721
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE78458.1]"
+                     /locus_tag="AT3G48810"
+                     /gene="AT3G48810"
+     gene            complement(18211863..18215619)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE78503.1]"
+                     /locus_tag="AT3G49140"
+                     /gene="AT3G49140"
+     gene            complement(18226911..18229610)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE78507.1]"
+                     /locus_tag="EMB2261"
+                     /gene="AT3G49170"
+     gene            18255979..18258100
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE78514.1]"
+                     /locus_tag="emb1796"
+                     /gene="AT3G49240"
+     gene            18437845..18440010
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE78579.1]"
+                     /locus_tag="AT3G49710"
+                     /gene="AT3G49710"
+     gene            complement(18445730..18447646)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE78583.1]"
+                     /locus_tag="AT3G49730"
+                     /gene="AT3G49730"
+     gene            18447788..18450094
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE78584.1]"
+                     /locus_tag="AT3G49740"
+                     /gene="AT3G49740"
+     gene            complement(18710871..18713649)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE78665.1]"
+                     /locus_tag="AT3G50420"
+                     /gene="AT3G50420"
+     gene            complement(19049602..19051565)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE78778.1]"
+                     /locus_tag="AT3G51320"
+                     /gene="AT3G51320"
+     gene            19784502..19786808
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE79075.1]"
+                     /locus_tag="AT3G53360"
+                     /gene="AT3G53360"
+     gene            19900280..19902884
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE79129.1]"
+                     /locus_tag="MEE40"
+                     /gene="AT3G53700"
+     gene            20370234..20373069
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE79322.1]"
+                     /locus_tag="AT3G54980"
+                     /gene="AT3G54980"
+     gene            20791249..20792532
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE79468.1]"
+                     /locus_tag="AT3G56030"
+                     /gene="AT3G56030"
+     gene            complement(20952292..20954641)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE79534.1]"
+                     /locus_tag="AT3G56550"
+                     /gene="AT3G56550"
+     gene            complement(21255635..21258480)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE79654.1]"
+                     /locus_tag="OTP84"
+                     /gene="AT3G57430"
+     gene            21666082..21668625
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE79802.1]"
+                     /locus_tag="AT3G58590"
+                     /gene="AT3G58590"
+     gene            complement(21821349..21824348)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE79864.1]"
+                     /locus_tag="AT3G59040"
+                     /gene="AT3G59040"
+     gene            21918455..21922706
+                     /note="pentatricopeptide repeat-containing protein-like
+                     protein [Source:EMBL;Acc:AEE79901.1]"
+                     /locus_tag="AT3G59300"
+                     /gene="AT3G59300"
+     gene            complement(22180025..22181776)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE80006.1]"
+                     /locus_tag="AT3G60050"
+                     /gene="AT3G60050"
+     gene            22535706..22538635
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE80130.1]"
+                     /locus_tag="AT3G60960"
+                     /gene="AT3G60960"
+     gene            complement(22565309..22566745)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE80134.1]"
+                     /locus_tag="AT3G60980"
+                     /gene="AT3G60980"
+     gene            complement(22638691..22641237)
+                     /note="pentatricopeptide (PPR) repeat-containing protein
+                     [Source:EMBL;Acc:AEE80164.1]"
+                     /locus_tag="AT3G61170"
+                     /gene="AT3G61170"
+     gene            complement(22704304..22706138)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE80190.1]"
+                     /locus_tag="AT3G61360"
+                     /gene="AT3G61360"
+     gene            complement(22768917..22771274)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE80217.1]"
+                     /locus_tag="AT3G61520"
+                     /gene="AT3G61520"
+     gene            complement(23106437..23108511)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE80356.1]"
+                     /locus_tag="AT3G62470"
+                     /gene="AT3G62470"
+     gene            complement(23133340..23135313)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE80362.1]"
+                     /locus_tag="AT3G62540"
+                     /gene="AT3G62540"
+     gene            23246157..23248063
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE80407.1]"
+                     /locus_tag="AT3G62890"
+                     /gene="AT3G62890"
+     gene            23402076..23405991
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE80472.1]"
+                     /locus_tag="OTP86"
+                     /gene="AT3G63370"
+ORIGIN
+//
+LOCUS       Chr4               0 bp    DNA              UNK 01-JAN-1980
+DEFINITION  PPRs annotated in Chromosome 4
+ACCESSION   chr4
+VERSION     chr4
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     gene            complement(447941..450642)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE81970.1]"
+                     /locus_tag="AT4G01030"
+                     /gene="AT4G01030"
+     gene            679472..681940
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE82043.1]"
+                     /locus_tag="AT4G01570"
+                     /gene="AT4G01570"
+     gene            complement(871145..872913)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE82108.1]"
+                     /locus_tag="AT4G01990"
+                     /gene="AT4G01990"
+     gene            complement(1221116..1223461)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE82224.1]"
+                     /locus_tag="AT4G02750"
+                     /gene="AT4G02750"
+     gene            1258568..1260665
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE82233.1]"
+                     /locus_tag="AT4G02820"
+                     /gene="AT4G02820"
+     gene            complement(2134060..2136249)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE82385.1]"
+                     /locus_tag="AT4G04370"
+                     /gene="AT4G04370"
+     gene            complement(2434907..2439403)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE82426.1]"
+                     /locus_tag="AT4G04790"
+                     /gene="AT4G04790"
+     gene            complement(5183813..5185873)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE82609.1]"
+                     /locus_tag="AT4G08210"
+                     /gene="AT4G08210"
+     gene            7056254..7057954
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE83039.1]"
+                     /locus_tag="AT4G11690"
+                     /gene="AT4G11690"
+     gene            complement(7938967..7942898)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE83309.1]"
+                     /locus_tag="AT4G13650"
+                     /gene="AT4G13650"
+     gene            complement(8103645..8105521)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE83365.1]"
+                     /locus_tag="AT4G14050"
+                     /gene="AT4G14050"
+     gene            complement(8176324..8178142)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE83389.1]"
+                     /locus_tag="AT4G14170"
+                     /gene="AT4G14170"
+     gene            complement(8183544..8185187)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE83391.1]"
+                     /locus_tag="AT4G14190"
+                     /gene="AT4G14190"
+     gene            complement(8185370..8188783)
+                     /note="pentatricopeptide repeat-containing protein-like
+                     protein [Source:EMBL;Acc:AEE83392.1]"
+                     /locus_tag="AT4G14200"
+                     /gene="AT4G14200"
+     gene            complement(8507794..8510038)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE83506.1]"
+                     /locus_tag="AT4G14820"
+                     /gene="AT4G14820"
+     gene            8513859..8516360
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE83509.1]"
+                     /locus_tag="LOI1"
+                     /gene="AT4G14850"
+     gene            8949460..8951540
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE83640.1]"
+                     /locus_tag="AT4G15720"
+                     /gene="AT4G15720"
+     gene            9257958..9260277
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE83741.1]"
+                     /locus_tag="SVR7"
+                     /gene="AT4G16390"
+     gene            complement(9287862..9289582)
+                     /note="pentatricopeptide (PPR) repeat-containing protein
+                     [Source:EMBL;Acc:AEE83758.1]"
+                     /locus_tag="AT4G16470"
+                     /gene="AT4G16470"
+     gene            9819498..9821684
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE83923.1]"
+                     /locus_tag="AT4G17616"
+                     /gene="AT4G17616"
+     gene            complement(10215120..10217204)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE84057.1]"
+                     /locus_tag="AT4G18520"
+                     /gene="AT4G18520"
+     gene            10304850..10307570
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE84086.1]"
+                     /locus_tag="DOT4"
+                     /gene="AT4G18750"
+     gene            complement(10338719..10340356)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE84097.1]"
+                     /locus_tag="AT4G18840"
+                     /gene="AT4G18840"
+     gene            complement(10391965..10393991)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE84116.1]"
+                     /locus_tag="AT4G18975"
+                     /gene="AT4G18975"
+     gene            10496228..10498192
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE84158.1]"
+                     /locus_tag="AT4G19191"
+                     /gene="AT4G19191"
+     gene            complement(10505266..10508121)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE84161.1]"
+                     /locus_tag="AT4G19220"
+                     /gene="AT4G19220"
+     gene            complement(10600788..10604520)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE84183.1]"
+                     /locus_tag="AT4G19440"
+                     /gene="AT4G19440"
+     gene            complement(10868400..10870382)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE84271.1]"
+                     /locus_tag="EMB1025"
+                     /gene="AT4G20090"
+     gene            11126151..11128334
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE84357.1]"
+                     /locus_tag="AT4G20740"
+                     /gene="AT4G20740"
+     gene            complement(11130762..11133086)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE84359.1]"
+                     /locus_tag="AT4G20770"
+                     /gene="AT4G20770"
+     gene            11245954..11247807
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE84395.1]"
+                     /locus_tag="AT4G21065"
+                     /gene="AT4G21065"
+     gene            complement(11286756..11288754)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE84415.1]"
+                     /locus_tag="AT4G21170"
+                     /gene="AT4G21170"
+     gene            complement(11292192..11294009)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE84417.1]"
+                     /locus_tag="emb1417"
+                     /gene="AT4G21190"
+     gene            11336479..11339052
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE84437.1]"
+                     /locus_tag="AT4G21300"
+                     /gene="AT4G21300"
+     gene            complement(11532971..11534847)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE84492.1]"
+                     /locus_tag="AT4G21705"
+                     /gene="AT4G21705"
+     gene            11604986..11610651
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE84518.1]"
+                     /locus_tag="AT4G21880"
+                     /gene="AT4G21880"
+     gene            11960553..11962289
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE84655.1]"
+                     /locus_tag="AT4G22760"
+                     /gene="AT4G22760"
+     gene            complement(12937253..12938836)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE85033.1]"
+                     /locus_tag="AT4G25270"
+                     /gene="AT4G25270"
+     gene            13454853..13456631
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE85237.1]"
+                     /locus_tag="AT4G26680"
+                     /gene="AT4G26680"
+     gene            13489835..13492054
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE85254.1]"
+                     /locus_tag="AT4G26800"
+                     /gene="AT4G26800"
+     gene            13930359..13933270
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE85420.1]"
+                     /locus_tag="AT4G28010"
+                     /gene="AT4G28010"
+     gene            complement(14962493..14965015)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE85798.1]"
+                     /locus_tag="AT4G30700"
+                     /gene="AT4G30700"
+     gene            15009605..15012319
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE85815.1]"
+                     /locus_tag="AT4G30825"
+                     /gene="AT4G30825"
+     gene            complement(15118696..15120537)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE85853.1]"
+                     /locus_tag="AT4G31070"
+                     /gene="AT4G31070"
+     gene            15652892..15655474
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE86058.1]"
+                     /locus_tag="AT4G32430"
+                     /gene="AT4G32430"
+     gene            15660927..15662879
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE86062.1]"
+                     /locus_tag="AT4G32450"
+                     /gene="AT4G32450"
+     gene            complement(15995701..15998673)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE86186.1]"
+                     /locus_tag="AT4G33170"
+                     /gene="AT4G33170"
+     gene            complement(16290141..16292612)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE86306.1]"
+                     /locus_tag="EMB2758"
+                     /gene="AT4G33990"
+     gene            complement(16599605..16606027)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE86426.1]"
+                     /locus_tag="MRL1"
+                     /gene="AT4G34830"
+     gene            complement(16721084..16723498)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE86471.1]"
+                     /locus_tag="AT4G35130"
+                     /gene="AT4G35130"
+     gene            16983525..16986967
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE86580.1]"
+                     /locus_tag="AT4G35850"
+                     /gene="AT4G35850"
+     gene            complement(17292229..17293822)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE86686.1]"
+                     /locus_tag="AT4G36680"
+                     /gene="AT4G36680"
+     gene            complement(17498580..17500655)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE86761.1]"
+                     /locus_tag="AT4G37170"
+                     /gene="AT4G37170"
+     gene            complement(17859582..17861261)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE86863.1]"
+                     /locus_tag="AT4G38010"
+                     /gene="AT4G38010"
+     gene            complement(17900609..17902160)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE86885.1]"
+                     /locus_tag="AT4G38150"
+                     /gene="AT4G38150"
+     gene            complement(18374736..18377240)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE87082.1]"
+                     /locus_tag="AT4G39530"
+                     /gene="AT4G39530"
+     gene            18395294..18397578
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE87095.1]"
+                     /locus_tag="EMB2453"
+                     /gene="AT4G39620"
+     gene            18527680..18530007
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AEE87144.1]"
+                     /locus_tag="AT4G39952"
+                     /gene="AT4G39952"
+ORIGIN
+//
+LOCUS       Chr5               0 bp    DNA              UNK 01-JAN-1980
+DEFINITION  PPRs annotated in Chromosome 5
+ACCESSION   chr5
+VERSION     chr5
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     gene            complement(41768..44375)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED90300.1]"
+                     /locus_tag="AT5G01110"
+                     /gene="AT5G01110"
+     gene            complement(644279..648466)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED90523.1]"
+                     /locus_tag="AT5G02830"
+                     /gene="AT5G02830"
+     gene            654102..656561
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED90528.1]"
+                     /locus_tag="AT5G02860"
+                     /gene="AT5G02860"
+     gene            complement(1010780..1013586)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED90656.1]"
+                     /locus_tag="EMB175"
+                     /gene="AT5G03800"
+     gene            1384540..1386447
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED90783.1]"
+                     /locus_tag="AT5G04780"
+                     /gene="AT5G04780"
+     gene            1390034..1393930
+                     /note="pentatricopeptide (PPR) repeat-containing protein
+                     [Source:EMBL;Acc:AED90789.1]"
+                     /locus_tag="AT5G04810"
+                     /gene="AT5G04810"
+     gene            1955959..1959051
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED91010.1]"
+                     /locus_tag="AT5G06400"
+                     /gene="AT5G06400"
+     gene            complement(1999181..2001049)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED91032.1]"
+                     /locus_tag="AT5G06540"
+                     /gene="AT5G06540"
+     gene            complement(2670134..2671765)
+                     /note="pentatricopeptide repeat (PPR) family protein
+                     [Source:EMBL;Acc:AED91280.1]"
+                     /locus_tag="AT5G08305"
+                     /gene="AT5G08305"
+     gene            complement(2672756..2675254)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED91281.1]"
+                     /locus_tag="AT5G08310"
+                     /gene="AT5G08310"
+     gene            complement(2745208..2747757)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED91310.1]"
+                     /locus_tag="AT5G08490"
+                     /gene="AT5G08490"
+     gene            2753099..2755116
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED91313.1]"
+                     /locus_tag="AT5G08510"
+                     /gene="AT5G08510"
+     gene            2941798..2943668
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED91395.1]"
+                     /locus_tag="AT5G09450"
+                     /gene="AT5G09450"
+     gene            complement(3102877..3105864)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED91470.1]"
+                     /locus_tag="AT5G09950"
+                     /gene="AT5G09950"
+     gene            complement(3374393..3377451)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED91581.1]"
+                     /locus_tag="AT5G10690"
+                     /gene="AT5G10690"
+     gene            3606402..3608617
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED91658.1]"
+                     /locus_tag="AT5G11310"
+                     /gene="AT5G11310"
+     gene            3911363..3914080
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED91763.1]"
+                     /locus_tag="AT5G12100"
+                     /gene="AT5G12100"
+     gene            4222514..4224982
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED91869.1]"
+                     /locus_tag="AT5G13230"
+                     /gene="AT5G13230"
+     gene            complement(4246954..4249212)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED91873.1]"
+                     /locus_tag="RARE1"
+                     /gene="AT5G13270"
+     gene            4445423..4447476
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED91939.1]"
+                     /locus_tag="AT5G13770"
+                     /gene="AT5G13770"
+     gene            complement(4543101..4545256)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED91985.1]"
+                     /locus_tag="AT5G14080"
+                     /gene="AT5G14080"
+     gene            complement(4627140..4628703)
+                     /note="pentatricopeptide repeat repeat-containing protein
+                     [Source:EMBL;Acc:AED92021.1]"
+                     /locus_tag="AT5G14350"
+                     /gene="AT5G14350"
+     gene            complement(4772881..4775697)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED92075.1]"
+                     /locus_tag="AT5G14770"
+                     /gene="AT5G14770"
+     gene            complement(4792072..4793868)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED92080.1]"
+                     /locus_tag="AT5G14820"
+                     /gene="AT5G14820"
+     gene            4857171..4858959
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED92104.1]"
+                     /locus_tag="AT5G15010"
+                     /gene="AT5G15010"
+     gene            4962293..4966141
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED92143.1]"
+                     /locus_tag="AT5G15280"
+                     /gene="AT5G15280"
+     gene            complement(4968163..4970034)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED92145.1]"
+                     /locus_tag="AT5G15300"
+                     /gene="AT5G15300"
+     gene            complement(4982273..4984144)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED92151.1]"
+                     /locus_tag="AT5G15340"
+                     /gene="AT5G15340"
+     gene            5213081..5215620
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED92232.1]"
+                     /locus_tag="AT5G15980"
+                     /gene="AT5G15980"
+     gene            5368034..5369641
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED92290.1]"
+                     /locus_tag="AT5G16420"
+                     /gene="AT5G16420"
+     gene            5460976..5463017
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED92321.1]"
+                     /locus_tag="AT5G16640"
+                     /gene="AT5G16640"
+     gene            5543834..5546386
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED92350.1]"
+                     /locus_tag="AT5G16860"
+                     /gene="AT5G16860"
+     gene            6090954..6092545
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED92549.1]"
+                     /locus_tag="AT5G18390"
+                     /gene="AT5G18390"
+     gene            complement(6129237..6131015)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED92568.1]"
+                     /locus_tag="AT5G18475"
+                     /gene="AT5G18475"
+     gene            complement(6328379..6329970)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED92632.1]"
+                     /locus_tag="AT5G18950"
+                     /gene="AT5G18950"
+     gene            complement(8129979..8133301)
+                     /note="pentatricopeptide repeat-containing protein-like
+                     protein [Source:EMBL;Acc:AED93252.1]"
+                     /locus_tag="AT5G24060"
+                     /gene="AT5G24060"
+     gene            8530978..8533867
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED93367.1]"
+                     /locus_tag="AT5G24830"
+                     /gene="AT5G24830"
+     gene            8947223..8949599
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED93475.1]"
+                     /locus_tag="AT5G25630"
+                     /gene="AT5G25630"
+     gene            complement(9538572..9540647)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED93651.1]"
+                     /locus_tag="AT5G27110"
+                     /gene="AT5G27110"
+     gene            9605650..9609787
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED93665.1]"
+                     /locus_tag="EMB976"
+                     /gene="AT5G27270"
+     gene            9620810..9624990
+                     /note="pentatricopeptide (PPR) repeat-containing protein
+                     [Source:EMBL;Acc:AED93670.1]"
+                     /locus_tag="AT5G27300"
+                     /gene="AT5G27300"
+     gene            complement(9693262..9694840)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED93691.1]"
+                     /locus_tag="AT5G27460"
+                     /gene="AT5G27460"
+     gene            10314118..10317160
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED93790.1]"
+                     /locus_tag="AT5G28340"
+                     /gene="AT5G28340"
+     gene            complement(10332375..10334571)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED93793.1]"
+                     /locus_tag="AT5G28370"
+                     /gene="AT5G28370"
+     gene            complement(10338723..10341007)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED93794.1]"
+                     /locus_tag="AT5G28380"
+                     /gene="AT5G28380"
+     gene            10364834..10365289
+                     /note="pentatricopeptide repeat-containing protein-like
+                     protein [Source:EMBL;Acc:AED93798.1]"
+                     /locus_tag="AT5G28420"
+                     /gene="AT5G28420"
+     gene            10374899..10377304
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED93801.1]"
+                     /locus_tag="AT5G28460"
+                     /gene="AT5G28460"
+     gene            complement(14924494..14926146)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED94207.1]"
+                     /locus_tag="AT5G37570"
+                     /gene="AT5G37570"
+     gene            15510901..15512691
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED94354.1]"
+                     /locus_tag="AT5G38730"
+                     /gene="AT5G38730"
+     gene            15750929..15752962
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED94423.1]"
+                     /locus_tag="AT5G39350"
+                     /gene="AT5G39350"
+     gene            complement(15884001..15886388)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED94463.1]"
+                     /locus_tag="EMB2744"
+                     /gene="AT5G39680"
+     gene            15895729..15897972
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED94466.1]"
+                     /locus_tag="EMB2745"
+                     /gene="AT5G39710"
+     gene            complement(16000712..16003072)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED94498.1]"
+                     /locus_tag="AT5G39980"
+                     /gene="AT5G39980"
+     gene            16166438..16168841
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED94543.1]"
+                     /locus_tag="AT5G40400"
+                     /gene="AT5G40400"
+     gene            16169315..16171153
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED94544.1]"
+                     /locus_tag="AT5G40405"
+                     /gene="AT5G40405"
+     gene            16171374..16173226
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED94545.1]"
+                     /locus_tag="AT5G40410"
+                     /gene="AT5G40410"
+     gene            complement(16478486..16480584)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED94650.1]"
+                     /locus_tag="AT5G41170"
+                     /gene="AT5G41170"
+     gene            16915783..16918569
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED94794.1]"
+                     /locus_tag="AT5G42310"
+                     /gene="AT5G42310"
+     gene            16977297..16979016
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED94812.1]"
+                     /locus_tag="AT5G42450"
+                     /gene="AT5G42450"
+     gene            complement(17592007..17593481)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED95010.1]"
+                     /locus_tag="AT5G43790"
+                     /gene="AT5G43790"
+     gene            17618805..17621979
+                     /note="pentatricopeptide repeat-containing protein-like
+                     protein [Source:EMBL;Acc:AED95013.1]"
+                     /locus_tag="AT5G43822"
+                     /gene="AT5G43822"
+     gene            17618948..17620588
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED95014.1]"
+                     /locus_tag="AT5G43820"
+                     /gene="AT5G43820"
+     gene            complement(17622336..17624329)
+                     /note="pentatricopeptide repeat-containing protein-like
+                     protein [Source:EMBL;Acc:AED95015.1]"
+                     /locus_tag="AT5G43830"
+                     /gene="AT5G43830"
+     gene            17814336..17816309
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED95077.1]"
+                     /locus_tag="AT5G44230"
+                     /gene="AT5G44230"
+     gene            complement(18694316..18695734)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED95337.1]"
+                     /locus_tag="AT5G46100"
+                     /gene="AT5G46100"
+     gene            18840305..18842398
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED95388.1]"
+                     /locus_tag="AT5G46460"
+                     /gene="AT5G46460"
+     gene            complement(18897445..18899645)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED95400.1]"
+                     /locus_tag="AT5G46580"
+                     /gene="AT5G46580"
+     gene            18940969..18942602
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED95413.1]"
+                     /locus_tag="AT5G46680"
+                     /gene="AT5G46680"
+     gene            complement(19214445..19215878)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED95502.1]"
+                     /locus_tag="AT5G47360"
+                     /gene="AT5G47360"
+     gene            complement(19252463..19254193)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED95522.1]"
+                     /locus_tag="AT5G47460"
+                     /gene="AT5G47460"
+     gene            19763152..19765272
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED95717.1]"
+                     /locus_tag="AT5G48730"
+                     /gene="AT5G48730"
+     gene            complement(19832872..19834934)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED95742.1]"
+                     /locus_tag="LPA66"
+                     /gene="AT5G48910"
+     gene            20459238..20461504
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED95921.1]"
+                     /locus_tag="EMB1006"
+                     /gene="AT5G50280"
+     gene            complement(20520789..20522980)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED95938.1]"
+                     /locus_tag="AT5G50390"
+                     /gene="AT5G50390"
+     gene            20739419..20741281
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED96019.1]"
+                     /locus_tag="AT5G50990"
+                     /gene="AT5G50990"
+     gene            complement(21414935..21417616)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED96268.1]"
+                     /locus_tag="AT5G52850"
+                     /gene="AT5G52850"
+     gene            complement(22561941..22564433)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED96675.1]"
+                     /locus_tag="CRR21"
+                     /gene="AT5G55740"
+     gene            22598038..22602566
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED96686.1]"
+                     /locus_tag="AT5G55840"
+                     /gene="AT5G55840"
+     gene            22802316..22804377
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED96747.1]"
+                     /locus_tag="AT5G56310"
+                     /gene="AT5G56310"
+     gene            complement(23194833..23198524)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED96871.1]"
+                     /locus_tag="AT5G57250"
+                     /gene="AT5G57250"
+     gene            complement(23888793..23890427)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED97156.1]"
+                     /locus_tag="OTP80"
+                     /gene="AT5G59200"
+     gene            complement(24011000..24013025)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED97210.1]"
+                     /locus_tag="AT5G59600"
+                     /gene="AT5G59600"
+     gene            complement(24123983..24126706)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED97249.1]"
+                     /locus_tag="AT5G59900"
+                     /gene="AT5G59900"
+     gene            complement(24528250..24530011)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED97403.1]"
+                     /locus_tag="AT5G60960"
+                     /gene="AT5G60960"
+     gene            complement(24671770..24673657)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED97459.1]"
+                     /locus_tag="AT5G61370"
+                     /gene="AT5G61370"
+     gene            24681550..24683514
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED97462.1]"
+                     /locus_tag="AT5G61400"
+                     /gene="AT5G61400"
+     gene            complement(24829987..24831553)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED97519.1]"
+                     /locus_tag="AT5G61800"
+                     /gene="AT5G61800"
+     gene            complement(24899606..24903117)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED97546.1]"
+                     /locus_tag="AT5G61990"
+                     /gene="AT5G61990"
+     gene            complement(25041901..25044849)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED97601.1]"
+                     /locus_tag="AT5G62370"
+                     /gene="AT5G62370"
+     gene            complement(25723243..25725451)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED97869.1]"
+                     /locus_tag="AT5G64320"
+                     /gene="AT5G64320"
+     gene            complement(26200014..26203778)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED98071.1]"
+                     /locus_tag="AT5G65560"
+                     /gene="AT5G65560"
+     gene            26203968..26206184
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED98072.1]"
+                     /locus_tag="AT5G65570"
+                     /gene="AT5G65570"
+     gene            complement(26339876..26341789)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED98111.1]"
+                     /locus_tag="AT5G65820"
+                     /gene="AT5G65820"
+     gene            complement(26547995..26549677)
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED98221.1]"
+                     /locus_tag="AT5G66500"
+                     /gene="AT5G66500"
+     gene            26551879..26553741
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED98224.1]"
+                     /locus_tag="AT5G66520"
+                     /gene="AT5G66520"
+     gene            26596207..26598192
+                     /note="pentatricopeptide repeat-containing protein
+                     [Source:EMBL;Acc:AED98242.1]"
+                     /locus_tag="AT5G66631"
+                     /gene="AT5G66631"
+ORIGIN
+//

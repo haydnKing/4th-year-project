@@ -2,11 +2,36 @@
 
 import os, os.path, re
 from Bio import SeqIO
+from Bio.SeqRecord import SeqRecord
 from pyHMMER import HMMER, hmmfile
 
 HMMDir = os.path.join(os.path.dirname(__file__), 'HMMs/')
 TargetDir = os.path.join(os.path.dirname(__file__), 'Genomes/')
 TestDir = os.path.join(os.path.dirname(__file__), 'Test Proteins/')
+
+def getLabelledFeatures(seq, search='pentatricopeptide', feat_type=None):
+	"""Return all the features in seq which contain desc and are of type type"""
+	if isinstance(seq, SeqRecord):
+		lseq = [seq,]
+	else:
+		lseq = seq
+
+	ret = []
+	
+	for i,s in enumerate(lseq):
+		r = []
+		for feat in s.features:
+			d = str(feat.qualifiers.values())
+			if search and not search.lower() in d:
+				continue
+			if feat_type and not feat_type.lower() == feat.type.lower():
+				continue
+			r.append(feat)
+		ret.append(r)
+	
+	if isinstance(seq, SeqRecord):
+		return ret[0]
+	return ret
 
 def loadmodels():
 	"""Load all the models from a file"""
