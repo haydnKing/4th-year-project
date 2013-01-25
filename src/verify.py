@@ -19,6 +19,43 @@ def print_numbers_found(found, known):
 
 	for i,(f,k) in enumerate(zip(found,known)):
 		print fmt.format(i+1, len(f), len(k))
+	print fmt.format('Sigma', sum([len(f) for f in found]), sum([len(k) for k in
+		known]))
+
+def find_match(f, known):
+	"""Search in known for the PPR found"""
+	p = f.annotations['sourceloc']
+	p = int((int(p.start) + int(p.end))/2)
+	for k in known:
+		if p in k:
+			return k
+	return None
+
+def compare_chromosomes(found_pprs, known):
+	found = []
+	missed = []
+	duplicate = []
+	false = []
+
+	for f in found_pprs:
+		k = find_match(f, known)
+		if not k:
+			false.append(f)
+		else:
+			if not hasattr(k, 'found'):
+				k.hasattr = True
+				found.append(f)
+			else:
+				duplicate.append(f)
+	
+	for k in known:
+		if not hasattr(k, 'found'):
+			missed.append(k)
+		else: 
+			delattr(k, 'found')
+
+	print ("\tfound: {}\n\tmissed: {}\n\tduplicate: {}\n\tfalse: {}"
+		.format(len(found), len(missed), len(duplicate), len(false)))
 
 def get_found():
 	ara = list(SeqIO.parse(ARA_FILE, 'fasta'))
@@ -39,5 +76,8 @@ def compare():
 	known = get_known()
 
 	print_numbers_found(found, known)
+	for i,(f,k) in enumerate(zip(found,known)):
+		print "Chromosome {}".format(i+1)
+		compare_chromosomes(f,k)
 
 
