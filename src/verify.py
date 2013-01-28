@@ -57,6 +57,8 @@ def compare_chromosomes(found_pprs, known):
 	print ("\tfound: {}\n\tmissed: {}\n\tduplicate: {}\n\tfalse: {}"
 		.format(len(found), len(missed), len(duplicate), len(false)))
 
+	return missed
+
 def get_found():
 	ara = list(SeqIO.parse(ARA_FILE, 'fasta'))
 	pprs = extract.simple_extract(ara)

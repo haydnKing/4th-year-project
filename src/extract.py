@@ -5,6 +5,8 @@ from pyHMMER import HMMER
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 
+import copy
+
 models = utils.loadmodels()
 
 def extract(localization='C'):
@@ -21,21 +23,138 @@ def simple_extract_all(localization=None):
 	return pprs
 
 def simple_extract(target, localization = None):
+	"""Extract all the PPRs found in target"""
+	if isinstance(target, SeqRecord):
+		target = [target,]
 
 	search = HMMER.hmmsearch(hmm = models[3], targets = target, domE=100.0)
-	pprs = search.getProteins(maxgap=200, mingap=-10, minlen=3, max_5_prime=1000,
-			max_3_prime=1000)
+	
+	pprs = []
+
+	for t in target:
+		feats = search.getFeatures(t)
+		pprs.extend(get_pprs(t, feats))	
 
 	targetp.targetp(pprs, annotation='localization')
 
 	if localization:
-		t = []
-		for p in pprs:
-			if p.annotations['localization'] == localization:
-				t.append(p)
-		pprs = t
+		pprs = [p for p in pprs if p.annotations['localization'] == localization]
 
 	return pprs
+
+def get_pprs(record, features):
+	"""Return a list of possible PPR proteins given the target and the HMM
+	matches found within it
+	
+		Assumes features are the same length and are made up of a single region
+	"""
+	#sort features into order
+	features.sort(key=lambda f: int(f.location.start))
+
+	frames = {-3: [], -2: [], -1: [], 1:[], 2:[], 3:[],}
+	#split into frames
+	for feature in features:
+		if feature.location.strand >= 0:
+			frames[int(feature.location.start) % 3 + 1].append(feature)
+		else:
+			frames[-((len(record) - int(feature.location.end))%3) -1].append(feature)
+
+	#keep track of stats
+	stats = {	'used': [],
+			'unused': [],
+			}
+	
+	#check for stops
+	def find_stop(seq):
+		"""iterate through the codons of seq"""
+		for i in range(0,len(seq),3):
+			if str(seq[i:i+3]).lower() in ['tga', 'tag', 'taa',]:
+				return i
+		return -1
+
+	#check for stops
+	def find_start(seq):
+		"""iterate through the codons of seq"""
+		for i in range(len(seq)-3,0,-3):
+			if str(seq[i:i+3]).lower() in ['atg']:
+				return i
+		return -1
+
+	def continues(old, new):
+		"""Do old and new belong in the same PPR?"""
+		if not old:
+			return True
+		if old.location.strand != new.location.strand:
+			return False
+
+		pos = (int(old.location.end), int(new.location.start))
+		f = FeatureLocation(min(pos), max(pos),
+				new.location.strand)
+
+		if (pos[1] - pos[0]) > 500:
+			return False
+		elif find_stop(f.extract(record.seq)) >= 0:
+			return False
+		return True
+
+	def chain_to_record(chain):
+		"""Convert a chain of SeqFeatures to a SeqRecord"""
+		#immediately discard those shorter than 2
+		if len(chain) < 2:
+			return None
+
+		margin = 10000
+		#extract the sequence +- margin
+		pos = (int(chain[0].location.start), int(chain[-1].location.end))
+		f = FeatureLocation(min(pos)-margin, max(pos)+margin, chain[0].location.strand)
+		seq = f.extract(record.seq)
+
+		#Find the start and stop codons
+		start = find_start(seq[0:margin])
+		stop = find_stop(seq[-margin:])
+		#if we failed to find one
+		if start < 0 or stop < 0:
+			return None
+		seq = seq[start:len(seq)-1000+stop]
+
+		features = []
+		strand = chain[0].location.strand
+		datum = (int(chain[0].location.start) if strand >= 0 else
+			int(chain[-1].location.end))
+
+		for feature in chain:
+			f = copy.deepcopy(feature)
+			if(strand >= 0):
+				f.location = SeqFeature(FeatureLocation(f.location.start - datum, 
+					f.location.end - datum, 1))
+			else:
+				f.location = SeqFeature(FeatureLocation(datum - f.location.end,
+					datum - f.location.start, -1))
+			f.qualifiers['sourceid'] = record.id
+			features.append(f)
+
+		return SeqRecord(seq, features=features)
+
+	chains = []
+	chain = []
+
+	for frame,frame_features in frames.iteritems():
+		#for each feature
+		last_feature = None
+		for feature in frame_features:
+			if continues(last_feature, feature):
+				chain.append(feature)
+			else:
+				chains.append(chain)
+				chain = []
+			last_feature = feature
+		#chains can't continue accross frames!
+		chains.append(chain)
+
+	pprs = filter(None, [chain_to_record(chain) for chain in chains])
+
+	return pprs
+	
 
 def get_c_terminus(pprs):
 	"""Return a list of the c-termini of each protein"""
@@ -57,8 +176,6 @@ def get_c_terminus(pprs):
 	if len(ret) == 1:
 		return ret[0]
 	return ret
-
-
 
 def find_gaps(ppr, mingap=30, maxgap=None):
 	"""Find all the gaps between PPR motifs which are gte maxgap"""
@@ -146,7 +263,7 @@ def print_PLS(pprs):
 
 	for p in pprs:
 		for m in p.features:
-			if m.qualifiers['type'] in stats:
+			if m.qualifiers.get('type', '') in stats:
 				stats[m.qualifiers['type']] += 1
 	
 	for k,v in stats.iteritems():
@@ -166,7 +283,8 @@ def show_stats(pprs):
 	hist = [0,] * (lrange[1])
 	for p in pprs:
 		hist[len(p.features)-1] += 1
-	
+
+	print "{} PPRs".format(len(pprs))	
 	for i,h in enumerate(hist):
 		print "{:5d}|{}".format(i+1, '*'*h)
 
