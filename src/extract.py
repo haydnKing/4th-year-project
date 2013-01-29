@@ -22,12 +22,12 @@ def simple_extract_all(localization=None):
 		pprs += simple_extract(utils.loadnuclear(f), localization)
 	return pprs
 
-def simple_extract(target, localization = None):
+def simple_extract(target, localization = None, domE=100.0):
 	"""Extract all the PPRs found in target"""
 	if isinstance(target, SeqRecord):
 		target = [target,]
 
-	search = HMMER.hmmsearch(hmm = models[3], targets = target, domE=100.0)
+	search = HMMER.hmmsearch(hmm = models[3], targets = target, domE=domE)
 	
 	pprs = []
 
@@ -103,7 +103,7 @@ def get_pprs(record, features):
 		if len(chain) < 2:
 			return None
 
-		margin = 10000
+		margin = 1000
 		#extract the sequence +- margin
 		pos = (int(chain[0].location.start), int(chain[-1].location.end))
 		f = FeatureLocation(min(pos)-margin, max(pos)+margin, chain[0].location.strand)
@@ -130,10 +130,12 @@ def get_pprs(record, features):
 			else:
 				f.location = FeatureLocation(datum - int(f.location.end),
 					datum - int(f.location.start), -1)
-			f.qualifiers['sourceid'] = record.id
 			features.append(f)
 
-		return SeqRecord(seq, features=features)
+		return SeqRecord(seq, features=features, annotations={
+			'sourceid': record.id,
+			'sourcestart': min(pos)-margin+start,
+			'sourcestrand': strand, })
 
 	chains = []
 	chain = []
