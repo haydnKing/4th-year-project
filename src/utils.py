@@ -7,7 +7,7 @@ from pyHMMER import HMMER, hmmfile
 
 HMMDir = os.path.join(os.path.dirname(__file__), 'HMMs/')
 TargetDir = os.path.join(os.path.dirname(__file__), 'Genomes/')
-TestDir = os.path.join(os.path.dirname(__file__), 'Test Proteins/')
+TestDir = os.path.join(os.path.dirname(__file__), 'Test_Proteins/')
 
 def getLabelledFeatures(seq, search='pentatricopeptide', feat_type=None):
 	"""Return all the features in seq which contain desc and are of type type"""

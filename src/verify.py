@@ -8,7 +8,7 @@ import os.path
 import math, itertools
 
 DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_FILE = os.path.join(DIR, 'Test Data/TAIR10_PPRs.gb')
+DATA_FILE = os.path.join(DIR, 'Test_Data/TAIR10_PPRs.gb')
 ARA_FILE = os.path.join(DIR, 'Genomes/Arabidopsis_TAIR10.fas')
 
 def get_known():
