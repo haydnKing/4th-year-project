@@ -28,7 +28,7 @@ def simple_extract(target, localization = None, domE=100.0):
 		target = [target,]
 
 	search = HMMER.hmmsearch(hmm = models[3], targets = target, domE=domE)
-	
+
 	pprs = []
 
 	for t in target:
@@ -103,15 +103,15 @@ def get_pprs(record, features):
 		if len(chain) < 2:
 			return None
 
-		margin = 1000
 		#extract the sequence +- margin
 		pos = (int(chain[0].location.start), int(chain[-1].location.end))
-		f = FeatureLocation(min(pos)-margin, max(pos)+margin, chain[0].location.strand)
+		margins = (min(min(pos),1000), min(len(record) - max(pos), 1000))
+		f = FeatureLocation(min(pos)-margins[0], max(pos)+margins[1], chain[0].location.strand)
 		seq = f.extract(record.seq)
 
 		#Find the start and stop codons
-		start = find_start(seq[0:margin])
-		stop = find_stop(seq[-margin:])
+		start = find_start(seq[0:margins[0]])
+		stop = find_stop(seq[-margins[1]:])
 		#if we failed to find one
 		if start < 0 or stop < 0:
 			return None
@@ -134,7 +134,7 @@ def get_pprs(record, features):
 
 		return SeqRecord(seq, features=features, annotations={
 			'sourceid': record.id,
-			'sourcestart': min(pos)-margin+start,
+			'sourcestart': min(pos)-margins[0]+start,
 			'sourcestrand': strand, })
 
 	chains = []
@@ -146,12 +146,14 @@ def get_pprs(record, features):
 		for feature in frame_features:
 			if continues(last_feature, feature):
 				chain.append(feature)
-			else:
+			elif chain:
 				chains.append(chain)
 				chain = []
 			last_feature = feature
 		#chains can't continue accross frames!
-		chains.append(chain)
+		if chain:
+			chains.append(chain)
+			chain = []
 
 	pprs = filter(None, [chain_to_record(chain) for chain in chains])
 
