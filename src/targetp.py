@@ -26,7 +26,6 @@ def targetp(recs, annotation='target'):
 		data.append((r.id, r.description, r,))
 		r.id = str(i)
 		r.description = ''
-		print "r.id = {}".format(r.id)
 
 	s = StringIO.StringIO()
 	SeqIO.write(recs, s, 'fasta')
@@ -36,7 +35,6 @@ def targetp(recs, annotation='target'):
 	(stdout, stderr) = p.communicate(input=s.getvalue())
 
 	state = False
-	print stdout
 	for line in stdout.splitlines():
 		if not state:
 			if line.find('--------') >= 0:

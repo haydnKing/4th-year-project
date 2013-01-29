@@ -125,11 +125,11 @@ def get_pprs(record, features):
 		for feature in chain:
 			f = copy.deepcopy(feature)
 			if(strand >= 0):
-				f.location = SeqFeature(FeatureLocation(f.location.start - datum, 
-					f.location.end - datum, 1))
+				f.location = FeatureLocation(int(f.location.start) - datum, 
+					int(f.location.end) - datum, 1)
 			else:
-				f.location = SeqFeature(FeatureLocation(datum - f.location.end,
-					datum - f.location.start, -1))
+				f.location = FeatureLocation(datum - int(f.location.end),
+					datum - int(f.location.start), -1)
 			f.qualifiers['sourceid'] = record.id
 			features.append(f)
 
