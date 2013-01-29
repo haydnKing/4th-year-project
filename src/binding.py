@@ -23,12 +23,13 @@ def print_1_6(code):
 	print "6 : {}".format("".join([x[1] for x in code]))
 	print "1 :{}".format("".join([x[0] for x in code]))
 
-
-
 def build_model(ppr):
 	"""Build a model from the list of 1 and 6 amino acids"""
 	hmm = hmmfile.HMM('PPR Target', 'DNA')
 	code = get_code(ppr)
+
+	print "Building model for"
+	print_1_6(code)
 
 	for a,b in pairwise(code):
 		s = a[1] + b[0]

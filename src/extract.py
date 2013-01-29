@@ -12,7 +12,6 @@ models = utils.loadmodels()
 def extract(localization='C'):
 	"""Extract all PPRs targeted to the chloroplast and clean the gaps"""
 	pprs = simple_extract_all(localization)
-	r = clean_all(pprs)
 	return pprs
 
 def simple_extract_all(localization=None):
@@ -40,7 +39,7 @@ def simple_extract(target, localization = None, domE=100.0):
 	if localization:
 		pprs = [p for p in pprs if p.annotations['localization'] == localization]
 
-	return pprs
+	return clean_all(pprs)
 
 def get_pprs(record, features):
 	"""Return a list of possible PPR proteins given the target and the HMM
@@ -112,15 +111,16 @@ def get_pprs(record, features):
 		#Find the start and stop codons
 		start = find_start(seq[0:margins[0]])
 		stop = find_stop(seq[-margins[1]:])
+
 		#if we failed to find one
 		if start < 0 or stop < 0:
 			return None
-		seq = seq[start:len(seq)-1000+stop]
+		seq = seq[start:len(seq)-margins[1]+stop]
 
 		features = []
 		strand = chain[0].location.strand
-		datum = (int(chain[0].location.start) if strand >= 0 else
-			int(chain[-1].location.end))
+		datum = (int(chain[0].location.start)-margins[0]+start if strand >= 0 else
+			int(chain[-1].location.end) + margin[1] - start)
 
 		for feature in chain:
 			f = copy.deepcopy(feature)
@@ -226,11 +226,10 @@ def clean_gaps(ppr):
 def clean_all(pprs):
 	ret = [0,0]
 	for ppr in pprs:
-		r = clean_gaps(ppr)
+		clean_gaps(ppr)
 		clean_length(ppr)	
-		ret = [a+b for a,b in zip(ret,r)]
 
-	return ret
+	return pprs
 
 #offsets of each model compared with the actual motif start
 offsets = {'PPR':-2, 'PPR_1':5, 'PPR_2':1, 'PPR_3':-1,}
