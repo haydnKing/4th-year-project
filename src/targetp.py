@@ -57,3 +57,36 @@ def targetp(recs, annotation='target'):
 		d[2].id = d[0]
 		d[2].description = d[1]
 	
+def test_deps():
+	"""Test that all the required binaries are present"""
+	bins = [('targetp',   'targetP',
+		'http://www.cbs.dtu.dk/cgi-bin/nph-sw_request?targetp'), 
+					]
+	failed = []
+
+	def which(program):
+		import os
+		def is_exe(fpath):
+			return os.path.isfile(fpath) and os.access(fpath, os.X_OK)
+
+		fpath, fname = os.path.split(program)
+		if fpath:
+			if is_exe(program):
+				return program
+		else:
+			for path in os.environ["PATH"].split(os.pathsep):
+				exe_file =	os.path.join(path, program)
+				if is_exe(exe_file):
+					return exe_file
+
+		return None
+
+	for b in bins:
+		if not which(b[0]):
+			failed.append('Failed to find \'{}\' from package \'{}\'. ' 
+					'Please install it from {}'.format(*b))
+
+	if failed:
+		raise ImportError('\n'.join(failed))
+
+test_deps()

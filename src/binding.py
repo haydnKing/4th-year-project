@@ -1,8 +1,8 @@
 """Produce an HMM predicting the binding specificity of an HMM"""
 
-from pyHMMER import hmmfile
+from pyHMMER import hmmfile, HMMER
 from utils import pairwise
-
+import extract, utils
 
 def get_code(ppr):
 	"""Return the amino acids at the 1 and 6 positions
@@ -58,6 +58,11 @@ def get_binding(pprs):
 	for p in pprs:
 		ret.append(build_model(p))
 	return ret
+
+def binding_test():
+	hmm = build_model(extract.extract_test())
+
+	return HMMER.hmmsearch(hmm, utils.load_test_targets())
 
 equal = {'A': 1, 'C': 1, 'G': 1, 'T':1,}
 tr = {'MM': 7, 'MI': 1, 'MD': 0, 'IM': 4, 'II': 6, 'DM': 1, 'DD': 0,}

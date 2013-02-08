@@ -8,6 +8,7 @@ from pyHMMER import HMMER, hmmfile
 HMMDir = os.path.join(os.path.dirname(__file__), 'HMMs/')
 TargetDir = os.path.join(os.path.dirname(__file__), 'Genomes/')
 TestDir = os.path.join(os.path.dirname(__file__), 'Test_Proteins/')
+TestData = os.path.join(os.path.dirname(__file__), 'Test_Data/')
 
 def getLabelledFeatures(seq, search='pentatricopeptide', feat_type=None):
 	"""Return all the features in seq which contain desc and are of type type"""
@@ -89,11 +90,10 @@ def get_tail_models():
 		hmmfile.read(os.path.join(HMMDir, 'DYW.hmm'))[0])
 
 def load_test():
-	s = SeqIO.read(os.path.join(TestDir, 'PPR10.gb'), 'genbank')
-	s.features = []
-	h = HMMER.hmmsearch(os.path.join(HMMDir, 'PPR_3.hmm'), s)
-	h.annotate(s)
-	return s
+	return SeqIO.read(os.path.join(TestDir, 'PPR10.gb'), 'genbank')
+
+def load_test_targets():
+	return list(SeqIO.parse(os.path.join(TestData, 'PPR10_targets.fas'), 'fasta')) 
 
 import itertools
 def pairwise(iterable):
