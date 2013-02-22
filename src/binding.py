@@ -9,7 +9,7 @@ def get_code(ppr):
 
 	-  ppr: a SeqRecord with annotated PPR repeat domains 
 
-	-  return: [(1_1, 6_1, type,), (2_1, 6_1, type), ...]
+	-  return: [(1_1, 1_6, type,), (2_1, 2_6, type), ...]
 	"""
 	ret = []
 	for motif in ppr.features:
@@ -22,6 +22,7 @@ def print_1_6(code):
 	"""print out a human readable representation"""
 	print "6 : {}".format("".join([x[1] for x in code]))
 	print "1 :{}".format("".join([x[0] for x in code]))
+	print "T : {}".format("".join([x[2] for x in code]))
 
 def build_model(ppr):
 	"""Build a model from the list of 1 and 6 amino acids"""
@@ -31,7 +32,7 @@ def build_model(ppr):
 	print "Building model for"
 	print_1_6(code)
 
-	for a,b in pairwise(code):
+	for i,(a,b) in enumerate(pairwise(code)):
 		s = a[1] + b[0]
 		if a[2] == 'P' and s in Ptype:
 			emit = Ptype[s]
@@ -39,6 +40,7 @@ def build_model(ppr):
 			emit = Stype[s]
 		else:
 			emit = equal
+		print "{}: \'{}\' : {}".format(bind[i], s, emit)
 		
 		hmm.addState(transition=tr, emission=emit)
 
@@ -59,13 +61,23 @@ def get_binding(pprs):
 		ret.append(build_model(p))
 	return ret
 
-def binding_test():
-	hmm = build_model(extract.extract_test())
+bind = "**GTATCCTTCCATTTC************************************"
 
-	return HMMER.hmmsearch(hmm, utils.load_test_targets())
+def binding_test():
+	ppr10 = extract.extract_test()
+	hmm = build_model(ppr10)
+	print hmm
+	for b,state in zip(bind,hmm.states):
+		print "{}: {}".format(b,state.me)
+
+	targets = utils.load_test_targets()
+	for t in targets:
+		print t.seq
+	return HMMER.hmmsearch(hmm, targets, max=True)
 
 equal = {'A': 1, 'C': 1, 'G': 1, 'T':1,}
-tr = {'MM': 7, 'MI': 1, 'MD': 0, 'IM': 4, 'II': 6, 'DM': 1, 'DD': 0,}
+#tr = {'MM': 7, 'MI': 1, 'MD': 1, 'IM': 4, 'II': 6, 'DM': 1, 'DD': 0,}
+tr = {'MM': 1, 'MI': 0, 'MD': 0, 'IM': 1, 'II': 0, 'DM': 1, 'DD': 0,}
 
 Ptype = {
 	'TD': {'A': 2,  'C': 0 , 'G': 23, 'T': 1,},
@@ -144,3 +156,13 @@ Stype = {
 	'NS': {'A': 2 , 'C': 4 , 'G': 1 , 'T': 5,},
 }
 
+#add in a prior
+for p in Ptype.itervalues():
+	for b in p.iterkeys():
+		p[b] += 1
+for p in Stype.itervalues():
+	for b in p.iterkeys():
+		p[b] += 1
+
+if __name__ == '__main__':
+	print binding_test()
