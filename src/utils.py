@@ -91,8 +91,6 @@ def get_tail_models():
 def load_test():
 	s = SeqIO.read(os.path.join(TestDir, 'PPR10.gb'), 'genbank')
 	s.features = []
-	h = HMMER.hmmsearch(os.path.join(HMMDir, 'PPR_3.hmm'), s)
-	h.annotate(s)
 	return s
 
 import itertools

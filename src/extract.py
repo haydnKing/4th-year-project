@@ -294,3 +294,7 @@ def show_stats(pprs):
 	print ""
 	print_PLS(pprs)
 	
+def get_ppr10():
+	p = utils.load_test()
+	ppr10 = simple_extract(p)
+	return ppr10[0]
