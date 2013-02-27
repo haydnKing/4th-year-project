@@ -45,6 +45,7 @@ def build_model(ppr):
 		hmm.addState(transition=tr, emission=emit)
 
 	hmm.clean()
+	hmm.calibrate()
 	return hmm
 		
 
