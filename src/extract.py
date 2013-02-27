@@ -231,6 +231,9 @@ def clean_all(pprs):
 
 	return pprs
 
+def extract_test():
+	return simple_extract(utils.load_test())[0]
+
 #offsets of each model compared with the actual motif start
 offsets = {'PPR':-2, 'PPR_1':5, 'PPR_2':1, 'PPR_3':-1,}
 
