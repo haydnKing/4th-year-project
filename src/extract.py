@@ -120,7 +120,7 @@ def get_pprs(record, features):
 		features = []
 		strand = chain[0].location.strand
 		datum = (int(chain[0].location.start)-margins[0]+start if strand >= 0 else
-			int(chain[-1].location.end) + margin[1] - start)
+			int(chain[-1].location.end) + margins[1] - start)
 
 		for feature in chain:
 			f = copy.deepcopy(feature)
