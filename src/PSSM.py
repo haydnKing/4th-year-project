@@ -16,7 +16,7 @@ def search(ppr, target, plot=False):
 	modds = non_max_suppression(odds)
 
 	print "Found {} maxima".format(len(modds))
-	display_alignments(pssm, itarget)
+	display_alignments(pssm, itarget, [i[0] for i in modds])
 
 	if plot:
 		plt.clf()
@@ -34,12 +34,12 @@ def display_alignments(pssm, itarget, pos=None):
 def str_alignment(pssm, iseq, j):
 	odds = PSSM_match_odds(pssm,iseq)
 	return ("Position {}: odds = {}\n\tconsensus: {}\n\t           {}"+
-		"\n\ttarget   : {}\n").format(
+		"\n\ttarget   : {}\n\tsplit    : {}\n").format(
 			j,sum(odds),
 			PSSM_consensus_seq(pssm),
 			"".join(['+' if i > 0 else '-' for i in odds]), 
-			get_seq(iseq))
-
+			get_seq(iseq),
+			" "*(get_optimal_split(odds)-1) + 'xx')
 
 def get_code(ppr):
 	"""Return the amino acids at the 1 and 6 positions
@@ -67,8 +67,8 @@ def PSSM_build(ppr, background):
 
 	code = get_code(ppr)
 
-	print "Building model for:\n\t{}".format(
-			string_code(code).replace('\n','\n\t'))
+	#print "Building model for:\n\t{}".format(
+	#		string_code(code).replace('\n','\n\t'))
 
 	PSSM = []
 
@@ -84,9 +84,11 @@ def PSSM_build(ppr, background):
 		if sum(emit) == 0:
 			emit = equal
 
+
 		#convert to log odds
 		tot = sum(emit)
 		emit = tuple(log(float(i) / float(tot*b)) for i,b in zip(emit,background))
+		#print "{:2}: \"{}\" [{}] -> {}".format(i,s,a[2],emit)
 		PSSM.append(emit)
 
 	return PSSM
@@ -121,6 +123,27 @@ def PSSM_exhaustive_search(PSSM, itarget):
 		ret.append(sum([p[b] for p,b in zip(PSSM, itarget[i:i+len(PSSM)])]))
 	return ret
 
+def PSSM_recursive_search(PSSM, iseq, levels=5):
+	ret = []
+	#do an exhaustive search followed by non-maximal-suppression
+	odds = non_max_suppression(PSSM_exhaustive_search(PSSM, iseq))
+	#store the results in (pos,odds,inserts) format
+	ret += [(pos,odds,[]) for pos,odds in odds]
+
+	if levels == 0:
+		return ret
+
+	#try adding a gap into each of the maxima
+	for aln in ret:
+		gap = get_optimal_split(
+				PSSM_match_odds(PSSM, iseq[aln[0]:aln[0]+len(PSSM)]))
+		gapped_PSSM = PSSM[0:gap] + [log_equal,] + PSSM[gap:]
+		ret2 = PSSM_recursive_search(gapped_PSSM,
+				iseq[aln[0]-levels:aln[0]+len(PSSM)+levels], levels -1)
+		ret += [(pos+aln[0]-levels,odds,gaps+[gap,]) for pos,odds,gaps in ret2]
+
+	return ret
+
 def non_max_suppression(odds):
 	ret = []
 	def is_max(i):
@@ -128,6 +151,18 @@ def non_max_suppression(odds):
 
 	return [(i,o) for i,o in enumerate(odds) if is_max(i)]
 
+def get_optimal_split(odds):
+	"""get the best index to insert a gap into the model
+			return the index of the first base in the second half"""
+	#find the zero crossings
+	crossings = []
+	for i in range(1,len(odds)):
+		if (odds[i] > 0) != (odds[i-1] > 0):
+			crossings.append(i)
+
+	strength = [abs(sum(odds[0:i]) - sum(odds[i:])) for i in crossings]
+
+	return crossings[strength.index(max(strength))]
 
 def get_background(itarget):
 	"""calculate background probabilities"""
@@ -149,6 +184,7 @@ base2int = {'A': 0, 'C': 1, 'G': 2, 'T': 3,}
 int2base = ('A','C','G','T')
 
 equal = (1, 1, 1, 1)
+log_equal = tuple([log(0.25),]*4)
 
 Ptype = {
 		#		  A   C   G   T
