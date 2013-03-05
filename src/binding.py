@@ -40,7 +40,6 @@ def build_model(ppr):
 			emit = Stype[s]
 		else:
 			emit = equal
-		print "{}: \'{}\' : {}".format(bind[i], s, emit)
 		
 		hmm.addState(transition=tr, emission=emit)
 
@@ -62,23 +61,27 @@ def get_binding(pprs):
 		ret.append(build_model(p))
 	return ret
 
-bind = "**GTATCCTTCCATTTC************************************"
+def get_test_model():
+	return build_model(extract.extract_test())
+
+def save_test_model(name='test.hmm'):
+	hmm = get_test_model()
+	hmmfile.write(hmm, name)
 
 def binding_test():
-	ppr10 = extract.extract_test()
-	hmm = build_model(ppr10)
+	hmm = get_test_model()
 	print hmm
-	for b,state in zip(bind,hmm.states):
-		print "{}: {}".format(b,state.me)
 
 	targets = utils.load_test_targets()
-	for t in targets:
-		print t.seq
-	return HMMER.hmmsearch(hmm, targets, max=True)
+	search = HMMER.hmmsearch(hmm, targets, max=True)
+
+	print search
+	
+	return search
 
 equal = {'A': 1, 'C': 1, 'G': 1, 'T':1,}
-#tr = {'MM': 7, 'MI': 1, 'MD': 1, 'IM': 4, 'II': 6, 'DM': 1, 'DD': 0,}
-tr = {'MM': 1, 'MI': 0, 'MD': 0, 'IM': 1, 'II': 0, 'DM': 1, 'DD': 0,}
+tr = {'MM': 10, 'MI': 2, 'MD': 0, 'IM': 1, 'II': 4, 'DM': 1, 'DD': 0,}
+#tr = {'MM': 1, 'MI': 0, 'MD': 0, 'IM': 1, 'II': 0, 'DM': 1, 'DD': 0,}
 
 Ptype = {
 	'TD': {'A': 2,  'C': 0 , 'G': 23, 'T': 1,},
@@ -160,10 +163,11 @@ Stype = {
 #add in a prior
 for p in Ptype.itervalues():
 	for b in p.iterkeys():
-		p[b] += 1
+		p[b] += 0
 for p in Stype.itervalues():
 	for b in p.iterkeys():
-		p[b] += 1
+		p[b] += 0
 
 if __name__ == '__main__':
-	print binding_test()
+	save_test_model()
+	#binding_test()
