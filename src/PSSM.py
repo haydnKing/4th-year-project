@@ -6,17 +6,19 @@ from Bio.SeqRecord import SeqRecord
 
 import matplotlib.pyplot as plt
 
-def search(ppr, target, plot=False):
+def search(ppr, target, plot=False, gaps=1):
 	itarget = get_iseq(target)
 	bg = get_background(itarget)
 
 	pssm = PSSM_build(ppr, bg)
 
-	odds = PSSM_exhaustive_search(pssm, itarget)
-	modds = non_max_suppression(odds)
+	odds = PSSM_recursive_search(pssm, itarget, gaps)
+	#sort by odds, highest to lowest
+	odds.sort(key=lambda o: -o[1])
 
-	print "Found {} maxima".format(len(modds))
-	display_alignments(pssm, itarget, [i[0] for i in modds])
+	print "Found {} maxima".format(len(odds))
+	
+	display_alignments(pssm, itarget, odds[0:10])
 
 	if plot:
 		plt.clf()
@@ -25,21 +27,22 @@ def search(ppr, target, plot=False):
 		plt.plot([i[0] for i in modds], [i[1] for i in modds], 'r o')
 		plt.show()
 
-def display_alignments(pssm, itarget, pos=None):
-	if not pos:
-		pos = range(0,len(itarget)-len(pssm))
-	for p in pos:
-		print str_alignment(pssm, itarget[p:p+len(pssm)], p)
+def display_alignments(pssm, itarget, aln):
+	for i,a in enumerate(aln):
+		print "Alignment {}".format(i)
+		print str_alignment(pssm, itarget, a)
 
-def str_alignment(pssm, iseq, j):
+def str_alignment(pssm, iseq, aln):
+	j, o, gaps = aln
+	pssm = PSSM_insert_gaps(pssm,gaps)	
+	iseq = iseq[j:j+len(pssm)]
 	odds = PSSM_match_odds(pssm,iseq)
 	return ("Position {}: odds = {}\n\tconsensus: {}\n\t           {}"+
-		"\n\ttarget   : {}\n\tsplit    : {}\n").format(
-			j,sum(odds),
+		"\n\ttarget   : {}").format(
+			j,o,
 			PSSM_consensus_seq(pssm),
 			"".join(['+' if i > 0 else '-' for i in odds]), 
-			get_seq(iseq),
-			" "*(get_optimal_split(odds)-1) + 'xx')
+			get_seq(iseq))
 
 def get_code(ppr):
 	"""Return the amino acids at the 1 and 6 positions
@@ -61,6 +64,12 @@ def string_code(code):
 			"".join([x[1] for x in code]),
 			"".join([x[0] for x in code]),
 			"".join([x[2] for x in code]))
+
+def PSSM_insert_gaps(pssm, gaps):
+	rpssm = [i for i in pssm]
+	for g in gaps:
+		rpssm = rpssm[0:g] + [gap,] + rpssm[g:]
+	return rpssm
 
 def PSSM_build(ppr, background):
 	"""Build a log-odds PSSM for the ppr's target Vs background"""
@@ -106,10 +115,16 @@ def PSSM_consensus_seq(PSSM):
 	for s in PSSM:
 		b = int2base[s.index(max(s))]
 		s = list(reversed(sorted(s)))
-		if (s[0] - s[3]) <= 0.001:
+		#if s is a gap
+		if s == [0,0,0,0,]:
+			ret += '.'
+		#if s is equal probability
+		elif (s[0] - s[3]) <= 0.001:
 			ret += '-'
+		#if s shows a strong preference
 		elif (s[0] - s[1]) > 0.5:
 			ret += b.upper()
+		#else s shows a weak preference
 		else:
 			ret += b.lower()
 	return ret
@@ -133,15 +148,23 @@ def PSSM_recursive_search(PSSM, iseq, levels=5):
 	if levels == 0:
 		return ret
 
+	ret2 = []
 	#try adding a gap into each of the maxima
 	for aln in ret:
-		gap = get_optimal_split(
+		gap_pos = get_optimal_split(
 				PSSM_match_odds(PSSM, iseq[aln[0]:aln[0]+len(PSSM)]))
-		gapped_PSSM = PSSM[0:gap] + [log_equal,] + PSSM[gap:]
-		ret2 = PSSM_recursive_search(gapped_PSSM,
-				iseq[aln[0]-levels:aln[0]+len(PSSM)+levels], levels -1)
-		ret += [(pos+aln[0]-levels,odds,gaps+[gap,]) for pos,odds,gaps in ret2]
+		if not gap_pos:
+			continue
 
+		gapped_PSSM = PSSM[0:gap_pos] + [gap,] + PSSM[gap_pos:]
+		
+		f = max(0, aln[0]-levels)
+		t = min(len(iseq), aln[0]+len(gapped_PSSM)+levels)
+		
+		r2 = PSSM_recursive_search(gapped_PSSM, iseq[f:t], levels -1)
+		ret2 += [(pos+f,odds,gaps+[gap_pos,]) for pos,odds,gaps in r2]
+
+	ret += ret2
 	return ret
 
 def non_max_suppression(odds):
@@ -159,6 +182,9 @@ def get_optimal_split(odds):
 	for i in range(1,len(odds)):
 		if (odds[i] > 0) != (odds[i-1] > 0):
 			crossings.append(i)
+
+	if not crossings:
+		return None
 
 	strength = [abs(sum(odds[0:i]) - sum(odds[i:])) for i in crossings]
 
@@ -185,6 +211,7 @@ int2base = ('A','C','G','T')
 
 equal = (1, 1, 1, 1)
 log_equal = tuple([log(0.25),]*4)
+gap = (0,0,0,0,)
 
 Ptype = {
 		#		  A   C   G   T
