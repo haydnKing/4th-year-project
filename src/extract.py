@@ -12,6 +12,7 @@ models = utils.loadmodels()
 def extract(localization='C'):
 	"""Extract all PPRs targeted to the chloroplast and clean the gaps"""
 	pprs = simple_extract_all(localization)
+	pprs.sort(key=lambda p: -len(p.features))
 	return pprs
 
 def simple_extract_all(localization=None):
