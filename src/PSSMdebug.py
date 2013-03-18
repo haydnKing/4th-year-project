@@ -3,7 +3,7 @@ import PSSM, extract, random
 from Bio.Seq import Seq
 from Bio import SeqIO
 from sys import stdout
-from multiprocessing import Pool
+from multiprocessing import Pool, cpu_count
 
 
 target = SeqIO.parse('Test_Data/PPR10_targets.fas', 'fasta').next()
@@ -25,7 +25,7 @@ def PSSM_single_test(length=1000):
 	return rank
 
 def PSSM_sample(length, samples=20):
-	pool = Pool(processes=4)
+	pool = Pool(processes=cpu_count())
 
 	it = pool.imap(PSSM_single_test, (length,) * samples)
 	r = []
