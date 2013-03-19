@@ -57,12 +57,9 @@ def loadnuclear(f):
 				return True
 		return False
 
-	ret = []
 	for rec in gen:
 		if not shouldignore(rec):
-			ret.append(rec)
-
-	return ret
+			yield rec
 
 def loadchloroplast(f):
 	"""Load the chloroplast sequence from f"""

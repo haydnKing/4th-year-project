@@ -9,17 +9,21 @@ import copy
 
 models = utils.loadmodels()
 
-def extract(localization='C'):
+def extract(localization='C', files=None):
 	"""Extract all PPRs targeted to the chloroplast and clean the gaps"""
-	pprs = simple_extract_all(localization)
+	pprs = simple_extract_all(localization, files)
 	pprs.sort(key=lambda p: -len(p.features))
 	return pprs
 
-def simple_extract_all(localization=None):
-	files = utils.gettargetnames()
+def simple_extract_all(localization=None, files=None):
+	if not files:
+		files = utils.gettargetnames()
 	pprs = []
 	for f in files:
-		pprs += simple_extract(utils.loadnuclear(f), localization)
+		print "Processing file \'{}\'".format(f)
+		for c in utils.loadnuclear(f):
+			print "\tProcessing \'{}\' ({}bp)".format(c.description,len(c))
+			pprs += simple_extract(c, localization)
 	return pprs
 
 def simple_extract(target, localization = None, domE=100.0):
@@ -27,6 +31,7 @@ def simple_extract(target, localization = None, domE=100.0):
 	if isinstance(target, SeqRecord):
 		target = [target,]
 
+	print "\t\thmmsearch on {} target(s)".format(len(target))
 	search = HMMER.hmmsearch(hmm = models[3], targets = target, domE=domE)
 
 	pprs = []
