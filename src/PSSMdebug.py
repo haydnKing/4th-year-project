@@ -24,8 +24,9 @@ def PSSM_single_test(length=1000):
 	
 	return rank
 
-def PSSM_sample(length, samples=20):
-	pool = Pool(processes=cpu_count())
+def PSSM_sample(length, samples=20, pool=None):
+	if not pool:
+		pool = Pool(processes=cpu_count())
 
 	it = pool.imap(PSSM_single_test, (length,) * samples)
 	r = []
@@ -38,18 +39,37 @@ def PSSM_sample(length, samples=20):
 
 	return r
 
-def test(samples=20):
+def write_stats(fname, data):
+	keys = data.keys()
+	l = len(data[keys[0]])
+	for key in keys:
+		if len(data[key]) != l:
+			raise ValueError("Values must be the same length")
+
+	f = open(fname, 'w')
+	#write header line
+	f.write(("{:>10s} "*len(keys) + '\n').format(*keys))
+
+	for i in range(l):
+		for key in keys:
+			f.write("{:10.5f} ".format(data[key][i]))
+		f.write('\n')
+
+	f.close()
+
+def test(samples=50):
 	import matplotlib.pyplot as plt
 	
-	lengths = range(1000,10001,2000)
+	lengths = range(1000,100000,10000)
 
+	pool = Pool(processes=cpu_count())
 	correct = []
 	top10 = []
 	missed = []
 
 	for l in lengths:
 		print "l = {}".format(l)
-		ret = PSSM_sample(l,samples)
+		ret = PSSM_sample(l,samples,pool)
 		c = 0
 		t = 0
 		m = 0
@@ -69,8 +89,19 @@ def test(samples=20):
 	ax.plot(	lengths, correct, 'g', 
 						lengths, top10, 'b', 
 						lengths, missed, 'r')
-	ax.legend(['Correct', 'Top 10', 'Not Found'], 'lower left')
+	ax.legend(['Correct', 'Top 10', 'Not Found'], 'upper right')
 	ax.set_ylim([-0.1,1.1])
 	ax.set_ylabel('Probability')
 	ax.set_xlabel('Target Length (bp)')
-	plt.show()
+	plt.savefig('output/PSSMsearch.png')
+	plt.savefig('output/PSSMsearch.svg')
+
+	write_stats('output/PSSMsearch.csv', {	
+		"length": lengths, 
+		"correct": correct, 
+		"top10": top10, 
+		"missed": missed,
+	})
+	
+if __name__ == '__main__':
+	test()
