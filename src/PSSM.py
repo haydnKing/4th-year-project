@@ -1,6 +1,6 @@
 """Design a PSSM matrix and search for it in the target sequence"""
 
-from math import log
+from math import log, exp
 from utils import pairwise
 from Bio.SeqRecord import SeqRecord
 
@@ -86,15 +86,53 @@ def string_code(code):
 			"".join([x[0] for x in code]),
 			"".join([x[2] for x in code]))
 
+def KL_divergence(P, Q):
+	"""Calculate the minimum KL divergence of to PSSMs"""
+	if len(P) != len(Q):
+		return None
+	return sum([
+		sum([(p_ij - q_ij)*exp(p_ij) for p_ij,q_ij in zip(p_i,q_i)]) 
+			for p_i,q_i in zip(P,Q)
+	])
+
+def MSE(P,Q):
+	"""Return the MSE of P and Q"""
+	if len(P) != len(Q):
+		return None
+	return sum([
+		sum([(p_ij - q_ij)**2 for p_ij,q_ij in zip(p_i,q_i)]) 
+			for p_i,q_i in zip(P,Q)
+	]) / (4.0 * len(P))
+
+def distance(P,Q,method='KL'):
+	methods = {'KL': KL_divergence,
+							'MSE': MSE,}
+	div = methods[method]
+
+	if len(P) == len(Q):
+		return div(P,Q)
+	ret = []
+	pad = abs(len(P) - len(Q))
+	eq = [(log(0.25),)*4,]
+	if len(P) > len(Q):
+		for i in range(pad+1):
+			ret.append(div(P, eq*i + Q + eq*(pad-i)))
+	if len(P) < len(Q):
+		for i in range(pad):
+			ret.append(div(eq*i + P + eq*(pad-i), Q))
+	return min(ret)
+
 def PSSM_insert_gaps(pssm, gaps):
 	rpssm = [i for i in pssm]
 	for g in gaps:
 		rpssm = rpssm[0:g] + [gap,] + rpssm[g:]
 	return rpssm
 
-def PSSM_build(ppr, background):
+def PSSM_build(ppr, background=None):
 	"""Build a log-odds PSSM for the ppr's target Vs background"""
 
+	if background == None:
+		background = (1,1,1,1,)
 	code = get_code(ppr)
 
 	#print "Building model for:\n\t{}".format(
