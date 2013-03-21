@@ -1,29 +1,45 @@
+#!/usr/bin/python
+
 """Extract and clean PPRs from targets"""
 import utils, targetp
 from utils import pairwise
 from pyHMMER import HMMER
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
+from Bio.Alphabet import generic_dna
+from Bio import SeqIO
 
+import os.path
 import copy
+import sys
 
 models = utils.loadmodels()
 
-def extract(localization='C', files=None):
+def extract(localization='C', files=None, verbose=False):
 	"""Extract all PPRs targeted to the chloroplast and clean the gaps"""
-	pprs = simple_extract_all(localization, files)
-	pprs.sort(key=lambda p: -len(p.features))
+	pprs = simple_extract_all(localization, files, verbose)
 	return pprs
 
-def simple_extract_all(localization=None, files=None):
+def simple_extract_all(localization=None, files=None, verbose=False):
 	if not files:
 		files = utils.gettargetnames()
 	pprs = []
 	for f in files:
-		print "Processing file \'{}\'".format(f)
+		if verbose:
+			print "Processing {}".format(f)
+		tpprs = []
 		for c in utils.loadnuclear(f):
-			print "\tProcessing \'{}\' ({}bp)".format(c.description,len(c))
-			pprs += simple_extract(c, localization)
+			if verbose:
+				print "\t{}".format(c.description)
+			tpprs += simple_extract(c, localization)
+		genome = os.path.splitext(os.path.basename(f))[0]
+		tpprs.sort(key=lambda p: -len(p.features))
+		for i,p in enumerate(tpprs):
+			p.id = "PPR{}|{}".format(i,genome)
+		pprs += tpprs
+		if verbose:
+			print "\tFound {}, {} total".format(len(tpprs), len(pprs))
+	pprs.sort(key=lambda p: -len(p.features))
 	return pprs
 
 def simple_extract(target, localization = None, domE=100.0):
@@ -31,7 +47,6 @@ def simple_extract(target, localization = None, domE=100.0):
 	if isinstance(target, SeqRecord):
 		target = [target,]
 
-	print "\t\thmmsearch on {} target(s)".format(len(target))
 	search = HMMER.hmmsearch(hmm = models[3], targets = target, domE=domE)
 
 	pprs = []
@@ -113,6 +128,7 @@ def get_pprs(record, features):
 		margins = (min(min(pos),1000), min(len(record) - max(pos), 1000))
 		f = FeatureLocation(min(pos)-margins[0], max(pos)+margins[1], chain[0].location.strand)
 		seq = f.extract(record.seq)
+		seq.alphabet = generic_dna
 
 		#Find the start and stop codons
 		start = find_start(seq[0:margins[0]])
@@ -138,7 +154,7 @@ def get_pprs(record, features):
 					datum - int(f.location.start), -1)
 			features.append(f)
 
-		return SeqRecord(seq, features=features, annotations={
+		return SeqRecord(seq, name='PPR Protein', features=features, annotations={
 			'sourceid': record.id,
 			'sourcestart': min(pos)-margins[0]+start,
 			'sourcestrand': strand, })
@@ -307,3 +323,26 @@ def get_ppr10():
 	p = utils.load_test()
 	ppr10 = simple_extract(p)
 	return ppr10[0]
+
+if __name__ == '__main__':
+	if len(sys.argv) < 2:
+		print "Usage: {} file1 [file2...]".format(sys.argv[0])
+		sys.exit(-1)
+	
+	files = sys.argv[1:]
+	for f in files:
+		pprs = extract(files=[f,], verbose = True)
+
+		head,tail = os.path.split(f)
+		fname = os.path.splitext(tail)[0]
+		out = os.path.join(head, fname + "_pprs.gb")
+		SeqIO.write(pprs, out, "genbank")
+
+		print "###########################################################"
+		print "File \'{}\' summary:".format(f)
+		print "-----------------------------------------------------------"
+		show_stats(pprs)
+		print "Written to \'{}\'".format(out)
+		print "###########################################################"
+		
+
