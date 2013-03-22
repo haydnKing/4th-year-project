@@ -154,7 +154,7 @@ def get_pprs(record, features):
 					datum - int(f.location.start), -1)
 			features.append(f)
 
-		return SeqRecord(seq, name='PPR Protein', features=features, annotations={
+		return SeqRecord(seq, name='PPR_Protein', features=features, annotations={
 			'sourceid': record.id,
 			'sourcestart': min(pos)-margins[0]+start,
 			'sourcestrand': strand, })
@@ -335,7 +335,7 @@ if __name__ == '__main__':
 
 		head,tail = os.path.split(f)
 		fname = os.path.splitext(tail)[0]
-		out = os.path.join(head, fname + "_pprs.gb")
+		out = "output/PPRs/{}.gb".format(fname)
 		SeqIO.write(pprs, out, "genbank")
 
 		print "###########################################################"
