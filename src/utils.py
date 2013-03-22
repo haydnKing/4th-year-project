@@ -102,3 +102,69 @@ def pairwise(iterable):
 	a, b = itertools.tee(iterable)
 	next(b, None)
 	return itertools.izip(a, b)
+
+def write_data(header, data, filename):
+	"""
+		Write data to file in PGF plots friendly formatting
+		header = column headers
+		data = list of tuples (rows)
+		filename = file to write to
+	"""
+	#Data and header must be present
+	if not data:
+		raise ValueError("No data given")
+	if not header:
+		raise ValueError("Header empty")
+
+	#each data item and the header must have the same number of items
+	fields = len(header)
+	for i,d in enumerate(data, 1):
+		if len(d) != fields:
+			raise ValueError("Data row {} has {} too {} fields".format(
+				i, abs(len(d)-fields), "many" if len(d)>fields else "few"))
+	
+	#each column must be entirely the same type
+	types = tuple((type(d) for d in data[0]))
+	for i,d in enumerate(data,1):
+		for j,item in enumerate(d):
+			if not isinstance(item, types[j]):
+				raise TypeError("\'{}\' in row {} is of type {} not {}".format(
+					header[j], i, type(item), types[j]))
+
+	formats = {
+			str: "{{:<{}s}}",
+			int: "{{:>{}d}}",
+			float: "{{:>{}.4f}}",
+	}
+	hformats = {
+			str: "{{:<{}s}}",
+			int: "{{:>{}s}}",
+			float: "{{:>{}.4s}}",
+	}
+
+	#Calculate the maximum width of each
+	widths = []
+	for i in range(len(header)):
+		w = len(formats[str].format(header[i]))
+		widths.append(max(w, 
+			*[len(formats[types[i]].format(1).format(d[i])) for d in data]))
+
+	try:
+		header_fmt = (" "
+				.join([hformats[t].format(w) for t,w in zip(types,widths)]) + '\n')
+		row_fmt = (" "
+				.join([formats[t].format(w) for t,w in zip(types,widths)]) + '\n')
+	except KeyError, e:
+		raise ValueError("Unsupported type {}".format(e.message))
+
+	f = open(filename, 'w')
+	f.write(header_fmt.format(*header))
+	for d in data:
+		f.write(row_fmt.format(*d))
+
+	f.close()
+
+	return len(data)
+	
+
+
