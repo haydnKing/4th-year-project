@@ -1,0 +1,5 @@
+# Ignore everything in this directory
+*
+# Except this file
+!.gitignore
+!Arabidopsis_TAIR10.fas
