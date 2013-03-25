@@ -1,0 +1,60 @@
+"""PPR utils"""
+
+import PSSM, os, json, re
+from Bio import SeqIO
+
+class PPR:
+	"""Represent a PPR"""
+	
+	def __init__(self, seq_record):
+		self.seq_record = seq_record
+		self.pssm = PSSM.PSSM_build(self.seq_record)
+
+	def distance(self, rhs, method='MSE'):
+		"""Calculate the distance between myself and another PPR using method:
+			method =	'MSE': Mean Squared Error
+								'KL': KL divergance
+		"""
+		return PSSM.distance(self.pssm, rhs.pssm, method)
+
+	def localization(self):
+		"""Return the TargetP localization prediction"""
+		return self.seq_record.annotations.get('localization', "*").upper()
+
+	def type(self):
+		"""Return the PPR's type (P,L or S)"""
+		return self.seq_record.annotations.get('type', "").upper()
+
+	def family(self):
+		return self.seq_record.annotations.get('ppr_family', "").upper()
+
+	def __len__(self):
+		return len(self.seq_record.features)
+
+
+def get_processed_genomes():
+	genomes = [f for f in os.listdir('output/PPRs/') if re.match(".+\.gb$", f)]
+	return sorted([os.path.splitext(f)[0] for f in genomes])
+
+def load_pprs(genome):
+	path = "output/PPRs/{}.gb".format(genome)
+	annot = "output/PPRs/{}.json".format(genome)
+	pprs = [PPR(p) for p in SeqIO.parse(path, "genbank")]
+	f = open(annot, "r")
+	for a,p in zip(json.loads(f.read()), pprs):
+		p.seq_record.annotations = a
+	f.close()
+	return pprs		
+
+def write_pprs(pprs, genome):
+	out = "output/PPRs/{}.gb".format(genome)
+	annot = "output/PPRs/{}.json".format(genome)
+	SeqIO.write(pprs, out, "genbank")
+	annots = []
+	for p in pprs:
+		annots.append(p.annotations)
+	f = open(annot, "w")
+	f.write(json.dumps(annots))
+	f.close()
+
+

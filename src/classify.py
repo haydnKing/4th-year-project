@@ -1,6 +1,8 @@
 import extract, utils, os.path
 from pyHMMER import HMMER, hmmfile
-from Bio import SeqIO
+from Bio import SeqIO, Alphabet
+
+from StringIO import StringIO
 
 def update_models():
 	"""Recalculate the HMM models"""
@@ -30,10 +32,14 @@ def classify(pprs, family_annot="ppr_family", tail_annot='ppr_tail'):
 	ct = extract.get_c_terminus(pprs)
 	(E, Ep, DYW) = utils.get_tail_models()
 
+	for i,c in enumerate(ct):
+		if not isinstance(c.seq.alphabet, Alphabet.ProteinAlphabet):
+			print "ct[{}]: {}".format(i, str(c.seq))
+
 	h = HMMER.hmmsearch([E,Ep,DYW], ct)
 
 	#annotate each tail
-	h.annotate()
+	h.annotate(ct)
 
 	for ppr,tail in zip(pprs, ct):
 		fmt = ''

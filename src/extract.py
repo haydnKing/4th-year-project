@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 """Extract and clean PPRs from targets"""
-import utils, targetp
+import utils, targetp, ppr
 from utils import pairwise
 from pyHMMER import HMMER
 from Bio.SeqRecord import SeqRecord
@@ -15,7 +15,7 @@ import sys
 
 models = utils.loadmodels()
 
-def extract(localization='C', files=None, verbose=False):
+def extract(localization=None, files=None, verbose=False):
 	"""Extract all PPRs targeted to the chloroplast and clean the gaps"""
 	pprs = simple_extract_all(localization, files, verbose)
 	return pprs
@@ -28,9 +28,9 @@ def simple_extract_all(localization=None, files=None, verbose=False):
 		if verbose:
 			print "Processing {}".format(f)
 		tpprs = []
-		for c in utils.loadnuclear(f):
+		for i,c in enumerate(utils.loadnuclear(f)):
 			if verbose:
-				print "\t{}".format(c.description)
+				print "\t{} ({:,d} bp)".format(i,len(c))
 			tpprs += simple_extract(c, localization)
 		genome = os.path.splitext(os.path.basename(f))[0]
 		tpprs.sort(key=lambda p: -len(p.features))
@@ -334,15 +334,13 @@ if __name__ == '__main__':
 		pprs = extract(files=[f,], verbose = True)
 
 		head,tail = os.path.split(f)
-		fname = os.path.splitext(tail)[0]
-		out = "output/PPRs/{}.gb".format(fname)
-		SeqIO.write(pprs, out, "genbank")
+		genome = os.path.splitext(tail)[0]
+		ppr.write_pprs(pprs, genome)
 
 		print "###########################################################"
-		print "File \'{}\' summary:".format(f)
+		print "Genome \'{}\' summary:".format(genome)
 		print "-----------------------------------------------------------"
 		show_stats(pprs)
-		print "Written to \'{}\'".format(out)
 		print "###########################################################"
 		
 

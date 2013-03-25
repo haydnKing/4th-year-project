@@ -1,7 +1,7 @@
 """Useful utilities"""
 
 import os, os.path, re
-from Bio import SeqIO
+from Bio import SeqIO, Alphabet
 from Bio.SeqRecord import SeqRecord
 from pyHMMER import HMMER, hmmfile
 
@@ -72,9 +72,9 @@ def loadchloroplast(f):
 
 def _open_seq(f):
 	if os.path.splitext(f)[1].lower() in ['.gb', '.gbk', '.genbank', '.gen',]:
-		return SeqIO.parse(f, 'genbank')
+		return SeqIO.parse(f, 'genbank', alphabet=Alphabet.generic_dna)
 	elif os.path.splitext(f)[1].lower() in ['.fas', '.fasta',]:
-		return SeqIO.parse(f, 'fasta')
+		return SeqIO.parse(f, 'fasta', alphabet=Alphabet.generic_dna)
 	else:
 		raise ValueError('Could not detect file type for \'{}\''.format(f))
 
