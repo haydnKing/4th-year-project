@@ -139,7 +139,7 @@ def write_data(header, data, filename):
 	hformats = {
 			str: "{{:<{}s}}",
 			int: "{{:>{}s}}",
-			float: "{{:>{}.4s}}",
+			float: "{{:>{}s}}",
 	}
 
 	#Calculate the maximum width of each
