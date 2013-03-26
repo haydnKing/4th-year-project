@@ -47,6 +47,33 @@ def search(ppr, target, plot=False, gaps=1):
 
 	return alignments
 
+def as_string(pssm):
+	return "\n".join([("{:3.1f} "*4).format(*i) for i in pssm])
+
+def align(a, b):
+	dist, align = distance(a,b,'MSE')
+	print "Dist,Align = {},{}".format(dist,align)
+	if len(a) > len(b):
+		l_offset = 0
+		r_offset = len(a)-len(b)
+	else:
+		l_offset = len(b)-len(a)
+		r_offset = 0
+
+	for i in range(max(len(a),len(b))):
+		l = i-l_offset
+		r = i-r_offset
+		if l in range(len(a)):
+			line = ("{:3.1f} "*4).format(*a[l])
+		else:
+			line = "    "*4
+		line += "| "
+		if r in range(len(b)):
+			line += ("{:3.1f} "*4).format(*b[r])
+		print line
+
+	print "Distance: {}".format(dist)
+
 def display_alignments(pssm, itarget, aln):
 	for i,a in enumerate(aln):
 		print "Alignment {}".format(i)
@@ -76,7 +103,10 @@ def get_code(ppr):
 		plt.hold(True)
 		start = int(motif.location.start)
 		seq = ppr.seq[start:start+18].translate()
-		ret.append( (seq[0],seq[5],motif.qualifiers['type']) )
+		type = motif.qualifiers['type']
+		if not isinstance(type, basestring):
+			type = type[0]
+		ret.append( (seq[0],seq[5], type,) )
 	return ret
 
 def string_code(code):
@@ -110,7 +140,7 @@ def distance(P,Q,method='KL'):
 	div = methods[method]
 
 	if len(P) == len(Q):
-		return div(P,Q)
+		return (div(P,Q), 0)
 	ret = []
 	pad = abs(len(P) - len(Q))
 	eq = [(log(0.25),)*4,]
@@ -120,7 +150,7 @@ def distance(P,Q,method='KL'):
 	if len(P) < len(Q):
 		for i in range(pad):
 			ret.append(div(eq*i + P + eq*(pad-i), Q))
-	return min(ret)
+	return (min(ret), ret.index(min(ret)),)
 
 def PSSM_insert_gaps(pssm, gaps):
 	rpssm = [i for i in pssm]

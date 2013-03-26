@@ -32,6 +32,24 @@ class PPR:
 		return len(self.seq_record.features)
 
 
+class Genome:
+	"""Represent a Genome"""
+	def __init__(self, name):
+		self.name = name
+		self.pprs = load_pprs(name)
+
+	def __str__(self):
+		return "Genome {} ({} pprs)".format(self.name, len(self.pprs))
+
+	def distance(self, ppr, method=None):
+		if method:
+			return [ppr.distance(p, method)[0] for p in self.pprs]
+		return [ppr.distance(p)[0] for p in self.pprs]
+
+	def closest(self, ppr, method=None):
+		r = self.distance(ppr, method)
+		return self.pprs[r.index(min(r))]
+
 def get_processed_genomes():
 	genomes = [f for f in os.listdir('output/PPRs/') if re.match(".+\.gb$", f)]
 	return sorted([os.path.splitext(f)[0] for f in genomes])
@@ -45,6 +63,9 @@ def load_pprs(genome):
 		p.seq_record.annotations = a
 	f.close()
 	return pprs		
+
+def load_genomes():
+	return [Genome(name) for name in get_processed_genomes()]
 
 def write_pprs(pprs, genome):
 	out = "output/PPRs/{}.gb".format(genome)
