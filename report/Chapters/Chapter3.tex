@@ -1,23 +1,59 @@
 
-\chapter{Experimental Verification of Predicted Promoters}
-\label{chap:ExperimentalVerification} 
-\lhead{Chapter 3. \emph{Experimental Verification} }
+\chapter{Experimental Methods} 
+\label{chap:methods}
 
-\section{Designing and Building DNA Constructs}
+A brief overview of extraction and comparison
 
-A description of the workflow for building a DNA construct to test a particular
-promoter (or a set of promoters).
+\section{Automated PPR Detection and Extraction}
+\label{sec:ppr_extraction}
 
-\section{Protocol for Transforming Marchantia Chloroplasts}
+Introduce the problems of detection and extraction.
 
-Description of the protocol for transforming the chloroplasts, including any
-improvements made to this relatively new protocol.
+\subsection{pyHMMER}
+\label{ssec:pyHMMER}
 
-\section{Imaging Techniques}
+Explain the need for a HMMER wrapper and discuss the development of pyHMMER,
+drawing attention to the github repo.
 
-Description of how promoter activity is to be measured using microscopy.
+\subsection{Detection}
+\label{ssec:Detection}
 
-\section{Results}
+How to spot a chain of PPR repeats
 
-Results of the tests (for the most likely promoter regions).
+\subsection{Extraction}
+\label{sseq:extraction}
+
+How to extract that chain as a PPR
+
+\subsection{Comparison to Existing Data}
+\label{sseq:comparison}
+
+Compare the number of PPRs found to those found in the paper in arabidopsis.
+
+\subsection{Expantion to Other Plants}
+\label{ssec:pprs_other}
+
+Discuss the expansion to other plants, and the problems faced (larger genomes,
+bugs in HMMER).
+
+\section{Predicting PPR Binding regions}
+\label{sec:ppr_binding}
+
+Introduce the problem and the data available.
+
+\subsection{Direct HMMs}
+\label{sec:hmm_binding}
+
+Explain this method and why it failed
+
+\subsection{Direct PSSM}
+\label{sec:pssm_binding}
+
+Explain why this method was more successful, but why it fails to recognise a
+precise binding region and how this problem was overcome.
+
+\subsection{Comparison of PSSMs}
+\label{sec:pssm_comparison}
+
+Explain the method, its strengths and its limitations.
 

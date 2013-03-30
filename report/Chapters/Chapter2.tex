@@ -1,29 +1,27 @@
 
-\chapter{Hidden Markov Models}
-\label{chap:HMM} 
-\lhead{Chapter 2. \emph{HMMs} }
+\chapter{Literature Review}
+\label{chap:theory}
 
-\section{Mathematical Description}
+\section{Hidden Markov Models}
+\label{sec:HMMs} 
+
+\subsection{Mathematical Description}
+\label{ssec:hmm_desc}
 
 A description of the Hidden Markov Model (HMM) - a Markov Model whose internal
 state is unknown, but which emits a symbol from an alphabet with a distribution
 dependant on the state.
 
-%\subsection{Subsection 2}
-
-\section{Use for Gene Prediction}
+\subsection{Use in Bioinformatics}
+\label{ssec:hmms_bioinformatics}
 
 A description of how HMMs have been successfully used to predict genes in a
 number of studies.
 
-\section{Use for Promoter Discovery}
+\subsection{HMMER}
+\label{ssec:hmmer}
 
-How HMMs can also be used to score putative promoter regions, and how this is
-distinct from the case with genes.
-
-\section{Implementation}
-
-A description of the implementation and the algorithms required for HMMs,
+A description of the HMMER implementation and the algorithms required for HMMs,
 including:
 \begin{itemize}
   \item Training the model transition and emission probabilities from a data
@@ -34,8 +32,22 @@ including:
   \item Choosing a decision threshold for promoter regions
 \end{itemize}
 
-\section{Results}
+Also discuss the limitations of the HMMER software for scripting and its vast
+memory use issues.
 
-Results of the HMM implementation, both in \emph{Marchantia} and on test
-genomes (where promoter annotation data is already available).
+\section{The PPR Family}
+\label{sec:PPR}
+
+Discuss detection/prediction vs extraction. 
+Introduce references.
+
+\subsection{In \emph{A. Thaliana}}
+\label{ssec:pprs_ara}
+
+Explain the development of the PPR detection routine for Arabidopsis, as well
+as why Arabidopsis made a good test organism.
+Compare directly with the paper about this.
+
+
+
 
