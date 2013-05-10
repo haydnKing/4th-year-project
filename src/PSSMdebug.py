@@ -1,3 +1,6 @@
+"""Test the ability of a PSSM to detect a known binding site in random
+sequence"""
+
 import PSSM, extract, random
 
 from Bio.Seq import Seq

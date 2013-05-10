@@ -1,3 +1,5 @@
+"""Write out statistics from already processed genomes"""
+
 import utils, os, os.path, ppr, classify
 
 def length_hist(pprs):

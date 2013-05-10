@@ -1,3 +1,5 @@
+"""Classify PPR proteins"""
+
 import extract, utils, os.path
 from pyHMMER import HMMER, hmmfile
 from Bio import SeqIO, Alphabet
