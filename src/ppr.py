@@ -31,6 +31,10 @@ class PPR:
 	def __len__(self):
 		return len(self.seq_record.features)
 
+	def __str__(self):
+		return "<PPR type={}, family={}, length={}>".format(
+				self.type(), self.family(), len(self))
+
 
 class Genome:
 	"""Represent a Genome"""
