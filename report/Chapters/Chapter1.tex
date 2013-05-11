@@ -25,18 +25,20 @@ they convert between the three most important classes of molecules in the cell.
 
 \begin{figure}
   \centering
-  \begin{tikzpicture}[node distance=5cm, auto]
+  \begin{tikzpicture}[node distance=5cm, auto,
+      general/.style={->, >=triangle 60},
+      special/.style={->, dashed, >=triangle 60}]
     \node (D) {DNA};
     \node (R) [right of=D] {RNA};
     \node (P) [right of=R] {Protein};
-    \draw[->, bend left] (D) to node {\small \textit{transcription}} (R);
-    \draw[->, bend left] (R) to node {\small \textit{translation}} (P);
-    \draw[->] (D) to [out=110,in=70,looseness=8] 
+    \draw[general, bend left] (D) to node {\small \textit{transcription}} (R);
+    \draw[general, bend left] (R) to node {\small \textit{translation}} (P);
+    \draw[general] (D) to [out=110,in=70,looseness=8] 
                 node {\small\textit{replication}} (D);
 
-    \draw[->, dashed, bend left] 
+    \draw[special, bend left] 
       (R) to node {\small \textit{reverse transcription}} (D);
-    \draw[->, dashed] (R) to [out=335,in=295,looseness=8] 
+    \draw[special] (R) to [out=335,in=295,looseness=8] 
                 node {\small\textit{RNA replication}} (R);
   \end{tikzpicture}
   \caption{The main processes in molecular biology. The three most common are
