@@ -208,7 +208,7 @@ a constant rate for the concentration of its protein to remain constant.
       \&
     \\};
 
-    \node [label, right of=out, node distance=1cm] {transcription\\rate};
+    \node [label, right of=out, node distance=1cm] {operon\\expression};
     
 
     % Once the nodes are placed, connecting them is
@@ -251,7 +251,8 @@ and shown schematically in figure~\ref{fig:lac_block}.
 Although the lac operon was one of the first such control structures to be
 discovered (and remains among the best understood), many other ingenious ways
 of tightly controlling protein production have been discovered, some of which
-act on transcription, some on translation and others on a combination.
+act on transcription, some on translation and others on a combination of the
+two.
 
 \section{Synthetic Biology}
 \label{sec:synbio}
@@ -303,6 +304,9 @@ malfunction with undesirable consequences.
 A more applicable synbio project was the effort to produce 
 artemisinin (the most effective known anti-malarial) in a cheaper and more 
 scalable way.
+Malaria is a treatable disease which in 2010 caused roughly 2,000 deaths 
+\emph{per day}, mainly because it mostly affects the developing world where
+access to anti-malarials is poor.
 Artemisinin is found naturally in sweet wormwood, but it is slow and expensive
 to extract directly from the plant and chemical synthesis is also an expensive
 and laborious process.
@@ -314,13 +318,17 @@ hoped that it should be available at some point during 2013, at a considerably
 lower price than any other known method of production.
 
 The major limiting factor in this project was yield.
-In order to produce a useful amount of the drug, the pathway involved had to be
-up-regulated, which led to a difficult balance -- too little and very little
+In order to produce a useful amount of the drug, the metabolic pathway 
+involved had to be up-regulated -- i.e. more metabolic flux directed though it.
+This led to a difficult balance -- too little and very little
 artemisinic acid would be produced, too high and too much of the cell's
 energy would be used, causing the cells to grow slowly if at all.
 As well as this, growing yeast on an industrial scale is relatively expensive.
 It is desirable therefore search for host platforms which are better suited to
 biosynthesis than yeast, in order to maximise the yield to cost ratio.
+
+\subsection{Plants and the PPR Family}
+\label{sec:intro_plants}
 
 Chloroplasts are a major centre for biosynthesis in plants as they perform
 photosynthesis to provide energy for the plant.
@@ -330,13 +338,8 @@ They are similar to previous synbio hosts, but with access to the more
 sophisticated plant cell machinery and superb potential for biosynthesis.
 The native enzyme RuBisCO is so abundant in the chloroplasts that it 
 can be up to 50\% of overall soluble leaf protein.
-Achieving anything remotely close to this figure in a project such as the
-production of artemisinin would help reduce the vast number of people who die 
-of this treatable disease each year (roughly 2,000 deaths a day in 2010
-\cite{malaria}).
 
-\subsection{The PPR Protein}
+Understanding how expression control is achieved in plant chloroplasts is a key
+step in developing the potential of these organisms.
 
-Brief introduciton to what a PPR protein is and why they are interesting, 
-reference Section \ref{sec:PPR} heavily.
 
