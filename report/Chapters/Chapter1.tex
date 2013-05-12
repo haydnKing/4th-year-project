@@ -5,7 +5,7 @@
 \section{Molecular Biology}
 \label{sec:MolecularBiology}
 
-Molecular biology is the study of the molecular basis of biology.
+\lettrine{M}{olecular} biology is the study of the molecular basis of biology.
 It is mostly concerned with the understanding of the systems and processes
 that occur within a living cell.
 Naturally, the field overlaps considerably with other areas, 
@@ -52,10 +52,12 @@ estimates the half-life of DNA to be 521 years\cite{DNAhalflife}.
 DNA molecules are long sequences of simple nucleotides which encode all the
 genetic information of the cell.
 Each nucleotide contains a nucleobase which is either Adenine, Guanine,
-Thymine or Cytosine (A,G,T or C) and it is the sequence of so called bases which
-determines the information content of the molecule.
-DNA is double-stranded -- each base in the chain forms a hydrogen bond with a
-base from a complementary chain of DNA.
+Thymine or Cytosine (A, C, G or T) and it is the sequence of so called bases 
+which determines the information content of the molecule.
+The nucleotides are linked together in a chain which is only read in one 
+direction, known as the 5' to 3' direction.
+Each base in the chain forms a hydrogen bond with a particular base from a 
+complementary chain of DNA, forming a double stranded structure.
 These strands are coiled around each other into DNA's characteristic 
 double-helix structure.
 
@@ -78,50 +80,185 @@ various proteins within the cell and thus the cell's overall activity.
 \subsection{Transcription}
 \label{sec:transcription}
 
-Both DNA and RNA have an alphabet of four symbols and so during transcription,
+Both DNA and RNA have an alphabet of four symbols and so during transcription
 DNA's alphabet, $\{A,C,G,T\}$, is mapped one-to-one to that
 of RNA, $\{A,C,G,U\}$, where thymine is replaced with uracil.
 Transcription is clearly bijective, and indeed a less common process called
 reverse-transcription performs the inverse mapping from RNA to DNA.
 
 Transcription does not act on an entire DNA strand at once but instead
-transcribes a small region of the DNA called a transcription unit, which
+transcribes a subsequence of the DNA called a transcription unit, which
 contains one or many genes.
 These units are marked by promoters which are regions of DNA upstream
 of the transcription unit that initiate transcription by causing RNA polymerase
 to bind.
-Control is commonly achieved by modulating promoter activity.
+They are terminated by terminator regions, which cause the RNA polymerase to
+cease transcription and release the mRNA.
+Modulating promoter activity in response to the concentration of another 
+molecule is a common control motif.
+
+Transcription units often contain non-coding regions called \textit{introns}
+which are removed from the message in a process called RNA splicing 
+before translation.
+Introns do not contain any useful sequence and are often present in genes and
+complicate matters significantly as efforts to predict their location 
+accurately and reliably have thus far failed.
+
+\subsection{Translation}
+\label{sec:translation}
+
+Translation is the process by which an RNA message is converted into a protein.
+In higher cells (eukaryotes), mRNA undergoes further processing and is exported
+from the nucleus before translation while lower organisms (prokaryotes)
+translation happens as soon as possible, possibly concurrently with
+transcription.
+
+Proteins are a sequence of amino acids, where each acid comes from an alphabet
+of 20 amino acids.
+Each acid is coded for by 3 bases of RNA, which are referred to collectively 
+as a codon.
+Since there are 64 possible codons and only 20 amino acids, the code is
+over complete -- several different codons map to the same amino acid.
+As well as coding for amino acids, three special codons (UAG, UAA and UGA) are
+known as stop codons as they terminate the translation of the protein.
+
+In translation, molecules called ribosomes bind to the mRNA, reading the
+sequence 3 bases (one codon) at a time and constructing the appropriate protein
+until a stop codon is found, when the ribosome detaches and releases the
+protein.
+
+mRNA is more fragile than DNA but is also targeted by exonucleases, a class of
+enzyme which degrade RNA molecules, preventing the production of more protein.
+Similar processes exist to degrade proteins over time, recycling their amino
+acids to form new proteins.
+These degradation processes mean that a gene must continue to be transcribed at
+a constant rate for the concentration of its protein to remain constant.
+
+\subsection{Control}
+\label{sec:mbio_control}
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=\textwidth]{Lac_operon1}
+  \end{center}
+  \caption[LoF entry]{Annotated diagram of the lac operon.
+    It contains two transcription units and a total of four genes.
+    The first (leftmost) unit contains \textit{lacI} and is expressed 
+    constitutively (continuously).
+    The protein which is produced is called the lac repressor, and in the
+    absence of lactose it binds tightly to the operator region, preventing
+    transcription of the second transcriptional unit.
+    However, when lactose is present outside the cell, a small amount will
+    diffuse across the cell wall and into the cell, where it binds with the lac
+    repressor, preventing it from binding to the operator and allowing
+    transcription of the second unit.
+    
+    Of the three genes that are then expressed, two are directly relevant.
+    \textit{lacY} encodes a membrane protein which actively pumps more lactose
+    into the cell, causing positive feedback, and \textit{lacZ} which produces
+    an enzyme which breaks down lactose into glucose and galactose which can be
+    metabolised more easily.
+    
+    Glucose in the cell interacts with the membrane protein, reducing the rate
+    at which it imports lactose and introducing a second control loop.
+    As the concentration of glucose increases, less lactose is pumped into the
+    cell and so the lac operon becomes less active, reducing transcription of
+    the second unit.
+  }
+  \label{fig:lac_operon}
+\end{figure}
 
 
-%Proteins are a sequence of amino acids, where each acid comes from an alphabet
-%of 20 amino acids.
-%Each acid is coded for by 3 base pairs of RNA, which are referred to
-%collectively as a codon.
-%Since there are $4^3$ possible codons and only 20 amino acids, the code is
-%over complete -- several different codons map to the same amino acid.
-%As well as coding for amino acids, three special codons (UAG, UAA and UGA) are
-%known as stop codons as they terminate the translation of the protein.
-%
-%
-%
-%Ribosomes bind to the mRNA, reading the gene and creating the appropriate
-%protein before detaching from the mRNA.
-%mRNA is more fragile than DNA but is also targeted by exonucleases, a class of
-%enzyme which degrade RNA molecules, preventing the production of more protein.
-%Similar processes exist to degrade proteins over time, recycling their amino
-%acids to form new proteins.
-%These degradation processes mean that a gene must continue to be transcribed at
-%a constant rate for the concentration of its protein to remain constant.
-%
 
+\begin{figure}
+  \centering
+  \begin{tikzpicture}[auto, node distance=2cm,>=latex]
+    % We start by placing the blocks
+    \matrix[ampersand replacement=\&, row sep=0.15cm, column sep=0.6cm] {
+      \&
+      \&
+      \&
+      \node [block] (break) {Lactose Breakdown}; \&
+      \&
+    \\
+      \node [input, name=glu] {}; \&
+      \node [sum] (s3) {}; \&
+      \node [block] (gsense) {Sensor}; \&
+      \&
+      \&
+    \\
+      \&
+      \&
+      \&
+      \node [sum] (s2) {}; \&
+      \node [branch] (br) {}; \&
+      \node [output] (out) {}; 
+    \\
+      \node [input, name=lac] {}; \&
+      \node [sum] (s1) {}; \&
+      \node [block] (lsense) {Sensor}; \&
+      \&
+      \&
+      {}; 
+    \\
+      \&
+      \&
+      \&
+      \node [block] (import) {Lactose Importing}; \&
+      \&
+    \\};
+
+    \node [label, right of=out, node distance=1cm] {transcription\\rate};
+    
+
+    % Once the nodes are placed, connecting them is
+    % easy. 
+    \draw [draw,->] (glu) -- node[pos=0.01] {$[glu]$} (s3);
+    \draw [->] (s3) -- (gsense);
+    \draw [->] (lac) -- node[pos=0.01,swap] {$[lac]$} (s1);
+    \draw [->] (s1) -- (lsense);
+    \draw [->] (lsense) -| node[pos=0.95]       {$+$} (s2);
+    \draw [->] (gsense) -| node[pos=0.95, swap] {$-$} (s2);
+    \draw [- ] (s2) -- (br);
+    \draw [->] (br) -- (out);
+    \draw [->] (br) |- (import);
+    \draw [->] (br) |- (break);
+    \draw [->] (import) -| node[pos=0.95, swap] {$+$} (s1);
+    \draw [->] (break)  -| node[pos=0.95] {$+$} (s3);
+
+  \end{tikzpicture}
+  \caption{Simplified block diagram of the lac operon, showing only the most
+    important interconnections. 
+    In the presence of lactose, transcription is turned on and more
+    extracellular lactose is pumped into the cell, causing a positive feedback
+    loop.
+    Simultaneously, lactose is broken down into glucose (and galactose) which
+    inhibits transcription, causing a negative feedback loop.
+  }
+  \label{fig:lac_block}
+\end{figure}
+
+Control of protein production is typically achieved using several layers of
+control at different stages.
+For example, the lac operon controls the production of enzymes which allows the
+cell to metabolise lactose, a carbon source.
+The cell would prefer to directly metabolise glucose if it is available as
+lactose is harder to process, and so the cell can save energy by only turning
+on it's lactose processing machinery when only lactose is available.
+This is achieved by the lac operon as described in figure~\ref{fig:lac_operon} 
+and shown schematically in figure~\ref{fig:lac_block}.
+
+Although the lac operon was one of the first such control structures to be
+discovered (and remains among the best understood), many other ingenious ways
+of tightly controlling protein production have been discovered, some of which
+act on transcription, some on translation and others on a combination.
 
 \section{Synthetic Biology}
 \label{sec:synbio}
 
 Synthetic biology is a relatively new
-engineering discipline with the goal of applying standard engineering techniques
-such as standardisation, characterisation and encapsulation of function to 
-biology.
+engineering discipline with the goal of applying proven engineering techniques
+such as standardisation, characterisation and encapsulation to biology.
 Synbio aims to use these design principles to combine existing phenomena to 
 build new, artificial forms of life.
 The field is often confused with its spiritual predecessor, genetic 
@@ -129,22 +266,23 @@ engineering, which although similar in some respects does not design new
 organisms, but tinkers with existing ones without trying to understand the
 underlying principals.
 
-Synbio is often referred to as programming, but with DNA instead of computer
+Synbio can be thought of as programming, but with DNA instead of machine
 code.
 An example project which captures this idea is Tabor's bacterial edge
 detector\cite{edgeDetector}.
 Bacteria were programmed to produce a colourless chemical messenger in the 
-absence of light and to produce a dark pigment in the presence of light and the
-chemical messenger.
+absence of light and to produce a dark pigment in the presence of both light 
+and the chemical messenger.
 When a film of these bacteria is exposed to a pattern of light and dark, the
-messenger diffuses out from the dark regions and into the light, where it
-stimulates the production of the pigment, leading to an edge detection effect.
+messenger is produced in the dark regions and diffuses into the light, where it
+stimulates the production of the pigment, 
+leading to an edge detection like effect.
 
 While this and other such simple demonstrations show some of the potential 
-of synbio, they lack immediate application and are somewhat limited.
+of synbio, they lack immediate application and are of somewhat limited scope.
 A major problem in expanding this work is the lack of targeted reporter
 molecules.
-In the edge-detector example, two molecular signals are produced when light is 
+In the edge detector example, two molecular signals are produced when light is 
 not present -- AHL, a cell-to-cell signalling molecule and cI, a
 transcriptional repressor molecule.
 Both AHL and cI are known to affect the promoter $P_{lux-\lambda}$; while AHL 
@@ -154,9 +292,9 @@ both light and AHL are required to cause the pigment to be produced.
 
 The effect of the molecules AHL and cI on $P_{lux-\lambda}$ is one of a small
 but growing number of well understood control motifs.
-Since reusing the same promoter/signal in the same cell is impossible due to 
-cross-talk, there are simply not enough signalling modalities available to
-perform more complex calculations within the cell.
+Since reusing the same promoter/signal combination in the same cell is 
+impossible due to cross-talk, there are simply not enough signalling modalities 
+available to perform more complex logic within the cell.
 Indeed, it is often the case that signalling molecules have multiple functions
 within the cell such that changing the concentration of one molecule to suit
 our goals may cause a seemingly unrelated area of the cell's metabolism to
@@ -173,7 +311,7 @@ the biosynthesis of artemisinic acid (a natural precursor) and insert it into
 yeast\cite{yeast}.
 Artemisinin produced in this manner has yet to be approved for sale, but it is
 hoped that it should be available at some point during 2013, at a considerably
-lower price than any other method of production.
+lower price than any other known method of production.
 
 The major limiting factor in this project was yield.
 In order to produce a useful amount of the drug, the pathway involved had to be

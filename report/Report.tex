@@ -30,8 +30,23 @@
 \graphicspath{{./Pictures/}} % Specifies the directory where pictures are stored
 
 \usepackage[square, numbers, comma, sort&compress]{natbib} % Use the natbib reference package - read up on this to edit the reference style; if you want text (e.g. Smith et al., 2012) for the in-text references (instead of numbers), remove 'numbers' 
+
+\usepackage{caption}
+\captionsetup{margin={15pt},parskip=10pt,format=hang,indention=-.8cm}
+
+\usepackage{type1cm}
+\usepackage{lettrine}
+
 \usepackage{tikz}
-\usetikzlibrary{arrows}
+\usetikzlibrary{matrix,shapes,arrows}
+
+\tikzstyle{block} = [draw, fill=blue!20, rectangle, minimum height=3em, 
+                      minimum width=6em]
+\tikzstyle{sum} = [draw, fill=blue!20, circle, node distance=1cm]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\tikzstyle{branch}=[fill,shape=circle,minimum size=3pt,inner sep=0pt]
+\tikzstyle{label} = [text width=7em, text centered, font=\itshape]
 
 %\usepackage[plainpages=false]{hyperref}
 %\hypersetup{urlcolor=black, colorlinks=true} % Colors hyperlinks in blue - change to black if annoying
