@@ -3,6 +3,7 @@
 from math import log, exp
 from utils import pairwise
 from Bio.SeqRecord import SeqRecord
+from Bio.SeqFeature import SeqFeature, FeatureLocation
 
 import matplotlib.pyplot as plt
 
@@ -12,6 +13,11 @@ class Alignment:
 		self.pos = pos
 		self.odds = odds
 		self.gaps = gaps
+
+	def toSeqFeature(self, pssm):
+		l = len(pssm) + len(self.gaps)
+		return SeqFeature(FeatureLocation(self.pos, self.pos+l, strand=1), 
+					type="PSSM", qualifiers={"odds":self.odds})
 
 	def __lt__(self, other):
 		return self.odds < other.odds
@@ -45,7 +51,7 @@ def search(ppr, target, plot=False, gaps=1):
 		plt.hist(o, bins=20)
 		plt.show()
 
-	return alignments
+	return [x.toSeqFeature(pssm) for x in alignments]
 
 def as_string(pssm):
 	return "\n".join([("{:3.1f} "*4).format(*i) for i in pssm])
@@ -386,7 +392,7 @@ Stype = {
 
 #add in a prior
 for k,v in Ptype.iteritems():
-	Ptype[k] = tuple(i + 1.0/sum(v) for i in v)
+	Ptype[k] = tuple(i + 1 for i in v)
 for k,v in Stype.iteritems():
-	Stype[k] = tuple(i + 1.0/sum(v) for i in v)
+	Stype[k] = tuple(i + 1 for i in v)
 

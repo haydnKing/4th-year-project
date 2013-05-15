@@ -9,6 +9,10 @@ HMMDir = os.path.join(os.path.dirname(__file__), 'HMMs/')
 TargetDir = os.path.join(os.path.dirname(__file__), 'Genomes/')
 TestDir = os.path.join(os.path.dirname(__file__), 'Test_Proteins/')
 TestData = os.path.join(os.path.dirname(__file__), 'Test_Data/')
+PlastidDir = os.path.join(os.path.dirname(__file__), 'Plastids/')
+
+OutDir = os.path.join(os.path.dirname(__file__), 'output/')
+
 
 def getLabelledFeatures(seq, search='pentatricopeptide', feat_type=None):
 	"""Return all the features in seq which contain desc and are of type type"""
@@ -69,6 +73,11 @@ def loadchloroplast(f):
 				rec.id.find(c) >= 0 or 
 				rec.description.find(c) >= 0):
 			return rec
+
+def load_plastid(name):
+	"""Load the plastid called name"""
+	fname = os.path.join(PlastidDir, "{}.gb".format(name))
+	return SeqIO.read(fname, 'gb')
 
 def _open_seq(f):
 	if os.path.splitext(f)[1].lower() in ['.gb', '.gbk', '.genbank', '.gen',]:

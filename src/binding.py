@@ -3,8 +3,11 @@
 import extract, utils, PSSM
 import ppr as PPR
 
+from Bio.SeqFeature import FeatureLocation
+from Bio import SeqIO
 import matplotlib.pyplot as plt
 
+import os.path
 from sys import stdout
 
 def minima(ppr, genomes):
@@ -63,6 +66,7 @@ def ppr_distance():
 			'output/Average_PPR_distance.dat')
 
 def get_groups(threshold=0.3):
+	"""Attempt to group similar PPRs"""
 
 	stdout.write("\rLoading...")
 	stdout.flush()
@@ -105,6 +109,64 @@ def group_stats(groups):
 	l = [len(g) for g in groups]
 	print "{} groups, {} <= length <= {}, average = {}".format(
 			len(groups), min(l), max(l), sum(l)/float(len(l)))
+
+def annotate_all(genome_name='Arabidopsis_thaliana',plastid_name='NC_000932'):
+	pprs = [p for p in PPR.load_records(genome_name) if (len(p.features) >= 15 
+					and p.annotations.get('localization','').upper() == 'C')]
+
+
+	plastid = utils.load_plastid(plastid_name)
+
+	plastid.features = [f for f in plastid.features if f.type.lower() == 'gene']
+
+	annotate_binding_domains(pprs, plastid)
+
+	ofile = os.path.join(utils.OutDir, "Binding/{}--{}.gb".format(genome_name,
+		plastid_name))
+
+	SeqIO.write(plastid, ofile, 'gb')
+
+def annotate_binding_domains(pprs, plastid):
+	for i,ppr in enumerate(pprs):
+		stdout.write("\r{}/{}   ".format(i,len(pprs)))
+		stdout.flush()
+		feats = get_domains(ppr, plastid, 15.0, 2)
+		for f in feats:
+			f.type = "PPR_{}".format(i)
+		plastid.features += feats
+	stdout.write("\r                          \r")
+	stdout.flush()
+		
+def get_domains(ppr, plastid, percentile=10.0, gaps=1):
+	"""Get a list of putative binding domains in the plastid"""
+	a = PSSM.search(ppr,plastid,gaps=gaps)
+	b = PSSM.search(ppr,plastid.reverse_complement(),gaps=gaps)
+	for f in b:
+		f.location = FeatureLocation(len(plastid)-f.location.end,
+																 len(plastid)-f.location.start, strand=-1)
+	
+	feats = a + b
+	feats.sort(key=lambda c: -c.qualifiers['odds'])
+
+	top = feats[0].qualifiers['odds']
+	bottom = feats[-1].qualifiers['odds']
+	threshold = top - (percentile/100.0) * (top-bottom)
+	
+	for i in range(len(feats)):
+		if feats[i].qualifiers['odds'] < threshold:
+			return feats[0:i-1]
+
+	return feats
+
+def write_domains(doms, fname):
+	f = open(fname, 'w')
+	f.write("name, start, end, strand\n")
+
+	for d in doms:
+		f.write("{}, {}, {}, {}\n".format(d.type, d.location.start,
+			d.location.end, d.location.strand))
+	
+	f.close()
 
 if __name__ == '__main__':
 	ppr_distance()
