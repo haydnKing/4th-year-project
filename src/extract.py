@@ -98,6 +98,7 @@ def simple_extract(target, localization = None):
 	print "Got {} envelopes, locating PPRs...".format(len(envelopes))
 	#locate the PPR within each group
 	pprs = [locate_ppr(envelope) for envelope in envelopes]
+	pprs = [p for p in pprs if p != None]
 	pprs = [add_source(p, target) for p in pprs]
 
 	print "Got {} PPRs, cleaning...".format(len(groups))
@@ -211,6 +212,10 @@ def locate_ppr(envelope):
 	if len(motifs) < l:
 		print ("WARNING: dropping some PPR motifs after finding multiple frames " +
 				 "in the same envelope.")
+
+	#A ppr must contain 2 or more PPR motifs
+	if len(motifs) < 2:
+		return None
 	
 	#order the motifs
 	motifs.sort(key=lambda m: m.location.start)
