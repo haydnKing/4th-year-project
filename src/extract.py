@@ -370,9 +370,6 @@ def show_stats(pprs):
 	print "{} PPRs".format(len(pprs))	
 	for i,h in enumerate(hist):
 		print "{:5d}|{}".format(i+1, '*'*h)
-
-	print ""
-	print_PLS(pprs)
 	
 def get_ppr10():
 	p = utils.load_test()
