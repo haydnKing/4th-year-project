@@ -45,33 +45,33 @@ def simple_extract_all(localization=None, files=None, verbose=False):
 def annotate_pprs(target, remove = False, localization = None):
 	"""Annotate the PPRs found in the target"""
 	print "Searching..."
-	#find all easy-to-locate PPR motifs
-	search = HMMER.hmmsearch(hmm = models[3], targets = target)
 
-	#get features for each motif
-	motifs = search.getFeatures(target)
+	pprs = simple_extract(target, localization)
 
-	print "Got {} motifs, grouping...".format(len(motifs))
-	#group features by frame and locatiion
-	groups = group_motifs(motifs, max_gap=1000)
+	if remove:
+		target.features = []
 
-	print "Got {} groups, extracting envelopes...".format(len(groups))
-	#extract the sequence envelope around each group
-	envelopes = [get_envelope(group, target, margin=500) for group in groups]
-
-	print "Got {} envelopes, locating PPRs...".format(len(envelopes))
-	#locate the PPR within each group
-	pprs = [locate_ppr(envelope) for envelope in envelopes]
-
-	feats = [SeqFeature(FeatureLocation(
+	target.features += [SeqFeature(FeatureLocation(
 			p.annotations['src_from'], 
 			p.annotations['src_to'],
 			p.annotations['src_strand']),
 			"PPR_protein",
-			id="PPR_{}".format(i)) for i,p in enumerate(pprs)]
-	if remove:
-		target.features = []
-	target.features += feats
+			qualifiers = {
+				'name':"ppr_{}".format(i),
+			}) 
+				for i,p in enumerate(pprs)]
+	for p in pprs:
+		target.features += [SeqFeature(FeatureLocation(
+			p.annotations['src_from'] + m.location.start
+				if p.annotations['src_strand'] > 0 else
+			p.annotations['src_to'] - m.location.end, 
+			p.annotations['src_from'] + m.location.end
+				if p.annotations['src_strand'] > 0 else
+			p.annotations['src_to'] - m.location.start,
+			p.annotations['src_strand']),
+			"PPR_Motif") 		
+					for m in p.features]
+
 	return target
 
 def simple_extract(target, localization = None):
@@ -126,40 +126,6 @@ def simple_extract(target, localization = None):
 	#filter the desired location
 	if localization:
 		pprs = [p for p in pprs if p.annotations['localization'] == localization]
-
-	#DEBUG
-	feats = [SeqFeature(FeatureLocation(
-			p.annotations['src_from'], 
-			p.annotations['src_to'],
-			p.annotations['src_strand']),
-			"envelope",
-			qualifiers = {
-				'name':"env_{}".format(i),
-			}) 
-				for i,p in enumerate(dbg_env)]
-	feats += [SeqFeature(FeatureLocation(
-			p.annotations['src_from'], 
-			p.annotations['src_to'],
-			p.annotations['src_strand']),
-			"PPR",
-			qualifiers = {
-				'name':"ppr_{}".format(i),
-			}) 
-				for i,p in enumerate(pprs)]
-	for p in pprs:
-		feats += [SeqFeature(FeatureLocation(
-			p.annotations['src_from'] + m.location.start
-				if p.annotations['src_strand'] > 0 else
-			p.annotations['src_to'] - m.location.end, 
-			p.annotations['src_from'] + m.location.end
-				if p.annotations['src_strand'] > 0 else
-			p.annotations['src_to'] - m.location.start,
-			p.annotations['src_strand']),
-			"aPPR") 		
-					for m in p.features]
-	feats += motifs
-	target.features = feats
-	SeqIO.write(target, "simple_extract.gb", 'genbank')
 
 	#return a list of nicely presented PPRs
 	return pprs
@@ -225,10 +191,6 @@ def get_envelope(group, target, margin):
 
 def locate_ppr(envelope):
 	"""Find and annotate the protein within"""
-	debug = (envelope.annotations['src_from'] > 4961000 and
-					 envelope.annotations['src_to'] < 4968000)
-	if debug:
-		print envelope
 	#find all the PPR motifs
 	search = HMMER.hmmsearch(hmm = models[3], targets = envelope)
 	motifs = search.getFeatures(envelope)
@@ -236,39 +198,23 @@ def locate_ppr(envelope):
 	#A ppr must contain 2 or more PPR motifs
 	if len(motifs) < 2:
 		return None
-
-	#check if there were any other frames, and warn about introns
-	if len([m for m in motifs if m.qualifiers['frame'] != 1]) != 0:
-		print ("WARNING: May have found a PPR with introns")
 	
 	#order the motifs
 	motifs.sort(key=lambda m: m.location.start)
 	#find start codon
 	start = motifs[0].location.start
-	os = start
 	while start > 0 and str(envelope.seq[start:start+3]).lower() != "atg":
-		if debug:
-			print "\t{}) \'{}\'".format(start, str(envelope.seq[start:start+3]))
 		start -= 3
 	if start < 0:
 		start = 0
-	if debug:
-		print "Start codon \'{}\' at {}".format(str(envelope.seq[start:start+3]),
-				start-os)
 
 	#find stop codon
 	stop = motifs[-1].location.end
-	os = stop
 	while stop < len(envelope) and (
 		str(envelope.seq[stop:stop+3]).lower() not in ["tag", "tga", "taa"]):
-		if debug:
-			print "\t{}) \'{}\'".format(stop, str(envelope.seq[stop:stop+3]))
 		stop += 3
 	if stop > len(envelope):
 		stop = len(envelope)
-	if debug:
-		print "Stop codon \'{}\' at {}".format(str(envelope.seq[stop:stop+3]),
-				stop-os)
 
 	#move the motifs
 	for m in motifs:
