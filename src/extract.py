@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 """Extract and clean PPRs from targets"""
-import utils, targetp, ppr
+import utils, targetp, ppr, classify
 from utils import pairwise
 from pyHMMER import HMMER
 from Bio.SeqRecord import SeqRecord
@@ -42,166 +42,258 @@ def simple_extract_all(localization=None, files=None, verbose=False):
 	pprs.sort(key=lambda p: -len(p.features))
 	return pprs
 
-def simple_extract(target, localization = None, domE=100.0):
+def annotate_pprs(target, remove = False, localization = None):
+	"""Annotate the PPRs found in the target"""
+	print "Searching..."
+	#find all easy-to-locate PPR motifs
+	search = HMMER.hmmsearch(hmm = models[3], targets = target)
+
+	#get features for each motif
+	motifs = search.getFeatures(target)
+
+	print "Got {} motifs, grouping...".format(len(motifs))
+	#group features by frame and locatiion
+	groups = group_motifs(motifs, max_gap=1000)
+
+	print "Got {} groups, extracting envelopes...".format(len(groups))
+	#extract the sequence envelope around each group
+	envelopes = [get_envelope(group, target, margin=500) for group in groups]
+
+	print "Got {} envelopes, locating PPRs...".format(len(envelopes))
+	#locate the PPR within each group
+	pprs = [locate_ppr(envelope) for envelope in envelopes]
+
+	feats = [SeqFeature(FeatureLocation(
+			p.annotations['src_from'], 
+			p.annotations['src_to'],
+			p.annotations['src_strand']),
+			"PPR_protein",
+			id="PPR_{}".format(i)) for i,p in enumerate(pprs)]
+	if remove:
+		target.features = []
+	target.features += feats
+	return target
+
+def simple_extract(target, localization = None):
 	"""Extract all the PPRs found in target"""
-	if isinstance(target, SeqRecord):
-		target = [target,]
+	if not isinstance(target, SeqRecord):
+		raise TypeError("simple_extract requires a Bio.SeqRecord, not {}".format(
+			type(target)))
 
-	search = HMMER.hmmsearch(hmm = models[3], targets = target, domE=domE)
+	print "Searching..."
+	#find all easy-to-locate PPR motifs
+	search = HMMER.hmmsearch(hmm = models[3], targets = target)
 
-	pprs = []
+	#get features for each motif
+	motifs = search.getFeatures(target)
 
-	for t in target:
-		feats = search.getFeatures(t)
-		pprs.extend(get_pprs(t, feats))	
+	print "Got {} motifs, grouping...".format(len(motifs))
+	#group features by frame and locatiion
+	groups = group_motifs(motifs, max_gap=1000)
 
+	print "Got {} groups, extracting envelopes...".format(len(groups))
+	#extract the sequence envelope around each group
+	envelopes = [get_envelope(group, target, margin=1000) for group in groups]
+
+	print "Got {} envelopes, locating PPRs...".format(len(envelopes))
+	#locate the PPR within each group
+	pprs = [locate_ppr(envelope) for envelope in envelopes]
+	pprs = [add_source(p, target) for p in pprs]
+
+	print "Got {} PPRs, cleaning...".format(len(groups))
+	#clean the gaps between features
+	pprs = [clean_gaps(ppr) for ppr in pprs]
+
+	#annotate the tail region and classify each PPR
+	classify.classify(pprs)
+
+	#predict each PPR's target
 	targetp.targetp(pprs, annotation='localization')
 
+	#filter the desired location
 	if localization:
 		pprs = [p for p in pprs if p.annotations['localization'] == localization]
 
-	return clean_all(pprs)
+	#DEBUG
+	feats = [SeqFeature(FeatureLocation(
+			p.annotations['src_from'], 
+			p.annotations['src_to'],
+			p.annotations['src_strand']),
+			"envelope",
+			qualifiers = {
+				'name':"env_{}".format(i),
+			}) 
+				for i,p in enumerate(envelopes)]
+	feats += [SeqFeature(FeatureLocation(
+			p.annotations['src_from'], 
+			p.annotations['src_to'],
+			p.annotations['src_strand']),
+			"PPR",
+			qualifiers = {
+				'name':"ppr_{}".format(i),
+			}) 
+				for i,p in enumerate(pprs)]
+	feats += motifs
+	target.features = feats
+	print len(target.features)
+	SeqIO.write(target, "simple_extract.gb", 'genbank')
 
-def get_pprs(record, features):
-	"""Return a list of possible PPR proteins given the target and the HMM
-	matches found within it
-	
-		Assumes features are the same length and are made up of a single region
-	"""
-	#sort features into order
-	features.sort(key=lambda f: int(f.location.start))
-
-	frames = {-3: [], -2: [], -1: [], 1:[], 2:[], 3:[],}
-	#split into frames
-	for feature in features:
-		if feature.location.strand >= 0:
-			frames[int(feature.location.start) % 3 + 1].append(feature)
-		else:
-			frames[-((len(record) - int(feature.location.end))%3) -1].append(feature)
-
-	#keep track of stats
-	stats = {	'used': [],
-			'unused': [],
-			}
-	
-	#check for stops
-	def find_stop(seq):
-		"""iterate through the codons of seq"""
-		for i in range(0,len(seq),3):
-			if str(seq[i:i+3]).lower() in ['tga', 'tag', 'taa',]:
-				return i
-		return -1
-
-	#check for stops
-	def find_start(seq):
-		"""iterate through the codons of seq"""
-		for i in range(len(seq)-3,0,-3):
-			if str(seq[i:i+3]).lower() in ['atg']:
-				return i
-		return -1
-
-	def continues(old, new):
-		"""Do old and new belong in the same PPR?"""
-		if not old:
-			return True
-		if old.location.strand != new.location.strand:
-			return False
-
-		pos = (int(old.location.end), int(new.location.start))
-		f = FeatureLocation(min(pos), max(pos),
-				new.location.strand)
-
-		if (pos[1] - pos[0]) > 500:
-			return False
-		elif find_stop(f.extract(record.seq)) >= 0:
-			return False
-		return True
-
-	def chain_to_record(chain):
-		"""Convert a chain of SeqFeatures to a SeqRecord"""
-		#immediately discard those shorter than 2
-		if len(chain) < 2:
-			return None
-
-		#extract the sequence +- margin
-		pos = (int(chain[0].location.start), int(chain[-1].location.end))
-		margins = (min(min(pos),1000), min(len(record) - max(pos), 1000))
-		f = FeatureLocation(min(pos)-margins[0], max(pos)+margins[1], chain[0].location.strand)
-		seq = f.extract(record.seq)
-		seq.alphabet = generic_dna
-
-		#Find the start and stop codons
-		start = find_start(seq[0:margins[0]])
-		stop = find_stop(seq[-margins[1]:])
-
-		#if we failed to find one
-		if start < 0 or stop < 0:
-			return None
-		seq = seq[start:len(seq)-margins[1]+stop]
-
-		features = []
-		strand = chain[0].location.strand
-		datum = (int(chain[0].location.start)-margins[0]+start if strand >= 0 else
-			int(chain[-1].location.end) + margins[1] - start)
-
-		for feature in chain:
-			f = copy.deepcopy(feature)
-			if(strand >= 0):
-				f.location = FeatureLocation(int(f.location.start) - datum, 
-					int(f.location.end) - datum, 1)
-			else:
-				f.location = FeatureLocation(datum - int(f.location.end),
-					datum - int(f.location.start), -1)
-			features.append(f)
-
-		return SeqRecord(seq, name='PPR_Protein', features=features, annotations={
-			'sourceid': record.id,
-			'sourcestart': min(pos)-margins[0]+start,
-			'sourcestrand': strand, })
-
-	chains = []
-	chain = []
-
-	for frame,frame_features in frames.iteritems():
-		#for each feature
-		last_feature = None
-		for feature in frame_features:
-			if continues(last_feature, feature):
-				chain.append(feature)
-			elif chain:
-				chains.append(chain)
-				chain = []
-			last_feature = feature
-		#chains can't continue accross frames!
-		if chain:
-			chains.append(chain)
-			chain = []
-
-	pprs = filter(None, [chain_to_record(chain) for chain in chains])
-
+	#return a list of nicely presented PPRs
 	return pprs
+
+def group_motifs(motifs, max_gap):
+	"""Given a list of PPR motifs, group them by frame and then by location such
+	the the maximum gap within a group is max_gap"""
+	def distance(a,b):
+		"""return the minimum distance between to seqfeatures"""
+		return min(	abs(a.location.start - b.location.end),
+								abs(b.location.start - a.location.end))
+
+	by_frame = {1: [], 2: [], 3: [], -1: [], -2: [], -3: [],}
+	for motif in motifs:
+		by_frame[motif.qualifiers['frame']].append(motif)
+
+	groups = []
+	#for each frame
+	for frame in by_frame.itervalues():
+		#sort by start location
+		frame.sort(key=lambda m: m.location.start)
+		#while there are still motifs to be grouped
+		while frame:
+			#begin a new group
+			current_group = [frame[0]]
+			#find each motif within range
+			for motif in frame[1:]:
+				#we put these in ascending order, so the nearest is the last
+				if distance(motif,current_group[-1]) < max_gap:
+					current_group.append(motif)
+			#remove each item in the current group from the frame
+			for m in current_group:
+				frame.remove(m)
+			#add current group to the list of groups
+			groups.append(current_group)
+
+	return groups
+
+def get_envelope(group, target, margin):
+	"""Get the sequence surrounding the group"""
+	#margin must be divisible by 3
+	margin = margin - margin % 3
+
+	#make sure we're still ordered
+	group.sort(key=lambda k: k.location.start)
+	start = max(0, group[0].location.start - margin)
+	end   = min(len(target), group[-1].location.end + margin)
+	frame = group[0].qualifiers['frame']
+
+	seq = target.seq[start:end]
+	if frame < 0:
+		seq = seq.reverse_complement()
+	seq.alphabet=generic_dna
+
+	return SeqRecord(seq, id='env', name='PPR_env', description='PPR_envelope',
+			annotations = {'src_from': start, 'src_to': end, 
+				'src_strand': 1 if (frame > 0) else -1})
+
+def locate_ppr(envelope):
+	"""Find and annotate the protein within"""
+	#find all the PPR motifs
+	search = HMMER.hmmsearch(hmm = models[3], targets = envelope)
+	motifs = search.getFeatures(envelope)
+
+	#We're only interested in what's in frame 1 - that's what the envelope is
+	#centered on
+	frame = 1
+
+	#check if there were any other frames, and drop them
+	l = len(motifs)
+	motifs = [m for m in motifs if m.qualifiers['frame']==frame]
+	if len(motifs) < l:
+		print ("WARNING: dropping some PPR motifs after finding multiple frames " +
+				 "in the same envelope.")
+	
+	#order the motifs
+	motifs.sort(key=lambda m: m.location.start)
+	#find start codon
+	start = motifs[0].location.start
+	while start > 0 and str(envelope.seq[start:start+3]).lower() != "atg":
+		start -= 3
+	if start < 0:
+		start = 0
+
+	#find stop codon
+	stop = motifs[-1].location.end
+	while stop < len(envelope) and (
+		str(envelope.seq[stop:stop+3]).lower() not in ["tag", "tga", "taa"]):
+		stop += 3
+	if stop > len(envelope):
+		stop = len(envelope)
+
+	#move the motifs
+	for m in motifs:
+		m.location = FeatureLocation(m.location.start-start, m.location.end-start)
 	
 
-def get_c_terminus(pprs):
-	"""Return a list of the c-termini of each protein"""
-	ret = []
-	if isinstance(pprs, SeqRecord):
-		pprs = [pprs,]
-	
-	for i,ppr in enumerate(pprs):
-		last = 0
-		for motif in ppr.features:
-			if 'PPR' in motif.type and int(motif.location.end) > last:
-				last = int(motif.location.end)
-		#make sure the c-terminus is in frame
-		last = last - (last % 3)
-		#extract and translate the c-terminus
-		ret.append(SeqRecord(ppr.seq[last:].translate(), id=str(i), name="C-Terminus",
-			description="C-Terminus from PPR {}".format(i)))
+	#get absolute start and end
+	if envelope.annotations['src_strand'] > 0:
+		src_from = envelope.annotations['src_from'] + start
+		src_to   = envelope.annotations['src_from'] + stop
+	else:
+		src_from = envelope.annotations['src_to'] - stop
+		src_to   = envelope.annotations['src_to'] - start
 
-	if len(ret) == 1:
-		return ret[0]
-	return ret
+	#return a record
+	return SeqRecord(envelope.seq[start:stop],
+			features = motifs,
+			annotations = {
+				"src_from"	: src_from,
+				"src_to"		: src_to,
+				"src_strand": envelope.annotations['src_strand'],
+			})
+
+def add_source(ppr, source):
+	"""Add source metadata to the ppr"""
+	ppr.annotations.update({
+		'src_id': source.id,
+		'src_name': source.name,
+		'src_desc': source.description,
+		})
+	ppr.id = "PPR"
+	ppr.name = "PPR Protein"
+	ppr.description = "PPR Protein"
+	return ppr
+
+#offsets of each model compared with the actual motif start
+offsets = {'PPR':-2, 'PPR_1':5, 'PPR_2':1, 'PPR_3':-1,}
+
+def clean_gaps(ppr):
+	"""Clean the length of the PPR motifs such that they start at the correct
+	location and so that small gaps are eliminated
+
+	adds the qualifier type as P, L or S
+	"""
+
+	#move each motif start position to account for the model start offset
+	for f in ppr.features:
+		f.location = FeatureLocation(int(f.location.start)+3*offsets['PPR_3'],
+			f.location.end, f.location.strand)
+
+	gaps = find_gaps(ppr, mingap=0, maxgap=10)
+	#move the end of each motif to close small gaps between it and its successor
+	for g in gaps:
+		g.prev.location = FeatureLocation(g.prev.location.start,
+			g.next.location.start,
+			g.prev.strand)
+
+	for f in ppr.features:
+		if len(f) == 105: # 105 = 35 *3
+			f.qualifiers['type'] = 'P'
+		elif len(f) < 105:
+			f.qualifiers['type'] = 'S'
+		elif len(f) > 105:
+			f.qualifiers['type'] = 'L'
+	
+	return ppr
 
 def find_gaps(ppr, mingap=30, maxgap=None):
 	"""Find all the gaps between PPR motifs which are gte maxgap"""
@@ -213,90 +305,12 @@ def find_gaps(ppr, mingap=30, maxgap=None):
 		if l >= mingap and l <= (maxgap or 'inf'):
 			#We've found a gap
 			g = FeatureLocation(int(a.location.end), 
-				int(b.location.start), strand=1)
+			int(b.location.start), strand=1)
 			g.prev = a
 			g.next = b
 			loc.append(g)
 
 	return loc
-
-def clean_gaps(ppr):
-	"""find and remove as many gaps as possible"""
-	ret = [0, 0]
-	repeat = True
-	while repeat:
-		repeat = False
-		gaps = find_gaps(ppr)
-		#search for matches to the other models in each gap
-		for g in gaps:
-			r = SeqRecord(g.extract(ppr.seq))
-			search = HMMER.hmmsearch(hmm=models, targets=r)
-			for m in search.matches:
-				if m.frame >= 0:
-					if not m.withinTarget():
-						continue
-					repeat = True
-					ret[0] = ret[0] + 1
-					#get the feature which refers to the match, offset to the ppr
-					#and add it to the ppr
-					ppr.features.append(m.asSeqFeature(mode='hmm', offset=-g.start))
-					break
-	ret[1] = len(gaps)
-	ppr.features = sorted(ppr.features, key = lambda(p): int(p.location.start))
-	return ret
-
-def clean_all(pprs):
-	ret = [0,0]
-	for ppr in pprs:
-		clean_gaps(ppr)
-		clean_length(ppr)	
-
-	return pprs
-
-def extract_test():
-	return simple_extract(utils.load_test())[0]
-
-#offsets of each model compared with the actual motif start
-offsets = {'PPR':-2, 'PPR_1':5, 'PPR_2':1, 'PPR_3':-1,}
-
-def clean_length(ppr):
-	"""Clean the length of the PPR motifs such that they start at the correct
-	location and so that small gaps are eliminated
-
-	adds the qualifier type as P, L or S
-	"""
-	
-	#move each motif start position to account for the model start offset
-	for f in ppr.features:
-		if f.type in offsets:
-			f.location = FeatureLocation(int(f.location.start)+3*offsets[f.type],
-					f.location.end, f.location.strand)
-
-	gaps = find_gaps(ppr, mingap=0, maxgap=10)
-	#move the end of each motif to close small gaps between it and its successor
-	for g in gaps:
-		g.prev.location = FeatureLocation(g.prev.location.start,
-				g.next.location.start, g.prev.strand)
-
-	for f in ppr.features:
-		if len(f) == 105: # 105 = 35 * 3
-			f.qualifiers['type'] = 'P'
-		elif len(f) < 105:
-			f.qualifiers['type'] = 'S'
-		elif len(f) > 105:
-			f.qualifiers['type'] = 'L'
-
-def print_PLS(pprs):
-	stats = {'P':0,'L':0,'S':0,}
-
-	for p in pprs:
-		for m in p.features:
-			if m.qualifiers.get('type', '') in stats:
-				stats[m.qualifiers['type']] += 1
-	
-	for k,v in stats.iteritems():
-		print '{} : {}'.format(k, '#'*v)
-
 
 def show_stats(pprs):
 	"""Display some useful stats about the PPRs"""

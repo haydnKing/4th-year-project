@@ -3,6 +3,7 @@
 import extract, utils, os.path
 from pyHMMER import HMMER, hmmfile
 from Bio import SeqIO, Alphabet
+from Bio.SeqRecord import SeqRecord
 
 from StringIO import StringIO
 
@@ -31,7 +32,7 @@ def update_models():
 
 def classify(pprs, family_annot="ppr_family", tail_annot='ppr_tail'):
 	"""Annotate each ppr with it's family type, (P,PLS,E,E+,DYW)"""
-	ct = extract.get_c_terminus(pprs)
+	ct = get_c_terminus(pprs)
 	(E, Ep, DYW) = utils.get_tail_models()
 
 	for i,c in enumerate(ct):
@@ -67,6 +68,25 @@ def classify(pprs, family_annot="ppr_family", tail_annot='ppr_tail'):
 			ppr.annotations[family_annot] = 'P'
 
 		ppr.annotations[tail_annot] = fmt
+
+def get_c_terminus(pprs):
+	"""Return a list of the c-termini of each protein"""
+	ret = []
+	if isinstance(pprs, SeqRecord):
+		pprs = [pprs,]
+
+	for i,ppr in enumerate(pprs):
+		last = 0
+		for motif in ppr.features:
+			if 'PPR' in motif.type and int(motif.location.end) > last:
+				last = int(motif.location.end)
+		#make sure the c-terminus is in frame
+		last = last - (last % 3)
+		#extract and translate the c-terminus
+		ret.append(SeqRecord(ppr.seq[last:].translate(), id=str(i), name="C-Terminus",
+			description="C-Terminus from PPR {}".format(i)))
+
+	return ret
 
 def print_hist(pprs):
 	"""Display a histogram of how many pprs are in each class"""
