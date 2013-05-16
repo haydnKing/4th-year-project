@@ -130,7 +130,7 @@ def annotate_binding_domains(pprs, plastid):
 	for i,ppr in enumerate(pprs):
 		stdout.write("\r{}/{}   ".format(i,len(pprs)))
 		stdout.flush()
-		feats = get_domains(ppr, plastid, 15.0, 2)
+		feats = get_domains(ppr, plastid, 10.0, 1)
 		for f in feats:
 			f.type = "PPR_{}".format(i)
 		plastid.features += feats

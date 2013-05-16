@@ -6,6 +6,7 @@ from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 
 import matplotlib.pyplot as plt
+from sys import stdout
 
 class Alignment:
 
@@ -282,6 +283,8 @@ def PSSM_exhaustive_search(PSSM, itarget):
 	return ret
 
 def non_max_suppression(odds):
+	if len(odds) == 1:
+		return [Alignment(0,odds[0],[]),]
 	ret = []
 	def is_max(i):
 		return odds[i] > odds[i-1] and odds[i] > odds[(i+1)%len(odds)]
@@ -303,6 +306,36 @@ def get_iseq(seq):
 
 def get_seq(iseq):
 	return "".join((int2base[i] for i in iseq))
+
+def profile(pssm, runs=10, gaps=1, background=[1,1,1,1], length=None):
+	out = []
+	for i in range(runs):
+		stdout.write('\r{} / {}   '.format(i+1, runs))
+		stdout.flush()
+		out += _random(pssm,gaps,background, length)
+	stdout.write('\r                          \r')
+	stdout.flush()
+	mean = sum(out) / float(len(out))
+	var  = sum([ (o-mean)*(o-mean) for o in out]) / float(len(out))
+	return (mean, var)
+
+import random
+def _random(pssm, gaps, background, l=None):
+	if not l:
+		l = len(pssm) + gaps
+	b = [x/float(sum(background)) for x in background]
+
+	#generate the sequence according to the background statistics
+	iseq = [0] * l
+	for i in range(l):
+		r = random.random()
+		for j in range(4):
+			if r < sum(b[0:j+1]):
+				break
+		iseq[i] = j
+
+	return [x.odds for x in PSSM_gapped_search(pssm, iseq, gaps)]
+
 
 base2int = {'A': 0, 'C': 1, 'G': 2, 'T': 3,}
 int2base = ('A','C','G','T')
