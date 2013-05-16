@@ -35,10 +35,6 @@ def classify(pprs, family_annot="ppr_family", tail_annot='ppr_tail'):
 	ct = get_c_terminus(pprs)
 	(E, Ep, DYW) = utils.get_tail_models()
 
-	for i,c in enumerate(ct):
-		if not isinstance(c.seq.alphabet, Alphabet.ProteinAlphabet):
-			print "ct[{}]: {}".format(i, str(c.seq))
-
 	h = HMMER.hmmsearch([E,Ep,DYW], ct)
 
 	#annotate each tail

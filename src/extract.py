@@ -89,19 +89,31 @@ def simple_extract(target, localization = None):
 
 	print "Got {} motifs, grouping...".format(len(motifs))
 	#group features by frame and locatiion
-	groups = group_motifs(motifs, max_gap=1000)
+	groups = group_motifs(motifs, max_gap=1500)
 
-	print "Got {} groups, extracting envelopes...".format(len(groups))
-	#extract the sequence envelope around each group
-	envelopes = [get_envelope(group, target, margin=1000) for group in groups]
+	pprs = []
+	dbg_env = []
+	
+	while groups:
+		print "Got {} groups, extracting envelopes...".format(len(groups))
+		#extract the sequence envelope around each group
+		envelopes = [get_envelope(group, target, margin=1000) for group in groups]
+		dbg_env += envelopes
 
-	print "Got {} envelopes, locating PPRs...".format(len(envelopes))
-	#locate the PPR within each group
-	pprs = [locate_ppr(envelope) for envelope in envelopes]
-	pprs = [p for p in pprs if p != None]
+		print "Got {} envelopes, locating PPRs...".format(len(envelopes))
+		#locate the PPR within each envelope
+		for envelope in envelopes:
+			ppr = locate_ppr(envelope)
+			if ppr:
+				pprs.append(ppr)
+
+		#look for overlapping pprs
+		groups = remove_overlaps(pprs)
+		print "{} conflicts".format(len(groups))
+
 	pprs = [add_source(p, target) for p in pprs]
-
-	print "Got {} PPRs, cleaning...".format(len(groups))
+	
+	print "Got {} PPRs, cleaning...".format(len(pprs))
 	#clean the gaps between features
 	pprs = [clean_gaps(ppr) for ppr in pprs]
 
@@ -124,7 +136,7 @@ def simple_extract(target, localization = None):
 			qualifiers = {
 				'name':"env_{}".format(i),
 			}) 
-				for i,p in enumerate(envelopes)]
+				for i,p in enumerate(dbg_env)]
 	feats += [SeqFeature(FeatureLocation(
 			p.annotations['src_from'], 
 			p.annotations['src_to'],
@@ -134,45 +146,60 @@ def simple_extract(target, localization = None):
 				'name':"ppr_{}".format(i),
 			}) 
 				for i,p in enumerate(pprs)]
+	for p in pprs:
+		feats += [SeqFeature(FeatureLocation(
+			p.annotations['src_from'] + m.location.start
+				if p.annotations['src_strand'] > 0 else
+			p.annotations['src_to'] - m.location.end, 
+			p.annotations['src_from'] + m.location.end
+				if p.annotations['src_strand'] > 0 else
+			p.annotations['src_to'] - m.location.start,
+			p.annotations['src_strand']),
+			"aPPR") 		
+					for m in p.features]
 	feats += motifs
 	target.features = feats
-	print len(target.features)
 	SeqIO.write(target, "simple_extract.gb", 'genbank')
 
 	#return a list of nicely presented PPRs
 	return pprs
 
 def group_motifs(motifs, max_gap):
-	"""Given a list of PPR motifs, group them by frame and then by location such
-	the the maximum gap within a group is max_gap"""
+	"""Given a list of PPR motifs, group them by strand then by location such
+	that the maximum gap within a group is max_gap"""
 	def distance(a,b):
 		"""return the minimum distance between to seqfeatures"""
 		return min(	abs(a.location.start - b.location.end),
 								abs(b.location.start - a.location.end))
 
-	by_frame = {1: [], 2: [], 3: [], -1: [], -2: [], -3: [],}
+	strands = {1: [], -1: [],}
 	for motif in motifs:
-		by_frame[motif.qualifiers['frame']].append(motif)
+		if motif.qualifiers['frame'] > 0:
+			strands[1].append(motif)
+		else:
+			strands[-1].append(motif)
 
 	groups = []
 	#for each frame
-	for frame in by_frame.itervalues():
+	for strand in strands.itervalues():
 		#sort by start location
-		frame.sort(key=lambda m: m.location.start)
-		#while there are still motifs to be grouped
-		while frame:
-			#begin a new group
-			current_group = [frame[0]]
-			#find each motif within range
-			for motif in frame[1:]:
-				#we put these in ascending order, so the nearest is the last
-				if distance(motif,current_group[-1]) < max_gap:
-					current_group.append(motif)
-			#remove each item in the current group from the frame
-			for m in current_group:
-				frame.remove(m)
-			#add current group to the list of groups
-			groups.append(current_group)
+		strand.sort(key=lambda m: m.location.start)
+
+		#for each motif
+		current_group = []
+		for motif in strand:
+			#if the group is empty, initiate it
+			if not current_group:
+				current_group.append(motif)
+				continue
+
+			#if we're within the distance limit, add to the group
+			if distance(motif, current_group[-1]) < max_gap:
+				current_group.append(motif)
+			#otherwise start a new one
+			else:
+				groups.append(current_group)
+				current_group = [motif,]
 
 	return groups
 
@@ -185,54 +212,63 @@ def get_envelope(group, target, margin):
 	group.sort(key=lambda k: k.location.start)
 	start = max(0, group[0].location.start - margin)
 	end   = min(len(target), group[-1].location.end + margin)
-	frame = group[0].qualifiers['frame']
+	strand = group[0].location.strand
 
 	seq = target.seq[start:end]
-	if frame < 0:
+	if strand < 0:
 		seq = seq.reverse_complement()
 	seq.alphabet=generic_dna
 
 	return SeqRecord(seq, id='env', name='PPR_env', description='PPR_envelope',
 			annotations = {'src_from': start, 'src_to': end, 
-				'src_strand': 1 if (frame > 0) else -1})
+				'src_strand': strand})
 
 def locate_ppr(envelope):
 	"""Find and annotate the protein within"""
+	debug = (envelope.annotations['src_from'] > 4961000 and
+					 envelope.annotations['src_to'] < 4968000)
+	if debug:
+		print envelope
 	#find all the PPR motifs
 	search = HMMER.hmmsearch(hmm = models[3], targets = envelope)
 	motifs = search.getFeatures(envelope)
 
-	#We're only interested in what's in frame 1 - that's what the envelope is
-	#centered on
-	frame = 1
-
-	#check if there were any other frames, and drop them
-	l = len(motifs)
-	motifs = [m for m in motifs if m.qualifiers['frame']==frame]
-	if len(motifs) < l:
-		print ("WARNING: dropping some PPR motifs after finding multiple frames " +
-				 "in the same envelope.")
-
 	#A ppr must contain 2 or more PPR motifs
 	if len(motifs) < 2:
 		return None
+
+	#check if there were any other frames, and warn about introns
+	if len([m for m in motifs if m.qualifiers['frame'] != 1]) != 0:
+		print ("WARNING: May have found a PPR with introns")
 	
 	#order the motifs
 	motifs.sort(key=lambda m: m.location.start)
 	#find start codon
 	start = motifs[0].location.start
+	os = start
 	while start > 0 and str(envelope.seq[start:start+3]).lower() != "atg":
+		if debug:
+			print "\t{}) \'{}\'".format(start, str(envelope.seq[start:start+3]))
 		start -= 3
 	if start < 0:
 		start = 0
+	if debug:
+		print "Start codon \'{}\' at {}".format(str(envelope.seq[start:start+3]),
+				start-os)
 
 	#find stop codon
 	stop = motifs[-1].location.end
+	os = stop
 	while stop < len(envelope) and (
 		str(envelope.seq[stop:stop+3]).lower() not in ["tag", "tga", "taa"]):
+		if debug:
+			print "\t{}) \'{}\'".format(stop, str(envelope.seq[stop:stop+3]))
 		stop += 3
 	if stop > len(envelope):
 		stop = len(envelope)
+	if debug:
+		print "Stop codon \'{}\' at {}".format(str(envelope.seq[stop:stop+3]),
+				stop-os)
 
 	#move the motifs
 	for m in motifs:
@@ -255,6 +291,60 @@ def locate_ppr(envelope):
 				"src_to"		: src_to,
 				"src_strand": envelope.annotations['src_strand'],
 			})
+
+def remove_overlaps(pprs):
+	"""Remove any overlapping PPRs from pprs and return their groups"""
+	def range_check(a,b,c):
+		"""SUE ME!!!!"""
+		return c >= a and c <= b
+	
+	def overlaps(a,b):
+		"""return true if a overlaps with b on the source"""
+		if a.annotations['src_strand'] != b.annotations['src_strand']:
+			return False
+
+		a_from = a.annotations['src_from']
+		a_to   = a.annotations['src_to']
+		b_from = b.annotations['src_from']
+		b_to   = b.annotations['src_to']
+		return (range_check(a_from, a_to, b_from) or
+						range_check(a_from, a_to, b_to) or
+						range_check(b_from, b_to, a_from))
+
+	pprs.sort(key=lambda p: p.annotations['src_from'])
+
+	conflicts = []
+	current_conflict = []
+	last_ppr = None
+	for ppr in pprs:
+		if current_conflict:
+			if sum([overlaps(ppr, c) for c in current_conflict]) > 0:
+				current_conflict.append(ppr)
+			else:
+				conflicts.append(current_conflict)
+				current_conflict = None
+				last_ppr = ppr
+		elif last_ppr and overlaps(ppr, last_ppr):
+			current_conflict = [last_ppr, ppr]
+			last_ppr = None
+		else:
+			last_ppr = ppr
+
+	#remove all conflicting PPRs from pprs
+	for conflict in conflicts:
+		for ppr in conflict:
+			pprs.remove(ppr)
+
+	#return groups from each PPR
+	groups = []
+	for conflict in conflicts:
+		groups.append([SeqFeature(FeatureLocation(
+			min([ppr.annotations['src_from'] for ppr in conflict]),
+			max([ppr.annotations['src_to'] for ppr in conflict]),
+			conflict[0].annotations['src_strand'])),]
+		)
+
+	return groups
 
 def add_source(ppr, source):
 	"""Add source metadata to the ppr"""
