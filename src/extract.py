@@ -87,9 +87,14 @@ def simple_extract(target, localization = None):
 	#get features for each motif
 	motifs = search.getFeatures(target)
 
+	target.features = motifs
+	target.name = target.name[0:16]
+	SeqIO.write(target, "test.gb", 'genbank')
+
 	print "Got {} motifs, grouping...".format(len(motifs))
 	#group features by frame and locatiion
 	groups = group_motifs(motifs, max_gap=1500)
+	print "Got {} groups, extracting envelopes...".format(len(groups))
 
 	pprs = []
 	dbg_env = []
@@ -153,7 +158,6 @@ def group_motifs(motifs, max_gap):
 	for strand in strands.itervalues():
 		#sort by start location
 		strand.sort(key=lambda m: m.location.start)
-
 		#for each motif
 		current_group = []
 		for motif in strand:
@@ -169,6 +173,9 @@ def group_motifs(motifs, max_gap):
 			else:
 				groups.append(current_group)
 				current_group = [motif,]
+
+		if current_group:
+			groups.append(current_group)
 
 	return groups
 
