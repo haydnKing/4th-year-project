@@ -87,10 +87,6 @@ def simple_extract(target, localization = None):
 	#get features for each motif
 	motifs = search.getFeatures(target)
 
-	target.features = motifs
-	target.name = target.name[0:16]
-	SeqIO.write(target, "test.gb", 'genbank')
-
 	print "Got {} motifs, grouping...".format(len(motifs))
 	#group features by frame and locatiion
 	groups = group_motifs(motifs, max_gap=1500)
