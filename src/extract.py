@@ -109,7 +109,10 @@ def simple_extract(target, localization = None):
 
 		#look for overlapping pprs
 		groups = remove_overlaps(pprs)
-		print "{} conflicts".format(len(groups))
+		ol = len(groups)
+		print "{} conflicts".format(ol)
+		groups += remove_overgrown(pprs, 500)
+		print "{} overgrown PPRs".format(len(groups) - ol)
 
 	pprs = [add_source(p, target) for p in pprs]
 	
@@ -201,11 +204,14 @@ def locate_ppr(envelope):
 	
 	#order the motifs
 	motifs.sort(key=lambda m: m.location.start)
+	known_start = True
+	known_stop = True
 	#find start codon
 	start = motifs[0].location.start
 	while start > 0 and str(envelope.seq[start:start+3]).lower() != "atg":
 		start -= 3
 	if start < 0:
+		known_start = False
 		start = 0
 
 	#find stop codon
@@ -214,6 +220,7 @@ def locate_ppr(envelope):
 		str(envelope.seq[stop:stop+3]).lower() not in ["tag", "tga", "taa"]):
 		stop += 3
 	if stop > len(envelope):
+		known_stop = False
 		stop = len(envelope)
 
 	#move the motifs
@@ -229,14 +236,20 @@ def locate_ppr(envelope):
 		src_from = envelope.annotations['src_to'] - stop
 		src_to   = envelope.annotations['src_to'] - start
 
-	#return a record
-	return SeqRecord(envelope.seq[start:stop],
-			features = motifs,
-			annotations = {
+	annotations = {
 				"src_from"	: src_from,
 				"src_to"		: src_to,
 				"src_strand": envelope.annotations['src_strand'],
-			})
+	}
+	if not known_stop:
+		annotations['no_stop'] = True
+	if not known_start:
+		annotations['no_start'] = True
+
+	#return a record
+	return SeqRecord(envelope.seq[start:stop],
+			features = motifs,
+			annotations = annotations)
 
 def remove_overlaps(pprs):
 	"""Remove any overlapping PPRs from pprs and return their groups"""
@@ -288,6 +301,35 @@ def remove_overlaps(pprs):
 			min([ppr.annotations['src_from'] for ppr in conflict]),
 			max([ppr.annotations['src_to'] for ppr in conflict]),
 			conflict[0].annotations['src_strand'])),]
+		)
+
+	return groups
+
+def remove_overgrown(pprs, margin):
+	"""Remove PPRs which turned out to be too large for the envelope"""
+	overgrown = []
+
+	#find pprs which are missing start or stop codons due to not having enough
+	#space
+	for p in pprs:
+		if (p.annotations.has_key('no_start') and 
+				p.features[0].location.start < margin):
+			overgrown.append(p)
+		elif (p.annotations.has_key('no_stop') and
+				(len(p) - p.features[-1].location.end) < margin):
+			overgrown.append(p)
+	
+	#remove the from pprs
+	for p in overgrown:
+		pprs.remove(p)
+	
+	#return groups from each PPR
+	groups = []
+	for ppr in overgrown:
+		groups.append([SeqFeature(FeatureLocation(
+			ppr.annotations['src_from'],
+			ppr.annotations['src_to'],
+			ppr.annotations['src_strand'])),]
 		)
 
 	return groups
