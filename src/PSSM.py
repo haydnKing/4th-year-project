@@ -1,6 +1,6 @@
 """Design a PSSM matrix and search for it in the target sequence"""
 
-from math import log, exp
+from math import log, exp, sqrt, pi
 from utils import pairwise
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
@@ -15,10 +15,15 @@ class Alignment:
 		self.odds = odds
 		self.gaps = gaps
 
-	def toSeqFeature(self, pssm):
+	def toSeqFeature(self, pssm, reflect=None):
 		l = len(pssm) + len(self.gaps)
-		return SeqFeature(FeatureLocation(self.pos, self.pos+l, strand=1), 
+		if not reflect:
+			return SeqFeature(FeatureLocation(self.pos, self.pos+l, strand=1), 
 					type="PSSM", qualifiers={"odds":self.odds})
+		else:
+			return SeqFeature(FeatureLocation(reflect-self.pos-l, reflect-self.pos,
+				strand=-1),
+				type = "PSSM", qualifiers={"odds":self.odds})
 
 	def __lt__(self, other):
 		return self.odds < other.odds
@@ -32,27 +37,23 @@ class Alignment:
 	def __ge__(self, other):
 		return self.odds >= other.odds
 
-def search(ppr, target, plot=False, gaps=1):
+def search(ppr, target, reverse=True, gaps=1, show_stats=False):
 	itarget = get_iseq(target)
 	bg = get_background(itarget)
 
 	pssm = PSSM_build(ppr, bg)
 
 	alignments = PSSM_gapped_search(pssm, itarget, gaps)
+	ralignments = PSSM_gapped_search(pssm, ireverse_complement(itarget), gaps)
 
-	if plot:
-		display_alignments(pssm, itarget, alignments[0:10])
-		
-		p = [i.pos for i in alignments]
-		o = [i.odds for i in alignments]
-		plt.clf()
-		plt.subplot(211)
-		plt.plot(p,o, 'r x')
-		plt.subplot(212)
-		plt.hist(o, bins=20)
-		plt.show()
+	sf  = [x.toSeqFeature(pssm) for x in alignments]
+	sf += [x.toSeqFeature(pssm,reflect=len(itarget)) for x in ralignments]
+	sf.sort(key=lambda f: -f.qualifiers['odds'])
 
-	return [x.toSeqFeature(pssm) for x in alignments]
+	if show_stats:
+		display_results(pssm, sf, len(itarget))
+
+	return sf
 
 def as_string(pssm):
 	return "\n".join([("{:3.1f} "*4).format(*i) for i in pssm])
@@ -97,6 +98,27 @@ def str_alignment(pssm, iseq, aln):
 			"".join(['+' if i > 0 else '-' for i in odds]), 
 			get_seq(iseq))
 	#odds.sort(key=lambda o: -o[1])
+
+def display_results(pssm, features, target_length):
+	"""Show histograms of the output"""
+	def linspace(low, high, num):
+		step = float(high - low) / float(num)
+		space = [0]*num
+		for i in range(num):
+			space[i] = low + step*float(i)
+		return space
+	
+	r = [f.qualifiers['odds'] for f in features]
+	(mean, var) = profile(pssm, runs=3, length=target_length)
+	x = linspace(min(r), max(r), 100)
+	y = [(1 / (sqrt(2 * pi * var))) * 
+				exp(-0.5 * (_x - mean)*(_x-mean) / var) for _x in x]
+
+	plt.clf()
+	plt.hold(True)
+	plt.plot(x,y)
+	plt.hist(r, 20, normed=True)
+	plt.show()
 
 def get_code(ppr):
 	"""Return the amino acids at the 1 and 6 positions
@@ -307,17 +329,18 @@ def get_iseq(seq):
 def get_seq(iseq):
 	return "".join((int2base[i] for i in iseq))
 
-def profile(pssm, runs=10, gaps=1, background=[1,1,1,1], length=None):
+def profile(pssm, runs=3, gaps=1, background=[1,1,1,1], length=None):
 	out = []
 	for i in range(runs):
-		stdout.write('\r{} / {}   '.format(i+1, runs))
+		stdout.write('\rProfile: {} / {}   '.format(i+1, runs))
 		stdout.flush()
-		out += _random(pssm,gaps,background, length)
+		out += _random(pssm,gaps,background,length)
 	stdout.write('\r                          \r')
 	stdout.flush()
 	mean = sum(out) / float(len(out))
 	var  = sum([ (o-mean)*(o-mean) for o in out]) / float(len(out))
 	return (mean, var)
+
 
 import random
 def _random(pssm, gaps, background, l=None):
@@ -334,11 +357,17 @@ def _random(pssm, gaps, background, l=None):
 				break
 		iseq[i] = j
 
-	return [x.odds for x in PSSM_gapped_search(pssm, iseq, gaps)]
+	alignments = PSSM_gapped_search(pssm, iseq, gaps)
+	alignments += PSSM_gapped_search(pssm, ireverse_complement(iseq), gaps)
 
+	return [x.odds for x in alignments]
+
+def ireverse_complement(iseq):
+	return [icomplement[b] for b in reversed(iseq)]
 
 base2int = {'A': 0, 'C': 1, 'G': 2, 'T': 3,}
 int2base = ('A','C','G','T')
+icomplement = (3, 2, 1, 0)
 
 equal = (1, 1, 1, 1)
 log_equal = tuple([log(0.25),]*4)

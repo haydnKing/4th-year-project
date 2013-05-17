@@ -342,7 +342,7 @@ def add_source(ppr, source):
 		'src_desc': source.description,
 		})
 	ppr.id = "PPR"
-	ppr.name = "PPR Protein"
+	ppr.name = "PPR_Protein"
 	ppr.description = "PPR Protein"
 	return ppr
 

@@ -111,7 +111,7 @@ def group_stats(groups):
 			len(groups), min(l), max(l), sum(l)/float(len(l)))
 
 def annotate_all(genome_name='Arabidopsis_thaliana',plastid_name='NC_000932'):
-	pprs = [p for p in PPR.load_records(genome_name) if (len(p.features) >= 15 
+	pprs = [p for p in PPR.load_records(genome_name) if (len(p.features) >= 20 
 					and p.annotations.get('localization','').upper() == 'C')]
 
 
@@ -139,14 +139,7 @@ def annotate_binding_domains(pprs, plastid):
 		
 def get_domains(ppr, plastid, percentile=10.0, gaps=1):
 	"""Get a list of putative binding domains in the plastid"""
-	a = PSSM.search(ppr,plastid,gaps=gaps)
-	b = PSSM.search(ppr,plastid.reverse_complement(),gaps=gaps)
-	for f in b:
-		f.location = FeatureLocation(len(plastid)-f.location.end,
-																 len(plastid)-f.location.start, strand=-1)
-	
-	feats = a + b
-	feats.sort(key=lambda c: -c.qualifiers['odds'])
+	feats = PSSM.search(ppr,plastid,gaps=gaps,show_stats=True)
 
 	top = feats[0].qualifiers['odds']
 	bottom = feats[-1].qualifiers['odds']
