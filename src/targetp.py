@@ -19,6 +19,9 @@ def targetp(recs, annotation='target'):
 	"""
 	if isinstance(recs, SeqRecord):
 		recs = [recs,]
+	
+	if not recs:
+		return
 		
 	#replace id and desc to be distinct
 	data = []
