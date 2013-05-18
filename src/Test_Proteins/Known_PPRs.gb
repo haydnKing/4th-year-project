@@ -7,36 +7,42 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
-     PPR_3           103..207
-                     /frame=3
-                     /type="P"
-     PPR_3           322..426
-                     /frame=3
-                     /type="P"
-     PPR_3           415..519
-                     /frame=3
-                     /type="P"
-     PPR_3           508..612
-                     /frame=3
-                     /type="P"
-     PPR_3           718..822
-                     /frame=3
-                     /type="P"
-     PPR_3           811..915
-                     /frame=3
-                     /type="P"
-     PPR_3           916..1023
-                     /frame=3
-                     /type="L"
-     PPR_3           1024..1119
+     PPR_3           106..207
                      /frame=3
                      /type="S"
-     PPR_3           1120..1224
+     PPR_3           202..303
+                     /frame
+                     /type="S"
+     PPR_3           325..417
+                     /frame=3
+                     /type="S"
+     PPR_3           418..510
+                     /frame=3
+                     /type="S"
+     PPR_3           511..612
+                     /frame=3
+                     /type="S"
+     PPR_3           607..708
+                     /frame
+                     /type="S"
+     PPR_3           721..813
+                     /frame=3
+                     /type="S"
+     PPR_3           814..918
                      /frame=3
                      /type="P"
-     PPR_3           1225..1329
+     PPR_3           919..1026
+                     /frame=3
+                     /type="L"
+     PPR_3           1027..1122
+                     /frame=3
+                     /type="S"
+     PPR_3           1123..1227
                      /frame=3
                      /type="P"
+     PPR_3           1228..1329
+                     /frame=3
+                     /type="S"
 ORIGIN
         1 atgggtctcc ttcccgtcgt cggaattact tcgccggcgc tcatcaccca caaaaatcac
        61 gccaatccaa agatacagag acataatcaa tctacctccg agaccactgt ttcatggact
@@ -73,51 +79,60 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
-     PPR_3           100..204
+     PPR_3           103..204
+                     /frame=1
+                     /type="S"
+     PPR_3           622..714
+                     /frame=1
+                     /type="S"
+     PPR_3           715..816
+                     /frame=1
+                     /type="S"
+     PPR_3           820..936
+                     /frame
+                     /type="L"
+     PPR_3           925..1017
+                     /frame=1
+                     /type="S"
+     PPR_3           1018..1122
                      /frame=1
                      /type="P"
-     PPR_3           619..723
+     PPR_3           1123..1227
                      /frame=1
                      /type="P"
-     PPR_3           712..816
+     PPR_3           1228..1320
+                     /frame=1
+                     /type="S"
+     PPR_3           1321..1425
                      /frame=1
                      /type="P"
-     PPR_3           922..1026
+     PPR_3           1426..1530
                      /frame=1
                      /type="P"
-     PPR_3           1015..1119
+     PPR_3           1531..1632
+                     /frame=1
+                     /type="S"
+     PPR_3           1636..1737
+                     /frame
+                     /type="S"
+     PPR_3           1744..1836
+                     /frame=1
+                     /type="S"
+     PPR_3           1837..1941
                      /frame=1
                      /type="P"
-     PPR_3           1120..1224
-                     /frame=1
-                     /type="P"
-     PPR_3           1225..1329
-                     /frame=1
-                     /type="P"
-     PPR_3           1318..1422
-                     /frame=1
-                     /type="P"
-     PPR_3           1423..1527
-                     /frame=1
-                     /type="P"
-     PPR_3           1528..1632
-                     /frame=1
-                     /type="P"
-     PPR_3           1741..1845
-                     /frame=1
-                     /type="P"
-     PPR_3           1834..1938
-                     /frame=1
-                     /type="P"
-     PPR_3           1939..2046
+     PPR_3           1942..2049
                      /frame=1
                      /type="L"
-     PPR_3           2047..2151
+     PPR_3           2050..2151
                      /frame=1
-                     /type="P"
-     PPR_3           2245..2349
+                     /type="S"
+     PPR_3           2134..2235
+                     /frame
+                     /type="S"
+     PPR_3           2248..2349
                      /frame=1
-                     /type="P"
+                     /type="S"
 ORIGIN
         1 atggcttctc ttcctttcaa cactatcccg aataaagttc cattttcagt atcatcgaaa
        61 ccttcttcta aacaccacga tgaacaagct cattctcctt cttccacatc ttactttcat
@@ -171,45 +186,51 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
-     PPR_3           202..306
+     PPR_3           205..297
+                     /frame=1
+                     /type="S"
+     PPR_3           298..399
+                     /frame=1
+                     /type="S"
+     PPR_3           403..504
+                     /frame
+                     /type="S"
+     PPR_3           508..600
+                     /frame=1
+                     /type="S"
+     PPR_3           601..702
+                     /frame=1
+                     /type="S"
+     PPR_3           811..903
+                     /frame=1
+                     /type="S"
+     PPR_3           904..1005
+                     /frame=1
+                     /type="S"
+     PPR_3           1009..1110
+                     /frame
+                     /type="S"
+     PPR_3           1114..1206
+                     /frame=1
+                     /type="S"
+     PPR_3           1207..1311
                      /frame=1
                      /type="P"
-     PPR_3           295..399
+     PPR_3           1312..1416
                      /frame=1
                      /type="P"
-     PPR_3           505..609
+     PPR_3           1417..1509
+                     /frame=1
+                     /type="S"
+     PPR_3           1510..1614
                      /frame=1
                      /type="P"
-     PPR_3           598..702
-                     /frame=1
-                     /type="P"
-     PPR_3           808..912
-                     /frame=1
-                     /type="P"
-     PPR_3           901..1005
-                     /frame=1
-                     /type="P"
-     PPR_3           1111..1215
-                     /frame=1
-                     /type="P"
-     PPR_3           1204..1308
-                     /frame=1
-                     /type="P"
-     PPR_3           1309..1413
-                     /frame=1
-                     /type="P"
-     PPR_3           1414..1518
-                     /frame=1
-                     /type="P"
-     PPR_3           1507..1611
-                     /frame=1
-                     /type="P"
-     PPR_3           1612..1719
+     PPR_3           1615..1722
                      /frame=1
                      /type="L"
-     PPR_3           1720..1824
+     PPR_3           1723..1824
                      /frame=1
-                     /type="P"
+                     /type="S"
 ORIGIN
         1 atgagctcac aattggtgca gttctctacc gttcctcaaa tccctaatcc cccgtctcgc
        61 catcgtcact ttctctccga gagaaattac attccggcta atgtctatga gcatccagcg
@@ -262,36 +283,39 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
-     PPR_3           157..264
-                     /frame=1
-                     /type="L"
-     PPR_3           373..477
+     PPR_3           160..264
                      /frame=1
                      /type="P"
-     PPR_3           466..567
+     PPR_3           271..372
+                     /frame
+                     /type="S"
+     PPR_3           376..468
                      /frame=1
                      /type="S"
-     PPR_3           568..681
-                     /frame=1
-                     /type="L"
-     PPR_3           682..786
-                     /frame=1
-                     /type="P"
-     PPR_3           775..885
-                     /frame=1
-                     /type="L"
-     PPR_3           886..993
-                     /frame=1
-                     /type="L"
-     PPR_3           994..1089
+     PPR_3           469..570
                      /frame=1
                      /type="S"
-     PPR_3           1090..1194
+     PPR_3           571..672
                      /frame=1
-                     /type="P"
-     PPR_3           1216..1320
+                     /type="S"
+     PPR_3           685..777
                      /frame=1
-                     /type="P"
+                     /type="S"
+     PPR_3           778..888
+                     /frame=1
+                     /type="L"
+     PPR_3           889..996
+                     /frame=1
+                     /type="L"
+     PPR_3           997..1092
+                     /frame=1
+                     /type="S"
+     PPR_3           1093..1194
+                     /frame=1
+                     /type="S"
+     PPR_3           1219..1320
+                     /frame=1
+                     /type="S"
 ORIGIN
         1 atgtctcagc tcaagcaact tcacgccttc actctccgta ctacttaccc tgaggaaccc
        61 gcaactctgt ttctctacgg caaaatcctc cagctctctt cctccttctc cgacgtcaat
@@ -332,54 +356,57 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
-     PPR_3           1..105
+     PPR_3           4..108
                      /frame=1
                      /type="P"
-     PPR_3           106..210
-                     /frame=1
-                     /type="P"
-     PPR_3           232..336
-                     /frame=1
-                     /type="P"
-     PPR_3           337..441
-                     /frame=1
-                     /type="P"
-     PPR_3           442..546
-                     /frame=1
-                     /type="P"
-     PPR_3           535..633
+     PPR_3           109..210
                      /frame=1
                      /type="S"
-     PPR_3           634..741
+     PPR_3           235..339
+                     /frame=1
+                     /type="P"
+     PPR_3           340..444
+                     /frame=1
+                     /type="P"
+     PPR_3           445..537
+                     /frame=1
+                     /type="S"
+     PPR_3           538..636
+                     /frame=1
+                     /type="S"
+     PPR_3           637..732
+                     /frame=1
+                     /type="S"
+     PPR_3           733..825
+                     /frame=1
+                     /type="S"
+     PPR_3           826..918
+                     /frame=1
+                     /type="S"
+     PPR_3           919..1020
+                     /frame=1
+                     /type="S"
+     PPR_3           1027..1128
+                     /frame
+                     /type="S"
+     PPR_3           1132..1224
+                     /frame=1
+                     /type="S"
+     PPR_3           1225..1329
+                     /frame=1
+                     /type="P"
+     PPR_3           1330..1437
                      /frame=1
                      /type="L"
-     PPR_3           730..834
-                     /frame=1
-                     /type="P"
-     PPR_3           823..927
-                     /frame=1
-                     /type="P"
-     PPR_3           916..1020
-                     /frame=1
-                     /type="P"
-     PPR_3           1129..1233
-                     /frame=1
-                     /type="P"
-     PPR_3           1222..1326
-                     /frame=1
-                     /type="P"
-     PPR_3           1327..1434
-                     /frame=1
-                     /type="L"
-     PPR_3           1435..1530
+     PPR_3           1438..1533
                      /frame=1
                      /type="S"
-     PPR_3           1531..1632
+     PPR_3           1534..1635
                      /frame=1
                      /type="S"
-     PPR_3           1633..1737
+     PPR_3           1636..1737
                      /frame=1
-                     /type="P"
+                     /type="S"
 ORIGIN
         1 atggagtgtt cgatttcatc caccattcat gtccttggaa gctgcaaaac ttcagatgac
        61 gtgaaccaaa tccacgggcg attgattaag acgggaatca tcaaaaactc aaatctcact
@@ -422,39 +449,42 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
-     PPR_3           13..123
-                     /frame=2
-                     /type="L"
-     PPR_3           112..225
-                     /frame=2
-                     /type="L"
-     PPR_3           226..330
-                     /frame=2
-                     /type="P"
-     PPR_3           466..570
-                     /frame=2
-                     /type="P"
-     PPR_3           559..663
-                     /frame=2
-                     /type="P"
-     PPR_3           769..873
-                     /frame=2
-                     /type="P"
-     PPR_3           862..966
-                     /frame=2
-                     /type="P"
-     PPR_3           967..1074
-                     /frame=2
-                     /type="L"
-     PPR_3           1075..1170
+     PPR_3           16..114
                      /frame=2
                      /type="S"
-     PPR_3           1171..1272
+     PPR_3           115..228
+                     /frame=2
+                     /type="L"
+     PPR_3           229..330
                      /frame=2
                      /type="S"
-     PPR_3           1273..1377
+     PPR_3           469..561
+                     /frame=2
+                     /type="S"
+     PPR_3           562..663
+                     /frame=2
+                     /type="S"
+     PPR_3           667..768
+                     /frame
+                     /type="S"
+     PPR_3           772..864
+                     /frame=2
+                     /type="S"
+     PPR_3           865..969
                      /frame=2
                      /type="P"
+     PPR_3           970..1077
+                     /frame=2
+                     /type="L"
+     PPR_3           1078..1173
+                     /frame=2
+                     /type="S"
+     PPR_3           1174..1275
+                     /frame=2
+                     /type="S"
+     PPR_3           1276..1377
+                     /frame=2
+                     /type="S"
 ORIGIN
         1 atgcgagaca ctctcgccgc cgcagagatt ctccgattct gtgctacctc cgatctccac
        61 caccgtgacc ttgactacgc acataagatc tttaatcaaa tgcctcaacg aaattgcttc
@@ -496,42 +526,42 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
-     PPR_3           271..375
+     PPR_3           274..366
+                     /frame=1
+                     /type="S"
+     PPR_3           367..471
                      /frame=1
                      /type="P"
-     PPR_3           364..468
+     PPR_3           472..564
+                     /frame=1
+                     /type="S"
+     PPR_3           565..657
+                     /frame=1
+                     /type="S"
+     PPR_3           658..762
                      /frame=1
                      /type="P"
-     PPR_3           469..573
+     PPR_3           763..867
                      /frame=1
                      /type="P"
-     PPR_3           562..666
+     PPR_3           868..960
+                     /frame=1
+                     /type="S"
+     PPR_3           961..1065
                      /frame=1
                      /type="P"
-     PPR_3           655..759
-                     /frame=1
-                     /type="P"
-     PPR_3           760..864
-                     /frame=1
-                     /type="P"
-     PPR_3           865..969
-                     /frame=1
-                     /type="P"
-     PPR_3           958..1062
-                     /frame=1
-                     /type="P"
-     PPR_3           1063..1170
+     PPR_3           1066..1173
                      /frame=1
                      /type="L"
-     PPR_3           1171..1275
+     PPR_3           1174..1239
                      /frame=1
-                     /type="P"
-     PPR_3           1237..1341
+                     /type="S"
+     PPR_3           1240..1341
                      /frame=1
-                     /type="P"
-     PPR_3           1369..1473
+                     /type="S"
+     PPR_3           1372..1473
                      /frame=1
-                     /type="P"
+                     /type="S"
 ORIGIN
         1 atgatttctt ccttggcagc gatcaccgga gggccttcaa ctttccggcg tgatcccgat
        61 tcaaacactc tcaggctttc acgcaggaaa acattaatct ctgtattacg aagctgcaag
@@ -571,51 +601,57 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
-     PPR_3           76..186
+     PPR_3           79..189
                      /frame=1
                      /type="L"
-     PPR_3           187..291
+     PPR_3           190..282
+                     /frame=1
+                     /type="S"
+     PPR_3           283..384
+                     /frame=1
+                     /type="S"
+     PPR_3           391..492
+                     /frame
+                     /type="S"
+     PPR_3           496..588
+                     /frame=1
+                     /type="S"
+     PPR_3           589..693
                      /frame=1
                      /type="P"
-     PPR_3           280..384
+     PPR_3           694..798
                      /frame=1
                      /type="P"
-     PPR_3           493..597
+     PPR_3           799..891
                      /frame=1
-                     /type="P"
-     PPR_3           586..690
+                     /type="S"
+     PPR_3           892..984
                      /frame=1
-                     /type="P"
-     PPR_3           691..795
-                     /frame=1
-                     /type="P"
-     PPR_3           796..900
-                     /frame=1
-                     /type="P"
-     PPR_3           889..993
-                     /frame=1
-                     /type="P"
-     PPR_3           982..1089
+                     /type="S"
+     PPR_3           985..1092
                      /frame=1
                      /type="L"
-     PPR_3           1090..1194
+     PPR_3           1093..1197
                      /frame=1
                      /type="P"
-     PPR_3           1195..1299
+     PPR_3           1198..1290
+                     /frame=1
+                     /type="S"
+     PPR_3           1291..1395
                      /frame=1
                      /type="P"
-     PPR_3           1288..1392
-                     /frame=1
-                     /type="P"
-     PPR_3           1393..1500
+     PPR_3           1396..1503
                      /frame=1
                      /type="L"
-     PPR_3           1501..1605
+     PPR_3           1504..1605
                      /frame=1
-                     /type="P"
-     PPR_3           1699..1803
+                     /type="S"
+     PPR_3           1600..1701
+                     /frame
+                     /type="S"
+     PPR_3           1702..1803
                      /frame=1
-                     /type="P"
+                     /type="S"
 ORIGIN
         1 atggctatct tctccacagc acaacctctc tctctgccac gtcatccaaa cttctccaat
        61 ccgaatcaac caactaccaa taacgaacgc tcccgccaca tttctctcat cgaacgatgt
@@ -664,51 +700,54 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
-     PPR_3           127..231
+     PPR_3           130..234
                      /frame=1
                      /type="P"
-     PPR_3           232..336
+     PPR_3           235..339
                      /frame=1
                      /type="P"
-     PPR_3           337..441
+     PPR_3           340..432
+                     /frame=1
+                     /type="S"
+     PPR_3           433..525
+                     /frame=1
+                     /type="S"
+     PPR_3           526..630
                      /frame=1
                      /type="P"
-     PPR_3           430..534
+     PPR_3           631..735
                      /frame=1
                      /type="P"
-     PPR_3           523..627
+     PPR_3           736..828
+                     /frame=1
+                     /type="S"
+     PPR_3           829..930
+                     /frame=1
+                     /type="S"
+     PPR_3           934..1035
+                     /frame
+                     /type="S"
+     PPR_3           1045..1137
+                     /frame=1
+                     /type="S"
+     PPR_3           1138..1242
                      /frame=1
                      /type="P"
-     PPR_3           628..732
-                     /frame=1
-                     /type="P"
-     PPR_3           733..837
-                     /frame=1
-                     /type="P"
-     PPR_3           826..930
-                     /frame=1
-                     /type="P"
-     PPR_3           1042..1146
-                     /frame=1
-                     /type="P"
-     PPR_3           1135..1239
-                     /frame=1
-                     /type="P"
-     PPR_3           1240..1347
+     PPR_3           1243..1350
                      /frame=1
                      /type="L"
-     PPR_3           1348..1443
+     PPR_3           1351..1446
                      /frame=1
                      /type="S"
-     PPR_3           1444..1545
+     PPR_3           1447..1548
                      /frame=1
                      /type="S"
-     PPR_3           1546..1650
+     PPR_3           1549..1650
                      /frame=1
-                     /type="P"
-     PPR_3           1735..1839
+                     /type="S"
+     PPR_3           1738..1839
                      /frame=1
-                     /type="P"
+                     /type="S"
 ORIGIN
         1 atgatcaaaa tcggtctcca caacaccaat tacgctctca gtaagcttat tgagttctgc
        61 attctctctc cacactttga aggccttcct tatgcgatat ctgttttcaa aactattcag
@@ -755,48 +794,57 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
-     PPR_3           181..285
+     PPR_3           184..285
+                     /frame=3
+                     /type="S"
+     PPR_3           289..390
+                     /frame
+                     /type="S"
+     PPR_3           397..489
+                     /frame=3
+                     /type="S"
+     PPR_3           490..594
                      /frame=3
                      /type="P"
-     PPR_3           394..498
+     PPR_3           595..696
+                     /frame=3
+                     /type="S"
+     PPR_3           706..807
+                     /frame
+                     /type="S"
+     PPR_3           799..900
+                     /frame=3
+                     /type="S"
+     PPR_3           1105..1206
+                     /frame=3
+                     /type="S"
+     PPR_3           1213..1314
+                     /frame
+                     /type="S"
+     PPR_3           1318..1410
+                     /frame=3
+                     /type="S"
+     PPR_3           1411..1512
+                     /frame=3
+                     /type="S"
+     PPR_3           1654..1746
+                     /frame=3
+                     /type="S"
+     PPR_3           1747..1851
                      /frame=3
                      /type="P"
-     PPR_3           487..591
-                     /frame=3
-                     /type="P"
-     PPR_3           592..696
-                     /frame=3
-                     /type="P"
-     PPR_3           796..900
-                     /frame=3
-                     /type="P"
-     PPR_3           1102..1206
-                     /frame=3
-                     /type="P"
-     PPR_3           1315..1419
-                     /frame=3
-                     /type="P"
-     PPR_3           1408..1512
-                     /frame=3
-                     /type="P"
-     PPR_3           1651..1755
-                     /frame=3
-                     /type="P"
-     PPR_3           1744..1848
-                     /frame=3
-                     /type="P"
-     PPR_3           1849..1956
+     PPR_3           1852..1959
                      /frame=3
                      /type="L"
-     PPR_3           1957..2061
+     PPR_3           1960..2061
                      /frame=3
-                     /type="P"
-     PPR_3           2158..2262
+                     /type="S"
+     PPR_3           2161..2262
                      /frame=3
-                     /type="P"
-     PPR_3           2299..2403
+                     /type="S"
+     PPR_3           2302..2403
                      /frame=3
-                     /type="P"
+                     /type="S"
 ORIGIN
         1 atgtcatgtc ctcttgcctt caccttctct ctcccgtcta ttttcccctt tccttctcaa
        61 ctgcttccat tttcccgcca taaacatcct tatcttcttc gcgccacacc aacctctgca
@@ -853,39 +901,42 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
-     PPR_3           40..153
-                     /frame=2
-                     /type="L"
-     PPR_3           142..246
-                     /frame=2
-                     /type="P"
-     PPR_3           247..351
-                     /frame=2
-                     /type="P"
-     PPR_3           352..456
-                     /frame=2
-                     /type="P"
-     PPR_3           445..549
-                     /frame=2
-                     /type="P"
-     PPR_3           655..759
-                     /frame=2
-                     /type="P"
-     PPR_3           748..852
-                     /frame=2
-                     /type="P"
-     PPR_3           853..960
-                     /frame=2
-                     /type="L"
-     PPR_3           961..1056
+     PPR_3           43..144
                      /frame=2
                      /type="S"
-     PPR_3           1057..1158
-                     /frame=2
-                     /type="S"
-     PPR_3           1159..1263
+     PPR_3           145..249
                      /frame=2
                      /type="P"
+     PPR_3           250..354
+                     /frame=2
+                     /type="P"
+     PPR_3           355..447
+                     /frame=2
+                     /type="S"
+     PPR_3           448..549
+                     /frame=2
+                     /type="S"
+     PPR_3           553..654
+                     /frame
+                     /type="S"
+     PPR_3           658..750
+                     /frame=2
+                     /type="S"
+     PPR_3           751..855
+                     /frame=2
+                     /type="P"
+     PPR_3           856..963
+                     /frame=2
+                     /type="L"
+     PPR_3           964..1059
+                     /frame=2
+                     /type="S"
+     PPR_3           1060..1161
+                     /frame=2
+                     /type="S"
+     PPR_3           1162..1263
+                     /frame=2
+                     /type="S"
 ORIGIN
         1 atgcaaattc aagcttacgc gatcaaatct catattgaag atgtttcctt cgtcgctaag
        61 ctgataaatt tctgcactga gtctccaacg gagtcttcaa tgtcatatgc acgccacttg
@@ -925,60 +976,66 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
-     PPR_3           193..300
+     PPR_3           196..303
                      /frame=2
                      /type="L"
-     PPR_3           301..405
-                     /frame=2
-                     /type="P"
-     PPR_3           394..498
-                     /frame=2
-                     /type="P"
-     PPR_3           499..603
-                     /frame=2
-                     /type="P"
-     PPR_3           604..699
+     PPR_3           304..396
                      /frame=2
                      /type="S"
-     PPR_3           700..804
+     PPR_3           397..501
                      /frame=2
                      /type="P"
-     PPR_3           913..1017
+     PPR_3           502..606
                      /frame=2
                      /type="P"
-     PPR_3           1006..1110
+     PPR_3           607..702
+                     /frame=2
+                     /type="S"
+     PPR_3           703..804
+                     /frame=2
+                     /type="S"
+     PPR_3           802..903
+                     /frame
+                     /type="S"
+     PPR_3           916..1008
+                     /frame=2
+                     /type="S"
+     PPR_3           1009..1113
                      /frame=2
                      /type="P"
-     PPR_3           1111..1215
+     PPR_3           1114..1218
                      /frame=2
                      /type="P"
-     PPR_3           1216..1320
+     PPR_3           1219..1311
+                     /frame=2
+                     /type="S"
+     PPR_3           1312..1413
+                     /frame=2
+                     /type="S"
+     PPR_3           1612..1713
+                     /frame=2
+                     /type="S"
+     PPR_3           1717..1818
+                     /frame
+                     /type="S"
+     PPR_3           1822..1914
+                     /frame=2
+                     /type="S"
+     PPR_3           1915..2019
                      /frame=2
                      /type="P"
-     PPR_3           1309..1413
-                     /frame=2
-                     /type="P"
-     PPR_3           1609..1713
-                     /frame=2
-                     /type="P"
-     PPR_3           1819..1923
-                     /frame=2
-                     /type="P"
-     PPR_3           1912..2016
-                     /frame=2
-                     /type="P"
-     PPR_3           2017..2124
+     PPR_3           2020..2127
                      /frame=2
                      /type="L"
-     PPR_3           2125..2229
+     PPR_3           2128..2220
+                     /frame=2
+                     /type="S"
+     PPR_3           2221..2325
                      /frame=2
                      /type="P"
-     PPR_3           2218..2337
+     PPR_3           2326..2427
                      /frame=2
-                     /type="L"
-     PPR_3           2323..2427
-                     /frame=2
-                     /type="P"
+                     /type="S"
 ORIGIN
         1 atgtactctg cttcggcgat ttcgtttcca agggttcgtc tgcattgtag tattccgaca
        61 gagccatcct gccggagaaa cccattccga cagagcaatc agcccgtcca agtcccttct

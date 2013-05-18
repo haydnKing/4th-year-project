@@ -131,7 +131,7 @@ def simple_extract(target, localization = None, verbose=False):
 	if verbose:
 		print "Got {} PPRs, cleaning...".format(len(pprs))
 	#clean the gaps between features
-	pprs = [clean_gaps(ppr) for ppr in pprs]
+	pprs = [clean_ends(fill_gaps(ppr)) for ppr in pprs]
 
 	#annotate the tail region and classify each PPR
 	classify.classify(pprs)
@@ -361,22 +361,40 @@ def add_source(ppr, source):
 	ppr.description = "PPR Protein"
 	return ppr
 
-#offsets of each model compared with the actual motif start
-offsets = {'PPR':-2, 'PPR_1':5, 'PPR_2':1, 'PPR_3':-1,}
+def fill_gaps(ppr):
+	"""Look for reluctant motifs in suspiciously sized gaps"""
 
-def clean_gaps(ppr):
+	gaps = find_gaps(ppr, mingap=3*30, maxgap=3*40)	
+	#check if there could be a motif at the start
+	if ppr.features[0].location.start > 3*30:
+		gaps.append(FeatureLocation(0, ppr.features[0].location.start, 1))
+
+	for g in gaps:
+		record = ppr[g.start-15:g.end+15]
+		record.seq = record.seq.translate()
+
+		#increase the reporting thresholds
+		search = HMMER.hmmsearch(hmm = models[3], targets = record, 
+				F1=0.5,F2=0.5,F3=0.5)
+		
+		if search.matches:
+			motif = search.getFeatures(record)[0]
+			offset = g.start-15
+			motif.location = FeatureLocation(
+					offset + 3*motif.location.start,
+					offset + 3*motif.location.end,
+					strand = 1)
+			ppr.features.append(motif)
+	ppr.features.sort(key=lambda p: p.location.start)
+	return ppr
+
+def clean_ends(ppr):
 	"""Clean the length of the PPR motifs such that they start at the correct
 	location and so that small gaps are eliminated
 
 	adds the qualifier type as P, L or S
 	"""
-
-	#move each motif start position to account for the model start offset
-	for f in ppr.features:
-		f.location = FeatureLocation(int(f.location.start)+3*offsets['PPR_3'],
-			f.location.end, f.location.strand)
-
-	gaps = find_gaps(ppr, mingap=0, maxgap=10)
+	gaps = find_gaps(ppr, mingap=None, maxgap=10)
 	#move the end of each motif to close small gaps between it and its successor
 	for g in gaps:
 		g.prev.location = FeatureLocation(g.prev.location.start,
@@ -393,14 +411,18 @@ def clean_gaps(ppr):
 	
 	return ppr
 
-def find_gaps(ppr, mingap=30, maxgap=None):
+def find_gaps(ppr, mingap=30, maxgap=None, skip_introns=True):
 	"""Find all the gaps between PPR motifs which are gte maxgap"""
 	loc = []
 	feats = sorted(ppr.features, key = lambda(p): int(p.location.start))
 	for a,b in pairwise(feats):
-		l = abs(int(b.location.start) - int(a.location.end))
+		#ignore any gaps if a and b aren't in the same frame
+		if a.qualifiers['frame'] != b.qualifiers['frame']:
+			continue
 
-		if l >= mingap and l <= (maxgap or 'inf'):
+		#if the size is within the range
+		l = int(b.location.start) - int(a.location.end)
+		if l >= (mingap or -float('inf')) and l <= (maxgap or float('inf')):
 			#We've found a gap
 			g = FeatureLocation(int(a.location.end), 
 			int(b.location.start), strand=1)

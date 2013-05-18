@@ -164,7 +164,7 @@ for k,v in Stype.iteritems():
 
 def get_yagi_NSRs(ppr):
 	"""Return a list of 3-tuples referring to the NSRs"""
-	o = 3 * 2
+	o = 3 * 1
 	NSR = []
 	for a,b in pairwise(ppr.features):
 		s1 = ppr.seq[a.location.start+o:o+a.location.start + 1 + 3 * 4].translate()
