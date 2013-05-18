@@ -1,7 +1,8 @@
 """PPR utils"""
 
-import PSSM, os, json, re
-from Bio import SeqIO
+import PSSM, os, json, re, extract
+from Bio import SeqIO, Entrez
+Entrez.email="hjk38@cam.ac.uk"
 
 class PPR:
 	"""Represent a PPR"""
@@ -88,4 +89,22 @@ def write_pprs(pprs, genome):
 	f.write(json.dumps(annots))
 	f.close()
 
+def save_known_pprs():
+	names = ["PDE247","CRR21","CRR22","CRR28","CRR4","LPA66","otp80","otp81",
+			"otp82","otp84","otp85","otp86",]
+	pprs = []
+	for n in names:
+		print "Search \'{}\'".format(n)
+		hnd = Entrez.esearch(db='nuccore', 
+				term='({}[Title]) AND Arabidopsis thaliana[Organism]'.format(n))
+		ret = Entrez.read(hnd)
+		if len(ret['IdList']) != 1:
+			print "failed to find \'{}\'".format(n)
+		else:
+			p = extract.from_entrez(ret['IdList'][0])[0]
+			p.name = n
+			pprs.append(p)
+	
+	print "Found {} PPRs".format(len(pprs))
+	SeqIO.write(pprs, "Test_Proteins/Known_PPRs.gb", "genbank")
 

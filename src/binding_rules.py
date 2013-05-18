@@ -160,3 +160,43 @@ for k,v in Ptype.iteritems():
 	Ptype[k] = tuple(i + 1 for i in v)
 for k,v in Stype.iteritems():
 	Stype[k] = tuple(i + 1 for i in v)
+
+
+def get_yagi_NSRs(ppr):
+	"""Return a list of 3-tuples referring to the NSRs"""
+	o = 3 * 2
+	NSR = []
+	for a,b in pairwise(ppr.features):
+		s1 = ppr.seq[a.location.start+o:o+a.location.start + 1 + 3 * 4].translate()
+		s2 = ppr.seq[b.location.start - 3*2+o:o+b.location.start].translate()
+		NSR.append((s1[0], s1[3], s2[0],))
+	return NSR
+
+from Bio import SeqIO, Alphabet
+import extract
+
+def test_yagi_NSRs():
+	"""Test yagi against PpPPR_71"""
+
+	for ppr in SeqIO.parse("Test_Proteins/Known_PPRs.gb", 'genbank'):
+		if ppr.name == "CRR28":
+			print "{}: {}".format(ppr.name,	NSR_to_string(get_yagi_NSRs(ppr)))
+			for i in range(len(ppr.features)):
+				print_motif(ppr, i+1)
+
+
+def print_motif(ppr, number):
+	f = ppr.features[number-1]
+	print "Motif {}: {}|{}|".format(number, 
+			ppr.seq[f.location.start-6:f.location.start+1].translate(),
+			f.extract(ppr).seq.translate())
+
+def NSR_to_string(NSR):
+	s = ""
+	for n in NSR:
+		s += ''.join(n).upper()
+		if n != NSR[-1]:
+			s += '-'
+	return s
+
+

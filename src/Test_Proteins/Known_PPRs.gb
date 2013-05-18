@@ -1,7 +1,925 @@
-LOCUS       CLB19                   2610 bp    DNA              UNK 01-JAN-1980
+LOCUS       PDE247                  1500 bp    DNA              UNK 01-JAN-1980
 DEFINITION  PPR Protein
-ACCESSION   PPR0|otp86
-VERSION     PPR0|otp86
+ACCESSION   PPR
+VERSION     PPR
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     PPR_3           103..207
+                     /frame=3
+                     /type="P"
+     PPR_3           322..426
+                     /frame=3
+                     /type="P"
+     PPR_3           415..519
+                     /frame=3
+                     /type="P"
+     PPR_3           508..612
+                     /frame=3
+                     /type="P"
+     PPR_3           718..822
+                     /frame=3
+                     /type="P"
+     PPR_3           811..915
+                     /frame=3
+                     /type="P"
+     PPR_3           916..1023
+                     /frame=3
+                     /type="L"
+     PPR_3           1024..1119
+                     /frame=3
+                     /type="S"
+     PPR_3           1120..1224
+                     /frame=3
+                     /type="P"
+     PPR_3           1225..1329
+                     /frame=3
+                     /type="P"
+ORIGIN
+        1 atgggtctcc ttcccgtcgt cggaattact tcgccggcgc tcatcaccca caaaaatcac
+       61 gccaatccaa agatacagag acataatcaa tctacctccg agaccactgt ttcatggact
+      121 tctcgcatca atctcctcac gcgcaatggt cgattagcgg aggcagcgaa ggaattctcc
+      181 gatatgacac tcgccggcgt agagcctaac cacatcactt tcatagctct actctccggg
+      241 tgtggtgatt ttacctccgg aagtgaagcc ttgggcgatt tgcttcatgg gtatgcttgt
+      301 aaacttggtc ttgatagaaa ccatgtcatg gttggcaccg caattatcgg catgtactcc
+      361 aaacgcggcc gttttaagaa ggctagattg gtttttgatt acatggaaga taaaaattcg
+      421 gttacttgga atacaatgat cgatgggtac atgagaagtg gtcaagtcga taacgctgct
+      481 aagatgttcg acaaaatgcc tgaacgagac ttgatttctt ggacggctat gataaatggc
+      541 tttgttaaga aaggttatca agaggaagct ttgttatggt tccgtgaaat gcagatttct
+      601 ggagtaaaac cagattacgt tgctattatt gctgctctta acgcttgcac aaaccttggt
+      661 gctctctcat ttggattatg ggtacatcgt tatgttttga gtcaggattt caagaacaat
+      721 gtgagggtga gtaattcact gatcgatttg tattgtcgat gcgggtgtgt ggagtttgct
+      781 cgacaagttt tttacaacat ggagaaacga accgtagttt cgtggaattc agtcattgtt
+      841 ggttttgctg ctaatggaaa tgcacatgaa tcattagtct acttcaggaa aatgcaagag
+      901 aaaggcttta aacctgacgc agtcactttc actggggcgc ttaccgcgtg tagccatgta
+      961 ggtctagttg aagaaggtct tcgatatttt caaattatga aatgtgatta cagaatctcg
+     1021 cctcgaattg agcattatgg atgcttagtg gatttgtata gtcgggctgg gagattggaa
+     1081 gacgctttga agttggtgca gagcatgcca atgaagccaa atgaagttgt gattggatcg
+     1141 ttgcttgcag cttgcagcaa tcatgggaac aatatcgtct tagcagagag gctgatgaag
+     1201 catcttaccg acctgaatgt gaaaagccat tcaaattatg tgattctctc gaatatgtat
+     1261 gctgctgatg gaaaatggga aggagcaagt aagatgagaa ggaagatgaa gggtctcggt
+     1321 ctaaaaaagc agcctgggtt tagttcgata gagattgatg attgcatgca tgtgttcatg
+     1381 gccggtgaca atgcccatgt tgagaccact tatatccgcg aggtcctgga gcttatttct
+     1441 tctgatttgc gattacaggg ctgtgtagtt gaaacccttg ctggtgatct cctcaatgct
+//
+LOCUS       CRR21                   2490 bp    DNA              UNK 01-JAN-1980
+DEFINITION  PPR Protein
+ACCESSION   PPR
+VERSION     PPR
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     PPR_3           100..204
+                     /frame=1
+                     /type="P"
+     PPR_3           619..723
+                     /frame=1
+                     /type="P"
+     PPR_3           712..816
+                     /frame=1
+                     /type="P"
+     PPR_3           922..1026
+                     /frame=1
+                     /type="P"
+     PPR_3           1015..1119
+                     /frame=1
+                     /type="P"
+     PPR_3           1120..1224
+                     /frame=1
+                     /type="P"
+     PPR_3           1225..1329
+                     /frame=1
+                     /type="P"
+     PPR_3           1318..1422
+                     /frame=1
+                     /type="P"
+     PPR_3           1423..1527
+                     /frame=1
+                     /type="P"
+     PPR_3           1528..1632
+                     /frame=1
+                     /type="P"
+     PPR_3           1741..1845
+                     /frame=1
+                     /type="P"
+     PPR_3           1834..1938
+                     /frame=1
+                     /type="P"
+     PPR_3           1939..2046
+                     /frame=1
+                     /type="L"
+     PPR_3           2047..2151
+                     /frame=1
+                     /type="P"
+     PPR_3           2245..2349
+                     /frame=1
+                     /type="P"
+ORIGIN
+        1 atggcttctc ttcctttcaa cactatcccg aataaagttc cattttcagt atcatcgaaa
+       61 ccttcttcta aacaccacga tgaacaagct cattctcctt cttccacatc ttactttcat
+      121 cgcgtttcgt ctctttgtaa gaacggtgag atcaaagaag ctctgagttt agttacagag
+      181 atggatttca gaaacttacg cattggtcct gagatatacg gtgaaatcct ccaaggatgc
+      241 gtttacgaga gagatttaag tacagggaag caaattcatg ctcggatttt aaagaacggt
+      301 gatttctacg cgaggaatga gtacatcgag actaaattgg tgatattcta cgccaagtgc
+      361 gatgctttgg agattgctga agttcttttc tcgaaattga gggttcgtaa tgttttctct
+      421 tgggcagcta ttattggtgt gaaatgtagg attgggttat gtgaaggagc tttaatgggt
+      481 tttgttgaga tgcttgaaaa tgagattttt cctgataatt ttgtggttcc gaatgtttgt
+      541 aaagcgtgtg gtgcgttgaa atggagtaga tttgggagag gggttcatgg gtatgtggta
+      601 aaatctggtc ttgaggattg tgtgtttgtg gctagtagtt tagctgatat gtatgggaaa
+      661 tgtggtgttt tggatgatgc gagtaaggtg tttgatgaaa ttcctgacag aaatgctgtt
+      721 gcttggaatg cgttgatggt tggttatgta caaaatggta agaatgagga agcgattcgg
+      781 cttttttctg atatgaggaa gcaaggtgtt gagcctactc gtgtcactgt ctcgacttgc
+      841 ttatctgctt ctgctaatat gggtggggtt gaagagggga aacagtcgca tgccattgct
+      901 attgtaaatg gaatggagct ggataatatc ttggggacat ctttattgaa tttctattgc
+      961 aaagtgggtt tgatagagta tgctgagatg gtttttgatc ggatgtttga aaaggatgtg
+     1021 gttacatgga atctgattat ttctgggtat gttcaacaag ggctagttga agatgctatc
+     1081 tacatgtgtc aattaatgag actagagaag ctgaaatatg attgtgtcac tttagcgaca
+     1141 ttaatgtctg ctgctgcacg tactgagaat ctaaagctcg ggaaagaggt gcagtgttat
+     1201 tgcattagac atagttttga atctgatatc gttttagcca gcactgtgat ggatatgtat
+     1261 gccaagtgtg gcagcattgt tgatgctaag aaagtgtttg attctacagt agagaaagac
+     1321 ttgatactgt ggaatacgtt acttgcagcc tatgcagaat ctggtcttag tggagaggct
+     1381 ttgagattgt tctatgggat gcagctagaa ggtgtacctc caaatgtgat aacatggaat
+     1441 ttgatcattc taagtcttct aaggaatggt caggtagatg aggccaagga tatgttcttg
+     1501 cagatgcaat cctcagggat aattccaaat cttatctcat ggacgactat gatgaatggt
+     1561 atggttcaaa atggttgcag tgaggaggca attctgtttc ttagaaagat gcaagaatcg
+     1621 ggcctgagac caaatgcatt tagcatcact gtcgctctct ctgcttgcgc acatctagca
+     1681 tcattgcata tcggaagaac aatccacgga tacatcataa gaaatctaca gcattcctct
+     1741 ttggtttcta ttgaaacttc tttggttgac atgtatgcta aatgtggaga tataaacaaa
+     1801 gcagagaagg ttttcggaag taagctatac agcgagttgc ctctctccaa tgccatgatc
+     1861 tcggcgtatg cattatatgg taacttaaaa gaagcaatcg ctctatacag aagcttagaa
+     1921 ggtgtaggtc ttaaaccaga caacatcaca atcacaaatg tcttatcagc atgtaaccac
+     1981 gcaggggata ttaaccaggc tatcgagatt ttcactgata tcgtttcaaa gcgtagtatg
+     2041 aaaccatgct tggaacatta tggacttatg gtagatcttc ttgcatcagc tggagaaaca
+     2101 gaaaaagctt taaggttaat cgaggaaatg ccattcaagc cagatgcacg aatgatccaa
+     2161 tctttggttg cttcttgcaa caaacagcgt aagactgagc ttgtggacta cttatcaagg
+     2221 aaattgcttg aatccgagcc tgaaaactcc ggtaactatg tgacgatatc gaatgcttat
+     2281 gcggttgaag gaagttggga tgaagttgtg aagatgagag agatgatgaa agctaagggt
+     2341 ttgaagaaaa aacctggatg tagttggata cagattacag gagaagaagg agtccatgtg
+     2401 tttgttgcca atgataagac acatactagg atcaatgaga tacaaatgat gttagcattg
+     2461 ttattatatg atatgggtac aggttccaaa
+//
+LOCUS       CRR22                   2427 bp    DNA              UNK 01-JAN-1980
+DEFINITION  PPR Protein
+ACCESSION   PPR
+VERSION     PPR
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     PPR_3           202..306
+                     /frame=1
+                     /type="P"
+     PPR_3           295..399
+                     /frame=1
+                     /type="P"
+     PPR_3           505..609
+                     /frame=1
+                     /type="P"
+     PPR_3           598..702
+                     /frame=1
+                     /type="P"
+     PPR_3           808..912
+                     /frame=1
+                     /type="P"
+     PPR_3           901..1005
+                     /frame=1
+                     /type="P"
+     PPR_3           1111..1215
+                     /frame=1
+                     /type="P"
+     PPR_3           1204..1308
+                     /frame=1
+                     /type="P"
+     PPR_3           1309..1413
+                     /frame=1
+                     /type="P"
+     PPR_3           1414..1518
+                     /frame=1
+                     /type="P"
+     PPR_3           1507..1611
+                     /frame=1
+                     /type="P"
+     PPR_3           1612..1719
+                     /frame=1
+                     /type="L"
+     PPR_3           1720..1824
+                     /frame=1
+                     /type="P"
+ORIGIN
+        1 atgagctcac aattggtgca gttctctacc gttcctcaaa tccctaatcc cccgtctcgc
+       61 catcgtcact ttctctccga gagaaattac attccggcta atgtctatga gcatccagcg
+      121 gctcttcttc ttgagagatg ttcttctctg aaagaacttc gtcaaattct tcctctcgtc
+      181 ttcaaaaatg ggctttatca ggagcatttt ttccagacaa agcttgtcag cttgttctgt
+      241 cgctatggca gtgtcgacga ggctgctcgt gttttcgaac ccattgatag taaactcaat
+      301 gttctttatc acaccatgct taaagggttt gctaaagttt cagacttgga taaagctttg
+      361 caattttttg ttcggatgag gtatgatgat gtagagcctg ttgtgtataa cttcacttat
+      421 ctcctcaaag tttgtggaga cgaagcagag cttagggttg gaaaggaaat tcatgggttg
+      481 ttggtgaaga gtgggttctc gttggatttg tttgccatga ctgggcttga gaatatgtat
+      541 gccaagtgta ggcaggtaaa tgaggcccgc aaggtgtttg atagaatgcc tgagagagat
+      601 ttggtttctt ggaatacaat tgtggctggg tattcacaga atgggatggc gagaatggct
+      661 ttggaaatgg ttaagtcaat gtgtgaggag aatctgaagc ctagttttat cactattgtt
+      721 tctgttttgc ctgctgtctc tgctttgagg ttgattagtg ttggcaagga gattcatggg
+      781 tatgctatgc ggtcgggatt tgattctctt gtcaatatct ccactgcttt ggttgatatg
+      841 tatgcgaaat gtggatctct ggaaactgct cggcagctct ttgatgggat gttagaaagg
+      901 aatgttgttt catggaattc aatgattgat gcctatgtgc agaatgagaa tcctaaagag
+      961 gcaatgttaa tttttcaaaa gatgttggac gaaggagtca aacccactga tgtatctgtc
+     1021 atgggtgctt tgcatgcttg tgctgacctg ggtgaccttg agagaggaag attcattcat
+     1081 aagttatctg ttgaattggg tcttgataga aatgtttctg tagtgaactc tttgatctcc
+     1141 atgtattgca agtgcaagga agttgatact gctgcttcta tgtttgggaa attgcagagc
+     1201 agaacccttg tctcttggaa tgcaatgata ttaggatttg cacagaatgg acgtcccatc
+     1261 gatgctttga attacttcag ccagatgcgg tctcggacag tgaaaccaga cacatttact
+     1321 tatgtgagtg tgataactgc tatcgcagag ctgtcaatta cacatcatgc gaagtggatt
+     1381 catggggtgg ttatgcgaag ttgtctggat aagaacgtgt ttgtcacaac ggctctagtc
+     1441 gacatgtatg cgaaatgtgg tgctattatg attgcaagat tgatttttga catgatgagt
+     1501 gagcgtcatg tgacaacatg gaatgctatg attgatggat acgggacaca tggatttggg
+     1561 aaagctgctc tggagttgtt tgaagaaatg caaaaaggca ccatcaaacc aaatggtgtc
+     1621 acatttcttt ctgtcatctc tgcttgcagc cactcgggtt tggtggaggc aggactcaag
+     1681 tgcttctata tgatgaagga aaactacagc atagaactgt caatggacca ctatggagcc
+     1741 atggtcgatc ttttaggtcg agctggacgg ttgaatgaag catgggactt tattatgcag
+     1801 atgcccgtta agccggctgt aaatgtatat ggtgccatgt taggtgcttg ccagattcat
+     1861 aaaaatgtga atttcgctga gaaagcagca gagagattgt ttgagttgaa cccggatgat
+     1921 ggtgggtatc atgtgcttct tgcaaacata tatcgtgcag cttcaatgtg ggaaaaagtg
+     1981 ggacaagtga gagtttcaat gttgagacag ggtctgcgca aaactcctgg ctgcagtatg
+     2041 gtggagataa agaacgaggt gcatagcttc ttctctggaa gcacagccca tcccgattcc
+     2101 aagaagattt atgcgtttct tgagaagctg atatgccaca tcaaagaagc tggttatgtt
+     2161 cctgacacga atttagtcct cggtgtggaa aatgatgtta aggagcaact gctgagtacc
+     2221 cacagtgaga agctggctat atcttttgga ttgctgaata caactgcagg tacaactatt
+     2281 cacgtaagaa agaacctgcg ggtttgtgct gactgtcaca atgctacaaa gtacatttcc
+     2341 cttgtgaccg gacgggaaat tgtagtacga gacatgcaac ggtttcacca tttcaaaaac
+     2401 ggtgcctgtt cgtgcggaga ttactgg
+//
+LOCUS       CRR28                   1734 bp    DNA              UNK 01-JAN-1980
+DEFINITION  PPR Protein
+ACCESSION   PPR
+VERSION     PPR
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     PPR_3           157..264
+                     /frame=1
+                     /type="L"
+     PPR_3           373..477
+                     /frame=1
+                     /type="P"
+     PPR_3           466..567
+                     /frame=1
+                     /type="S"
+     PPR_3           568..681
+                     /frame=1
+                     /type="L"
+     PPR_3           682..786
+                     /frame=1
+                     /type="P"
+     PPR_3           775..885
+                     /frame=1
+                     /type="L"
+     PPR_3           886..993
+                     /frame=1
+                     /type="L"
+     PPR_3           994..1089
+                     /frame=1
+                     /type="S"
+     PPR_3           1090..1194
+                     /frame=1
+                     /type="P"
+     PPR_3           1216..1320
+                     /frame=1
+                     /type="P"
+ORIGIN
+        1 atgtctcagc tcaagcaact tcacgccttc actctccgta ctacttaccc tgaggaaccc
+       61 gcaactctgt ttctctacgg caaaatcctc cagctctctt cctccttctc cgacgtcaat
+      121 tacgcgttcc gggttttcga ctccatcgaa aaccatagct ctttcatgtg gaacactctt
+      181 ataagagcat gtgctcatga tgtttcaagg aaagaagaag cctttatgct ttaccggaaa
+      241 atgttagaga gaggtgaatc ttcaccggat aagcatacgt ttccgtttgt attgaaagct
+      301 tgcgcttata tattcgggtt ctccgaaggg aagcaagttc attgtcagat tgtgaaacat
+      361 gggtttggtg gagatgtgta tgttaataat ggtttgattc atttgtatgg gtcttgtggg
+      421 tgtttggatt tagcacggaa agtgtttgat gaaatgcctg agagaagtct tgtttcgtgg
+      481 aattcgatga tcgatgctct ggttcggttt ggggagtatg attctgcgtt acaactgttt
+      541 agagagatgc agagatcgtt tgaaccagat ggttatacga tgcagagtgt tttgagtgcg
+      601 tgtgctggtc ttggatcttt gtcactaggt acttgggcac atgcgtttct gctgcgaaaa
+      661 tgtgatgtcg atgttgctat ggatgttttg gttaagaact cgttgatcga aatgtattgc
+      721 aaatgcgggt cgttgagaat ggctgagcaa gtgtttcagg ggatgcaaaa acgtgactta
+      781 gcttcatgga atgcaatgat tctagggttt gctacacatg gaagagctga ggaagccatg
+      841 aatttcttcg accgtatggt ggataaaaga gagaatgtta gaccgaactc agtcacgttt
+      901 gttggcttgc tcatcgcctg caaccaccga ggctttgtaa acaaagggcg ccagtatttt
+      961 gacatgatgg tcagagatta ttgcatcgaa cctgcgttgg agcattacgg ttgcatcgtc
+     1021 gaccttattg ctcgtgcagg ctacattact gaagctattg acatggtaat gagcatgcca
+     1081 atgaaaccag atgcagtgat atggagaagt ctccttgatg cttgttgcaa aaagggtgct
+     1141 agtgtggagc taagtgaaga aattgctaga aatattattg gaacaaagga agataacgaa
+     1201 agctccaatg gtaactgcag tggtgcatat gtactgttgt ctagagttta tgcatcagct
+     1261 agccgctgga acgatgttgg aatcgttaga aaactaatga gtgaacatgg aattagaaaa
+     1321 gagcctggat gcagttctat tgagataaat ggcatctccc acgagttttt cgcaggagac
+     1381 acgtcgcatc ctcagaccaa acagatatac caacagttga aggtgatcga cgacaggcta
+     1441 agatcaattg gttatttacc ggatcgctct caagcacctt tagtggatgc caccaatgat
+     1501 ggtagcaaag agtattccct taggctgcac agtgaaagac ttgccattgc ttttggtctg
+     1561 ataaacttac cacctcagac tccaatccgt atattcaaga atctacgtgt ctgcaacgat
+     1621 tgccacgagg ttactaaact gatctcaaaa gtcttcaaca ctgagatcat cgtgagagat
+     1681 cgtgttcgtt tccatcactt caaagatgga tcctgctctt gtttagacta ctgg
+//
+LOCUS       CRR4                    1818 bp    DNA              UNK 01-JAN-1980
+DEFINITION  PPR Protein
+ACCESSION   PPR
+VERSION     PPR
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     PPR_3           1..105
+                     /frame=1
+                     /type="P"
+     PPR_3           106..210
+                     /frame=1
+                     /type="P"
+     PPR_3           232..336
+                     /frame=1
+                     /type="P"
+     PPR_3           337..441
+                     /frame=1
+                     /type="P"
+     PPR_3           442..546
+                     /frame=1
+                     /type="P"
+     PPR_3           535..633
+                     /frame=1
+                     /type="S"
+     PPR_3           634..741
+                     /frame=1
+                     /type="L"
+     PPR_3           730..834
+                     /frame=1
+                     /type="P"
+     PPR_3           823..927
+                     /frame=1
+                     /type="P"
+     PPR_3           916..1020
+                     /frame=1
+                     /type="P"
+     PPR_3           1129..1233
+                     /frame=1
+                     /type="P"
+     PPR_3           1222..1326
+                     /frame=1
+                     /type="P"
+     PPR_3           1327..1434
+                     /frame=1
+                     /type="L"
+     PPR_3           1435..1530
+                     /frame=1
+                     /type="S"
+     PPR_3           1531..1632
+                     /frame=1
+                     /type="S"
+     PPR_3           1633..1737
+                     /frame=1
+                     /type="P"
+ORIGIN
+        1 atggagtgtt cgatttcatc caccattcat gtccttggaa gctgcaaaac ttcagatgac
+       61 gtgaaccaaa tccacgggcg attgattaag acgggaatca tcaaaaactc aaatctcact
+      121 acgaggattg ttctggcttt tgcctcttct cgacgtccgt atctcgccga tttcgcgcgt
+      181 tgtgtcttcc acgagtatca cgtatgttcg ttttcatttg gagaggtgga ggatccattt
+      241 ttatggaacg ccgtgatcaa gtctcactct catggaaagg atccgagaca agctctgctc
+      301 ttgctctgtt tgatgctcga gaatggggtt tccgtggaca aattctcact gtcacttgtt
+      361 cttaaagcgt gttcgaggtt aggttttgta aaaggaggaa tgcagattca tgggtttttg
+      421 aaaaaaactg gactttggtc ggatttgttt ctacagaatt gtttgattgg cttgtatctg
+      481 aaatgtggtt gtttaggttt atcacgccag atgtttgata gaatgccgaa gagagactct
+      541 gtttcttata attccatgat tgatgggtat gtcaaatgtg gattgattgt atccgcgcgt
+      601 gaattgttcg atttgatgcc tatggagatg aagaatttga tatcttggaa ctctatgata
+      661 agtggttatg ctcagacatc agatggagtt gacatagcgt ctaaactgtt tgctgatatg
+      721 cctgagaagg acttgatttc gtggaactca atgatagatg gatatgtaaa acacggaaga
+      781 atcgaagatg ctaagggttt attcgatgtg atgccgagaa gagatgtagt tacttgggct
+      841 accatgattg atgggtatgc aaagttaggt tttgttcatc acgctaagac tctgtttgac
+      901 caaatgcctc atagagatgt tgtggcatat aattctatga tggctggtta tgttcaaaac
+      961 aagtatcaca tggaagctct tgaaatattt agtgacatgg aaaaggagag tcacttgtta
+     1021 cccgatgata cgactttggt aatagttctg cctgcaattg ctcagcttgg ccgattatcc
+     1081 aaagccatag atatgcattt gtacatcgtg gagaaacaat tctatctagg tggaaaactc
+     1141 ggtgttgctc tcattgatat gtattcgaaa tgcggaagca tacaacacgc catgttggtt
+     1201 ttcgagggaa tcgaaaacaa aagcattgat cactggaatg ctatgattgg tgggctcgct
+     1261 attcatggtc taggggaatc tgcattcgat atgctcttgc agattgagag actctcttta
+     1321 aaaccagacg atatcacctt tgttggcgtt ttaaatgctt gcagccactc tgggttagta
+     1381 aaggaaggcc ttctctgctt tgagctcatg aggagaaaac acaagataga accaagattg
+     1441 caacactatg gttgtatggt agacatacta tcgagatccg gaagtataga gctagccaaa
+     1501 aacttaatag aggaaatgcc tgttgagcca aatgatgtca tatggagaac gtttctcacc
+     1561 gcttgtagtc accacaagga gtttgaaacg ggagagcttg tcgcaaaaca ccttattttg
+     1621 caggctggat ataacccgag ctcatatgtg ctactctcta acatgtatgc tagttttgga
+     1681 atgtggaagg atgttcgtag agttagaacg atgatgaagg aaagaaagat agagaaaatt
+     1741 cctggttgta gttggattga gctcgatgga agagtccatg agttctttgt agatagcatt
+     1801 gaagtttcca gtacattg
+//
+LOCUS       LPA66                   1785 bp    DNA              UNK 01-JAN-1980
+DEFINITION  PPR Protein
+ACCESSION   PPR
+VERSION     PPR
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     PPR_3           13..123
+                     /frame=2
+                     /type="L"
+     PPR_3           112..225
+                     /frame=2
+                     /type="L"
+     PPR_3           226..330
+                     /frame=2
+                     /type="P"
+     PPR_3           466..570
+                     /frame=2
+                     /type="P"
+     PPR_3           559..663
+                     /frame=2
+                     /type="P"
+     PPR_3           769..873
+                     /frame=2
+                     /type="P"
+     PPR_3           862..966
+                     /frame=2
+                     /type="P"
+     PPR_3           967..1074
+                     /frame=2
+                     /type="L"
+     PPR_3           1075..1170
+                     /frame=2
+                     /type="S"
+     PPR_3           1171..1272
+                     /frame=2
+                     /type="S"
+     PPR_3           1273..1377
+                     /frame=2
+                     /type="P"
+ORIGIN
+        1 atgcgagaca ctctcgccgc cgcagagatt ctccgattct gtgctacctc cgatctccac
+       61 caccgtgacc ttgactacgc acataagatc tttaatcaaa tgcctcaacg aaattgcttc
+      121 tcttggaata ctataatcag aggtttcagt gagagtgacg aagacaaagc tctgatcgca
+      181 atcacattat tctacgagat gatgagtgat gagtttgttg aaccgaatcg gtttacgttt
+      241 ccctctgttc ttaaggcttg tgcgaaaact gggaagattc aagaaggtaa gcagattcat
+      301 ggtttggctt tgaagtatgg atttggtggt gatgaatttg tgatgagtaa tcttgttaga
+      361 atgtatgtga tgtgtggttt tatgaaagat gctcgtgtgt tgttttataa gaacattata
+      421 gagaaagata tggtggtgat gactgataga agaaagagag atggtgaaat agttttgtgg
+      481 aatgttatga ttgatggtta tatgagactt ggtgattgta aagctgcacg gatgttgttt
+      541 gataaaatgc gtcaaagaag cgttgtttcg tggaatacga tgatatcggg ttattcgctg
+      601 aacgggtttt tcaaagatgc tgttgaggtt tttcgtgaga tgaagaaagg ggatattaga
+      661 ccgaattatg ttactttggt tagtgttctt cctgctattt cacggcttgg gtctttagag
+      721 ttgggagaat ggttgcattt gtatgcagag gatagtggaa ttaggattga tgatgtgctt
+      781 ggctctgctt tgattgatat gtattcgaaa tgtgggatca ttgagaaagc gattcatgta
+      841 tttgagaggt tacctagaga gaacgtgatt acttggagtg cgatgattaa cgggtttgct
+      901 atacatggcc aggcaggtga tgctattgac tgtttttgta aaatgaggca ggctggagtt
+      961 cgacctagtg atgttgccta cattaatctt ttgactgctt gtagccatgg cgggttggta
+     1021 gaagaaggaa ggagatattt cagtcagatg gtgagtgtgg atggtttaga gcctaggatt
+     1081 gaacactacg ggtgtatggt tgatttattg ggtcgttcgg gtcttcttga tgaggctgag
+     1141 gagtttatac ttaatatgcc tataaaacca gatgatgtga tatggaaagc acttttgggt
+     1201 gcttgcagaa tgcagggaaa tgtcgagatg ggcaagcgcg ttgccaatat tctgatggat
+     1261 atggttcctc atgacagtgg agcttatgtc gccctctcaa acatgtatgc ttctcaagga
+     1321 aactggtcag aggtttcaga gatgaggctg agaatgaagg agaaggatat aagaaaagac
+     1381 cctgggtgta gtttgatcga cattgatggc gtgcttcatg agtttgttgt ggaagatgat
+     1441 tcacacccaa aagccaaaga aatcaactca atgctcgtag aaatctcaga caaactgaga
+     1501 ctagctgggt atagaccaat caccacacag gttttgttaa acttggagga agaagataaa
+     1561 gaaaatgtac ttcattacca cagcgagaag atcgctacag cgtttgggtt gataagcacg
+     1621 agccctggca aaccaatacg cattgttaag aacctacgta tctgtgagga ttgtcattcg
+     1681 tccatcaaac tcatctccaa agtttacaag agaaaaataa cggtacgaga ccggaaacgt
+     1741 tttcaccatt tccaagatgg ctcatgctcg tgtatggatt attgg
+//
+LOCUS       otp80                   1632 bp    DNA              UNK 01-JAN-1980
+DEFINITION  PPR Protein
+ACCESSION   PPR
+VERSION     PPR
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     PPR_3           271..375
+                     /frame=1
+                     /type="P"
+     PPR_3           364..468
+                     /frame=1
+                     /type="P"
+     PPR_3           469..573
+                     /frame=1
+                     /type="P"
+     PPR_3           562..666
+                     /frame=1
+                     /type="P"
+     PPR_3           655..759
+                     /frame=1
+                     /type="P"
+     PPR_3           760..864
+                     /frame=1
+                     /type="P"
+     PPR_3           865..969
+                     /frame=1
+                     /type="P"
+     PPR_3           958..1062
+                     /frame=1
+                     /type="P"
+     PPR_3           1063..1170
+                     /frame=1
+                     /type="L"
+     PPR_3           1171..1275
+                     /frame=1
+                     /type="P"
+     PPR_3           1237..1341
+                     /frame=1
+                     /type="P"
+     PPR_3           1369..1473
+                     /frame=1
+                     /type="P"
+ORIGIN
+        1 atgatttctt ccttggcagc gatcaccgga gggccttcaa ctttccggcg tgatcccgat
+       61 tcaaacactc tcaggctttc acgcaggaaa acattaatct ctgtattacg aagctgcaag
+      121 aacattgccc atgttccatc gattcacgcc aagatcatta ggaccttcca tgaccaagat
+      181 gctttcgttg ttttcgaact tatccgtgtt tgctccactc tcgattccgt cgactacgcc
+      241 tacgacgtgt ttagttacgt atctaaccct aatgtatatc tatacactgc tatgatcgat
+      301 ggttttgtgt catctggtcg ttctgctgat ggagtttcgc tgtatcatcg gatgattcac
+      361 aattcggttt tgcctgataa ctacgtgatc acctcagttt tgaaagcttg tgatttgaag
+      421 gtatgtagag agattcatgc ccaggttttg aaactagggt tcgggtctag tagatcggta
+      481 gggctaaaaa tgatggaaat ctacgggaaa tctggggaat tggtgaatgc taagaagatg
+      541 ttcgatgaaa tgcctgacag agatcatgtt gcagcaacgg tcatgattaa ttgttattct
+      601 gaatgcggtt tcattaagga ggcgttagag ctttttcaag atgttaagat taaagatacg
+      661 gtttgttgga ctgcgatgat tgatgggttg gttagaaaca aggagatgaa caaagcgttg
+      721 gagcttttta gggaaatgca gatggagaat gttagtgcta atgaatttac agctgtctgt
+      781 gttttatccg catgctcgga tttaggtgcg ttggagctcg ggcggtgggt acattcgttt
+      841 gttgagaacc aaaggatgga gcttagtaat ttcgtaggta atgcgttgat caatatgtac
+      901 tccaggtgtg gtgatatcaa tgaggcaagg cgggttttta gggtaatgcg agacaaagat
+      961 gtcatatcat ataacacgat gatttctgga ttagcaatgc atggggctag cgttgaagct
+     1021 atcaatgaat ttcgggatat ggtgaacaga ggatttaggc cgaatcaggt gactttagtt
+     1081 gctcttttaa acgcatgtag ccatggaggt ttgttggata tagggcttga agtatttaat
+     1141 tctatgaaga gagtttttaa tgttgaacct cagattgagc attatggatg tattgtcgat
+     1201 cttcttggtc gagtggggcg actagaggag gcttacagat tcatagaaaa tattccaata
+     1261 gagccggatc atatcatgtt aggaactctt ttgagtgctt gtaagatcca tggaaacatg
+     1321 gaactcggtg aaaaaatcgc taagagacta ttcgaatctg agaatccaga ttctgggaca
+     1381 tacgttctct tatcaaatct ttacgcttca tctgggaaat ggaaagaatc tacagaaatc
+     1441 agagagagta tgagagattc agggattgag aaggaaccag gatgcagtac tatcgaagtg
+     1501 gacaatcaga tccatgagtt tcttgtggga gatatagcac accctcataa agaagcaatt
+     1561 tatcagagat tacaagaact gaatcgaatt cttagattca aagagaatca aatagatatt
+     1621 ataatgggtt tc
+//
+LOCUS       otp81                   2214 bp    DNA              UNK 01-JAN-1980
+DEFINITION  PPR Protein
+ACCESSION   PPR
+VERSION     PPR
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     PPR_3           76..186
+                     /frame=1
+                     /type="L"
+     PPR_3           187..291
+                     /frame=1
+                     /type="P"
+     PPR_3           280..384
+                     /frame=1
+                     /type="P"
+     PPR_3           493..597
+                     /frame=1
+                     /type="P"
+     PPR_3           586..690
+                     /frame=1
+                     /type="P"
+     PPR_3           691..795
+                     /frame=1
+                     /type="P"
+     PPR_3           796..900
+                     /frame=1
+                     /type="P"
+     PPR_3           889..993
+                     /frame=1
+                     /type="P"
+     PPR_3           982..1089
+                     /frame=1
+                     /type="L"
+     PPR_3           1090..1194
+                     /frame=1
+                     /type="P"
+     PPR_3           1195..1299
+                     /frame=1
+                     /type="P"
+     PPR_3           1288..1392
+                     /frame=1
+                     /type="P"
+     PPR_3           1393..1500
+                     /frame=1
+                     /type="L"
+     PPR_3           1501..1605
+                     /frame=1
+                     /type="P"
+     PPR_3           1699..1803
+                     /frame=1
+                     /type="P"
+ORIGIN
+        1 atggctatct tctccacagc acaacctctc tctctgccac gtcatccaaa cttctccaat
+       61 ccgaatcaac caactaccaa taacgaacgc tcccgccaca tttctctcat cgaacgatgt
+      121 gtgtctctcc gacaactaaa gcaaacccat ggtcacatga tccgtaccgg tacgttttcc
+      181 gatccttact cagctagcaa gctattcgca atggctgcgc tctcttcctt cgctagtctc
+      241 gagtatgcac gcaaggtgtt tgatgaaatt cctaaaccaa attctttcgc ttggaatact
+      301 cttatccgtg cttacgcttc tggaccagac cctgttctta gcatctgggc tttcttggat
+      361 atggtttcgg agagtcagtg ttatccaaat aagtacactt tccctttcct cattaaggca
+      421 gctgcagaag tttcatcttt gtctttgggt caatctcttc atgggatggc tgttaagtca
+      481 gcagttggaa gtgatgtttt cgttgctaat tctttgatac attgttattt ctcttgtggg
+      541 gatttagatt cagcttgtaa agtgtttact acgatcaaag aaaaggatgt tgtttcatgg
+      601 aattcgatga ttaatgggtt tgtgcaaaag ggttctccag ataaagcttt ggagcttttt
+      661 aagaagatgg agtcagagga cgttaaggca agtcatgtga caatggttgg tgtcttgtct
+      721 gcttgtgcaa agatacggaa tttagagttt gggaggcagg tttgttctta tatcgaagaa
+      781 aacagggtta acgtgaactt gacattggct aatgcgatgc ttgatatgta cacaaagtgt
+      841 ggaagcatag aagatgctaa aagactgttt gatgcaatgg aggagaaaga taacgttaca
+      901 tggacaacaa tgcttgatgg gtatgcaatt tcagaagact acgaagcagc tagagaggtt
+      961 cttaattcta tgcctcagaa agatattgtt gcttggaatg ctcttatatc tgcttatgag
+     1021 cagaatggta aacctaatga ggcattaata gtgttccatg agctgcaact tcagaagaac
+     1081 atgaagctga accagatcac actggtaagt actttatcag cttgtgctca ggtaggggca
+     1141 ctggaattag gtagatggat ccatagctac atcaaaaagc acggtattag gatgaatttt
+     1201 catgttacaa gcgcactgat tcatatgtat tcgaaatgcg gagatcttga aaagtcccgt
+     1261 gaagtgttta attctgtaga gaagagagat gtgtttgtgt ggagtgcaat gattggtggc
+     1321 ttggcaatgc acggatgtgg aaatgaagct gttgatatgt tttataaaat gcaagaggct
+     1381 aatgtaaagc ctaatggtgt gaccttcacc aatgtcttct gtgcttgtag ccataccggt
+     1441 ttggtggatg aagctgagtc tttattccac cagatggaat cgaattatgg tattgtccct
+     1501 gaggaaaagc attatgcttg catagttgat gttctcggcc gctcgggtta tttggaaaaa
+     1561 gcagtgaagt tcatagaggc gatgccgatt cctccaagca cttctgtctg gggagcgctt
+     1621 ctaggagctt gtaagatcca tgccaatctg aatcttgctg aaatggcttg tacccgtttg
+     1681 cttgaactgg aacctaggaa tgatggcgcg catgtgctcc tatcaaacat atatgctaaa
+     1741 ttgggtaagt gggaaaacgt ttctgagctg agaaagcata tgagagtcac tggacttaag
+     1801 aaagaaccag gatgcagctc aattgaaatc gatggcatga ttcatgagtt tctctctgga
+     1861 gataacgctc atcctatgtc tgagaaggtt tacgggaagt tacacgaggt tatggagaaa
+     1921 ctgaaatcaa atggttatga gccagagata tctcaggttc tgcagatcat cgaggaagaa
+     1981 gaaatgaagg aacaatctct aaatctccac agcgagaagc tggctatttg ttatggactg
+     2041 atatcaacag aggctccaaa ggtgatccga gttattaaga atctaagggt gtgtggagat
+     2101 tgtcattcag tggctaaact aatatctcag ctttatgata gagagattat agtgagggac
+     2161 cggtataggt ttcatcattt cagaaatggg cagtgttcct gtaacgattt ctgg
+//
+LOCUS       otp82                   2058 bp    DNA              UNK 01-JAN-1980
+DEFINITION  PPR Protein
+ACCESSION   PPR
+VERSION     PPR
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     PPR_3           127..231
+                     /frame=1
+                     /type="P"
+     PPR_3           232..336
+                     /frame=1
+                     /type="P"
+     PPR_3           337..441
+                     /frame=1
+                     /type="P"
+     PPR_3           430..534
+                     /frame=1
+                     /type="P"
+     PPR_3           523..627
+                     /frame=1
+                     /type="P"
+     PPR_3           628..732
+                     /frame=1
+                     /type="P"
+     PPR_3           733..837
+                     /frame=1
+                     /type="P"
+     PPR_3           826..930
+                     /frame=1
+                     /type="P"
+     PPR_3           1042..1146
+                     /frame=1
+                     /type="P"
+     PPR_3           1135..1239
+                     /frame=1
+                     /type="P"
+     PPR_3           1240..1347
+                     /frame=1
+                     /type="L"
+     PPR_3           1348..1443
+                     /frame=1
+                     /type="S"
+     PPR_3           1444..1545
+                     /frame=1
+                     /type="S"
+     PPR_3           1546..1650
+                     /frame=1
+                     /type="P"
+     PPR_3           1735..1839
+                     /frame=1
+                     /type="P"
+ORIGIN
+        1 atgatcaaaa tcggtctcca caacaccaat tacgctctca gtaagcttat tgagttctgc
+       61 attctctctc cacactttga aggccttcct tatgcgatat ctgttttcaa aactattcag
+      121 gagccaaacc tgttgatttg gaacacgatg tttcgtgggc acgcgttgag ttcggaccct
+      181 gtttctgctc tgaagctgta tgtttgtatg atttcacttg ggcttcttcc taattcctac
+      241 acgtttccgt ttgtattgaa atcttgtgca aagtcgaaag cttttaagga agggcaacag
+      301 atccatgggc atgttttgaa acttggatgt gatctagatt tgtatgtaca tacttctctg
+      361 atctctatgt atgtccaaaa cgggagattg gaagatgcac ataaggtgtt cgataaaagt
+      421 cctcaccgag atgtggtttc atacacagct ttgatcaagg gttatgcatc gagaggctat
+      481 atcgaaaatg cacagaagtt gttcgatgaa attcccgtta aagacgtagt atcatggaat
+      541 gcaatgattt caggatatgc tgaaaccggt aactataagg aagcgttaga attgtttaaa
+      601 gatatgatga agacgaatgt taggccagac gagagtacaa tggtcactgt agtttctgct
+      661 tgtgctcagt ctggtagtat tgaattgggt cgtcaggtac atttatggat tgatgatcat
+      721 gggtttggtt caaatctcaa gattgttaat gctctcattg atttatactc gaaatgtggt
+      781 gaattggaga cagcgtgtgg tttgttcgaa agattgccgt acaaggatgt aatttcttgg
+      841 aataccttga tcggtggtta cacacatatg aatctttaca aagaagcatt gttgttgttt
+      901 caagaaatgc ttagatcagg tgaaactcca aacgatgtga caatgctaag tattcttcct
+      961 gcttgtgcac accttggagc catagatatt ggaagatgga ttcatgtgta tatcgacaag
+     1021 agattaaagg gtgttacgaa tgcttcttct ctccgtacaa gcctgattga catgtatgct
+     1081 aaatgtggag acatagaggc agcacaccaa gtgttcaaca gtatactcca taaaagcttg
+     1141 tcgtcttgga acgcaatgat atttgggttt gcaatgcacg ggagagctga tgcatcattt
+     1201 gatcttttct caagaatgag aaagattggg attcaaccag atgatatcac gtttgttggt
+     1261 ttgttgtctg cttgtagcca ttcaggtatg ctagatcttg gacgccatat tttcagaaca
+     1321 atgacacagg actacaaaat gaccccaaaa ttagagcact acggttgcat gattgatctt
+     1381 ttgggtcatt cgggtctatt caaagaagcg gaagaaatga taaacatgat ggaaatggag
+     1441 cccgatggag tgatttggtg ctcccttctc aaagcttgca agatgcatgg gaatgtcgag
+     1501 ttgggcgaat catttgcaga aaacctcatt aagattgagc cagaaaaccc aggttcttat
+     1561 gtacttctgt ctaacattta tgcctcagca ggaagatgga acgaagtagc aaaaacacga
+     1621 gctctcctca atgataaagg tatgaagaaa gttcctggtt gcagctctat cgaaatagat
+     1681 tctgtggtcc atgagttcat catcggggat aaattccatc cacggaacag agaaatctac
+     1741 ggaatgttag aagaaatgga ggtgttacta gagaaagccg ggtttgttcc agatacttct
+     1801 gaagtcttgc aggagatgga agaagaatgg aaggaaggag cattgcggca tcacagcgag
+     1861 aagctagcta ttgcatttgg gctgatcagt acaaagcctg ggactaaact tacaatcgtg
+     1921 aagaatctaa gggtatgcag aaattgtcat gaggctacaa agcttatatc aaagatttac
+     1981 aaaagggaga ttattgctag agacagaact cggtttcatc attttagaga tggtgtttgt
+     2041 tcctgcaatg actactgg
+//
+LOCUS       otp84                   2670 bp    DNA              UNK 01-JAN-1980
+DEFINITION  PPR Protein
+ACCESSION   PPR
+VERSION     PPR
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     PPR_3           181..285
+                     /frame=3
+                     /type="P"
+     PPR_3           394..498
+                     /frame=3
+                     /type="P"
+     PPR_3           487..591
+                     /frame=3
+                     /type="P"
+     PPR_3           592..696
+                     /frame=3
+                     /type="P"
+     PPR_3           796..900
+                     /frame=3
+                     /type="P"
+     PPR_3           1102..1206
+                     /frame=3
+                     /type="P"
+     PPR_3           1315..1419
+                     /frame=3
+                     /type="P"
+     PPR_3           1408..1512
+                     /frame=3
+                     /type="P"
+     PPR_3           1651..1755
+                     /frame=3
+                     /type="P"
+     PPR_3           1744..1848
+                     /frame=3
+                     /type="P"
+     PPR_3           1849..1956
+                     /frame=3
+                     /type="L"
+     PPR_3           1957..2061
+                     /frame=3
+                     /type="P"
+     PPR_3           2158..2262
+                     /frame=3
+                     /type="P"
+     PPR_3           2299..2403
+                     /frame=3
+                     /type="P"
+ORIGIN
+        1 atgtcatgtc ctcttgcctt caccttctct ctcccgtcta ttttcccctt tccttctcaa
+       61 ctgcttccat tttcccgcca taaacatcct tatcttcttc gcgccacacc aacctctgca
+      121 accgaagatg ttgcctccgc cgtttctggc gcaccttcaa tatttatctc tcaatcacgc
+      181 tctccggagt ggtggattga cttgctccgg tccaaagttc gatctaattt gctccgtgaa
+      241 gctgttttga cttacgttga catgattgtt ttgggtataa aacccgataa ttatgcgttc
+      301 cctgctttgc taaaggctgt agcagatctt caggacatgg aactggggaa acagattcat
+      361 gcccatgtgt ataaatttgg gtacggtgtg gattccgtga ctgtggctaa tacccttgtg
+      421 aatttgtata gaaagtgtgg agatttcgga gctgtctata aggtgttcga tagaatatct
+      481 gagagaaacc aagtctcttg gaattcttta atttcttctt tgtgtagttt tgagaagtgg
+      541 gaaatggcgt tagaggcatt tcggtgtatg ttggatgaaa atgtggaacc tagttcgttt
+      601 accttggtga gtgtggttac tgcttgttcg aatttgccta tgcctgaggg attaatgatg
+      661 ggtaagcagg ttcacgccta tggtttgaga aagggtgaat tgaattcgtt tataatcaac
+      721 acattggtgg ctatgtatgg taaactggga aaattagcat cttctaaagt cttacttggt
+      781 tcttttggag gccgtgactt ggtcacatgg aacactgtgt tgagctcgtt atgtcagaac
+      841 gagcagttgc ttgaagcatt ggaatatttg cgtgaaatgg tgcttgaagg tgttgaacca
+      901 gatgagttca ctatttcaag tgttcttcct gcttgttcac acttggagat gcttcgcaca
+      961 gggaaagaat tgcatgctta tgctttgaaa aatggctctt tggatgagaa ttcctttgtt
+     1021 ggtagtgctt tggttgacat gtattgcaat tgcaagcaag tgttgagtgg tcgtcgagta
+     1081 tttgatggaa tgtttgatag aaagattggt ctgtggaatg ctatgatcgc tgggtattcc
+     1141 cagaatgagc atgacaagga agcgttgttg cttttcattg gaatggaaga aagtgctggg
+     1201 cttctggcta actctaccac aatggcaggt gttgttcctg cttgtgtccg ttctggtgcg
+     1261 ttctctagaa aggaagctat ccatggattt gttgtgaaga gaggtttaga tagagacagg
+     1321 tttgtgcaga atacactgat ggatatgtat tctaggctgg gaaagatcga tatcgccatg
+     1381 cggatattcg gtaaaatgga agatagagat ttagttacgt ggaacacgat gattacgggt
+     1441 tatgtattct cagaacacca tgaggacgca cttctcctgc tacacaagat gcaaaacctt
+     1501 gaaagaaaag tgagcaaggg ggctagccga gttagtctta aacctaattc catcactctg
+     1561 atgacaatcc ttcccagttg tgctgcacta tcagcattag caaaaggaaa agaaattcat
+     1621 gcttatgcca tcaagaacaa tttggcaact gatgtggctg tcggaagcgc tttagttgac
+     1681 atgtacgcaa aatgcgggtg cctacagatg tcgagaaaag tgtttgatca gattccacaa
+     1741 aaaaatgtta ttacttggaa tgtgattata atggcttacg ggatgcatgg aaacggtcaa
+     1801 gaagccatag atctgctaag aatgatgatg gttcagggag taaaaccaaa cgaggttaca
+     1861 ttcatctcag tatttgcagc ttgtagccac tcaggcatgg tggatgaagg attaaggata
+     1921 ttctatgtta tgaaacccga ctacggggtt gaaccaagct cagatcatta tgcttgtgtt
+     1981 gtagatttgc ttggaagggc tggtagaatt aaagaagcat atcaactcat gaatatgatg
+     2041 cctcgtgatt tcaacaaagc tggagcatgg agtagcctcc ttggtgccag tcggattcac
+     2101 aataacctag aaattggaga aattgctgct caaaatctca ttcaactgga accaaatgta
+     2161 gctagtcact atgtgttact tgccaatatt tattcatcag caggcctctg ggataaagca
+     2221 acagaggtaa gaagaaatat gaaagagcaa ggcgtgagaa aagaacctgg atgtagctgg
+     2281 attgagcatg gcgatgaagt acataaattt gtagccggtg actcatctca cccgcaaagc
+     2341 gaaaagctca gtggatatct cgagacattg tgggagagaa tgagaaaaga aggatatgta
+     2401 cctgacacat cttgtgtact ccacaatgta gaggaagatg aaaaagagat tctgctttgt
+     2461 ggacacagtg agaagctagc aattgcgttt gggatactta acacatcacc cggtacaatt
+     2521 attagggtgg ctaaaaacct cagggtttgt aatgattgtc atcttgcaac caagtttatc
+     2581 tcaaagattg ttgatagaga aatcatcttg agagatgtta ggaggtttca tcgtttcaag
+     2641 aatggaactt gctcctgtgg agactattgg
+//
+LOCUS       otp85                   1674 bp    DNA              UNK 01-JAN-1980
+DEFINITION  PPR Protein
+ACCESSION   PPR
+VERSION     PPR
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     PPR_3           40..153
+                     /frame=2
+                     /type="L"
+     PPR_3           142..246
+                     /frame=2
+                     /type="P"
+     PPR_3           247..351
+                     /frame=2
+                     /type="P"
+     PPR_3           352..456
+                     /frame=2
+                     /type="P"
+     PPR_3           445..549
+                     /frame=2
+                     /type="P"
+     PPR_3           655..759
+                     /frame=2
+                     /type="P"
+     PPR_3           748..852
+                     /frame=2
+                     /type="P"
+     PPR_3           853..960
+                     /frame=2
+                     /type="L"
+     PPR_3           961..1056
+                     /frame=2
+                     /type="S"
+     PPR_3           1057..1158
+                     /frame=2
+                     /type="S"
+     PPR_3           1159..1263
+                     /frame=2
+                     /type="P"
+ORIGIN
+        1 atgcaaattc aagcttacgc gatcaaatct catattgaag atgtttcctt cgtcgctaag
+       61 ctgataaatt tctgcactga gtctccaacg gagtcttcaa tgtcatatgc acgccacttg
+      121 ttcgaggcaa tgtctgaacc agatattgtc atttttaatt ctatggctcg tgggtattct
+      181 cgcttcacga atcctcttga ggtttttagt ctcttcgttg agatcttaga agatggtatt
+      241 ttacctgaca actacacttt cccgtctctt ctcaaagctt gtgcagtagc aaaggcgtta
+      301 gaagaaggta gacaattgca ttgtttgtcg atgaaactag ggcttgatga taatgtctat
+      361 gtttgtccaa cgcttattaa tatgtacact gagtgtgaag atgtggattc tgctcgttgt
+      421 gtgtttgatc ggattgttga gccgtgtgtt gtttgttata atgctatgat cacgggttat
+      481 gcgagaagaa acagaccgaa cgaggcttta tctttgttcc gtgaaatgca aggtaagtac
+      541 ttgaagccga atgagattac ccttttgagt gttctgtcat cttgtgctct gttgggatcg
+      601 ttagatttag ggaaatggat acataagtat gctaagaaac atagtttctg taagtatgtg
+      661 aaagtaaaca cagctttgat cgatatgttt gcgaaatgtg gtagcttgga tgatgcagtg
+      721 tctatattcg aaaaaatgag gtataaggat acacaagctt ggtcagcaat gattgtagct
+      781 tatgcgaatc atgggaaagc tgagaaatcc atgttgatgt ttgagagaat gaggtctgaa
+      841 aatgttcagc ctgatgagat cacatttctc ggtctgttaa acgcttgcag ccacactggt
+      901 cgagtggaag aagggagaaa gtatttctca cagatggtta gcaaatttgg gattgttccg
+      961 agtattaagc attatggttc tatggtagat cttcttagta gagctggaaa tttagaagat
+     1021 gcatatgaat tcattgataa gctcccaatt agcccaacac caatgctatg gaggattctt
+     1081 ttagctgctt gtagcagcca taacaatttg gacctagctg aaaaggttag cgagaggatc
+     1141 tttgagctag atgattcaca cggtggcgat tacgtgattt tatcaaacct atacgcgaga
+     1201 aacaagaaat gggaatatgt agattcttta agaaaggtga tgaaagatcg aaaggcggtt
+     1261 aaagttcccg gttgcagctc gattgaggta aacaatgtgg ttcatgagtt tttctcaggg
+     1321 gatggtgtga agtctgcaac cacaaagctt cacagagcat tagatgaaat ggtgaaagag
+     1381 ctaaagcttt caggttatgt tcctgataca tcaatggtag ttcacgccaa tatgaatgac
+     1441 caagagaagg aaattacgct taggtatcac agcgaaaagc ttgcgataac gtttggatta
+     1501 ttgaatactc ctccgggaac aacgattcgg gttgtgaaga atcttagggt gtgtagagat
+     1561 tgtcacaatg cagcaaagtt gatatctctt atatttggta ggaaagttgt tcttagagat
+     1621 gttcaaaggt ttcatcattt tgaagatgga aaatgttctt gtggggattt ttgg
+//
+LOCUS       otp86                   2610 bp    DNA              UNK 01-JAN-1980
+DEFINITION  PPR Protein
+ACCESSION   PPR
+VERSION     PPR
 KEYWORDS    .
 SOURCE      .
   ORGANISM  .
@@ -106,922 +1024,4 @@ ORIGIN
      2461 aaggttcata aatttacagc cagagacaag tctcacccag agagcaaaga gatatatgag
      2521 aaattgtccg aggttactag gaagttggag agggaaaagg gaaagagaga gctagcaagg
      2581 gaattcaacg caagagagaa gatggagacc
-//
-LOCUS       CRR21                   1818 bp    DNA              UNK 01-JAN-1980
-DEFINITION  PPR Protein
-ACCESSION   PPR0|CRR4
-VERSION     PPR0|CRR4
-KEYWORDS    .
-SOURCE      .
-  ORGANISM  .
-            .
-FEATURES             Location/Qualifiers
-     PPR_3           1..105
-                     /frame=1
-                     /type="P"
-     PPR_3           106..210
-                     /frame=1
-                     /type="P"
-     PPR_3           232..336
-                     /frame=1
-                     /type="P"
-     PPR_3           337..441
-                     /frame=1
-                     /type="P"
-     PPR_3           442..546
-                     /frame=1
-                     /type="P"
-     PPR_3           535..633
-                     /frame=1
-                     /type="S"
-     PPR_3           634..741
-                     /frame=1
-                     /type="L"
-     PPR_3           730..834
-                     /frame=1
-                     /type="P"
-     PPR_3           823..927
-                     /frame=1
-                     /type="P"
-     PPR_3           916..1020
-                     /frame=1
-                     /type="P"
-     PPR_3           1129..1233
-                     /frame=1
-                     /type="P"
-     PPR_3           1222..1326
-                     /frame=1
-                     /type="P"
-     PPR_3           1327..1434
-                     /frame=1
-                     /type="L"
-     PPR_3           1435..1530
-                     /frame=1
-                     /type="S"
-     PPR_3           1531..1632
-                     /frame=1
-                     /type="S"
-     PPR_3           1633..1737
-                     /frame=1
-                     /type="P"
-ORIGIN
-        1 atggagtgtt cgatttcatc caccattcat gtccttggaa gctgcaaaac ttcagatgac
-       61 gtgaaccaaa tccacgggcg attgattaag acgggaatca tcaaaaactc aaatctcact
-      121 acgaggattg ttctggcttt tgcctcttct cgacgtccgt atctcgccga tttcgcgcgt
-      181 tgtgtcttcc acgagtatca cgtatgttcg ttttcatttg gagaggtgga ggatccattt
-      241 ttatggaacg ccgtgatcaa gtctcactct catggaaagg atccgagaca agctctgctc
-      301 ttgctctgtt tgatgctcga gaatggggtt tccgtggaca aattctcact gtcacttgtt
-      361 cttaaagcgt gttcgaggtt aggttttgta aaaggaggaa tgcagattca tgggtttttg
-      421 aaaaaaactg gactttggtc ggatttgttt ctacagaatt gtttgattgg cttgtatctg
-      481 aaatgtggtt gtttaggttt atcacgccag atgtttgata gaatgccgaa gagagactct
-      541 gtttcttata attccatgat tgatgggtat gtcaaatgtg gattgattgt atccgcgcgt
-      601 gaattgttcg atttgatgcc tatggagatg aagaatttga tatcttggaa ctctatgata
-      661 agtggttatg ctcagacatc agatggagtt gacatagcgt ctaaactgtt tgctgatatg
-      721 cctgagaagg acttgatttc gtggaactca atgatagatg gatatgtaaa acacggaaga
-      781 atcgaagatg ctaagggttt attcgatgtg atgccgagaa gagatgtagt tacttgggct
-      841 accatgattg atgggtatgc aaagttaggt tttgttcatc acgctaagac tctgtttgac
-      901 caaatgcctc atagagatgt tgtggcatat aattctatga tggctggtta tgttcaaaac
-      961 aagtatcaca tggaagctct tgaaatattt agtgacatgg aaaaggagag tcacttgtta
-     1021 cccgatgata cgactttggt aatagttctg cctgcaattg ctcagcttgg ccgattatcc
-     1081 aaagccatag atatgcattt gtacatcgtg gagaaacaat tctatctagg tggaaaactc
-     1141 ggtgttgctc tcattgatat gtattcgaaa tgcggaagca tacaacacgc catgttggtt
-     1201 ttcgagggaa tcgaaaacaa aagcattgat cactggaatg ctatgattgg tgggctcgct
-     1261 attcatggtc taggggaatc tgcattcgat atgctcttgc agattgagag actctcttta
-     1321 aaaccagacg atatcacctt tgttggcgtt ttaaatgctt gcagccactc tgggttagta
-     1381 aaggaaggcc ttctctgctt tgagctcatg aggagaaaac acaagataga accaagattg
-     1441 caacactatg gttgtatggt agacatacta tcgagatccg gaagtataga gctagccaaa
-     1501 aacttaatag aggaaatgcc tgttgagcca aatgatgtca tatggagaac gtttctcacc
-     1561 gcttgtagtc accacaagga gtttgaaacg ggagagcttg tcgcaaaaca ccttattttg
-     1621 caggctggat ataacccgag ctcatatgtg ctactctcta acatgtatgc tagttttgga
-     1681 atgtggaagg atgttcgtag agttagaacg atgatgaagg aaagaaagat agagaaaatt
-     1741 cctggttgta gttggattga gctcgatgga agagtccatg agttctttgt agatagcatt
-     1801 gaagtttcca gtacattg
-//
-LOCUS       otp86                   2490 bp    DNA              UNK 01-JAN-1980
-DEFINITION  PPR Protein
-ACCESSION   PPR0|CRR21
-VERSION     PPR0|CRR21
-KEYWORDS    .
-SOURCE      .
-  ORGANISM  .
-            .
-FEATURES             Location/Qualifiers
-     PPR_3           100..204
-                     /frame=1
-                     /type="P"
-     PPR_3           619..723
-                     /frame=1
-                     /type="P"
-     PPR_3           712..816
-                     /frame=1
-                     /type="P"
-     PPR_3           922..1026
-                     /frame=1
-                     /type="P"
-     PPR_3           1015..1119
-                     /frame=1
-                     /type="P"
-     PPR_3           1120..1224
-                     /frame=1
-                     /type="P"
-     PPR_3           1225..1329
-                     /frame=1
-                     /type="P"
-     PPR_3           1318..1422
-                     /frame=1
-                     /type="P"
-     PPR_3           1423..1527
-                     /frame=1
-                     /type="P"
-     PPR_3           1528..1632
-                     /frame=1
-                     /type="P"
-     PPR_3           1741..1845
-                     /frame=1
-                     /type="P"
-     PPR_3           1834..1938
-                     /frame=1
-                     /type="P"
-     PPR_3           1939..2046
-                     /frame=1
-                     /type="L"
-     PPR_3           2047..2151
-                     /frame=1
-                     /type="P"
-     PPR_3           2245..2349
-                     /frame=1
-                     /type="P"
-ORIGIN
-        1 atggcttctc ttcctttcaa cactatcccg aataaagttc cattttcagt atcatcgaaa
-       61 ccttcttcta aacaccacga tgaacaagct cattctcctt cttccacatc ttactttcat
-      121 cgcgtttcgt ctctttgtaa gaacggtgag atcaaagaag ctctgagttt agttacagag
-      181 atggatttca gaaacttacg cattggtcct gagatatacg gtgaaatcct ccaaggatgc
-      241 gtttacgaga gagatttaag tacagggaag caaattcatg ctcggatttt aaagaacggt
-      301 gatttctacg cgaggaatga gtacatcgag actaaattgg tgatattcta cgccaagtgc
-      361 gatgctttgg agattgctga agttcttttc tcgaaattga gggttcgtaa tgttttctct
-      421 tgggcagcta ttattggtgt gaaatgtagg attgggttat gtgaaggagc tttaatgggt
-      481 tttgttgaga tgcttgaaaa tgagattttt cctgataatt ttgtggttcc gaatgtttgt
-      541 aaagcgtgtg gtgcgttgaa atggagtaga tttgggagag gggttcatgg gtatgtggta
-      601 aaatctggtc ttgaggattg tgtgtttgtg gctagtagtt tagctgatat gtatgggaaa
-      661 tgtggtgttt tggatgatgc gagtaaggtg tttgatgaaa ttcctgacag aaatgctgtt
-      721 gcttggaatg cgttgatggt tggttatgta caaaatggta agaatgagga agcgattcgg
-      781 cttttttctg atatgaggaa gcaaggtgtt gagcctactc gtgtcactgt ctcgacttgc
-      841 ttatctgctt ctgctaatat gggtggggtt gaagagggga aacagtcgca tgccattgct
-      901 attgtaaatg gaatggagct ggataatatc ttggggacat ctttattgaa tttctattgc
-      961 aaagtgggtt tgatagagta tgctgagatg gtttttgatc ggatgtttga aaaggatgtg
-     1021 gttacatgga atctgattat ttctgggtat gttcaacaag ggctagttga agatgctatc
-     1081 tacatgtgtc aattaatgag actagagaag ctgaaatatg attgtgtcac tttagcgaca
-     1141 ttaatgtctg ctgctgcacg tactgagaat ctaaagctcg ggaaagaggt gcagtgttat
-     1201 tgcattagac atagttttga atctgatatc gttttagcca gcactgtgat ggatatgtat
-     1261 gccaagtgtg gcagcattgt tgatgctaag aaagtgtttg attctacagt agagaaagac
-     1321 ttgatactgt ggaatacgtt acttgcagcc tatgcagaat ctggtcttag tggagaggct
-     1381 ttgagattgt tctatgggat gcagctagaa ggtgtacctc caaatgtgat aacatggaat
-     1441 ttgatcattc taagtcttct aaggaatggt caggtagatg aggccaagga tatgttcttg
-     1501 cagatgcaat cctcagggat aattccaaat cttatctcat ggacgactat gatgaatggt
-     1561 atggttcaaa atggttgcag tgaggaggca attctgtttc ttagaaagat gcaagaatcg
-     1621 ggcctgagac caaatgcatt tagcatcact gtcgctctct ctgcttgcgc acatctagca
-     1681 tcattgcata tcggaagaac aatccacgga tacatcataa gaaatctaca gcattcctct
-     1741 ttggtttcta ttgaaacttc tttggttgac atgtatgcta aatgtggaga tataaacaaa
-     1801 gcagagaagg ttttcggaag taagctatac agcgagttgc ctctctccaa tgccatgatc
-     1861 tcggcgtatg cattatatgg taacttaaaa gaagcaatcg ctctatacag aagcttagaa
-     1921 ggtgtaggtc ttaaaccaga caacatcaca atcacaaatg tcttatcagc atgtaaccac
-     1981 gcaggggata ttaaccaggc tatcgagatt ttcactgata tcgtttcaaa gcgtagtatg
-     2041 aaaccatgct tggaacatta tggacttatg gtagatcttc ttgcatcagc tggagaaaca
-     2101 gaaaaagctt taaggttaat cgaggaaatg ccattcaagc cagatgcacg aatgatccaa
-     2161 tctttggttg cttcttgcaa caaacagcgt aagactgagc ttgtggacta cttatcaagg
-     2221 aaattgcttg aatccgagcc tgaaaactcc ggtaactatg tgacgatatc gaatgcttat
-     2281 gcggttgaag gaagttggga tgaagttgtg aagatgagag agatgatgaa agctaagggt
-     2341 ttgaagaaaa aacctggatg tagttggata cagattacag gagaagaagg agtccatgtg
-     2401 tttgttgcca atgataagac acatactagg atcaatgaga tacaaatgat gttagcattg
-     2461 ttattatatg atatgggtac aggttccaaa
-//
-LOCUS       otp85                   2214 bp    DNA              UNK 01-JAN-1980
-DEFINITION  PPR Protein
-ACCESSION   PPR0|otp81
-VERSION     PPR0|otp81
-KEYWORDS    .
-SOURCE      .
-  ORGANISM  .
-            .
-FEATURES             Location/Qualifiers
-     PPR_3           76..186
-                     /frame=1
-                     /type="L"
-     PPR_3           187..291
-                     /frame=1
-                     /type="P"
-     PPR_3           280..384
-                     /frame=1
-                     /type="P"
-     PPR_3           493..597
-                     /frame=1
-                     /type="P"
-     PPR_3           586..690
-                     /frame=1
-                     /type="P"
-     PPR_3           691..795
-                     /frame=1
-                     /type="P"
-     PPR_3           796..900
-                     /frame=1
-                     /type="P"
-     PPR_3           889..993
-                     /frame=1
-                     /type="P"
-     PPR_3           982..1089
-                     /frame=1
-                     /type="L"
-     PPR_3           1090..1194
-                     /frame=1
-                     /type="P"
-     PPR_3           1195..1299
-                     /frame=1
-                     /type="P"
-     PPR_3           1288..1392
-                     /frame=1
-                     /type="P"
-     PPR_3           1393..1500
-                     /frame=1
-                     /type="L"
-     PPR_3           1501..1605
-                     /frame=1
-                     /type="P"
-     PPR_3           1699..1803
-                     /frame=1
-                     /type="P"
-ORIGIN
-        1 atggctatct tctccacagc acaacctctc tctctgccac gtcatccaaa cttctccaat
-       61 ccgaatcaac caactaccaa taacgaacgc tcccgccaca tttctctcat cgaacgatgt
-      121 gtgtctctcc gacaactaaa gcaaacccat ggtcacatga tccgtaccgg tacgttttcc
-      181 gatccttact cagctagcaa gctattcgca atggctgcgc tctcttcctt cgctagtctc
-      241 gagtatgcac gcaaggtgtt tgatgaaatt cctaaaccaa attctttcgc ttggaatact
-      301 cttatccgtg cttacgcttc tggaccagac cctgttctta gcatctgggc tttcttggat
-      361 atggtttcgg agagtcagtg ttatccaaat aagtacactt tccctttcct cattaaggca
-      421 gctgcagaag tttcatcttt gtctttgggt caatctcttc atgggatggc tgttaagtca
-      481 gcagttggaa gtgatgtttt cgttgctaat tctttgatac attgttattt ctcttgtggg
-      541 gatttagatt cagcttgtaa agtgtttact acgatcaaag aaaaggatgt tgtttcatgg
-      601 aattcgatga ttaatgggtt tgtgcaaaag ggttctccag ataaagcttt ggagcttttt
-      661 aagaagatgg agtcagagga cgttaaggca agtcatgtga caatggttgg tgtcttgtct
-      721 gcttgtgcaa agatacggaa tttagagttt gggaggcagg tttgttctta tatcgaagaa
-      781 aacagggtta acgtgaactt gacattggct aatgcgatgc ttgatatgta cacaaagtgt
-      841 ggaagcatag aagatgctaa aagactgttt gatgcaatgg aggagaaaga taacgttaca
-      901 tggacaacaa tgcttgatgg gtatgcaatt tcagaagact acgaagcagc tagagaggtt
-      961 cttaattcta tgcctcagaa agatattgtt gcttggaatg ctcttatatc tgcttatgag
-     1021 cagaatggta aacctaatga ggcattaata gtgttccatg agctgcaact tcagaagaac
-     1081 atgaagctga accagatcac actggtaagt actttatcag cttgtgctca ggtaggggca
-     1141 ctggaattag gtagatggat ccatagctac atcaaaaagc acggtattag gatgaatttt
-     1201 catgttacaa gcgcactgat tcatatgtat tcgaaatgcg gagatcttga aaagtcccgt
-     1261 gaagtgttta attctgtaga gaagagagat gtgtttgtgt ggagtgcaat gattggtggc
-     1321 ttggcaatgc acggatgtgg aaatgaagct gttgatatgt tttataaaat gcaagaggct
-     1381 aatgtaaagc ctaatggtgt gaccttcacc aatgtcttct gtgcttgtag ccataccggt
-     1441 ttggtggatg aagctgagtc tttattccac cagatggaat cgaattatgg tattgtccct
-     1501 gaggaaaagc attatgcttg catagttgat gttctcggcc gctcgggtta tttggaaaaa
-     1561 gcagtgaagt tcatagaggc gatgccgatt cctccaagca cttctgtctg gggagcgctt
-     1621 ctaggagctt gtaagatcca tgccaatctg aatcttgctg aaatggcttg tacccgtttg
-     1681 cttgaactgg aacctaggaa tgatggcgcg catgtgctcc tatcaaacat atatgctaaa
-     1741 ttgggtaagt gggaaaacgt ttctgagctg agaaagcata tgagagtcac tggacttaag
-     1801 aaagaaccag gatgcagctc aattgaaatc gatggcatga ttcatgagtt tctctctgga
-     1861 gataacgctc atcctatgtc tgagaaggtt tacgggaagt tacacgaggt tatggagaaa
-     1921 ctgaaatcaa atggttatga gccagagata tctcaggttc tgcagatcat cgaggaagaa
-     1981 gaaatgaagg aacaatctct aaatctccac agcgagaagc tggctatttg ttatggactg
-     2041 atatcaacag aggctccaaa ggtgatccga gttattaaga atctaagggt gtgtggagat
-     2101 tgtcattcag tggctaaact aatatctcag ctttatgata gagagattat agtgagggac
-     2161 cggtataggt ttcatcattt cagaaatggg cagtgttcct gtaacgattt ctgg
-//
-LOCUS       otp84                   2058 bp    DNA              UNK 01-JAN-1980
-DEFINITION  PPR Protein
-ACCESSION   PPR0|otp82
-VERSION     PPR0|otp82
-KEYWORDS    .
-SOURCE      .
-  ORGANISM  .
-            .
-FEATURES             Location/Qualifiers
-     PPR_3           127..231
-                     /frame=1
-                     /type="P"
-     PPR_3           232..336
-                     /frame=1
-                     /type="P"
-     PPR_3           337..441
-                     /frame=1
-                     /type="P"
-     PPR_3           430..534
-                     /frame=1
-                     /type="P"
-     PPR_3           523..627
-                     /frame=1
-                     /type="P"
-     PPR_3           628..732
-                     /frame=1
-                     /type="P"
-     PPR_3           733..837
-                     /frame=1
-                     /type="P"
-     PPR_3           826..930
-                     /frame=1
-                     /type="P"
-     PPR_3           1042..1146
-                     /frame=1
-                     /type="P"
-     PPR_3           1135..1239
-                     /frame=1
-                     /type="P"
-     PPR_3           1240..1347
-                     /frame=1
-                     /type="L"
-     PPR_3           1348..1443
-                     /frame=1
-                     /type="S"
-     PPR_3           1444..1545
-                     /frame=1
-                     /type="S"
-     PPR_3           1546..1650
-                     /frame=1
-                     /type="P"
-     PPR_3           1735..1839
-                     /frame=1
-                     /type="P"
-ORIGIN
-        1 atgatcaaaa tcggtctcca caacaccaat tacgctctca gtaagcttat tgagttctgc
-       61 attctctctc cacactttga aggccttcct tatgcgatat ctgttttcaa aactattcag
-      121 gagccaaacc tgttgatttg gaacacgatg tttcgtgggc acgcgttgag ttcggaccct
-      181 gtttctgctc tgaagctgta tgtttgtatg atttcacttg ggcttcttcc taattcctac
-      241 acgtttccgt ttgtattgaa atcttgtgca aagtcgaaag cttttaagga agggcaacag
-      301 atccatgggc atgttttgaa acttggatgt gatctagatt tgtatgtaca tacttctctg
-      361 atctctatgt atgtccaaaa cgggagattg gaagatgcac ataaggtgtt cgataaaagt
-      421 cctcaccgag atgtggtttc atacacagct ttgatcaagg gttatgcatc gagaggctat
-      481 atcgaaaatg cacagaagtt gttcgatgaa attcccgtta aagacgtagt atcatggaat
-      541 gcaatgattt caggatatgc tgaaaccggt aactataagg aagcgttaga attgtttaaa
-      601 gatatgatga agacgaatgt taggccagac gagagtacaa tggtcactgt agtttctgct
-      661 tgtgctcagt ctggtagtat tgaattgggt cgtcaggtac atttatggat tgatgatcat
-      721 gggtttggtt caaatctcaa gattgttaat gctctcattg atttatactc gaaatgtggt
-      781 gaattggaga cagcgtgtgg tttgttcgaa agattgccgt acaaggatgt aatttcttgg
-      841 aataccttga tcggtggtta cacacatatg aatctttaca aagaagcatt gttgttgttt
-      901 caagaaatgc ttagatcagg tgaaactcca aacgatgtga caatgctaag tattcttcct
-      961 gcttgtgcac accttggagc catagatatt ggaagatgga ttcatgtgta tatcgacaag
-     1021 agattaaagg gtgttacgaa tgcttcttct ctccgtacaa gcctgattga catgtatgct
-     1081 aaatgtggag acatagaggc agcacaccaa gtgttcaaca gtatactcca taaaagcttg
-     1141 tcgtcttgga acgcaatgat atttgggttt gcaatgcacg ggagagctga tgcatcattt
-     1201 gatcttttct caagaatgag aaagattggg attcaaccag atgatatcac gtttgttggt
-     1261 ttgttgtctg cttgtagcca ttcaggtatg ctagatcttg gacgccatat tttcagaaca
-     1321 atgacacagg actacaaaat gaccccaaaa ttagagcact acggttgcat gattgatctt
-     1381 ttgggtcatt cgggtctatt caaagaagcg gaagaaatga taaacatgat ggaaatggag
-     1441 cccgatggag tgatttggtg ctcccttctc aaagcttgca agatgcatgg gaatgtcgag
-     1501 ttgggcgaat catttgcaga aaacctcatt aagattgagc cagaaaaccc aggttcttat
-     1561 gtacttctgt ctaacattta tgcctcagca ggaagatgga acgaagtagc aaaaacacga
-     1621 gctctcctca atgataaagg tatgaagaaa gttcctggtt gcagctctat cgaaatagat
-     1681 tctgtggtcc atgagttcat catcggggat aaattccatc cacggaacag agaaatctac
-     1741 ggaatgttag aagaaatgga ggtgttacta gagaaagccg ggtttgttcc agatacttct
-     1801 gaagtcttgc aggagatgga agaagaatgg aaggaaggag cattgcggca tcacagcgag
-     1861 aagctagcta ttgcatttgg gctgatcagt acaaagcctg ggactaaact tacaatcgtg
-     1921 aagaatctaa gggtatgcag aaattgtcat gaggctacaa agcttatatc aaagatttac
-     1981 aaaagggaga ttattgctag agacagaact cggtttcatc attttagaga tggtgtttgt
-     2041 tcctgcaatg actactgg
-//
-LOCUS       CRR28                   2670 bp    DNA              UNK 01-JAN-1980
-DEFINITION  PPR Protein
-ACCESSION   PPR0|otp84
-VERSION     PPR0|otp84
-KEYWORDS    .
-SOURCE      .
-  ORGANISM  .
-            .
-FEATURES             Location/Qualifiers
-     PPR_3           181..285
-                     /frame=3
-                     /type="P"
-     PPR_3           394..498
-                     /frame=3
-                     /type="P"
-     PPR_3           487..591
-                     /frame=3
-                     /type="P"
-     PPR_3           592..696
-                     /frame=3
-                     /type="P"
-     PPR_3           796..900
-                     /frame=3
-                     /type="P"
-     PPR_3           1102..1206
-                     /frame=3
-                     /type="P"
-     PPR_3           1315..1419
-                     /frame=3
-                     /type="P"
-     PPR_3           1408..1512
-                     /frame=3
-                     /type="P"
-     PPR_3           1651..1755
-                     /frame=3
-                     /type="P"
-     PPR_3           1744..1848
-                     /frame=3
-                     /type="P"
-     PPR_3           1849..1956
-                     /frame=3
-                     /type="L"
-     PPR_3           1957..2061
-                     /frame=3
-                     /type="P"
-     PPR_3           2158..2262
-                     /frame=3
-                     /type="P"
-     PPR_3           2299..2403
-                     /frame=3
-                     /type="P"
-ORIGIN
-        1 atgtcatgtc ctcttgcctt caccttctct ctcccgtcta ttttcccctt tccttctcaa
-       61 ctgcttccat tttcccgcca taaacatcct tatcttcttc gcgccacacc aacctctgca
-      121 accgaagatg ttgcctccgc cgtttctggc gcaccttcaa tatttatctc tcaatcacgc
-      181 tctccggagt ggtggattga cttgctccgg tccaaagttc gatctaattt gctccgtgaa
-      241 gctgttttga cttacgttga catgattgtt ttgggtataa aacccgataa ttatgcgttc
-      301 cctgctttgc taaaggctgt agcagatctt caggacatgg aactggggaa acagattcat
-      361 gcccatgtgt ataaatttgg gtacggtgtg gattccgtga ctgtggctaa tacccttgtg
-      421 aatttgtata gaaagtgtgg agatttcgga gctgtctata aggtgttcga tagaatatct
-      481 gagagaaacc aagtctcttg gaattcttta atttcttctt tgtgtagttt tgagaagtgg
-      541 gaaatggcgt tagaggcatt tcggtgtatg ttggatgaaa atgtggaacc tagttcgttt
-      601 accttggtga gtgtggttac tgcttgttcg aatttgccta tgcctgaggg attaatgatg
-      661 ggtaagcagg ttcacgccta tggtttgaga aagggtgaat tgaattcgtt tataatcaac
-      721 acattggtgg ctatgtatgg taaactggga aaattagcat cttctaaagt cttacttggt
-      781 tcttttggag gccgtgactt ggtcacatgg aacactgtgt tgagctcgtt atgtcagaac
-      841 gagcagttgc ttgaagcatt ggaatatttg cgtgaaatgg tgcttgaagg tgttgaacca
-      901 gatgagttca ctatttcaag tgttcttcct gcttgttcac acttggagat gcttcgcaca
-      961 gggaaagaat tgcatgctta tgctttgaaa aatggctctt tggatgagaa ttcctttgtt
-     1021 ggtagtgctt tggttgacat gtattgcaat tgcaagcaag tgttgagtgg tcgtcgagta
-     1081 tttgatggaa tgtttgatag aaagattggt ctgtggaatg ctatgatcgc tgggtattcc
-     1141 cagaatgagc atgacaagga agcgttgttg cttttcattg gaatggaaga aagtgctggg
-     1201 cttctggcta actctaccac aatggcaggt gttgttcctg cttgtgtccg ttctggtgcg
-     1261 ttctctagaa aggaagctat ccatggattt gttgtgaaga gaggtttaga tagagacagg
-     1321 tttgtgcaga atacactgat ggatatgtat tctaggctgg gaaagatcga tatcgccatg
-     1381 cggatattcg gtaaaatgga agatagagat ttagttacgt ggaacacgat gattacgggt
-     1441 tatgtattct cagaacacca tgaggacgca cttctcctgc tacacaagat gcaaaacctt
-     1501 gaaagaaaag tgagcaaggg ggctagccga gttagtctta aacctaattc catcactctg
-     1561 atgacaatcc ttcccagttg tgctgcacta tcagcattag caaaaggaaa agaaattcat
-     1621 gcttatgcca tcaagaacaa tttggcaact gatgtggctg tcggaagcgc tttagttgac
-     1681 atgtacgcaa aatgcgggtg cctacagatg tcgagaaaag tgtttgatca gattccacaa
-     1741 aaaaatgtta ttacttggaa tgtgattata atggcttacg ggatgcatgg aaacggtcaa
-     1801 gaagccatag atctgctaag aatgatgatg gttcagggag taaaaccaaa cgaggttaca
-     1861 ttcatctcag tatttgcagc ttgtagccac tcaggcatgg tggatgaagg attaaggata
-     1921 ttctatgtta tgaaacccga ctacggggtt gaaccaagct cagatcatta tgcttgtgtt
-     1981 gtagatttgc ttggaagggc tggtagaatt aaagaagcat atcaactcat gaatatgatg
-     2041 cctcgtgatt tcaacaaagc tggagcatgg agtagcctcc ttggtgccag tcggattcac
-     2101 aataacctag aaattggaga aattgctgct caaaatctca ttcaactgga accaaatgta
-     2161 gctagtcact atgtgttact tgccaatatt tattcatcag caggcctctg ggataaagca
-     2221 acagaggtaa gaagaaatat gaaagagcaa ggcgtgagaa aagaacctgg atgtagctgg
-     2281 attgagcatg gcgatgaagt acataaattt gtagccggtg actcatctca cccgcaaagc
-     2341 gaaaagctca gtggatatct cgagacattg tgggagagaa tgagaaaaga aggatatgta
-     2401 cctgacacat cttgtgtact ccacaatgta gaggaagatg aaaaagagat tctgctttgt
-     2461 ggacacagtg agaagctagc aattgcgttt gggatactta acacatcacc cggtacaatt
-     2521 attagggtgg ctaaaaacct cagggtttgt aatgattgtc atcttgcaac caagtttatc
-     2581 tcaaagattg ttgatagaga aatcatcttg agagatgtta ggaggtttca tcgtttcaag
-     2641 aatggaactt gctcctgtgg agactattgg
-//
-LOCUS       LPA66                   2427 bp    DNA              UNK 01-JAN-1980
-DEFINITION  PPR Protein
-ACCESSION   PPR0|CRR22
-VERSION     PPR0|CRR22
-KEYWORDS    .
-SOURCE      .
-  ORGANISM  .
-            .
-FEATURES             Location/Qualifiers
-     PPR_3           202..306
-                     /frame=1
-                     /type="P"
-     PPR_3           295..399
-                     /frame=1
-                     /type="P"
-     PPR_3           505..609
-                     /frame=1
-                     /type="P"
-     PPR_3           598..702
-                     /frame=1
-                     /type="P"
-     PPR_3           808..912
-                     /frame=1
-                     /type="P"
-     PPR_3           901..1005
-                     /frame=1
-                     /type="P"
-     PPR_3           1111..1215
-                     /frame=1
-                     /type="P"
-     PPR_3           1204..1308
-                     /frame=1
-                     /type="P"
-     PPR_3           1309..1413
-                     /frame=1
-                     /type="P"
-     PPR_3           1414..1518
-                     /frame=1
-                     /type="P"
-     PPR_3           1507..1611
-                     /frame=1
-                     /type="P"
-     PPR_3           1612..1719
-                     /frame=1
-                     /type="L"
-     PPR_3           1720..1824
-                     /frame=1
-                     /type="P"
-ORIGIN
-        1 atgagctcac aattggtgca gttctctacc gttcctcaaa tccctaatcc cccgtctcgc
-       61 catcgtcact ttctctccga gagaaattac attccggcta atgtctatga gcatccagcg
-      121 gctcttcttc ttgagagatg ttcttctctg aaagaacttc gtcaaattct tcctctcgtc
-      181 ttcaaaaatg ggctttatca ggagcatttt ttccagacaa agcttgtcag cttgttctgt
-      241 cgctatggca gtgtcgacga ggctgctcgt gttttcgaac ccattgatag taaactcaat
-      301 gttctttatc acaccatgct taaagggttt gctaaagttt cagacttgga taaagctttg
-      361 caattttttg ttcggatgag gtatgatgat gtagagcctg ttgtgtataa cttcacttat
-      421 ctcctcaaag tttgtggaga cgaagcagag cttagggttg gaaaggaaat tcatgggttg
-      481 ttggtgaaga gtgggttctc gttggatttg tttgccatga ctgggcttga gaatatgtat
-      541 gccaagtgta ggcaggtaaa tgaggcccgc aaggtgtttg atagaatgcc tgagagagat
-      601 ttggtttctt ggaatacaat tgtggctggg tattcacaga atgggatggc gagaatggct
-      661 ttggaaatgg ttaagtcaat gtgtgaggag aatctgaagc ctagttttat cactattgtt
-      721 tctgttttgc ctgctgtctc tgctttgagg ttgattagtg ttggcaagga gattcatggg
-      781 tatgctatgc ggtcgggatt tgattctctt gtcaatatct ccactgcttt ggttgatatg
-      841 tatgcgaaat gtggatctct ggaaactgct cggcagctct ttgatgggat gttagaaagg
-      901 aatgttgttt catggaattc aatgattgat gcctatgtgc agaatgagaa tcctaaagag
-      961 gcaatgttaa tttttcaaaa gatgttggac gaaggagtca aacccactga tgtatctgtc
-     1021 atgggtgctt tgcatgcttg tgctgacctg ggtgaccttg agagaggaag attcattcat
-     1081 aagttatctg ttgaattggg tcttgataga aatgtttctg tagtgaactc tttgatctcc
-     1141 atgtattgca agtgcaagga agttgatact gctgcttcta tgtttgggaa attgcagagc
-     1201 agaacccttg tctcttggaa tgcaatgata ttaggatttg cacagaatgg acgtcccatc
-     1261 gatgctttga attacttcag ccagatgcgg tctcggacag tgaaaccaga cacatttact
-     1321 tatgtgagtg tgataactgc tatcgcagag ctgtcaatta cacatcatgc gaagtggatt
-     1381 catggggtgg ttatgcgaag ttgtctggat aagaacgtgt ttgtcacaac ggctctagtc
-     1441 gacatgtatg cgaaatgtgg tgctattatg attgcaagat tgatttttga catgatgagt
-     1501 gagcgtcatg tgacaacatg gaatgctatg attgatggat acgggacaca tggatttggg
-     1561 aaagctgctc tggagttgtt tgaagaaatg caaaaaggca ccatcaaacc aaatggtgtc
-     1621 acatttcttt ctgtcatctc tgcttgcagc cactcgggtt tggtggaggc aggactcaag
-     1681 tgcttctata tgatgaagga aaactacagc atagaactgt caatggacca ctatggagcc
-     1741 atggtcgatc ttttaggtcg agctggacgg ttgaatgaag catgggactt tattatgcag
-     1801 atgcccgtta agccggctgt aaatgtatat ggtgccatgt taggtgcttg ccagattcat
-     1861 aaaaatgtga atttcgctga gaaagcagca gagagattgt ttgagttgaa cccggatgat
-     1921 ggtgggtatc atgtgcttct tgcaaacata tatcgtgcag cttcaatgtg ggaaaaagtg
-     1981 ggacaagtga gagtttcaat gttgagacag ggtctgcgca aaactcctgg ctgcagtatg
-     2041 gtggagataa agaacgaggt gcatagcttc ttctctggaa gcacagccca tcccgattcc
-     2101 aagaagattt atgcgtttct tgagaagctg atatgccaca tcaaagaagc tggttatgtt
-     2161 cctgacacga atttagtcct cggtgtggaa aatgatgtta aggagcaact gctgagtacc
-     2221 cacagtgaga agctggctat atcttttgga ttgctgaata caactgcagg tacaactatt
-     2281 cacgtaagaa agaacctgcg ggtttgtgct gactgtcaca atgctacaaa gtacatttcc
-     2341 cttgtgaccg gacgggaaat tgtagtacga gacatgcaac ggtttcacca tttcaaaaac
-     2401 ggtgcctgtt cgtgcggaga ttactgg
-//
-LOCUS       otp81                   1632 bp    DNA              UNK 01-JAN-1980
-DEFINITION  PPR Protein
-ACCESSION   PPR0|otp80
-VERSION     PPR0|otp80
-KEYWORDS    .
-SOURCE      .
-  ORGANISM  .
-            .
-FEATURES             Location/Qualifiers
-     PPR_3           271..375
-                     /frame=1
-                     /type="P"
-     PPR_3           364..468
-                     /frame=1
-                     /type="P"
-     PPR_3           469..573
-                     /frame=1
-                     /type="P"
-     PPR_3           562..666
-                     /frame=1
-                     /type="P"
-     PPR_3           655..759
-                     /frame=1
-                     /type="P"
-     PPR_3           760..864
-                     /frame=1
-                     /type="P"
-     PPR_3           865..969
-                     /frame=1
-                     /type="P"
-     PPR_3           958..1062
-                     /frame=1
-                     /type="P"
-     PPR_3           1063..1170
-                     /frame=1
-                     /type="L"
-     PPR_3           1171..1275
-                     /frame=1
-                     /type="P"
-     PPR_3           1237..1341
-                     /frame=1
-                     /type="P"
-     PPR_3           1369..1473
-                     /frame=1
-                     /type="P"
-ORIGIN
-        1 atgatttctt ccttggcagc gatcaccgga gggccttcaa ctttccggcg tgatcccgat
-       61 tcaaacactc tcaggctttc acgcaggaaa acattaatct ctgtattacg aagctgcaag
-      121 aacattgccc atgttccatc gattcacgcc aagatcatta ggaccttcca tgaccaagat
-      181 gctttcgttg ttttcgaact tatccgtgtt tgctccactc tcgattccgt cgactacgcc
-      241 tacgacgtgt ttagttacgt atctaaccct aatgtatatc tatacactgc tatgatcgat
-      301 ggttttgtgt catctggtcg ttctgctgat ggagtttcgc tgtatcatcg gatgattcac
-      361 aattcggttt tgcctgataa ctacgtgatc acctcagttt tgaaagcttg tgatttgaag
-      421 gtatgtagag agattcatgc ccaggttttg aaactagggt tcgggtctag tagatcggta
-      481 gggctaaaaa tgatggaaat ctacgggaaa tctggggaat tggtgaatgc taagaagatg
-      541 ttcgatgaaa tgcctgacag agatcatgtt gcagcaacgg tcatgattaa ttgttattct
-      601 gaatgcggtt tcattaagga ggcgttagag ctttttcaag atgttaagat taaagatacg
-      661 gtttgttgga ctgcgatgat tgatgggttg gttagaaaca aggagatgaa caaagcgttg
-      721 gagcttttta gggaaatgca gatggagaat gttagtgcta atgaatttac agctgtctgt
-      781 gttttatccg catgctcgga tttaggtgcg ttggagctcg ggcggtgggt acattcgttt
-      841 gttgagaacc aaaggatgga gcttagtaat ttcgtaggta atgcgttgat caatatgtac
-      901 tccaggtgtg gtgatatcaa tgaggcaagg cgggttttta gggtaatgcg agacaaagat
-      961 gtcatatcat ataacacgat gatttctgga ttagcaatgc atggggctag cgttgaagct
-     1021 atcaatgaat ttcgggatat ggtgaacaga ggatttaggc cgaatcaggt gactttagtt
-     1081 gctcttttaa acgcatgtag ccatggaggt ttgttggata tagggcttga agtatttaat
-     1141 tctatgaaga gagtttttaa tgttgaacct cagattgagc attatggatg tattgtcgat
-     1201 cttcttggtc gagtggggcg actagaggag gcttacagat tcatagaaaa tattccaata
-     1261 gagccggatc atatcatgtt aggaactctt ttgagtgctt gtaagatcca tggaaacatg
-     1321 gaactcggtg aaaaaatcgc taagagacta ttcgaatctg agaatccaga ttctgggaca
-     1381 tacgttctct tatcaaatct ttacgcttca tctgggaaat ggaaagaatc tacagaaatc
-     1441 agagagagta tgagagattc agggattgag aaggaaccag gatgcagtac tatcgaagtg
-     1501 gacaatcaga tccatgagtt tcttgtggga gatatagcac accctcataa agaagcaatt
-     1561 tatcagagat tacaagaact gaatcgaatt cttagattca aagagaatca aatagatatt
-     1621 ataatgggtt tc
-//
-LOCUS       otp82                   1674 bp    DNA              UNK 01-JAN-1980
-DEFINITION  PPR Protein
-ACCESSION   PPR0|otp85
-VERSION     PPR0|otp85
-KEYWORDS    .
-SOURCE      .
-  ORGANISM  .
-            .
-FEATURES             Location/Qualifiers
-     PPR_3           40..153
-                     /frame=2
-                     /type="L"
-     PPR_3           142..246
-                     /frame=2
-                     /type="P"
-     PPR_3           247..351
-                     /frame=2
-                     /type="P"
-     PPR_3           352..456
-                     /frame=2
-                     /type="P"
-     PPR_3           445..549
-                     /frame=2
-                     /type="P"
-     PPR_3           655..759
-                     /frame=2
-                     /type="P"
-     PPR_3           748..852
-                     /frame=2
-                     /type="P"
-     PPR_3           853..960
-                     /frame=2
-                     /type="L"
-     PPR_3           961..1056
-                     /frame=2
-                     /type="S"
-     PPR_3           1057..1158
-                     /frame=2
-                     /type="S"
-     PPR_3           1159..1263
-                     /frame=2
-                     /type="P"
-ORIGIN
-        1 atgcaaattc aagcttacgc gatcaaatct catattgaag atgtttcctt cgtcgctaag
-       61 ctgataaatt tctgcactga gtctccaacg gagtcttcaa tgtcatatgc acgccacttg
-      121 ttcgaggcaa tgtctgaacc agatattgtc atttttaatt ctatggctcg tgggtattct
-      181 cgcttcacga atcctcttga ggtttttagt ctcttcgttg agatcttaga agatggtatt
-      241 ttacctgaca actacacttt cccgtctctt ctcaaagctt gtgcagtagc aaaggcgtta
-      301 gaagaaggta gacaattgca ttgtttgtcg atgaaactag ggcttgatga taatgtctat
-      361 gtttgtccaa cgcttattaa tatgtacact gagtgtgaag atgtggattc tgctcgttgt
-      421 gtgtttgatc ggattgttga gccgtgtgtt gtttgttata atgctatgat cacgggttat
-      481 gcgagaagaa acagaccgaa cgaggcttta tctttgttcc gtgaaatgca aggtaagtac
-      541 ttgaagccga atgagattac ccttttgagt gttctgtcat cttgtgctct gttgggatcg
-      601 ttagatttag ggaaatggat acataagtat gctaagaaac atagtttctg taagtatgtg
-      661 aaagtaaaca cagctttgat cgatatgttt gcgaaatgtg gtagcttgga tgatgcagtg
-      721 tctatattcg aaaaaatgag gtataaggat acacaagctt ggtcagcaat gattgtagct
-      781 tatgcgaatc atgggaaagc tgagaaatcc atgttgatgt ttgagagaat gaggtctgaa
-      841 aatgttcagc ctgatgagat cacatttctc ggtctgttaa acgcttgcag ccacactggt
-      901 cgagtggaag aagggagaaa gtatttctca cagatggtta gcaaatttgg gattgttccg
-      961 agtattaagc attatggttc tatggtagat cttcttagta gagctggaaa tttagaagat
-     1021 gcatatgaat tcattgataa gctcccaatt agcccaacac caatgctatg gaggattctt
-     1081 ttagctgctt gtagcagcca taacaatttg gacctagctg aaaaggttag cgagaggatc
-     1141 tttgagctag atgattcaca cggtggcgat tacgtgattt tatcaaacct atacgcgaga
-     1201 aacaagaaat gggaatatgt agattcttta agaaaggtga tgaaagatcg aaaggcggtt
-     1261 aaagttcccg gttgcagctc gattgaggta aacaatgtgg ttcatgagtt tttctcaggg
-     1321 gatggtgtga agtctgcaac cacaaagctt cacagagcat tagatgaaat ggtgaaagag
-     1381 ctaaagcttt caggttatgt tcctgataca tcaatggtag ttcacgccaa tatgaatgac
-     1441 caagagaagg aaattacgct taggtatcac agcgaaaagc ttgcgataac gtttggatta
-     1501 ttgaatactc ctccgggaac aacgattcgg gttgtgaaga atcttagggt gtgtagagat
-     1561 tgtcacaatg cagcaaagtt gatatctctt atatttggta ggaaagttgt tcttagagat
-     1621 gttcaaaggt ttcatcattt tgaagatgga aaatgttctt gtggggattt ttgg
-//
-LOCUS       otp80                   1785 bp    DNA              UNK 01-JAN-1980
-DEFINITION  PPR Protein
-ACCESSION   PPR0|LPA66
-VERSION     PPR0|LPA66
-KEYWORDS    .
-SOURCE      .
-  ORGANISM  .
-            .
-FEATURES             Location/Qualifiers
-     PPR_3           13..123
-                     /frame=2
-                     /type="L"
-     PPR_3           112..225
-                     /frame=2
-                     /type="L"
-     PPR_3           226..330
-                     /frame=2
-                     /type="P"
-     PPR_3           466..570
-                     /frame=2
-                     /type="P"
-     PPR_3           559..663
-                     /frame=2
-                     /type="P"
-     PPR_3           769..873
-                     /frame=2
-                     /type="P"
-     PPR_3           862..966
-                     /frame=2
-                     /type="P"
-     PPR_3           967..1074
-                     /frame=2
-                     /type="L"
-     PPR_3           1075..1170
-                     /frame=2
-                     /type="S"
-     PPR_3           1171..1272
-                     /frame=2
-                     /type="S"
-     PPR_3           1273..1377
-                     /frame=2
-                     /type="P"
-ORIGIN
-        1 atgcgagaca ctctcgccgc cgcagagatt ctccgattct gtgctacctc cgatctccac
-       61 caccgtgacc ttgactacgc acataagatc tttaatcaaa tgcctcaacg aaattgcttc
-      121 tcttggaata ctataatcag aggtttcagt gagagtgacg aagacaaagc tctgatcgca
-      181 atcacattat tctacgagat gatgagtgat gagtttgttg aaccgaatcg gtttacgttt
-      241 ccctctgttc ttaaggcttg tgcgaaaact gggaagattc aagaaggtaa gcagattcat
-      301 ggtttggctt tgaagtatgg atttggtggt gatgaatttg tgatgagtaa tcttgttaga
-      361 atgtatgtga tgtgtggttt tatgaaagat gctcgtgtgt tgttttataa gaacattata
-      421 gagaaagata tggtggtgat gactgataga agaaagagag atggtgaaat agttttgtgg
-      481 aatgttatga ttgatggtta tatgagactt ggtgattgta aagctgcacg gatgttgttt
-      541 gataaaatgc gtcaaagaag cgttgtttcg tggaatacga tgatatcggg ttattcgctg
-      601 aacgggtttt tcaaagatgc tgttgaggtt tttcgtgaga tgaagaaagg ggatattaga
-      661 ccgaattatg ttactttggt tagtgttctt cctgctattt cacggcttgg gtctttagag
-      721 ttgggagaat ggttgcattt gtatgcagag gatagtggaa ttaggattga tgatgtgctt
-      781 ggctctgctt tgattgatat gtattcgaaa tgtgggatca ttgagaaagc gattcatgta
-      841 tttgagaggt tacctagaga gaacgtgatt acttggagtg cgatgattaa cgggtttgct
-      901 atacatggcc aggcaggtga tgctattgac tgtttttgta aaatgaggca ggctggagtt
-      961 cgacctagtg atgttgccta cattaatctt ttgactgctt gtagccatgg cgggttggta
-     1021 gaagaaggaa ggagatattt cagtcagatg gtgagtgtgg atggtttaga gcctaggatt
-     1081 gaacactacg ggtgtatggt tgatttattg ggtcgttcgg gtcttcttga tgaggctgag
-     1141 gagtttatac ttaatatgcc tataaaacca gatgatgtga tatggaaagc acttttgggt
-     1201 gcttgcagaa tgcagggaaa tgtcgagatg ggcaagcgcg ttgccaatat tctgatggat
-     1261 atggttcctc atgacagtgg agcttatgtc gccctctcaa acatgtatgc ttctcaagga
-     1321 aactggtcag aggtttcaga gatgaggctg agaatgaagg agaaggatat aagaaaagac
-     1381 cctgggtgta gtttgatcga cattgatggc gtgcttcatg agtttgttgt ggaagatgat
-     1441 tcacacccaa aagccaaaga aatcaactca atgctcgtag aaatctcaga caaactgaga
-     1501 ctagctgggt atagaccaat caccacacag gttttgttaa acttggagga agaagataaa
-     1561 gaaaatgtac ttcattacca cagcgagaag atcgctacag cgtttgggtt gataagcacg
-     1621 agccctggca aaccaatacg cattgttaag aacctacgta tctgtgagga ttgtcattcg
-     1681 tccatcaaac tcatctccaa agtttacaag agaaaaataa cggtacgaga ccggaaacgt
-     1741 tttcaccatt tccaagatgg ctcatgctcg tgtatggatt attgg
-//
-LOCUS       CRR22                   1500 bp    DNA              UNK 01-JAN-1980
-DEFINITION  PPR Protein
-ACCESSION   PPR0|CLB19
-VERSION     PPR0|CLB19
-KEYWORDS    .
-SOURCE      .
-  ORGANISM  .
-            .
-FEATURES             Location/Qualifiers
-     PPR_3           103..207
-                     /frame=3
-                     /type="P"
-     PPR_3           322..426
-                     /frame=3
-                     /type="P"
-     PPR_3           415..519
-                     /frame=3
-                     /type="P"
-     PPR_3           508..612
-                     /frame=3
-                     /type="P"
-     PPR_3           718..822
-                     /frame=3
-                     /type="P"
-     PPR_3           811..915
-                     /frame=3
-                     /type="P"
-     PPR_3           916..1023
-                     /frame=3
-                     /type="L"
-     PPR_3           1024..1119
-                     /frame=3
-                     /type="S"
-     PPR_3           1120..1224
-                     /frame=3
-                     /type="P"
-     PPR_3           1225..1329
-                     /frame=3
-                     /type="P"
-ORIGIN
-        1 atgggtctcc ttcccgtcgt cggaattact tcgccggcgc tcatcaccca caaaaatcac
-       61 gccaatccaa agatacagag acataatcaa tctacctccg agaccactgt ttcatggact
-      121 tctcgcatca atctcctcac gcgcaatggt cgattagcgg aggcagcgaa ggaattctcc
-      181 gatatgacac tcgccggcgt agagcctaac cacatcactt tcatagctct actctccggg
-      241 tgtggtgatt ttacctccgg aagtgaagcc ttgggcgatt tgcttcatgg gtatgcttgt
-      301 aaacttggtc ttgatagaaa ccatgtcatg gttggcaccg caattatcgg catgtactcc
-      361 aaacgcggcc gttttaagaa ggctagattg gtttttgatt acatggaaga taaaaattcg
-      421 gttacttgga atacaatgat cgatgggtac atgagaagtg gtcaagtcga taacgctgct
-      481 aagatgttcg acaaaatgcc tgaacgagac ttgatttctt ggacggctat gataaatggc
-      541 tttgttaaga aaggttatca agaggaagct ttgttatggt tccgtgaaat gcagatttct
-      601 ggagtaaaac cagattacgt tgctattatt gctgctctta acgcttgcac aaaccttggt
-      661 gctctctcat ttggattatg ggtacatcgt tatgttttga gtcaggattt caagaacaat
-      721 gtgagggtga gtaattcact gatcgatttg tattgtcgat gcgggtgtgt ggagtttgct
-      781 cgacaagttt tttacaacat ggagaaacga accgtagttt cgtggaattc agtcattgtt
-      841 ggttttgctg ctaatggaaa tgcacatgaa tcattagtct acttcaggaa aatgcaagag
-      901 aaaggcttta aacctgacgc agtcactttc actggggcgc ttaccgcgtg tagccatgta
-      961 ggtctagttg aagaaggtct tcgatatttt caaattatga aatgtgatta cagaatctcg
-     1021 cctcgaattg agcattatgg atgcttagtg gatttgtata gtcgggctgg gagattggaa
-     1081 gacgctttga agttggtgca gagcatgcca atgaagccaa atgaagttgt gattggatcg
-     1141 ttgcttgcag cttgcagcaa tcatgggaac aatatcgtct tagcagagag gctgatgaag
-     1201 catcttaccg acctgaatgt gaaaagccat tcaaattatg tgattctctc gaatatgtat
-     1261 gctgctgatg gaaaatggga aggagcaagt aagatgagaa ggaagatgaa gggtctcggt
-     1321 ctaaaaaagc agcctgggtt tagttcgata gagattgatg attgcatgca tgtgttcatg
-     1381 gccggtgaca atgcccatgt tgagaccact tatatccgcg aggtcctgga gcttatttct
-     1441 tctgatttgc gattacaggg ctgtgtagtt gaaacccttg ctggtgatct cctcaatgct
-//
-LOCUS       CRR4                    1734 bp    DNA              UNK 01-JAN-1980
-DEFINITION  PPR Protein
-ACCESSION   PPR0|CRR28
-VERSION     PPR0|CRR28
-KEYWORDS    .
-SOURCE      .
-  ORGANISM  .
-            .
-FEATURES             Location/Qualifiers
-     PPR_3           157..264
-                     /frame=1
-                     /type="L"
-     PPR_3           373..477
-                     /frame=1
-                     /type="P"
-     PPR_3           466..567
-                     /frame=1
-                     /type="S"
-     PPR_3           568..681
-                     /frame=1
-                     /type="L"
-     PPR_3           682..786
-                     /frame=1
-                     /type="P"
-     PPR_3           775..885
-                     /frame=1
-                     /type="L"
-     PPR_3           886..993
-                     /frame=1
-                     /type="L"
-     PPR_3           994..1089
-                     /frame=1
-                     /type="S"
-     PPR_3           1090..1194
-                     /frame=1
-                     /type="P"
-     PPR_3           1216..1320
-                     /frame=1
-                     /type="P"
-ORIGIN
-        1 atgtctcagc tcaagcaact tcacgccttc actctccgta ctacttaccc tgaggaaccc
-       61 gcaactctgt ttctctacgg caaaatcctc cagctctctt cctccttctc cgacgtcaat
-      121 tacgcgttcc gggttttcga ctccatcgaa aaccatagct ctttcatgtg gaacactctt
-      181 ataagagcat gtgctcatga tgtttcaagg aaagaagaag cctttatgct ttaccggaaa
-      241 atgttagaga gaggtgaatc ttcaccggat aagcatacgt ttccgtttgt attgaaagct
-      301 tgcgcttata tattcgggtt ctccgaaggg aagcaagttc attgtcagat tgtgaaacat
-      361 gggtttggtg gagatgtgta tgttaataat ggtttgattc atttgtatgg gtcttgtggg
-      421 tgtttggatt tagcacggaa agtgtttgat gaaatgcctg agagaagtct tgtttcgtgg
-      481 aattcgatga tcgatgctct ggttcggttt ggggagtatg attctgcgtt acaactgttt
-      541 agagagatgc agagatcgtt tgaaccagat ggttatacga tgcagagtgt tttgagtgcg
-      601 tgtgctggtc ttggatcttt gtcactaggt acttgggcac atgcgtttct gctgcgaaaa
-      661 tgtgatgtcg atgttgctat ggatgttttg gttaagaact cgttgatcga aatgtattgc
-      721 aaatgcgggt cgttgagaat ggctgagcaa gtgtttcagg ggatgcaaaa acgtgactta
-      781 gcttcatgga atgcaatgat tctagggttt gctacacatg gaagagctga ggaagccatg
-      841 aatttcttcg accgtatggt ggataaaaga gagaatgtta gaccgaactc agtcacgttt
-      901 gttggcttgc tcatcgcctg caaccaccga ggctttgtaa acaaagggcg ccagtatttt
-      961 gacatgatgg tcagagatta ttgcatcgaa cctgcgttgg agcattacgg ttgcatcgtc
-     1021 gaccttattg ctcgtgcagg ctacattact gaagctattg acatggtaat gagcatgcca
-     1081 atgaaaccag atgcagtgat atggagaagt ctccttgatg cttgttgcaa aaagggtgct
-     1141 agtgtggagc taagtgaaga aattgctaga aatattattg gaacaaagga agataacgaa
-     1201 agctccaatg gtaactgcag tggtgcatat gtactgttgt ctagagttta tgcatcagct
-     1261 agccgctgga acgatgttgg aatcgttaga aaactaatga gtgaacatgg aattagaaaa
-     1321 gagcctggat gcagttctat tgagataaat ggcatctccc acgagttttt cgcaggagac
-     1381 acgtcgcatc ctcagaccaa acagatatac caacagttga aggtgatcga cgacaggcta
-     1441 agatcaattg gttatttacc ggatcgctct caagcacctt tagtggatgc caccaatgat
-     1501 ggtagcaaag agtattccct taggctgcac agtgaaagac ttgccattgc ttttggtctg
-     1561 ataaacttac cacctcagac tccaatccgt atattcaaga atctacgtgt ctgcaacgat
-     1621 tgccacgagg ttactaaact gatctcaaaa gtcttcaaca ctgagatcat cgtgagagat
-     1681 cgtgttcgtt tccatcactt caaagatgga tcctgctctt gtttagacta ctgg
 //

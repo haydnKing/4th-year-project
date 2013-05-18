@@ -7,13 +7,19 @@ from pyHMMER import HMMER
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from Bio.Alphabet import generic_dna
-from Bio import SeqIO
+from Bio import SeqIO, Entrez, Alphabet
+Entrez.email = 'hjk38@cam.ac.uk'
 
 import os.path
 import copy
 import sys
 
 models = utils.loadmodels()
+
+def from_entrez(gid, db='nuccore'):
+	hnd = Entrez.efetch(db=db, id=gid, rettype='gb', retmode='text')
+	seq = SeqIO.read(hnd, 'genbank', alphabet=Alphabet.generic_dna)
+	return simple_extract(seq)
 
 def extract(localization=None, files=None, verbose=False):
 	"""Extract all PPRs targeted to the chloroplast and clean the gaps"""
