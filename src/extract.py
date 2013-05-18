@@ -44,8 +44,6 @@ def simple_extract_all(localization=None, files=None, verbose=False):
 
 def annotate_pprs(target, remove = False, localization = None):
 	"""Annotate the PPRs found in the target"""
-	print "Searching..."
-
 	pprs = simple_extract(target, localization)
 
 	if remove:
@@ -74,34 +72,39 @@ def annotate_pprs(target, remove = False, localization = None):
 
 	return target
 
-def simple_extract(target, localization = None):
+def simple_extract(target, localization = None, verbose=False):
 	"""Extract all the PPRs found in target"""
 	if not isinstance(target, SeqRecord):
 		raise TypeError("simple_extract requires a Bio.SeqRecord, not {}".format(
 			type(target)))
 
-	print "Searching..."
+	if verbose:
+		print "Searching..."
 	#find all easy-to-locate PPR motifs
 	search = HMMER.hmmsearch(hmm = models[3], targets = target)
 
 	#get features for each motif
 	motifs = search.getFeatures(target)
 
-	print "Got {} motifs, grouping...".format(len(motifs))
+	if verbose:
+		print "Got {} motifs, grouping...".format(len(motifs))
 	#group features by frame and locatiion
 	groups = group_motifs(motifs, max_gap=1500)
-	print "Got {} groups, extracting envelopes...".format(len(groups))
+	if verbose:
+		print "Got {} groups, extracting envelopes...".format(len(groups))
 
 	pprs = []
 	dbg_env = []
 	
 	while groups:
-		print "Got {} groups, extracting envelopes...".format(len(groups))
+		if verbose:
+			print "Got {} groups, extracting envelopes...".format(len(groups))
 		#extract the sequence envelope around each group
 		envelopes = [get_envelope(group, target, margin=1000) for group in groups]
 		dbg_env += envelopes
 
-		print "Got {} envelopes, locating PPRs...".format(len(envelopes))
+		if verbose:
+			print "Got {} envelopes, locating PPRs...".format(len(envelopes))
 		#locate the PPR within each envelope
 		for envelope in envelopes:
 			ppr = locate_ppr(envelope)
@@ -111,13 +114,16 @@ def simple_extract(target, localization = None):
 		#look for overlapping pprs
 		groups = remove_overlaps(pprs)
 		ol = len(groups)
-		print "{} conflicts".format(ol)
+		if verbose:
+			print "{} conflicts".format(ol)
 		groups += remove_overgrown(pprs, 500)
-		print "{} overgrown PPRs".format(len(groups) - ol)
+		if verbose:
+			print "{} overgrown PPRs".format(len(groups) - ol)
 
 	pprs = [add_source(p, target) for p in pprs]
 	
-	print "Got {} PPRs, cleaning...".format(len(pprs))
+	if verbose:
+		print "Got {} PPRs, cleaning...".format(len(pprs))
 	#clean the gaps between features
 	pprs = [clean_gaps(ppr) for ppr in pprs]
 
