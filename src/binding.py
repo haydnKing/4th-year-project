@@ -111,7 +111,7 @@ def group_stats(groups):
 			len(groups), min(l), max(l), sum(l)/float(len(l)))
 
 def annotate_all(genome_name='Arabidopsis_thaliana',plastid_name='NC_000932'):
-	pprs = [p for p in PPR.load_records(genome_name) if (len(p.features) >= 20 
+	pprs = [p for p in PPR.load_records(genome_name) if (len(p.features) >= 23 
 					and p.annotations.get('localization','').upper() == 'C')]
 
 

@@ -42,7 +42,7 @@ def search(ppr, target, reverse=True, gaps=1, show_stats=False):
 	itarget = get_iseq(target)
 	bg = get_background(itarget)
 
-	pssm = binding_rules.build_PSSM(ppr, background=bg)
+	pssm = binding_rules.build_PSSM(ppr, coding='yagi')#, background=bg)
 
 	alignments = PSSM_gapped_search(pssm, itarget, gaps)
 	ralignments = PSSM_gapped_search(pssm, ireverse_complement(itarget), gaps)
