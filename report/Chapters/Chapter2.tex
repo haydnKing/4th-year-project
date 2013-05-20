@@ -2,52 +2,249 @@
 \chapter{Literature Review}
 \label{chap:theory}
 
-\section{Hidden Markov Models}
-\label{sec:HMMs} 
-
-\subsection{Mathematical Description}
-\label{ssec:hmm_desc}
-
-A description of the Hidden Markov Model (HMM) - a Markov Model whose internal
-state is unknown, but which emits a symbol from an alphabet with a distribution
-dependant on the state.
-
-\subsection{Use in Bioinformatics}
-\label{ssec:hmms_bioinformatics}
-
-A description of how HMMs have been successfully used to predict genes in a
-number of studies.
-
-\subsection{HMMER}
-\label{ssec:hmmer}
-
-A description of the HMMER implementation and the algorithms required for HMMs,
-including:
-\begin{itemize}
-  \item Training the model transition and emission probabilities from a data
-    set
-  \item Efficiently representing an HMM in memory
-  \item Calculating a score for a sequence given a set of transition and
-    emission probabilities
-  \item Choosing a decision threshold for promoter regions
-\end{itemize}
-
-Also discuss the limitations of the HMMER software for scripting and its vast
-memory use issues.
+\lettrine{A} summary of all the information currently known about the PPR 
+protein is given
+in the first part of this chapter, demonstrating their potential for
+applications in synthetic biology.
+The remainder of the chapter introduces the Hidden Markov Model (HMMs) and the 
+main software tool used by bioinformaticians when modelling using HMMs.
 
 \section{The PPR Family}
 \label{sec:review_PPR}
 
-Discuss detection/prediction vs extraction. 
-Introduce references.
+\subsection{The Chloroplast}
 
-\subsection{In \emph{A. Thaliana}}
-\label{ssec:pprs_ara}
+The chloroplast is thought to be the result of an ancient symbiosis where
+small energy producing cells were enveloped by the larger plant cells.
+Chloroplasts contain limited genetic information -- they contain an expression 
+system capable of transcription and translation as well as several genes 
+vital to the photosystem, but many of the proteins found in them are 
+expressed by the plant nucleus and then imported into the chloroplast
+\cite{Kurland2000,Bhattacharya2007}.
 
-Explain the development of the PPR detection routine for Arabidopsis, as well
-as why Arabidopsis made a good test organism.
-Compare directly with the paper about this.
+Most genes in the chloroplast are transcribed constitutively\cite{Sugita1996}
+and are thus only controlled at a post-transcriptional level.
+It is known that the mRNA transcripts in chloroplasts often do not contain a
+ribosome binding site (such as a Shine-Dalgarno sequence) at all or that such a
+sequence is not in the correct location \cite{Sugiura1998,Zerges2000}.
 
+Chloroplast mRNAs also undergo significant post-transcriptional processing such
+as C-U editing (where a genome-encoded C is converted to a U) and less 
+commonly, U-C editing \cite{Castandet2011}.
+The underlying purpose of this RNA editing remains an open question. 
+One theory is that it corrects for unfavourable mutations which have
+accumulated in the chloroplast genome and that removing these changes 
+artificially would increase the efficiency of the plant \cite{Fujii2011}.
+However, it is also possible that editing is a vital method allowing to nucleus
+to tightly control expression in the chloroplast and that removing the 
+mutations would result in plants which were unable to control their 
+chloroplasts.
 
+\subsection{Discovery and Classification of the PPR Family}
+
+The PPR family was first identified by Small and Peeters in the year 2000
+and are a large family of similar proteins commonly found in the nuclear
+genome of most plants. 
+They are defined by their tandem degenerate repeating motifs\cite{Small2000}.
+These repeat motifs are referred to as PPR motifs and share many similarities
+with the tetratricopeptide repeat (TPR) motif which are known to aid
+protein-protein binding.
+
+The typical PPR protein sequence contains three regions, the first of
+which is a signal peptide which targets the protein to a particular organelle.
+This mechanism is common to many proteins which are sent to particular
+locations within the cell (such as the chloroplast of mitochondria) and not a
+particularity of the PPR family. 
+
+The second region is the repeating PPR motif array which contains between 2 and
+30 PPR motifs.
+The motifs are degenerate -- although they contain many similarities, they are
+not identical and in fact have quite considerable differences in some cases.
+The standard PPR motif is the P motif which is 35 amino acids long, 
+but long (L) and short (S) variants are common in some proteins.
+The PPR motifs cause the protein to bind tightly to a specific mRNA sequence,
+and it is believed that pairs of contiguous motifs confer the particular
+protein's binding preference\cite{Kobayashi2012}.
+
+The third region is a tail sequence which is only present in some PPRs.
+The tail regions are known to contain a number of other motifs whose exact
+function is unknown.
+Three main classes of tail sequence have been identified, 
+the E subgroup which contains
+only `E' motifs, the E+ subgroup which contains `E' and `E+' motifs and the DYW
+subgroup which contains `E', `E+' motifs and is terminated by a `DYW' motif
+\cite{Lurin2004}.
+The precise function of the tail remains unknown, but evidence suggests that it
+is related to the known RNA editing functions of some PPRs\cite{Yagi2013a}.
+
+\subsection{Known interactions with mRNA}
+
+PPRs can regulate gene expression and are involved in a variety of
+post-transcriptional RNA processing steps such as RNA editing, splicing and
+stability\cite{Schmitz-Linneweber2008,Nakamura2012}.
+
+\subsubsection{RNA editing}
+
+Several PPR proteins with tail motifs have been associated with RNA editing and
+in these cases the PPR binding site has been located a short distance from the
+edit site\cite{Okuda2007,Yagi2013a}.
+A particular protein can be responsible for several edits by having multiple
+binding sites within the chloroplast genome\cite{Okuda2012}, allowing a single
+protein to edit multiple genes.
+
+C-U RNA editing has vital consequences for protein translation.
+Proteins begin with a start codon (AUG), which marks the position where
+translation should start.
+If instead the genome codes an ACG codon then the protein will not be expressed
+unless a C-U edit event occurs.
+Conversely, if a CAA codon is present in the gene, then an RNA
+editing event could convert this to UAA -- a stop codon, causing translation to
+be terminated.
+
+\subsubsection{Increasing Translation}
+
+It has been shown that PPR binding to the 5' and 3' UTRs can stabilise mRNA
+transcripts and reduce degradation by
+ribonucleases\cite{Pfalz2009,Prikryl2011}.
+This increases protein yield as more mRNA will be present at any time,
+increasing the rate at which protein is created.
+In addition to stabilisation, PPR binding can facilitate ribosome recruitment
+and can thus be responsible for the initiation of translation.
+
+\subsubsection{Decreasing Translation}
+
+PPRs have been shown to be responsible for restoring fertility to plants
+affected by Cytoplasmic Male Sterility (CMS)\cite{Bentolila2002}, which is of
+commercial importance in breeding.
+PPRs prevent sterility by preventing the production of specific proteins which
+cause the condition\cite{Kazama2008}.
+While the specific interaction preventing translation is unknown, it is thought
+to be due to cleavage of the mRNA transcript or degradation\cite{Wang2006}.
+It is also possible that the PPR out competes the ribosome when binding to the
+ribosome binding site.
+
+\subsubsection{Binding Rules}
+
+The mechanism behind PPR-RNA interactions remains unknown, and it is not yet
+possible to accurately predict PPR binding domains from the amino acid sequence
+of the protein.
+One problem is that the exact structure of the tandem PPR motifs is not known,
+although other proteins which also contain PPR motifs appear to show a helical
+structure\cite{Ringel2011,Howard2012}, suggesting that PPR binding might be
+similar to that of TALE and PUF repeats\cite{Rubinson2012}.
+
+As of writing, two major theories on the PPR binding rules exist, one due to
+Barkan\cite{Barkan2012} and another due to Yagi\cite{Yagi2013}.
+Both are based on statistical inference on the small number of characterised
+PPR-RNA interactions and are discussed in more length in section
+\ref{sec:ppr_binding_prediction}.
+
+\section{Hidden Markov Models}
+\label{sec:HMMs} 
+
+\begin{figure}
+  \begin{center}
+    \begin{tikzpicture}[node distance=2cm, auto, >=triangle 45]
+      \node [match, name=begin] {Begin};
+      \node [match, name=m1, right of=begin] {};
+      \node [match, name=m2, right of=m1] {$M_j$};
+      \node [match, name=m3, right of=m2] {};
+      \node [match, name=end, right of=m3] {End};
+
+      \node [insert, name=i0, above of=begin] {};
+      \node [insert, name=i1, above of=m1] {};
+      \node [insert, name=i2, above of=m2] {$I_j$};
+      \node [insert, name=i3, above of=m3] {};
+
+      \node [delete, name=d1, above of=i1] {};
+      \node [delete, name=d2, above of=i2] {$D_j$};
+      \node [delete, name=d3, above of=i3] {};
+
+      %matches
+      \draw [->] (begin) to (m1);
+      \draw [->] (begin) to (i0);
+      \draw [->] (begin) to (d1);
+      \draw [->] (m1) to (m2);
+      \draw [->] (m1) to (i1);
+      \draw [->] (m1) to (d2);
+      \draw [->] (m2) to (m3);
+      \draw [->] (m2) to (i2);
+      \draw [->] (m2) to (d3);
+      \draw [->] (m3) to (end);
+      \draw [->] (m3) to (i3);
+
+      %inserts
+      \draw [->] (i0) to (d1);
+      \draw [->] (i0) to (m1);
+      \draw [->] (i0) to [out=160, in=200, looseness=5] (i0);
+      \draw [->] (i1) to (d2);
+      \draw [->] (i1) to (m2);
+      \draw [->] (i1) to [out=160, in=200, looseness=5] (i1);
+      \draw [->] (i2) to (d3);
+      \draw [->] (i2) to (m3);
+      \draw [->] (i2) to [out=160, in=200, looseness=5] (i2);
+      \draw [->] (i3) to (end);
+      \draw [->] (i3) to [out=160, in=200, looseness=5] (i3);
+
+      %deletes
+      \draw [->] (d1) to (d2);
+      \draw [->] (d1) to (m2);
+      \draw [->] (d1) to (i1);
+      \draw [->] (d2) to (d3);
+      \draw [->] (d2) to (m3);
+      \draw [->] (d2) to (i2);
+      \draw [->] (d3) to (end);
+      \draw [->] (d3) to (i3);
+      
+    \end{tikzpicture}
+  \end{center}
+  \caption[LoF entry]{A profile HMM. Squares are \emph{match} states, 
+    which emit a symbol
+    according to the consensus sequence, diamonds show \emph{insert} states, which
+    insert one or more symbols into the sequence and circles are \emph{delete}
+    states which emit no symbols and effectively skip one or more symbols in the
+    model.
+
+    The states $M_j$, $I_j$ and $D_j$ are collectively referred to as a node,
+    and an HMM will contain as many nodes as there are symbols in the consensus
+    sequence.
+  }
+  \label{fig:pHMM}
+\end{figure}
+
+A Hidden Markov Model (HMM) is a model of a Markov process where the state is
+unobserved.
+Each state emits a symbol from an alphabet with probability dependent on the 
+current state and it is the sequence of symbols which is observed rather than
+the states themselves. 
+
+HMMs are commonly used in bioinformatics in order to describe and predict
+repeating patterns in the sequence\cite{Durbin1998}.
+The Pfam database, maintained by the Wellcome Trust Sanger Institute,
+is an open library of HMMs describing a large range of protein families which
+are freely available to all.
+
+\subsection{HMMER}
+\label{ssec:hmmer}
+
+HMMER is a collection of command line tools implementing all the basic
+algorithms required for using HMMs in a biological context\cite{HMMERguide}.
+HMMER is capable of constructing models from aligned sequences and of searching
+a target sequence for instances of the model.
+
+HMMER does not use general HMMs (which can have any topology), but instead uses
+a profile HMM (pHMM).
+pHMMs have a fixed topology described in figure \ref{fig:pHMM} and only the 
+transition, emission and insertion probabilities have to be learnt.
+This restriction places minimal constraints on the type of sequence which can
+be modelled and allows learning to be done using an expectation maximisation
+algorithm. A more in depth discussion of pHMMs and their use in bioinformatics
+is given in \cite{Durbin1998}.
+
+Searches are performed using the \emph{hmmsearch} program which makes heavy use
+of heuristics in order to efficiently search for possible match sequences.
+The parameters for the particular heuristics used can be tuned using command
+line arguments so that the similarity required between a matching sequence 
+and the model can be set.
 
 
