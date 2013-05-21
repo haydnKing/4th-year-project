@@ -4,33 +4,71 @@
 
 A brief overview of extraction and comparison
 
+\section{pyHMMER}
+\label{ssec:pyHMMER}
+
+The HMMER suite provides all of the basic algorithms required in order to
+perform an HMM search on a target amino acid sequence, but it does have some
+limitations.
+
+The first is that it is a command line program and does not have bindings to
+any programming language.
+HMMER reads inputs from files, and writes out tabular output data to file which
+would be very time consuming to parse by hand.
+
+HMMER can only compare a protein model with a protein
+target, and so the genome must be translated before it can be searched.
+There are a total of six possible reading frames (3 forwards and 3 backwards, 
+due to the 3:1 nature of translation) and the genome must be searched in each
+of these six frames.
+
+HMMER is not commercial software and is developed by a group of scientists at
+the Howard Hughes Medical Institute (HHMI) under an open licence for research
+purposes.
+As such, it contains a number of minor bugs which can sometimes cause problems
+under particular circumstances, the most problematic of which causes enormous
+memory usage (over 20GB\footnote{One particular instance of this error is due
+to an unsigned integer wrap-around which causes significantly more memory to be
+requested from the operating system than could possibly be needed}) and
+prevents the program from completing.
+
+In order to overcome these issues, a python wrapper for HMMER called
+pyHMMER was designed and written.
+Python was chosen as the main language for this project mainly because of its
+excellent library support -- for example the biopython library solved many of 
+the difficulties when working with biological sequences without extra effort.
+
+pyHMMER does not implement all the features available in HMMER, but rather it
+implements those which were most vital to this project.
+Its main features are -
+\begin{itemize}
+  \item Read and write \emph{.hmm} files, HMMER's custom file format for
+    storing HMMs
+  \item Execute searches using 
+    \emph{hmmsearch} and \emph{jackhmmer}, accepting all valid command line
+    arguments and returning their output as biopython objects, 
+    handling the creation and removal of all the necessary 
+    temporary files automatically
+  \item Seamlessly perform six-frame translations on the fly (implemented in C
+    for best performance)
+    and map the returned matches to the correct location
+  \item (Linux only) 
+    Automatically terminate HMMER processes which attempt to allocate more
+    memory than the system can sensibly be expected to provide and then call
+    HMMER sequentially with subsections of the target
+  \item Fully unit-tested with python's \emph{unittest} framework
+\end{itemize}
+pyHMMER has been developed under an open-source licence and is freely available
+from \emph{https://github.com/haydnKing/pyHMMER}, although all code used in
+this project was written by myself.
+
+
 \section{Automated PPR Detection and Extraction}
 \label{sec:ppr_extraction}
 
 Introduce the problems of detection and extraction.
 
-\subsection{pyHMMER}
-\label{ssec:pyHMMER}
 
-Explain the need for a HMMER wrapper and discuss the development of pyHMMER,
-drawing attention to the github repo.
-
-\subsection{Detection, Extraction and Annotation}
-\label{ssec:Detection}
-
-How to spot a chain of PPR repeats
-
-
-\subsection{Comparison to Existing Data}
-\label{sseq:comparison}
-
-Compare the number of PPRs found to those found in the paper in arabidopsis.
-
-\subsection{Expansion to Other Plants}
-\label{ssec:pprs_other}
-
-Discuss the expansion to other plants, and the problems faced (larger genomes,
-bugs in HMMER).
 
 \section{Predicting PPR Binding regions}
 \label{sec:ppr_binding_prediction}
@@ -42,14 +80,10 @@ Introduce the problem and the data available.
 
 Explain this method and why it failed
 
-\subsection{Direct PSSM}
+\subsection{PSSM}
 \label{sec:pssm_binding}
 
 Explain why this method was more successful, but why it fails to recognise a
 precise binding region and how this problem was overcome.
 
-\subsection{Comparison of PSSMs}
-\label{sec:pssm_comparison}
-
-Explain the method, its strengths and its limitations.
 
