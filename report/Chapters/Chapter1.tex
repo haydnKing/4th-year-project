@@ -55,7 +55,7 @@ they convert between the three most important classes of molecules in the cell.
 \end{figure}
 
 Molecules of DNA are the cell's long term storage mechanism -- recent research
-estimates the half-life of DNA to be 521 years\cite{DNAhalflife}.
+estimates the half-life of DNA to be 521 years\citep{DNAhalflife}.
 DNA molecules are long sequences of simple nucleotides which encode all the
 genetic information of the cell.
 Each nucleotide contains a nucleobase which is either Adenine, Guanine,
@@ -104,12 +104,14 @@ cease transcription and release the mRNA.
 Modulating promoter activity in response to the concentration of another 
 molecule is a common control motif.
 
-Transcription units often contain non-coding regions called \textit{introns}
-which are removed from the message in a process called RNA splicing 
-before translation.
-Introns do not contain any useful sequence and are often present in genes and
-tend to complicate matters significantly as efforts to predict their location 
-accurately and reliably have thus far failed.
+Transcripts often include non-coding regions at either end called the 5' and 3'
+untraslated regions (UTR) respectively.
+They also contain other non-coding regions called \textit{introns}
+which often found within gene sequences and are removed from the message in a 
+process called RNA splicing before translation.
+Introns do not contain any useful sequence and tend to complicate matters 
+significantly as efforts to predict their location accurately and reliably 
+have thus far failed.
 
 \subsection{Translation}
 \label{sec:translation}
@@ -133,6 +135,15 @@ In translation, molecules called ribosomes bind to the mRNA, reading the
 sequence 3 bases (one codon) at a time and constructing the appropriate protein
 until a stop codon is found, when the ribosome detaches and releases the
 protein.
+The point where the ribosome binds is calls a ribosome binding sequence (RBS),
+and one of the most common sites is a Shine-Dalgarno sequence, which is
+typically found a few bases upstream of a start codon.
+
+Because of the 3:1 nature of translation, proteins are sensitive to frame
+shifts -- where translation is shifted by one or two bases, the resulting amino
+acid is effectively unrelated to the encoded one.
+This can be the case if an intron is present as introns need not be multiples
+of three codons long.
 
 mRNA is more fragile than DNA but is also targeted by exonucleases, a class of
 enzyme which degrade RNA molecules, preventing the production of more protein.
@@ -141,7 +152,7 @@ acids to form new proteins.
 These degradation processes mean that a gene must continue to be transcribed at
 a constant rate for the concentration of its protein to remain constant.
 
-\subsection{Control}
+\subsection{Controlling Expression}
 \label{sec:mbio_control}
 
 \begin{figure}
@@ -277,7 +288,7 @@ underlying principals.
 Synbio can be thought of as programming, but with DNA instead of machine
 code.
 An example project which captures this idea is Tabor's bacterial edge
-detector\cite{edgeDetector}.
+detector\citep{edgeDetector}.
 Bacteria were programmed to produce a colourless chemical messenger in the 
 absence of light and to produce a dark pigment in the presence of both light 
 and the chemical messenger.
@@ -313,13 +324,13 @@ artemisinin (the most effective known anti-malarial) in a cheaper and more
 scalable way.
 Malaria is a treatable disease which in 2010 caused roughly 2,000 deaths 
 \emph{per day}, mainly because it mostly affects the developing world where
-access to anti-malarials is poor.
+access to anti-malarials is poor\citep{malaria}.
 Artemisinin is found naturally in sweet wormwood, but it is slow and expensive
 to extract directly from the plant and chemical synthesis is also an expensive
 and laborious process.
 Synthetic biologists were able to extract the metabolic pathway responsible for
 the biosynthesis of artemisinic acid (a natural precursor) and insert it into 
-yeast\cite{yeast}.
+yeast\citep{yeast}.
 Artemisinin produced in this manner has yet to be approved for sale, but it is
 hoped that it should be available at some point during 2013, at a considerably
 lower price than any other known method of production.
@@ -334,8 +345,8 @@ As well as this, growing yeast on an industrial scale is relatively expensive.
 It is desirable therefore search for host platforms which are better suited to
 biosynthesis than yeast, in order to maximise the yield to cost ratio.
 
-\section{The Chloroplast and the PPR Family}
-\label{sec:intro_plants}
+\section{The Chloroplast}
+\label{sec:intro_chloroplast}
 
 Chloroplasts are a major centre for biosynthesis in plants as they perform
 photosynthesis to provide energy for the plant.
@@ -346,27 +357,369 @@ sophisticated plant cell machinery and superb potential for biosynthesis.
 The native enzyme RuBisCO is so abundant in the chloroplasts that it 
 can be up to 50\% of overall soluble leaf protein.
 
-Chloroplasts contain their own DNA and expression machinery, separate from that
-of the plant cell, however, they do not appear to make use of the type of
-control seen in the lac operon -- instead mRNA levels appear to be
-constant\cite{Sugita1996} implying that transcription in chloroplasts is always
-on.
-However there are clear variations in the protein levels in chloroplasts (for
-example during the day/night cycle) and so control must instead be implemented 
-using post-transcriptional RNA processing and/or interactions with translation.
+Chloroplasts contain limited genetic information and expression machinery 
+separate from that of the plant cell, which produces the molecules required 
+for expression and several proteins vital to the photosystem.
+However, many proteins found in the chloroplast are in fact produced by the
+nucleus and then imported into the chloroplast.
 
-Understanding how expression control is achieved in plant chloroplasts is a key
-step in developing the potential of these organisms.
-Without such an understanding, attempts to engineer synthesis pathways in them
-would be reduced to genetic engineering.
+The style of operon-based control common in prokaryotic cells does not appear 
+to be used in the chloroplast -- instead most genes are 
+transcribed constitutively\citep{Sugita1996}, leading to constant mRNA levels.
+It is also known that the mRNA transcripts in chloroplasts often do not 
+contain a ribosome binding site (such as a Shine-Dalgarno sequence) at all or 
+that such a sequence is not in the correct 
+location\citep{Sugiura1998,Zerges2000}.
 
-One such control mechanism is the PPR family of proteins, a class of proteins
-which are very common in plants but almost entirely absent in other organisms.
-PPR proteins are encoded in the nucleus and are transported to organelles such
-as the chloroplast by the cell.
-Once in the organelle, PPRs bind to mRNA molecules and modulate the translation
-rate of the proteins encoded in the mRNA molecule.
-PPRs are a mechanism for the cell nucleus to directly control activity in its 
+This does not reflect the protein levels found in the chloroplast, which vary
+considerably during the chloroplast's circadian cycle -- energy is stored
+during the day and only consumed at night.
+Since mRNA levels are constant, this control must occur at a 
+post-transcriptional level, and there is evidence to suggest that the nucleus
+is involved in controlling the cycle\citep{Matsuo2006}.
+
+Chloroplast mRNAs also undergo significant post-transcriptional processing such
+as C-U editing (where a genome-encoded C is converted to a U) and less 
+commonly, U-C editing \citep{Castandet2011}.
+The underlying purpose of this RNA editing remains an open question. 
+One theory is that it corrects for unfavourable mutations which have
+accumulated in the chloroplast genome and that removing these changes 
+artificially would increase the efficiency of the plant \citep{Fujii2011}.
+However, it is also possible that editing is a vital method allowing to nucleus
+to tightly control expression in the chloroplast and that removing the 
+mutations would result in plants which were unable to control their 
 chloroplasts.
 
-A thorough review of the PPR family is given in section \ref{sec:review_PPR}.
+Understanding regulation in chloroplasts is a vital step before they can be
+effectively used for synthetic biology.
+
+\section{Nucleotide Binding Proteins}
+\label{sec:intro_binding}
+
+Accurately predicting the structure of a protein from its amino acid sequence 
+is very difficult and in most cases impossible.
+The main difficulty is that the joints between amino acids in a protein are
+very flexible, giving amino acids a very high number of degrees of freedom,
+which often thwarts attempts to find the structure with minimum free energy.
+Even when this can be found, protein folding is often a complex process
+involving several interactions with other chaperone proteins which guide
+protein folding, meaning that the minimum energy solution may not represent the
+actual shape of the protein.
+
+As a result, modelling interactions between proteins and nucleotides such as
+DNA and RNA is impossible in the general case and these interactions are
+instead found and characterised using empirical techniques.
+
+One of the first such interactions to be discovered were zinc fingers, a
+protein motif whose folding structure is stabilised by the incorporation of a
+zinc ion into the structure.
+Zinc fingers are common in many organisms and recognise and bind to a specific 
+triplet of nucleotides, and have been reverse-engineered such that they can now
+be designed to bind to effectively arbitrary sequences\citep{Gaj2013}.
+
+However, zinc fingers have limited modularity as each motif binds to three
+bases with varying specificity, meaning that there are often other sequences to
+which the protein will bind which can be hard to predict.
+Transcription activator-like effectors (TALEs) are modular repeat regions in
+which each repeat recognises a single DNA base via a simple code dependent on
+two hyper-variable amino acids within the repeat motif.
+TALEs are inherently easier to design than zinc fingers and have been used for
+numerous novel applications, such as designing new transcription activators
+which work on arbitrary sequences or manipulating the genome to allow for novel
+studies of protein function\citep{Sun2013}.
+
+These two classes of proteins have opened up new and exciting methods for basic
+research, gene therapy and synthetic biology.
+
+\section{The PPR Family}
+\label{sec:review_PPR}
+\subsection{Discovery and Classification of the PPR Family}
+
+\begin{figure}
+  \begin{center}
+    \begin{tikzpicture}
+      \def\h{5mm}
+      \def\n{10}
+      \tikzstyle{signal}=[draw, rectangle, minimum height=\h, minimum
+        width=2cm, anchor=west]
+      \tikzstyle{motif}=[draw, rectangle, fill=orange, 
+        minimum height=\h, minimum width=8mm, anchor=west]
+      \tikzstyle{tail}=[draw, dashed, rectangle, fill=blue!20,
+        minimum height=\h, minimum width=3cm, anchor=west]
+
+      \tikzstyle{brace}=[
+        very thick,
+        decoration={
+          brace,
+          mirror,
+          raise=5mm
+        },
+        decorate]
+
+      \node[signal, name=signal] at (-2,0) {};
+      \foreach \y in {1,...,\n}{
+        \node[motif] at ({0.8 * (\y-1)},0) {};
+      }
+      \node[tail, name=tail] at ({0.8 * \n},0) {};
+
+      \draw [brace] (-2,0) -- (-0.1,0)
+        node [key, pos=0.5,anchor=north,yshift=-7mm] {A}; 
+      \draw [brace] (0.1,0) -- ({0.8*\n - 0.1},0) 
+        node [key, pos=0.5,anchor=north,yshift=-7mm] {B}; 
+      \draw [brace] ({0.8*\n+0.1},0) -- (tail.east) 
+        node [key, pos=0.5,anchor=north,yshift=-7mm] {C}; 
+    \end{tikzpicture}
+  \end{center}
+  \caption[LoF entry]{
+    The three regions within a PPR protein.
+    (\textbf{A}) The signal peptide acts as a header, essentially encoding the
+    address of the target location of the PPR within the cell
+    (\textbf{B}) The repeat regions contain 2-30 PPR motifs which specify the binding
+    preferences of the protein
+    (\textbf{C}) The tail region is optional contains either E, E andE+ or 
+    E, E+ and DYW motifs.
+  }
+  \label{fig:ppr_anatomy}
+\end{figure}
+
+The PPR family is a group of proteins commonly found in plants and are known
+to bind specific RNA sequences and display many similarities with TALEs.
+They contain tandem degenerate repeating motifs which are referred to as PPR 
+motifs and share many similarities with the tetratricopeptide repeat (TPR) 
+motif which are known to aid protein-protein binding\citep{Small2000}.
+
+PPRs are found exclusively in the nuclear genome, and are commonly targeted to
+organelles such as the chloroplast or mitochondria, where they are known to
+affect translation in numerous ways.
+
+The typical PPR protein contains three regions, shown in figure
+\ref{fig:ppr_anatomy}.
+The first is a signal peptide which targets the protein to a particular 
+organelle.
+This mechanism is common to many proteins which are sent to particular
+locations within the cell (such as the chloroplast of mitochondria) and not a
+particularity of the PPR family. 
+
+The second region is the repeating PPR motif array which contains between 2 and
+30 PPR motifs.
+The motifs are degenerate -- although they contain many similarities, they are
+not identical and in fact have quite considerable differences in some cases.
+The standard PPR motif is the P motif which is 35 amino acids long, 
+but long (L) and short (S) variants are common in some proteins.
+The PPR motifs cause the protein to bind tightly to a specific mRNA sequence,
+and it is believed that pairs of contiguous motifs confer the particular
+protein's binding preference\citep{Kobayashi2012}.
+
+The third region is a tail sequence which is only present in some PPRs.
+The tail regions are known to contain a number of other motifs whose exact
+function is unknown.
+Three main classes of tail sequence have been identified, 
+the E subgroup which contains
+only `E' motifs, the E+ subgroup which contains `E' and `E+' motifs and the DYW
+subgroup which contains `E', `E+' motifs and is terminated by a `DYW' motif
+\citep{Lurin2004}.
+The precise function of the tail remains unknown, but evidence suggests that it
+is related to the known RNA editing functions of some PPRs\citep{Yagi2013a}.
+
+\subsection{Known interactions with mRNA}
+
+PPRs can regulate gene expression and are involved in a variety of
+post-transcriptional RNA processing steps such as RNA editing, splicing and
+stability\citep{Schmitz-Linneweber2008,Nakamura2012}.
+
+\subsubsection{RNA editing}
+
+\begin{figure}
+  \begin{center}
+    \begin{tikzpicture}
+      \node[anchor=south west,inner sep=0] (image) at (0,0)
+      {\includegraphics[width=0.9\textwidth]{PPR_activity}};
+      \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        \node[align=center] at (0.65,0.6) {Chloroplast};
+        \node[align=center] at (0.05,0.92) {Nucleus};
+        \node[align=center] at (0.2,0.25) {Mitochondria};
+        \node[align=center] at (0.25,0.8) {PPR\\Proteins};
+
+        \node[key] at (0.48,0.2) {A};
+        \node[key] at (0.67,0.18) {B};
+        \node[key] at (0.92,0.38) {C};
+      \end{scope}
+    \end{tikzpicture}
+  \end{center}
+  \caption{Summary of PPR activity once in the chloroplast. Similar processes
+    are known to occur in the mitochondria.
+    (\textbf{A}) Increased translation -- PPRs can promote ribosome recruitment
+      and increase the translation rate of the transcript
+    (\textbf{B}) RNA editing -- PPRs edit the RNA transcript, as well as
+      playing a vital role in the removal of introns
+    (\textbf{C}) RNA stability -- PPRs can increase the stability
+      of the transcript by protecting against degradation by endonucleases, or 
+      decrease the stability, possibly by recruiting endonucleases.
+  }
+  \label{fig:PPR_activity}
+\end{figure}
+
+
+Several PPR proteins with tail motifs have been associated with RNA editing and
+in these cases the PPR binding site has been located a short distance from the
+edit site\citep{Okuda2007,Yagi2013a}.
+A particular protein can be responsible for several edits by having multiple
+binding sites within the chloroplast genome\citep{Okuda2012}, allowing a single
+protein to edit multiple genes.
+
+C-U RNA editing has vital consequences for protein translation.
+Proteins begin with a start codon (AUG), which marks the position where
+translation should start.
+If instead the genome codes an ACG codon then the protein will not be expressed
+unless a C-U edit event occurs.
+Conversely, if a CAA codon is present in the gene, then an RNA
+editing event could convert this to UAA -- a stop codon, causing translation to
+be terminated.
+
+\subsubsection{Increasing Translation}
+
+It has been shown that PPR binding to the 5' and 3' UTRs can stabilise mRNA
+transcripts and reduce degradation by
+ribonucleases\citep{Pfalz2009,Prikryl2011}.
+This increases protein yield as more mRNA will be present at any time,
+increasing the rate at which protein is created.
+In addition to stabilisation, PPR binding can facilitate ribosome recruitment
+and can thus be responsible for the initiation of translation.
+
+\subsubsection{Decreasing Translation}
+
+PPRs have been shown to be responsible for restoring fertility to plants
+affected by Cytoplasmic Male Sterility (CMS)\citep{Bentolila2002}, which is of
+commercial importance in breeding.
+PPRs prevent sterility by preventing the production of specific proteins which
+cause the condition\citep{Kazama2008}.
+While the specific interaction preventing translation is unknown, it is thought
+to be due to cleavage of the mRNA transcript or degradation\citep{Wang2006}.
+It is also possible that the PPR out competes the ribosome when binding to the
+ribosome binding site.
+
+\subsubsection{Binding Rules}
+
+The mechanism behind PPR-RNA interactions remains unknown, and it is not yet
+possible to accurately predict PPR binding domains from the amino acid sequence
+of the protein.
+One problem is that the exact structure of the tandem PPR motifs is not known,
+although other proteins which also contain PPR motifs appear to show a helical
+structure\citep{Ringel2011,Howard2012}, suggesting that PPR binding might be
+similar to that of TALE and PUF repeats\citep{Rubinson2012}.
+
+As of writing, two major theories on the PPR binding rules exist, one due to
+Barkan\citep{Barkan2012} and another due to Yagi\citep{Yagi2013}.
+Both are based on statistical inference on the small number of characterised
+PPR-RNA interactions and are discussed in more length in section
+\ref{sec:ppr_binding_prediction}.
+
+\section{Hidden Markov Models}
+\label{sec:HMMs} 
+
+\begin{figure}
+  \begin{center}
+    \begin{tikzpicture}[node distance=2cm, auto, >=triangle 45]
+      \node [match, name=begin] {Begin};
+      \node [match, name=m1, right of=begin] {};
+      \node [match, name=m2, right of=m1] {$M_j$};
+      \node [match, name=m3, right of=m2] {};
+      \node [match, name=end, right of=m3] {End};
+
+      \node [insert, name=i0, above of=begin] {};
+      \node [insert, name=i1, above of=m1] {};
+      \node [insert, name=i2, above of=m2] {$I_j$};
+      \node [insert, name=i3, above of=m3] {};
+
+      \node [delete, name=d1, above of=i1] {};
+      \node [delete, name=d2, above of=i2] {$D_j$};
+      \node [delete, name=d3, above of=i3] {};
+
+      %matches
+      \draw [->] (begin) to (m1);
+      \draw [->] (begin) to (i0);
+      \draw [->] (begin) to (d1);
+      \draw [->] (m1) to (m2);
+      \draw [->] (m1) to (i1);
+      \draw [->] (m1) to (d2);
+      \draw [->] (m2) to (m3);
+      \draw [->] (m2) to (i2);
+      \draw [->] (m2) to (d3);
+      \draw [->] (m3) to (end);
+      \draw [->] (m3) to (i3);
+
+      %inserts
+      \draw [->] (i0) to (d1);
+      \draw [->] (i0) to (m1);
+      \draw [->] (i0) to [out=160, in=200, looseness=5] (i0);
+      \draw [->] (i1) to (d2);
+      \draw [->] (i1) to (m2);
+      \draw [->] (i1) to [out=160, in=200, looseness=5] (i1);
+      \draw [->] (i2) to (d3);
+      \draw [->] (i2) to (m3);
+      \draw [->] (i2) to [out=160, in=200, looseness=5] (i2);
+      \draw [->] (i3) to (end);
+      \draw [->] (i3) to [out=160, in=200, looseness=5] (i3);
+
+      %deletes
+      \draw [->] (d1) to (d2);
+      \draw [->] (d1) to (m2);
+      \draw [->] (d1) to (i1);
+      \draw [->] (d2) to (d3);
+      \draw [->] (d2) to (m3);
+      \draw [->] (d2) to (i2);
+      \draw [->] (d3) to (end);
+      \draw [->] (d3) to (i3);
+      
+    \end{tikzpicture}
+  \end{center}
+  \caption[LoF entry]{A profile HMM. Squares are \emph{match} states, 
+    which emit a symbol
+    according to the consensus sequence, diamonds show \emph{insert} states, which
+    insert one or more symbols into the sequence and circles are \emph{delete}
+    states which emit no symbols and effectively skip one or more symbols in the
+    model.
+
+    The states $M_j$, $I_j$ and $D_j$ are collectively referred to as a node,
+    and an HMM will contain as many nodes as there are symbols in the consensus
+    sequence.
+  }
+  \label{fig:pHMM}
+\end{figure}
+
+A Hidden Markov Model (HMM) is a model of a Markov process where the state is
+unobserved.
+Each state emits a symbol from an alphabet with probability dependent on the 
+current state and it is the sequence of symbols which is observed rather than
+the states themselves. 
+
+HMMs are commonly used in bioinformatics in order to describe and predict
+repeating patterns in the sequence\citep{Durbin1998}.
+The Pfam database, maintained by the Wellcome Trust Sanger Institute,
+is an open library of HMMs describing a large range of protein families which
+are freely available to all.
+
+\subsection{HMMER}
+\label{ssec:hmmer}
+
+HMMER is a collection of command line tools implementing all the basic
+algorithms required for using HMMs in a biological context\citep{HMMERguide}.
+HMMER is capable of constructing models from aligned sequences and of searching
+a target sequence for instances of the model.
+
+HMMER does not use general HMMs (which can have any topology), but instead uses
+a profile HMM (pHMM).
+pHMMs have a fixed topology described in figure \ref{fig:pHMM} and only the 
+transition, emission and insertion probabilities have to be learnt.
+This restriction places minimal constraints on the type of sequence which can
+be modelled and allows learning to be done using an expectation maximisation
+algorithm. A more in depth discussion of pHMMs and their use in bioinformatics
+is given in \citep{Durbin1998}.
+
+Searches are performed using the \emph{hmmsearch} program which makes heavy use
+of heuristics in order to efficiently search for possible match sequences.
+The parameters for the particular heuristics used can be tuned using command
+line arguments so that the similarity required between a matching sequence 
+and the model can be set.
+
+
