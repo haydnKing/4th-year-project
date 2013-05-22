@@ -2,7 +2,23 @@
 \chapter{Automating PPR discovery} 
 \label{chap:methods}
 
-A brief overview of extraction and comparison
+\lettrine{M}{ost} 
+sequenced genomes are also annotated with information about the genes they
+encode a specific locations.
+These annotations are usually very helpful when navigating the genome as many
+are the result of empirical study.
+The majority of PPRs have not been studied in detail, however, and thus their
+annotation is usually fairly unreliable and certainly doesn't contain
+information about the PPR motifs found within the proteins.
+
+For this reason it was necessary to develop routines for discovering and
+extracting PPR proteins from unannotated genomes, using a hidden Markov model
+of the characteristic repeat motifs to find likely targets.
+Having identified PPRs, it is interesting to try and predict their binding
+locations within the organelles.
+
+The development of algorithms to achieve these things is discussed in this
+chapter.
 
 \section{pyHMMER}
 \label{ssec:pyHMMER}
@@ -229,17 +245,113 @@ sub-cellular localisation\citep{targetP}.
 \section{Predicting PPR Binding regions}
 \label{sec:ppr_binding_prediction}
 
-Introduce the problem and the data available.
+Given an extracted and well annotated PPR protein, predicting the RNA footprint
+to which is binds is not straightforward.
+In the case of TALEs (section \ref{sec:intro_binding}), a well known mapping
+exists between the amino acids at specific locations within the repeat and the
+preferred DNA base of that repeat.
+Unfortunately, such a mapping has yet to be confirmed for the PPR family,
+although two main suggestions have been made, by \citet{Barkan2012} and by
+\citet{Yagi2013}.
 
-\subsection{Direct HMMs}
+Since neither the structure of of the PPR motif or of a PPR-RNA complex
+has been solved, the only method to elucidate the rules governing binding
+preferences is by looking for statistical dependencies between the amino-acid
+sequence and RNA footprint of known PPR-RNA pairs.
+This is the strategy used by both papers mentioned above and so they lead to
+similar results.
+The papers each provide methodologies to convert each PPR motif into a
+distribution over each the symbols in RNA, $\{A,C,G,U\}$.
+
+The next two sections outline methods for discovering likely binding sites
+in a particular target given a sequence of such distributions.
+
+\subsection{Profile Hidden Markov Models}
 \label{sec:hmm_binding}
 
-Explain this method and why it failed
+The first method which was tested was using pHMMs, as this would allow the use
+of HMMER's advanced searching algorithms.
+This seems a simple task -- the probabilities given at each motif give the
+emission probabilities at each node, insert probabilities can be uniform and
+the transition probabilities can be determined empirically.
 
-\subsection{PSSM}
+The first issue which arises is that pHMM models which are used for searching
+with HMMER must be normalised in order for the score calculations.
+This involves calculating the expected score of the model for random sequences
+in order to assess the significance of a particular match.
+A program exists called \emph{hmmsim} exists in the HMMER package for just 
+this purpose, however the program's man page gives a hint of things to come --
+\begin{quotation}
+  ``\emph{hmmsim} is not a mainstream part of the HMMER package. 
+  Most users would have no reason to use it. 
+  
+  \ldots
+  
+  ``Because it is a research testbed, you should not expect it to be as robust 
+  as other programs in the package. 
+  For example, options may interact in weird ways; 
+  we haven't tested nor tried to anticipate all different possible 
+  combinations.''
+\end{quotation}
+Unfortunately, one particular unanticipated use case is trying to normalise a
+DNA model -- \emph{hmmsim} is hard-coded to accept only protein models as this
+is HMMER's primary use case.
+
+This problem was circumvented by writing the model as a protein model by
+expanding the probabilities of each of the four bases to those of the 20 
+amino acids (i.e. the first 5 amino acids corresponding to an `A' etc\ldots).
+However models which had been normalised in this way did not prove to be
+effective when searching large sequences even when a known high scoring
+sequence was inserted into an otherwise random target.
+
+For this reason, pHMMs were abandoned as a method of predicting binding
+footprints.
+
+
+\subsection{Position-Specific Scoring Matrices (PSSMs)}
 \label{sec:pssm_binding}
 
-Explain why this method was more successful, but why it fails to recognise a
-precise binding region and how this problem was overcome.
+PSSMs are another common technique for discovering particular sequences in a
+target.
+They are similar in nature to pHMMs (which can be considered as a
+generalisation of the PSSM), but are generally significantly simpler.
+Each column of the matrix corresponds to a particular position in the sequence and
+the rows specify the probability of each possible symbol appearing in that
+location.
 
+The probabilities are generally stored as logarithms, such that the probability
+of any particular sequence of length $N$ is simply the summation of $N$ values
+from the sequence.
+PSSMs can incorporate the background distribution by storing log-odds scores
+such that
+\begin{equation*}
+  m_{i,j} = \log {\frac{p_{i,j}}{b_i}}
+\end{equation*}
+where $p_{i,j}$ is the probability of observing symbol $i$ at location $j$ and
+$b_i$ is the probability of observing symbol $i$ in the background sequence.
+
+PSSMs are easy to construct given the distribution of symbols at each location,
+but require more work when searching for highly scoring sequences, particularly
+given that PPR binding footprints often contain bases which are not actually
+bound to a motif -- an insert in pHMM terminology.
+
+A simple algorithm for finding maxima proceeds as:
+\begin{enumerate}
+  \item \label{alg:score} 
+    Score the sequence at possible model position in the sequence
+  \item \label{alg:nms}
+    Discard the positions which aren't a local maximum
+  \item \label{alg:gaps}
+    For each maximum, try inserting gaps at each location in the model to
+    attempt to increase the score of the maximum, then return the highest
+    scoring matches
+\end{enumerate}
+This algorithm is somewhat inefficient, but it returns the highest scoring
+alignments in a reasonable time.
+Step \ref{alg:score} may seem the most inefficient as every possible alignment
+is tested, but this actually interacts rather well with the memory cache on
+modern computers as it searches through the data linearly.
+Step \ref{alg:gaps} is in fact the rate limiting step in most cases, as the
+number of possible combinations of gap locations grows rapidly with both the
+length of the model and the number of gaps.
 
