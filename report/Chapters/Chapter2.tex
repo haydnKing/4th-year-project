@@ -81,48 +81,150 @@ returns relatively few false positives.
 Armed with this model, the final algorithm for discovering PPRs proceeds as
 follows for each chromosome within the genome
 \begin{enumerate}
-  \item Perform a HMM search on the whole sequence. This will discover the most
-    obvious PPRs only
-  \item Group the motifs into clusters such that motifs which are on the same
+  \item \label{alg:first_pass}
+    Perform a HMM search on the whole sequence. This will discover the most
+    obvious motifs only
+  \item \label{alg:grouping}
+    Group the motifs into clusters such that motifs which are on the same
     strand and are within a certain distance are put in the same cluster
-  \item For each group, extract and `envelope' region containing it with large
-    margins either side. If the envelope is on the reverse strand, the reverse
-    complement should be taken such that all envelopes read in the forward
-    direction
-  \item \label{alg:envelopes}
+  \item \label{alg:envelopes} 
+    For each group, extract and `envelope' region containing each motif in the
+    group along with large margins either side. 
+  \item \label{alg:second_pass}
     Search each envelope region for PPR motifs. This search is more
     focussed than the previous one and will reveal more motifs than previously.
-    Discard any envelopes which only contain one motif.
+    Discard any envelopes which contain only one motif.
   \item Starting from the first position of the first motif, search backwards
     one codon at a time until a start codon (`ATG') is reached
   \item Starting from the last position in the final motif, search forwards one
-    codon at a time until a stop codon is reached (`TGA', `TAG' or `TAA'). This
-    fixes the location of the PPR
-  \item Check for PPRs which overlap -- this indicates that two motifs which
-    were believed to belong to separate proteins in fact belong to the same
-    one. Each set of overlapping proteins should be removed and a new, larger
+    codon at a time until a stop codon is reached (`TGA', `TAG' or `TAA').
+    Extract the putative PPR from between the start and stop codon
+  \item \label{alg:overlap}
+    Check for PPRs which overlap. 
+    Each set of overlapping proteins should be removed and a new, larger
     envelope extracted. The algorithm then continues again from step
-    \ref{alg:envelopes}
-  \item Check for PPRs where the motifs have filled the envelopes -- i.e. ones
+    \ref{alg:second_pass} with only the new envelopes
+  \item \label{alg:large_proteins}
+    Check for PPRs where the motifs have filled the envelopes -- i.e. ones
     which are missing a start or a stop codon due to not having searched far
     enough. Extract larger envelopes for these proteins and continue from step
-    \ref{alg:envelopes}
-  \item Search each protein for gaps between motifs which are the correct size
+    \ref{alg:second_pass}
+  \item \label{alg:reluctance}
+    Search each protein for gaps between motifs which are the correct size
     to fit a PPR motif. Search these regions specifically, increasing HMMER's
-    sensitivity, (using the F1, F2 and F3 arguments) to look for reluctant PPR
+    sensitivity to look for reluctant PPR
     motifs. Also search the beginning and the end of the protein in this way
-  \item Search each protein for small (2/3 codon) gaps between the motifs and
+  \item \label{alg:remove_gaps}
+    Search each protein for small (2/3 codon) gaps between the motifs and
     move the end position of the previous motif in order to fill these gaps.
     This allows the motifs to be classified as P, L or S
-  \item Classify the proteins depending on which types of motifs they contain.
+  \item \label{alg:classification} 
+    Classify the proteins depending on which types of motifs they contain.
     Extract the protein sequence of each tail sequence and classify it using
     \emph{jackhmmer} to search for the known consensus sequences for E, E+ and
     DYW motifs
-  \item Predict each protein's sub-cellular location using the \emph{targetP}
+  \item \label{alg:subcellular_location}
+    Predict each protein's sub-cellular location using the \emph{targetP}
     program
 \end{enumerate}
+A brief discussion of the rationale and implementation of the most important 
+steps follows.
 
+The reason why the motifs found in step \ref{alg:first_pass} cannot simply be
+accepted is due to the degenerate nature of the motifs.
+It would be possible to decrease HMMER's reporting threshold as to return all
+possible motifs but since the search space is very large, there would be a
+large number of false positives.
+By using default values for these thresholds there is unlikely to be a problem 
+as HMMER is designed to show only the most probable matches and only a few of
+the false positives.
+The presence of a few false positives at this stage is not an issue because the
+chance of finding several false positives immediately adjacent to each other 
+(as would be required to pass the later stages of the algorithm) is highly 
+unlikely.
 
+Having found the most obvious motifs, step \ref{alg:grouping} groups motifs
+which are believed to belong to the same protein.
+Initially this was restricted to motifs which were in the same reading frame
+(i.e. the gaps between starts were multiples of three), but this was later
+expanded to all motifs on the same strand, as introns (see sections
+\ref{sec:transcription} and \ref{sec:translation}) are known to be
+present in some PPR motifs.
+Experiment showed that grouping motifs which were within $1500bp$ of each other
+gave good results.
+Grouping was implemented by first sorting the motifs into ascending order and 
+then searching through linearly giving a cost of $O(n \log n)$ rather than the 
+cost of $O(n^2)$ required for exhaustively comparing each motif.
+
+Envelopes are then extracted from these groups in step \ref{alg:envelopes}.
+The term `envelope' is borrowed from HMMER's output and refers to the fact that
+we expect there to be a PPR somewhere within this region, but we are not sure
+where yet.
+For envelopes on the reverse strand, the sequence is extracted such that it
+reads correctly from left-to-right.
+It is important to maintain a record of where in the target sequence the
+envelope came from, as this information may be required later in the algorithm.
+A margin of $1000bp$ either side of the group was found to give good results.
+
+The search space in step \ref{alg:second_pass} is orders of magnitudes smaller
+than the first pass and so the chances of finding a high-scoring match by
+chance are negligible.
+Shortening the target in this way effectively moves HMMER's baseline for
+scoring matches such that lower scoring matches which would previously have 
+been written off as noise are now treated as legitimate matches.
+
+Steps \ref{alg:overlap} and \ref{alg:large_proteins} effectively correct for
+situations where the parameter values chosen for grouping and envelope
+extraction to not perform well.
+For example, if step \ref{alg:first_pass} detects the first and last motifs
+from a particularly long PPR then these will be treated as belonging to 
+separate proteins up until this point.
+Similarly, if only one motif was detected then the size of the actual protein
+may be larger than the envelope which is extracted.
+
+These two steps introduce loops into the algorithm and thus introduce the
+worrying possibility of an infinite loop preventing the algorithm from
+completing.
+In the case of step \ref{alg:overlap} this is not the case as for each
+iteration of the loop the number of putative proteins is half that of the
+previous loop, meaning that no infinite loop is possible.
+An infinite loop is also impossible in \ref{alg:large_proteins}, as the growth
+of the envelope is limited by the size of the search query. 
+However, since each loop iteration is expensive and adds only a constant 
+length to the envelope this could take quite some time in the worst case.
+To protect from this, a large upper bound was placed on the maximum length of 
+a protein.
+
+Proteins which are input to step \ref{alg:reluctance} often contain gaps of
+around 35 amino acids -- the correct size for a repeat motif -- and comparison
+with known proteins shows that a motif should indeed be placed in this region.
+These motifs can be found by searching these regions with a lower reporting
+threshold than the default.
+A plausible explanation of these poorly conserved motifs is that the presence of
+relatively well conserved (and thus well folded) regions on either side of the
+degenerate motif increases its tendency to fold correctly.
+However it could also be the case that these regions simply represent a gap in
+the recognition chain (where any base would be accepted) or an intron; more
+empirical results are needed in order to determine this.
+Setting each of the parameters \emph{F1}, \emph{F2} and \emph{F3} to $0.5$ 
+gave a reasonable trade-off between finding likely reclusive motifs and 
+rejecting random sequences.
+
+Studies such as \citet{Lurin2004} have shown that tandem PPR repeat motifs tend
+not to have small gaps between them.
+Since pyHMMER returns the location of the HMMER model, each match is the same
+length as the model.
+This is corrected for in step \ref{alg:remove_gaps}, such that the motifs can
+be classified as type P (length~$=$~35aa), L (length~$>$~35aa) or 
+S (length~$<$~35aa).
+
+The final two stages classify the extracted proteins depending on their type
+and sub-cellular targeting.
+Step \ref{alg:classification} makes use of the \emph{jackhmmer} program which
+iteratively constructs HMM models of a consensus sequence based on a target
+sequence and is supported by pyHMMER.
+The final step uses \emph{targetP}, a well respected prediction algorithm for
+sub-cellular localisation\citep{targetP}.
 
 \section{Predicting PPR Binding regions}
 \label{sec:ppr_binding_prediction}
