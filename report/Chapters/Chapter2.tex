@@ -52,10 +52,9 @@ Its main features are -
   \item Seamlessly perform six-frame translations on the fly (implemented in C
     for best performance)
     and map the returned matches to the correct location
-  \item (Linux only) 
-    Automatically terminate HMMER processes which attempt to allocate more
+  \item Automatically terminate HMMER processes which attempt to allocate more
     memory than the system can sensibly be expected to provide and then call
-    HMMER sequentially with subsections of the target
+    HMMER sequentially with subsections of the target\footnote{Linux only}
   \item Fully unit-tested with python's \emph{unittest} framework
 \end{itemize}
 pyHMMER has been developed under an open-source licence and is freely available
@@ -66,7 +65,62 @@ this project was written by myself.
 \section{Automated PPR Detection and Extraction}
 \label{sec:ppr_extraction}
 
-Introduce the problems of detection and extraction.
+Several algorithms were developed and compared in order to extract PPRs from
+unannotated genomes.
+The results of each algorithm were compared with experimentally validated PPRs
+and the best chosen.
+
+Before development could begin, a HMM of the PPR repeat motif was required.
+There are four such models available in
+Pfam\footnote{http://pfam.sanger.ac.uk/search/keyword?query=PPR}, and each one
+was tested on known PPRs in order to discover which model worked best when
+searching for motifs.
+It was found the PPR\_3 model is most sensitive to the motifs, and still
+returns relatively few false positives.
+
+Armed with this model, the final algorithm for discovering PPRs proceeds as
+follows for each chromosome within the genome
+\begin{enumerate}
+  \item Perform a HMM search on the whole sequence. This will discover the most
+    obvious PPRs only
+  \item Group the motifs into clusters such that motifs which are on the same
+    strand and are within a certain distance are put in the same cluster
+  \item For each group, extract and `envelope' region containing it with large
+    margins either side. If the envelope is on the reverse strand, the reverse
+    complement should be taken such that all envelopes read in the forward
+    direction
+  \item \label{alg:envelopes}
+    Search each envelope region for PPR motifs. This search is more
+    focussed than the previous one and will reveal more motifs than previously.
+    Discard any envelopes which only contain one motif.
+  \item Starting from the first position of the first motif, search backwards
+    one codon at a time until a start codon (`ATG') is reached
+  \item Starting from the last position in the final motif, search forwards one
+    codon at a time until a stop codon is reached (`TGA', `TAG' or `TAA'). This
+    fixes the location of the PPR
+  \item Check for PPRs which overlap -- this indicates that two motifs which
+    were believed to belong to separate proteins in fact belong to the same
+    one. Each set of overlapping proteins should be removed and a new, larger
+    envelope extracted. The algorithm then continues again from step
+    \ref{alg:envelopes}
+  \item Check for PPRs where the motifs have filled the envelopes -- i.e. ones
+    which are missing a start or a stop codon due to not having searched far
+    enough. Extract larger envelopes for these proteins and continue from step
+    \ref{alg:envelopes}
+  \item Search each protein for gaps between motifs which are the correct size
+    to fit a PPR motif. Search these regions specifically, increasing HMMER's
+    sensitivity, (using the F1, F2 and F3 arguments) to look for reluctant PPR
+    motifs. Also search the beginning and the end of the protein in this way
+  \item Search each protein for small (2/3 codon) gaps between the motifs and
+    move the end position of the previous motif in order to fill these gaps.
+    This allows the motifs to be classified as P, L or S
+  \item Classify the proteins depending on which types of motifs they contain.
+    Extract the protein sequence of each tail sequence and classify it using
+    \emph{jackhmmer} to search for the known consensus sequences for E, E+ and
+    DYW motifs
+  \item Predict each protein's sub-cellular location using the \emph{targetP}
+    program
+\end{enumerate}
 
 
 
