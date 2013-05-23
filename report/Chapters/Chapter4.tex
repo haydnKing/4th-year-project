@@ -1,14 +1,54 @@
 
-\chapter{Discussion of Results} 
-\label{chap:results}
+\chapter{Simulating PPR Activity} 
+\label{chap:simulation}
 
-\section{PPR Survey}
-\label{sec:ppr_survey}
+Interesting to simulate networks of PPRs to demonstrate logic
 
-A discussion of the results of the PPR survey, the number of PPRs in each plant
-and their connection.
+\section{Simulation Model}
+\label{sec:sim_model}
 
-\section{PPR Homology}
+A discussion of the ODE model used for simulation and where the parameters came
+from
 
-A discussion of any extra homology found between PPRs with similar binding
-preferences.
+\begin{figure}
+  \centering
+  \begin{tikzpicture}[auto,
+      converts/.style={->, >=triangle 60},
+      produces/.style={->, >=triangle 60, dashed},
+    reversible/.style={->, >=triangle 60, bend left=20}]
+    \node (D) {$\mathrm{DNA}_i$};
+    \node (R) [below=2cm of D] {$\mathrm{RNA}_i$};
+    \node (Pi) [below=3cm of R] {$\mathrm{P}_i$};
+    \node (RP) [right=3cm of R] {$\mathrm{RNA}_i$--$\mathrm{P}_j$};
+    \node (degrade) [below=3cm of RP] {Degradation};
+    \node (Pj) [above right=2cm and 2cm of RP] {$\mathrm{P}_j$};
+    
+    \draw[produces] (D) to node[pos=0.5, swap] {$tr_i$} (R);
+    \draw[converts] (R) to node[pos=0.75] {$d_{RNA}$} (degrade);
+    \draw[converts] (RP) to node[pos=0.5] {$d_{i,j}$} (degrade);
+    \draw[converts] (Pi) to node[pos=0.5, swap] {$d_{P_i}$} (degrade);
+    
+    \draw[produces] (R)  to node[pos=0.5, swap] {$tl_i$} (Pi);
+    \draw[produces] (RP) to node[pos=0.75, swap] {$tl_{i,j}$} 
+      (Pi);
+
+    \draw[reversible] (R)  to node[pos=0.5] {$k_f$} (RP);
+    \draw[reversible] (RP) to node[pos=0.5,swap] {$k_b$} (R);
+
+    \draw[reversible] (Pj) to node[pos=0.5] {$k_f$} (RP);
+    \draw[reversible] (RP) to node[pos=0.5] {$k_b$} (Pj);
+
+  \end{tikzpicture}
+  \caption{    \label{fig:simulation}}
+\end{figure}
+
+\section{Simulation Results for Logic Gates}
+\label{sec:sim_logic}
+
+Demonstrations of various simple logic gates
+
+\section{Implementing the Edge Detector}
+\label{sec:sim_tabor}
+
+Discussion of an implementation of Tabor's bacterial edge detector using PPRs
+
