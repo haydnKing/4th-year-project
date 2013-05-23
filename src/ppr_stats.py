@@ -30,16 +30,22 @@ def get_numbers(pprs):
 def get_numbers_hdr():
 	return ("number",)
 
-def get_localization(pprs):
-	loc_c = len([p for p in pprs if p.localization() == 'C'])
-	loc_m = len([p for p in pprs if p.localization() == 'M'])
-	loc_s	= len([p for p in pprs if p.localization() == 'S'])
-	loc_other = len([p for p in pprs if p.localization() == '_'])
-	loc_unknown = len([p for p in pprs if p.localization() == '*'])
-	return (loc_c,loc_m,loc_s,loc_other,loc_unknown,)
+def get_localization(genome):
+	data = []
+	for g in genome:
+		if len(g.pprs) < 50:
+			continue
+		total = float(len(g.pprs))
+		loc_c = 100.0 * len([1 for p in g.pprs if p.localization() == 'C']) / total
+		loc_m = 100.0 * len([1 for p in g.pprs if p.localization() == 'M']) / total
+		loc_s	= 100.0 * len([1 for p in g.pprs if p.localization() == 'S']) / total
+		loc_o = 100.0 * len([1 for p in g.pprs if p.localization() == '_']) / total
+		loc_u = 100.0 * len([1 for p in g.pprs if p.localization() == '*']) / total
+		data.append((short_name(g.name),loc_c,loc_m,loc_s,loc_o,loc_u,))
 
-def get_localization_hdr():
-	return ("loc_c","loc_m","loc_s","loc_other","loc_uk",)
+	data.sort(key=lambda d: d[1])
+	utils.write_data(("genome", "c","m","s","other","unknown",),
+			data, "output/ppr_localization.dat")
 
 def get_family(pprs):
 	try:
@@ -56,11 +62,35 @@ def get_family(pprs):
 					len([1 for p in pprs if p.family() == 'P']),
 				)
 
+def get_length_family(genomes):
+	pprs = [p for g in genomes for p in g.pprs]
+	type_P   = [p for p in pprs if p.family() == 'P'  ]
+	type_E   = [p for p in pprs if p.family() == 'E'  ]
+	type_Ep  = [p for p in pprs if p.family() == 'E+' ]
+	type_DYW = [p for p in pprs if p.family() == 'DYW']
+	type_PLS = [p for p in pprs if p.family() == 'PLS']
+
+	P_hist   = length_hist(type_P)
+	E_hist   = length_hist(type_E)
+	Ep_hist  = length_hist(type_Ep)
+	DYW_hist = length_hist(type_DYW)
+	PLS_hist = length_hist(type_PLS)
+
+	hist = fmt_hist([P_hist, E_hist, Ep_hist, DYW_hist, PLS_hist,])
+
+	utils.write_data(('length','p','e','ep','dyw','pls'), hist, 
+			"output/ppr_family_lengths.dat")
+
+
 def get_family_hdr():
 	return ("type_dyw", "type_ep", "type_e","type_pls","type_p",)
 
+def short_name(genome):
+	i = genome.find('_')
+	return genome[0] + genome[i+1].lower()
+
 def main():
-	genomes = ppr.get_processed_genomes()
+	genomes = ppr.get_genomes()
 	hist = []
 	numbers = []
 	locale = []
@@ -68,15 +98,18 @@ def main():
 	for g in genomes:
 		print g
 		pprs = list(ppr.load_pprs(g))
-		numbers.append((g,) + get_numbers(pprs))
+		numbers.append((short_name(g),) + get_numbers(pprs))
 		hist.append(length_hist(pprs))
-		locale.append((g,) + get_localization(pprs))
-		family.append((g,) + get_family(pprs))
+		locale.append((short_name(g),) + get_localization(pprs))
+		family.append((short_name(g),) + get_family(pprs))
 
+	numbers.sort(key=lambda n:n[1])
+	family.sort(key=lambda f:sum(f[1:]))
 	hist = fmt_hist(hist)
 
 	utils.write_data(('genome',)+get_numbers_hdr(), numbers, "output/ppr_numbers.dat")
-	utils.write_data(['length',]+genomes, hist, "output/ppr_lengths.dat")
+	utils.write_data(['length',]+[short_name(g) for g in genomes], 
+			hist, "output/ppr_lengths.dat")
 	utils.write_data(('genome',)+get_localization_hdr(), locale,
 		"output/ppr_localization.dat")
 	utils.write_data(('genome',)+get_family_hdr(), family, "output/ppr_families.dat")

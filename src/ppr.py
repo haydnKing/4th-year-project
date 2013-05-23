@@ -9,7 +9,7 @@ class PPR:
 	
 	def __init__(self, seq_record):
 		self.seq_record = seq_record
-		self.pssm = PSSM.PSSM_build(self.seq_record)
+		self.pssm = PSSM.build(self.seq_record)
 
 	def distance(self, rhs, method='MSE'):
 		"""Calculate the distance between myself and another PPR using method:
@@ -49,6 +49,9 @@ class Genome:
 	def __str__(self):
 		return "Genome {} ({} pprs)".format(self.name, len(self.pprs))
 
+	def __len__(self):
+		return len(self.pprs)
+
 	def distance(self, ppr, method=None):
 		if method:
 			return [ppr.distance(p, method)[0] for p in self.pprs]
@@ -56,7 +59,10 @@ class Genome:
 
 	def closest(self, ppr, method=None):
 		r = self.distance(ppr, method)
-		return self.pprs[r.index(min(r))]
+		if r:
+			return self.pprs[r.index(min(r))]
+		else:
+			return None
 
 def get_genomes():
 	genomes = [f for f in os.listdir('output/PPRs/') if re.match(".+\.gb$", f)]

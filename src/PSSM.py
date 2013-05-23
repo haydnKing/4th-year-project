@@ -56,6 +56,9 @@ def search(ppr, target, reverse=True, gaps=1, show_stats=False):
 
 	return sf
 
+def build(sr):
+	return binding_rules.build_PSSM(sr, coding='barkan')
+
 def as_string(pssm):
 	return "\n".join([("{:3.1f} "*4).format(*i) for i in pssm])
 

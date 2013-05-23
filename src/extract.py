@@ -125,7 +125,7 @@ def simple_extract(target, localization = None, verbose=False):
 		groups += remove_overgrown(pprs, 500)
 		if verbose:
 			print "{} overgrown PPRs".format(len(groups) - ol)
-
+	
 	pprs = [add_source(p, target) for p in pprs]
 	
 	if verbose:
@@ -145,6 +145,11 @@ def simple_extract(target, localization = None, verbose=False):
 
 	#return a list of nicely presented PPRs
 	return pprs
+
+def debug_ends(ppr):
+	for m in ppr.features:
+		if m.location.start < 0:
+			print "\tPPR motif begins before protein does!"
 
 def group_motifs(motifs, max_gap):
 	"""Given a list of PPR motifs, group them by strand then by location such

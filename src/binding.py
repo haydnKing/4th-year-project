@@ -15,8 +15,9 @@ def minima(ppr, genomes):
 	closest = []
 	for g in genomes:
 		c = g.closest(ppr)
-		names.append(g.name.replace('_', '\n'))
-		closest.append(ppr.distance(c)[0])
+		if c:
+			names.append(g.name.replace('_', '\n'))
+			closest.append(ppr.distance(c)[0])
 	return (names, closest)
 
 def get_average(genome, genomes):
@@ -52,6 +53,8 @@ def show_distance(num=0):
 
 def ppr_distance():
 	genomes = PPR.load_genomes()
+
+	genomes = [g for g in genomes if len(g) > 0]
 
 	data = []
 
