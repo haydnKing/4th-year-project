@@ -5,6 +5,116 @@
 \section{Survey of PPRs in Plants}
 \label{sec:ppr_survey}
 
+
+\begin{figure}
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{axis}[
+          ybar stacked,
+          xtick=data,% crucial line for the xticklabels directive
+          ymin=0,
+          xlabel={Genome Abbreviation},
+          ylabel={Number of Proteins},
+          xticklabels from table={Data/ppr_families.dat}{genome},
+          width=0.9\textwidth,
+          height=7cm,
+          legend style = {
+            at={(0.5,1.05)},
+            column sep = 3mm,
+            anchor=south},
+          legend columns = 4
+        ]
+
+        \addplot table [x expr=\coordindex,y=type_p] {Data/ppr_families.dat};
+        \addplot table [x expr=\coordindex,y=type_e] {Data/ppr_families.dat};
+        \addplot table [x expr=\coordindex,y=type_ep]{Data/ppr_families.dat};
+        \addplot table [x expr=\coordindex,y=type_dyw]{Data/ppr_families.dat};
+
+        \addlegendentry{P type}
+        \addlegendentry{E type}
+        \addlegendentry{E+ type}
+        \addlegendentry{DYW type}
+
+      \end{axis}
+    \end{tikzpicture}
+    \caption{The number of PPR proteins found in each genome
+      \label{fig:ppr_numbers}}
+  \end{center}
+\end{figure}
+
+\begin{figure}
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{axis}[
+          ybar stacked,
+          ymin=0,
+          xlabel={Number of Motifs},
+          ylabel={Number of Proteins},
+          width=0.9\textwidth,
+          height=7cm,
+          bar width = 1.0,
+          legend style = {
+            at={(0.5,1.05)},
+            column sep = 3mm,
+            anchor=south},
+          legend columns = 4
+        ]
+
+        \addplot table [x=length,y=p] {Data/ppr_family_lengths.dat};
+        \addplot table [x=length,y=e] {Data/ppr_family_lengths.dat};
+        \addplot table [x=length,y=ep]{Data/ppr_family_lengths.dat};
+        \addplot table [x=length,y=dyw]{Data/ppr_family_lengths.dat};
+
+        \addlegendentry{P type}
+        \addlegendentry{E type}
+        \addlegendentry{E+ type}
+        \addlegendentry{DYW type}
+
+      \end{axis}
+    \end{tikzpicture}
+    \caption{Histogram showing the number of motifs found in the proteins
+      \label{fig:ppr_family_numbers}}
+  \end{center}
+\end{figure}
+
+\begin{figure}
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{axis}[
+          ybar stacked,
+          xtick=data,% crucial line for the xticklabels directive
+          ymin=0,
+          ymax=100,
+          xlabel={Genome Abbreviation},
+          ylabel={Percentage or PPRs},
+          xticklabels from table={Data/ppr_localization.dat}{genome},
+          width=0.9\textwidth,
+          height=7cm,
+          legend style = {
+            at={(0.5,1.05)},
+            column sep = 3mm,
+            anchor=south},
+          legend columns = 4
+        ]
+
+        \addplot[fill=green!50!black!20]
+          table [x expr=\coordindex,y=c]{Data/ppr_localization.dat};
+        \addplot table [x expr=\coordindex,y=m]{Data/ppr_localization.dat};
+        \addplot table [x expr=\coordindex,y=s]{Data/ppr_localization.dat};
+        \addplot table [x expr=\coordindex,y=other]{Data/ppr_localization.dat};
+
+        \addlegendentry{Chloroplast}
+        \addlegendentry{Mitochondria}
+        \addlegendentry{Secretory Pathway}
+        \addlegendentry{Other}
+
+      \end{axis}
+    \end{tikzpicture}
+    \caption{The percentage of PPRs localized to different areas of the cell
+      \label{fig:ppr_localization}}
+  \end{center}
+\end{figure}
+
 A discussion of the results of the PPR survey, the number of PPRs in each plant
 and their connection.
 
