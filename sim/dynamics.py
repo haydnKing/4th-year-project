@@ -1,6 +1,5 @@
 """Simulate a reaction network involving PPR binding"""
 import numpy as np
-import matplotlib.pyplot as plt
 from scipy.integrate import odeint
 from math import log
 
@@ -21,7 +20,7 @@ class Network:
 	p_decay   = log(2) / p_halflife # min^-1
 
 	complex_decay_slow = 0.0693 # min^-1
-	complex_decay_fast = 0.5 # min^-1
+	complex_decay_fast = 0.9 # min^-1
 
 	kD_ppr = 7.6e-9 # Moles / litre
 	k_fwd = 2.0 * tr_high
@@ -43,7 +42,7 @@ class Network:
 		self.I = interactions
 		self.T = translation
 
-	def simulate(self, inputs):
+	def simulate(self, inputs, time=60.0, start=None):
 		"""Simulate the network dynamics
 			inputs: a list of transcriptions (high/low) for each protein
 		"""
@@ -96,27 +95,17 @@ class Network:
 			ret += dP
 			return ret
 
-		x0 = [0.0,]*(self.N+2)*self.N
-		t = np.linspace(0, 60.0, 1000)
-		soln = odeint(rate, x0, t)
+		if not start:
+			start = [0.0,]*(self.N+2)*self.N
+		else:
+			p_start = start
+			start = [0.0,]*(self.N+1)*self.N + p_start
+		t = np.linspace(0, time, 1000*time/60)
+		soln = odeint(rate, start, t)
 
 		RNA = soln[:, 0:N]
 		P = soln[:, (N+1)*N:(N+2)*N]
-		plt.figure()
-		for i in range(N):
-			plt.plot(t, P[:,i], label='P_{}'.format(i+1))
-		plt.xlabel('Time (min)')
-		plt.ylabel('Concentration')
-		plt.title('Evolution of Protein concentration')
-		plt.legend(loc=0)
-		plt.show()
 
-		return P
-
-
-
-
-
-
+		return [t, {'rna': RNA, 'protein': P,},]
 
 
