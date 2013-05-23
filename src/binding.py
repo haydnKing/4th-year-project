@@ -54,14 +54,14 @@ def show_distance(num=0):
 def ppr_distance():
 	genomes = PPR.load_genomes()
 
-	genomes = [g for g in genomes if len(g) > 0]
+	genomes = [g for g in genomes if len(g) > 50]
 
 	data = []
 
 	for i,g in enumerate(genomes, 1):
 		print "Genome {}/{}: {} ({})".format(i, len(genomes),
-				g.name,reduce_name(g.name))
-		data.append([reduce_name(g.name),] + get_average(g,genomes))
+				g.name,short_name(g.name))
+		data.append([short_name(g.name),] + get_average(g,genomes))
 
 
 	utils.write_data(['',] + [reduce_name(g.name) for g in genomes],

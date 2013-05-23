@@ -16,6 +16,8 @@ class PPR:
 			method =	'MSE': Mean Squared Error
 								'KL': KL divergance
 		"""
+		if method == None:
+			method = "MSE"
 		return PSSM.distance(self.pssm, rhs.pssm, method)
 
 	def localization(self):
