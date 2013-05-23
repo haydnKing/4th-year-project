@@ -45,6 +45,134 @@ from
 \section{Simulation Results for Logic Gates}
 \label{sec:sim_logic}
 
+\begin{figure}
+  \begin{center}
+    \begin{subfigure}{0.25\textwidth}
+      \centering
+      \begin{tikzpicture}
+        \node (A) {A};
+        \node[ppr, right of=A] (p1) {};
+        \node[ppr, right of=p1] (p2) {+};
+        \node[right of=p2] (out) {out};
+
+        \draw[->] (A) to (p1);
+        \draw[repress] (p1) to (p2);
+        \draw[->] (p2) to (out);
+      \end{tikzpicture}
+    \end{subfigure}
+    ~
+    \begin{subfigure}{0.7\textwidth}
+      \centering
+      \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={time,min},
+            ylabel={concentration},
+            height=5cm,
+            width=1.0\textwidth,
+            cycle list name=color list,
+            legend pos=north west,
+          ]
+          \addplot table[x=time, y=0]{Data/logic_NOT.dat};
+          \addplot table[x=time, y=1]{Data/logic_NOT.dat};
+          \legend{0,1};
+        \end{axis}
+      \end{tikzpicture}
+    \end{subfigure}
+  \end{center}
+  \caption{CAPTION HERE
+    \label{fig:not_simulation}}
+
+  \begin{center}
+    \begin{subfigure}{0.25\textwidth}
+      \centering
+      \begin{tikzpicture}
+        \node (A) {A};
+        \node[below=1cm of A] (B) {B};
+        \node[ppr, right of=A] (p1) {};
+        \node[ppr, right of=B] (p2) {};
+        \node[ppr, below right=0.5cm and 1cm of p1] (p3) {$-$};
+        \node[right of=p3] (out) {out};
+
+        \draw[->] (A) to (p1);
+        \draw[->] (B) to (p2);
+        \draw[induce, bend left] (p1) to (p3);
+        \draw[induce, bend right] (p2) to (p3);
+        \draw[->] (p3) to (out);
+      \end{tikzpicture}
+    \end{subfigure}
+    ~
+    \begin{subfigure}{0.7\textwidth}
+      \centering
+      \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={time,min},
+            ylabel={concentration},
+            height=5cm,
+            width=1.0\textwidth,
+            cycle list name=color,
+            no markers,
+            legend pos=north west,
+          ]
+          \addplot table[x=time, y=00]{Data/logic_OR.dat};
+          \addplot table[x=time, y=01]{Data/logic_OR.dat};
+          \addplot table[x=time, y=10]{Data/logic_OR.dat};
+          \addplot table[x=time, y=11]{Data/logic_OR.dat};
+          \legend{00,01,10,11};
+        \end{axis}
+      \end{tikzpicture}
+    \end{subfigure}
+  \end{center}
+  \caption{CAPTION HERE
+    \label{fig:or_simulation}}
+
+  \begin{center}
+    \begin{subfigure}{0.25\textwidth}
+      \centering
+      \begin{tikzpicture}[node distance=0.8cm]
+        \node (A) {A};
+        \node[below=1cm of A] (B) {B};
+        \node[ppr, right of=A] (p1) {};
+        \node[ppr, right of=B] (p2) {};
+        \node[ppr, right of=p1] (p3) {+};
+        \node[ppr, right of=p2] (p4) {+};
+        \node[ppr, below right=0.5cm and 0.8cm of p3] (p5) {$-$};
+        \node[right of=p5] (out) {out};
+
+        \draw[->] (A) to (p1);
+        \draw[->] (B) to (p2);
+        \draw[repress] (p1) to (p3);
+        \draw[repress] (p2) to (p4);
+        \draw[induce, bend left] (p3) to (p5);
+        \draw[induce, bend right] (p4) to (p5);
+        \draw[->] (p5) to (out);
+      \end{tikzpicture}
+    \end{subfigure}
+    ~
+    \begin{subfigure}{0.7\textwidth}
+      \centering
+      \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={time,min},
+            ylabel={concentration},
+            height=5cm,
+            width=1.0\textwidth,
+            cycle list name=color,
+            no markers,
+            legend pos=north west,
+          ]
+          \addplot table[x=time, y=00]{Data/logic_NAND.dat};
+          \addplot table[x=time, y=01]{Data/logic_NAND.dat};
+          \addplot table[x=time, y=10]{Data/logic_NAND.dat};
+          \addplot table[x=time, y=11]{Data/logic_NAND.dat};
+          \legend{00,01,10,11};
+        \end{axis}
+      \end{tikzpicture}
+    \end{subfigure}
+  \end{center}
+  \caption{CAPTION HERE
+    \label{fig:nand_simulation}}
+\end{figure}
+
 Demonstrations of various simple logic gates
 
 \section{Implementing Tabor's Edge Detector}
