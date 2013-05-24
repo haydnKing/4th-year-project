@@ -47,6 +47,35 @@ def get_localization(genome):
 	utils.write_data(("genome", "c","m","s","other","unknown",),
 			data, "output/ppr_localization.dat")
 
+def save_predotar():
+	genomes = ppr.get_genomes()
+	data = []
+	vals =[u'none', u'mitochondrial', u'plastid', u'er', u'elsewhere',
+			u'possibly mitochondrial', u'possibly plastid', u'possibly er', 
+			u'possibly elsewhere',]
+	for g in genomes:
+		pprs = ppr.load_records(g)
+		if len(pprs) < 50:
+			continue
+
+		row = [0,]*len(vals)
+
+		total = float(len(pprs))
+
+		for p in pprs:
+			pred = p.annotations['predotar']
+			if pred not in vals:
+				raise ValueError("didn't expect {}".format(pred))
+			else:
+				row[vals.index(pred)] += 1
+		row = [float(r)/total for r in row]
+		data.append([short_name(g),] + row)
+
+	data.sort(key=lambda d: d[1])
+	utils.write_data(["genome", ]+vals,
+			data, "output/ppr_predotar.dat")
+
+
 def get_family(pprs):
 	try:
 		classify.classify([p.seq_record for p in pprs])
