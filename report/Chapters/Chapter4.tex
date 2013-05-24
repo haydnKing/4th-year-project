@@ -2,13 +2,15 @@
 \chapter{Simulating PPR Activity} 
 \label{chap:simulation}
 
-Interesting to simulate networks of PPRs to demonstrate logic
+\lettrine{S}{ince} we know a reasonably large amount about the effects that 
+PPR-RNA
+interactions can have on protein levels, it is interesting to try and simulate
+the behaviour of logic networks constructed with these proteins.
+This chapter develops a simple ODE model of a general network and demonstrates
+that simple boolean algebra is possible with networks of PPRs.
 
 \section{Simulation Model}
 \label{sec:sim_model}
-
-A discussion of the ODE model used for simulation and where the parameters came
-from
 
 \begin{figure}
   \centering
@@ -39,23 +41,135 @@ from
     \draw[reversible] (RP) to node[pos=0.5] {$k_b$} (Pj);
 
   \end{tikzpicture}
-  \caption{    \label{fig:simulation}}
+  \caption{Diagram of the general reaction network for the $i^{\mathrm{th}}$ 
+  protein in the network. 
+  Dotted lines show production, where the molecule at the start
+  of the arrow are not consumed; full lines show where molecules are converted
+  to other types.
+  \label{fig:simulation}}
 \end{figure}
+
+In order to capture PPR activity, we need to model the interaction between the
+cell's expression machinery and RNA-PPR binding.
+This is most simply done using and ODE model, where each process is modelled
+using a rate equation.
+
+The simplest processes are transcription and translation, which are simple to
+model as none of the molecules we are interested in are consumed in either 
+reaction. 
+Thus, the rate of production is simply proportional to the amount of DNA or RNA
+present respectively.
+
+We also need to model the production of the \ce{RNA_i-P_j} complex, as shown in
+\ref{eqn:binding}, where \ce{P_j} represents the $j^{\mathrm{th}}$ protein in 
+the model.
+Note that this reaction is reversible, and so two rates are required -- one
+representing the forwards reaction and one representing the backwards
+direction.
+\begin{equation}
+  \cee{ RNA_i + P_j <=> RNA_i-P_j }
+  \label{eqn:binding}
+\end{equation}
+
+In addition to these processes, we need to model translation of the
+\ce{RNA_i-P_j} complex and also degradation of \ce{RNA}, \ce{P} and \ce{RNA-P}.
+Each of these reactions is simple to model in isolation as the rate is simply
+proportional to the concentration of the molecule.
+Figure~\ref{fig:simulation} summarises these reactions for the $i^\mathrm{th}$
+protein.
+
+The differential equations governing the concentration of each molecule are 
+shown in \ref{eqn:reaction_equations}.
+
+\begin{align}
+  \frac{d\cee{[RNA_i]}}{dt} &= tr_i 
+    - \cee{[RNA_i]} \cdot d_{RNA_i} 
+    - \sum_j \left(\cee{[RNA_i]}\cee{[P_j]} \cdot k_{f_{i,j}} 
+      - \cee{[RNA_i-P_j]} \cdot k_{b_{i,j}} \right)  i
+                                                  \nonumber \\
+  \frac{d\cee{[P_i]}}{dt} &= 
+    \cee{[RNA_i]}\cdot tl_i + \sum_j \cee{[RNA_j-P_i]}\cdot tl_{C_{i,j}} 
+    - \cee{[P_i]}\cdot d_{P_i} \nonumber \\ 
+    &\qquad {} - \sum_j \left(\cee{[RNA_i]}\cee{[P_j]} \cdot k_{f_{i,j}} 
+      - \cee{[RNA_i-P_j]} \cdot k_{b_{i,j}} \right) 
+                                                  \nonumber \\
+  \frac{d\cee{[RNA_i-P_j]}}{dt} &=
+      \left(\cee{[RNA_i]}\cee{[P_j]} \cdot k_{f_{i,j}} 
+        - \cee{[RNA_i-P_j]} \cdot k_{b_{i,j}} \right)
+      - \cee{[RNA_i-P_j]} \cdot d_{C_{i,j}}
+                                                \label{eqn:reaction_equations}
+\end{align}
+%
+Where:
+%
+\begin{align*}
+  tr_i &= \text{is the translation rate of the $i^{\mathrm{th}}$ protein} \\
+  d_{RNA_i} &= \text{degradation rate of \ce{RNA_i}} \\
+  d_{C_{i,j}} &= \text{degradation rate of \ce{RNA_i-P_j} complex} \\
+  k_{f_{i,j}}  &= \text{rate of association of \ce{RNA_i} and \ce{P_j}}\\
+  k_{b_{i,j}} &= \text{rate of dissassociation of \ce{RNA_i} and \ce{P_j}}
+\end{align*}
+
+This system can be easily converted into a state-space formulation by defining
+the state space to be the concatenation of the concentrations of each molecule
+in the system.
+
+These equations contain a large number of parameters for which numerical values
+are needed in order to simulate a network of PPRs.
+We can improve the situation by making some simplifying assumptions, namely
+\begin{enumerate}
+  \item \label{assm:transcription}
+    Transcription rates are either high or low, depending on input conditions
+  \item \label{assm:translation}
+    Free \ce{RNA} transcripts are either highly translated or very slowly
+    translated
+  \item \label{assm:complex}
+    \ce{RNA-P} complexes either have high translation rates and long half-lives
+    (excitatory PPR binding) or low translation rates and short half-lives
+    (repressive PPR binding)
+\end{enumerate}
+
+These three assumptions reduce the number of parameters required and suggest a
+compact graphical representation of a network.
+Each protein is represented by a circle which contains a symbol indicating
+whether the protein is naturally translated or not.
+Proteins which are produced in response to inputs to the system contain instead 
+a letter indicating the input to which they respond.
+PPR interactions are represented by lines between the proteins -- an arrow
+between A and B represents that protein A binds to RNA B causing excitatory
+binding, while a perpendicular bar represents repressive binding.
 
 \section{Simulation Results for Logic Gates}
 \label{sec:sim_logic}
+
+Figures \ref{fig:not_simulation}, \ref{fig:or_simulation} and
+\ref{fig:nand_simulation} show simulations of NOT, OR and NAND logic gates
+respectively using figures derived from the literature  
+\citep[see][]{So2011,Andersen1998}, 
+although the plots shown varied little over a large range of parameter values.
+
+These simulations demonstrate that interesting and useful logic operations are
+achievable using known PPR-mRNA interactions.
+
+A major limitation of this model is that only one PPR may affect a transcript
+at a time and there is no attempt to model competition between different PPRs 
+over a binding site.
+We know that this is not the case since there is nothing to prevent a second
+PPR from binding at a different location on the same transcript.
+We could attempt to model these interactions (possibly using stochastic
+simulations rather than ODEs), but since so very little is known of the 
+molecular processes driving PPR-RNA interactions such a model would be mostly
+speculation.
 
 \begin{figure}
   \begin{center}
     \begin{subfigure}{0.25\textwidth}
       \centering
       \begin{tikzpicture}
-        \node (A) {A};
-        \node[ppr, right of=A] (p1) {};
-        \node[ppr, right of=p1] (p2) {+};
+        \node[ppr] (p1) {$A$};
+        \node[ppr, right of=p1] (p2) {$+$};
         \node[right of=p2] (out) {out};
 
-        \draw[->] (A) to (p1);
         \draw[repress] (p1) to (p2);
         \draw[->] (p2) to (out);
       \end{tikzpicture}
@@ -71,6 +185,7 @@ from
             width=1.0\textwidth,
             cycle list name=color list,
             legend pos=north west,
+            ytick = \empty,
           ]
           \addplot table[x=time, y=0]{Data/logic_NOT.dat};
           \addplot table[x=time, y=1]{Data/logic_NOT.dat};
@@ -79,22 +194,19 @@ from
       \end{tikzpicture}
     \end{subfigure}
   \end{center}
-  \caption{CAPTION HERE
+  \caption{An implementation of a NOT gate.
+    Expression of $A$ causes the output to be repressed.
     \label{fig:not_simulation}}
 
   \begin{center}
     \begin{subfigure}{0.25\textwidth}
       \centering
       \begin{tikzpicture}
-        \node (A) {A};
-        \node[below=1cm of A] (B) {B};
-        \node[ppr, right of=A] (p1) {};
-        \node[ppr, right of=B] (p2) {};
+        \node[ppr] (p1) {$A$};
         \node[ppr, below right=0.5cm and 1cm of p1] (p3) {$-$};
+        \node[ppr, below left=0.5cm and 1cm of p3] (p2) {$B$};
         \node[right of=p3] (out) {out};
 
-        \draw[->] (A) to (p1);
-        \draw[->] (B) to (p2);
         \draw[induce, bend left] (p1) to (p3);
         \draw[induce, bend right] (p2) to (p3);
         \draw[->] (p3) to (out);
@@ -112,6 +224,7 @@ from
             cycle list name=color,
             no markers,
             legend pos=north west,
+            ytick = \empty,
           ]
           \addplot table[x=time, y=00]{Data/logic_OR.dat};
           \addplot table[x=time, y=01]{Data/logic_OR.dat};
@@ -122,24 +235,21 @@ from
       \end{tikzpicture}
     \end{subfigure}
   \end{center}
-  \caption{CAPTION HERE
+  \caption{An implementation of an OR gate.
+    Expression of $A$ or $B$ causes excitation of the output.
     \label{fig:or_simulation}}
 
   \begin{center}
     \begin{subfigure}{0.25\textwidth}
       \centering
       \begin{tikzpicture}[node distance=0.8cm]
-        \node (A) {A};
-        \node[below=1cm of A] (B) {B};
-        \node[ppr, right of=A] (p1) {};
-        \node[ppr, right of=B] (p2) {};
+        \node[ppr] (p1) {$A$};
         \node[ppr, right of=p1] (p3) {+};
-        \node[ppr, right of=p2] (p4) {+};
         \node[ppr, below right=0.5cm and 0.8cm of p3] (p5) {$-$};
+        \node[ppr, below left =0.5cm and 0.8cm of p5] (p4) {+};
+        \node[ppr, left of=p4] (p2) {$B$};
         \node[right of=p5] (out) {out};
 
-        \draw[->] (A) to (p1);
-        \draw[->] (B) to (p2);
         \draw[repress] (p1) to (p3);
         \draw[repress] (p2) to (p4);
         \draw[induce, bend left] (p3) to (p5);
@@ -159,6 +269,7 @@ from
             cycle list name=color,
             no markers,
             legend pos=north west,
+            ytick = \empty,
           ]
           \addplot table[x=time, y=00]{Data/logic_NAND.dat};
           \addplot table[x=time, y=01]{Data/logic_NAND.dat};
@@ -169,14 +280,81 @@ from
       \end{tikzpicture}
     \end{subfigure}
   \end{center}
-  \caption{CAPTION HERE
+  \caption{An implementation of a NAND gate.
+    Output is produced unless both $A$ and $B$ are high.
     \label{fig:nand_simulation}}
 \end{figure}
-
-Demonstrations of various simple logic gates
 
 \section{Implementing Tabor's Edge Detector}
 \label{sec:sim_tabor}
 
-Discussion of an implementation of Tabor's bacterial edge detector using PPRs
+We can use this model to simulate an implementation of Tabor's bacterial edge 
+detector (introduced in section \ref{sec:synbio}).
+The system described in \citet{edgeDetector} produces pigment in response to
+the presence of AHL and light.
+Our inputs to the PPR network are the AHL signal ($S$) and dark
+($\overline{L}$), and output a pigment signal ($P$) according to 
+\begin{align*}
+  P &= S \cdot L \\
+  P &= \overline{\overline{S} + \overline{L}}
+\end{align*}
+using De Morgan's law.
+
+Figure \ref{fig:tabor_simulation} shows an implementation of this logic using
+simulated PPR proteins.
+The key advantage of this solution is that knowledge of a particular promoter
+which responds to the chosen cell-cell signal molecule used the output of the
+light detector is not required, we merely need to be able to detect the two
+signals independently.
+This would allow us to freely choose another cell-cell signalling molecule
+(perhaps with a different diffusion rate) in order to change the behaviour of
+the system -- all we require is a promoter which will respond to it.
+
+\begin{figure}
+  \begin{center}
+    \begin{subfigure}{0.25\textwidth}
+      \centering
+      \begin{tikzpicture}[node distance=0.8cm]
+        \node[ppr] (p0) {$\overline{L}$};
+        \node[ppr, below right=0.5cm and 0.8cm of p0] (p3) {$-$};
+        \node[ppr, below left =0.5cm and 0.8cm of p3] (p2) {$+$};
+        \node[ppr, left of=p2] (p1) {$S$};
+        \node[ppr, right of=p3] (p4) {$+$};
+        \node[right of=p4] (out) {$P$};
+
+        \draw[repress] (p1) to (p2);
+        \draw[repress] (p3) to (p4);
+        \draw[induce, bend left] (p0) to (p3);
+        \draw[induce, bend right] (p2) to (p3);
+        \draw[->] (p4) to (out);
+      \end{tikzpicture}
+    \end{subfigure}
+    ~
+    \begin{subfigure}{0.7\textwidth}
+      \centering
+      \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={time,min},
+            ylabel={concentration},
+            height=5cm,
+            width=1.0\textwidth,
+            cycle list name=color,
+            no markers,
+            legend pos=north west,
+            ytick = \empty,
+          ]
+          \addplot table[x=time, y=00]{Data/logic_Tabor.dat};
+          \addplot table[x=time, y=01]{Data/logic_Tabor.dat};
+          \addplot table[x=time, y=10]{Data/logic_Tabor.dat};
+          \addplot table[x=time, y=11]{Data/logic_Tabor.dat};
+          \legend{00,01,10,11};
+        \end{axis}
+      \end{tikzpicture}
+    \end{subfigure}
+  \end{center}
+  \caption{An implementation of Tabor's bacterial edge detector.
+    Pigment is only produced in response to light ($\overline{L}=0$) and signal
+    ($S=1$).
+    \label{fig:tabor_simulation}}
+\end{figure}
 
