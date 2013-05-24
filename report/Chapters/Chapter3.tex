@@ -1,9 +1,89 @@
 
-\chapter{Results and Discussion} 
+\chapter{Results} 
 \label{chap:results}
+
+\lettrine{T}{he} 
+algorithm developed in section \ref{sec:ppr_extraction} was applied to the
+genomes of several target organisms.
+PPRs were found in similar numbers in almost all of the plants tested, implying
+a high level of similarity in the method and degree of PPR interaction between
+the nuclear genome and the organelles in most plants.
 
 \section{Survey of PPRs in Plants}
 \label{sec:ppr_survey}
+
+\subsection{Selected Genomes}
+\label{sec:survey_genomes}
+
+Despite recent advances, whole genome sequencing is still somewhat expensive,
+time consuming and error prone and so only a small subset of plants have been
+fully sequenced.
+Those genomes selected as part of the survey are shown in \ref{tab:genomes} and
+consist mostly of plants, since this is where most PPRs are known to reside.
+
+One interesting exception is \emph{P. falciparum}, which is the parasite which
+causes the most dangerous form of malaria in humans.
+It is included here because \emph{P. falciparum} contain an apicoplast -- 
+an organelle similar to the chloroplasts found in plants and thought to be the 
+result of a secondary endo-symbiosis. 
+
+Complete sequences for the selected genomes were fetched from the NCBI genbank
+genomes repository.
+
+\begin{table}
+  \centering
+  \begin{tabular}{l | c | p{7cm}}
+    \textbf{Genome} & \textbf{Abbrv.} & \textbf{Description} \\ \hline
+    Arabidopsis thaliana     & At & Thale cress, winter annual \\ \hline  
+    Brachypodium distachyon  & Bd & Purple False Brome, grass species\\ \hline
+    Citrus sinensis          & Cs & Orange \\ \hline
+    Eutrema parvulum         & Ep & Small herb\\ \hline
+    Eutrema salsugineum      & Es & Halophyte (tolerates high salt) \\ \hline
+    Glycine max              & Gm & Soya Bean, legume \\ \hline
+    Gossypium raimondii      & Gr & Cotton \\ \hline
+    Malus x domestica        & Mx & Apple \\ \hline
+    Medicago truncatula      & Mt & Barrel Clover, legume \\ \hline
+    Oryza brachyantha        & Ob & Grass species, distant rice relative\\ \hline
+    Oryza sativa             & Os & Rice \\ \hline
+    Ostreococcus tauri       & Ot & Unicellular green algae \\ \hline
+    Plasmodium falciparum    & Pf & Malarial parasite, contains apicoplasts \\ \hline
+    Solanum lycopersicum     & Sl & Tomato \\ \hline
+    Sorghum bicolor          & Sb & Grass species \\ \hline
+    Zea mays                 & Zm & Maize \\ \hline
+  \end{tabular}
+  \caption{Target genomes searched for PPR proteins}
+  \label{tab:genomes}
+\end{table}
+
+\subsection{Extraction Results}
+\label{sec:survey_results}
+
+The genomes listed in table \ref{tab:genomes} were searched using the algorithm
+described in section \ref{sec:ppr_extraction}.
+Figure \ref{fig:ppr_numbers} shows the number and type of PPRs found in each
+genome of interest, ordered by number found.
+
+It is clear that \emph{P. falciparum} contains no PPRs at all and so
+although the apicoplasts  is similar to the chloroplast, an entirely
+different control mechanism is at work in them.
+\emph{O. tauri} contains very few PPRs, which is unsurprising as it is a
+relatively simple unicellular organism.
+
+The majority of the plants surveyed contain between 400 and 600 PPR proteins,
+however, the clear exception to this is \emph{G. max}, the soya bean, 
+which contains considerably more putative PPR proteins than any other of the 
+surveyed plants -- 940 in total.
+The reasons behind this are a mystery, however they genome is known to contain
+several repeats of each protein \citep{Schmutz2010}.
+
+Figure~\ref{fig:ppr_family_lengths} shows a histogram of the number of motifs
+found in each PPR stacked by family.
+We see that the most common length is around 13 motifs, but that some PPRs are
+around 30 repeat regions in length.
+The number of repeat regions corresponds to the size of the binding footprint
+of the protein, and thus the longer proteins are more specific than the shorter
+ones, as the change of a longer sequence appearing by chance is significantly
+smaller.
 
 
 \begin{figure}
@@ -37,7 +117,7 @@
 
       \end{axis}
     \end{tikzpicture}
-    \caption{The number of PPR proteins found in each genome
+    \caption{The number of PPR proteins found in each genome, by type
       \label{fig:ppr_numbers}}
   \end{center}
 \end{figure}
@@ -73,54 +153,61 @@
       \end{axis}
     \end{tikzpicture}
     \caption{Histogram showing the number of motifs found in the proteins
-      \label{fig:ppr_family_numbers}}
+      \label{fig:ppr_family_lengths}}
   \end{center}
 \end{figure}
 
-\begin{figure}
-  \begin{center}
-    \begin{tikzpicture}
-      \begin{axis}[
-          ybar stacked,
-          xtick=data,% crucial line for the xticklabels directive
-          ymin=0,
-          ymax=100,
-          xlabel={Genome Abbreviation},
-          ylabel={Percentage or PPRs},
-          xticklabels from table={Data/ppr_localization.dat}{genome},
-          width=0.9\textwidth,
-          height=7cm,
-          legend style = {
-            at={(0.5,1.05)},
-            column sep = 3mm,
-            anchor=south},
-          legend columns = 4
-        ]
+%\begin{figure}
+%  \begin{center}
+%    \begin{tikzpicture}
+%      \begin{axis}[
+%          ybar stacked,
+%          xtick=data,% crucial line for the xticklabels directive
+%          ymin=0,
+%          ymax=100,
+%          xlabel={Genome Abbreviation},
+%          ylabel={Percentage or PPRs},
+%          xticklabels from table={Data/ppr_localization.dat}{genome},
+%          width=0.9\textwidth,
+%          height=7cm,
+%          legend style = {
+%            at={(0.5,1.05)},
+%            column sep = 3mm,
+%            anchor=south},
+%          legend columns = 4
+%        ]
+%
+%        \addplot[fill=green!50!black!20]
+%          table [x expr=\coordindex,y=c]{Data/ppr_localization.dat};
+%        \addplot table [x expr=\coordindex,y=m]{Data/ppr_localization.dat};
+%        \addplot table [x expr=\coordindex,y=s]{Data/ppr_localization.dat};
+%        \addplot table [x expr=\coordindex,y=other]{Data/ppr_localization.dat};
+%
+%        \addlegendentry{Chloroplast}
+%        \addlegendentry{Mitochondria}
+%        \addlegendentry{Secretory Pathway}
+%        \addlegendentry{Other}
+%
+%      \end{axis}
+%    \end{tikzpicture}
+%    \caption{The percentage of PPRs localized to different areas of the cell
+%      \label{fig:ppr_localization}}
+%  \end{center}
+%\end{figure}
+%
+%The sub-cellular localisation of the discovered PPRs as predicted by the
+%targetP program is shown in figure~\ref{fig:ppr_localization}.
 
-        \addplot[fill=green!50!black!20]
-          table [x expr=\coordindex,y=c]{Data/ppr_localization.dat};
-        \addplot table [x expr=\coordindex,y=m]{Data/ppr_localization.dat};
-        \addplot table [x expr=\coordindex,y=s]{Data/ppr_localization.dat};
-        \addplot table [x expr=\coordindex,y=other]{Data/ppr_localization.dat};
 
-        \addlegendentry{Chloroplast}
-        \addlegendentry{Mitochondria}
-        \addlegendentry{Secretory Pathway}
-        \addlegendentry{Other}
 
-      \end{axis}
-    \end{tikzpicture}
-    \caption{The percentage of PPRs localized to different areas of the cell
-      \label{fig:ppr_localization}}
-  \end{center}
-\end{figure}
 
-A discussion of the results of the PPR survey, the number of PPRs in each plant
-and their connection.
+\section{Binding Locations}
 
-\section{Prediction of Binding Locations}
+Discussion of the difficulties of discovering binding sites, examples of
+searching for binding sites with the largest PPRs available.
 
-A discussion of any extra homology found between PPRs with similar binding
-preferences.
+Searching for known binding regions within Arabidopsis chloroplast \& searching
+for likely homologs in other chloroplasts to establish likely conservation
+patterns for PPRs across genomes. 
 
 

@@ -280,20 +280,12 @@ with HMMER must be normalised in order for the score calculations.
 This involves calculating the expected score of the model for random sequences
 in order to assess the significance of a particular match.
 A program exists called \emph{hmmsim} exists in the HMMER package for just 
-this purpose, however the program's man page gives a hint of things to come --
-\begin{quotation}
-  ``\emph{hmmsim} is not a mainstream part of the HMMER package. 
-  Most users would have no reason to use it. 
-  
-  \ldots
-  
-  ``Because it is a research testbed, you should not expect it to be as robust 
-  as other programs in the package. 
-  For example, options may interact in weird ways; 
-  we haven't tested nor tried to anticipate all different possible 
-  combinations.''
-\end{quotation}
-Unfortunately, one particular unanticipated use case is trying to normalise a
+this purpose, however the program is not a mainstream part of the HMMER package
+and is present more as a tool for testing HMMER's internals rather than use by
+the end user.
+As a result, it is not as stable as other HMMER tools and has not been tested
+with all possible use cases.
+Unfortunately, one particular unanticipated use case is the normalisation of a
 DNA model -- \emph{hmmsim} is hard-coded to accept only protein models as this
 is HMMER's primary use case.
 
