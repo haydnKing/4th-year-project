@@ -2,9 +2,9 @@
 
 """Download plastids from entrez"""
 
-import urllib2
+import urllib2, os
 from bs4 import BeautifulSoup
-from Bio import Entrez
+from Bio import Entrez, SeqIO
 from sys import stdout
 
 LIST_URL = ("http://www.ncbi.nlm.nih.gov/genomes/GenomesGroup.cgi?"+
@@ -46,6 +46,24 @@ def download(accession, eid):
 		print "Download Failed for \'{}\': {}".format(eid, e)
 	hnd.close()
 	f.close()
+
+def rename_all():
+	for f in os.listdir("Plastids/"):
+		try:
+			rec = SeqIO.read("Plastids/{}".format(f), 'gb')
+			name = rec.description
+			cut = max([name.lower().find(s) for s in ['chloroplast', 'apicoplast',
+				'plastid', 'chromatophore', 'cyanelle',]])
+			if cut < 0:
+				print "Failed to find anything for \'{}\'".format(name)
+			name = name[0:cut].strip()
+			if not name:
+				raise ValueError(
+					"ERROR: failed to parse \'{}\' from \'{}\'".format(rec.description, f))
+			os.remove("Plastids/{}".format(f))
+			SeqIO.write(rec, "Plastids/{}.gb".format(name.replace(' ','_')), 'gb')
+		except ValueError:
+			print "Error in file \'{}\'".format(f)
 
 def main():
 	print "Fetching manifest..."

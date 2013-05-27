@@ -42,7 +42,11 @@ def search(ppr, target, reverse=True, gaps=1, show_stats=False):
 	itarget = get_iseq(target)
 	bg = get_background(itarget)
 
-	pssm = binding_rules.build_PSSM(ppr, coding='yagi')#, background=bg)
+	if isinstance(ppr, SeqRecord):
+		pssm = binding_rules.build_PSSM(ppr, coding='yagi')#, background=bg)
+	else:
+		#assume we were passed a pssm
+		pssm = ppr
 
 	alignments = PSSM_gapped_search(pssm, itarget, gaps)
 	ralignments = PSSM_gapped_search(pssm, ireverse_complement(itarget), gaps)
@@ -56,8 +60,8 @@ def search(ppr, target, reverse=True, gaps=1, show_stats=False):
 
 	return sf
 
-def build(sr):
-	return binding_rules.build_PSSM(sr, coding='barkan')
+def build(sr, coding='barkan'):
+	return binding_rules.build_PSSM(sr, coding)
 
 def as_string(pssm):
 	return "\n".join([("{:3.1f} "*4).format(*i) for i in pssm])
@@ -208,7 +212,7 @@ def PSSM_gapped_search(PSSM, itarget, max_gaps=5):
 		#extract the envelope
 		f = max(0, aln.pos - max_gaps)
 		t = min(len(itarget), aln.pos + len(PSSM) + max_gaps)
-		iseq = itarget[f:t]
+		iseq = itarget[f:t+1]
 
 		#localise within the envelope
 		aln = PSSM_localise(PSSM, iseq, max_gaps)
@@ -285,6 +289,15 @@ def profile(pssm, runs=3, gaps=1, background=[1,1,1,1], length=None):
 	stdout.flush()
 	mean = sum(out) / float(len(out))
 	var  = sum([ (o-mean)*(o-mean) for o in out]) / float(len(out))
+
+	x = range(int(min(out)), int(max(out))+1)
+	y = [(1 / (sqrt(2*pi*var))) * 
+				exp(-0.5 * (_x-mean)*(_x-mean) / var) for _x in x]
+	plt.clf()
+	plt.hold(True)
+	plt.hist(out, bins=20, normed=True)
+	plt.plot(x,y)
+	plt.show()
 	return (mean, var)
 
 

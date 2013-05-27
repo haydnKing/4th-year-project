@@ -140,17 +140,22 @@ def annotate_binding_domains(pprs, plastid):
 	stdout.write("\r                          \r")
 	stdout.flush()
 		
-def get_domains(ppr, plastid, percentile=10.0, gaps=1):
+def get_domains(ppr, plastid, percentile=10.0, gaps=1, type='PPR'):
 	"""Get a list of putative binding domains in the plastid"""
-	feats = PSSM.search(ppr,plastid,gaps=gaps,show_stats=True)
+	feats = PSSM.search(ppr,plastid,gaps=gaps,show_stats=False)
 
-	top = feats[0].qualifiers['odds']
-	bottom = feats[-1].qualifiers['odds']
-	threshold = top - (percentile/100.0) * (top-bottom)
-	
-	for i in range(len(feats)):
-		if feats[i].qualifiers['odds'] < threshold:
-			return feats[0:i-1]
+	if feats:
+
+		top = feats[0].qualifiers['odds']
+		bottom = feats[-1].qualifiers['odds']
+		threshold = top - (percentile/100.0) * (top-bottom)
+
+		for f in feats:
+			f.type = type
+
+		for i in range(len(feats)):
+			if feats[i].qualifiers['odds'] < threshold:
+				return feats[0:i-1]
 
 	return feats
 
