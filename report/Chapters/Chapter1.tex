@@ -48,7 +48,8 @@ they convert between the three most important classes of molecules in the cell.
     \draw[special] (R) to [out=335,in=295,looseness=8] 
                 node {\small\textit{RNA replication}} (R);
   \end{tikzpicture}
-  \caption{The main processes in molecular biology. The three most common are
+  \caption{\textbf{The main processes in molecular biology.} 
+    The three most common are
     shown using solid lines while two important but less common processes are
     shown in dotted lines.
     \label{fig:processes}}
@@ -125,7 +126,7 @@ double-helix structure.
     \draw[dotted] (a6) to (b6);
   \end{tikzpicture}
   \caption{
-    An example of a DNA fragment. 
+    \textbf{An example of a DNA fragment.} 
     Covalent bonding along the strands is shown with solid lines and hydrogen 
     bonding between the two strands is shown using dotted lines.
     In this case the forward and reverse strand happen to be palindromic, 
@@ -235,7 +236,8 @@ concentration of its protein to remain constant.
   \begin{center}
     \includegraphics[width=\textwidth]{Lac_operon1}
   \end{center}
-  \caption[LoF entry]{Annotated diagram of the lac operon.
+  \caption[LoF entry]{
+    \textbf{Annotated diagram of the lac operon.}
     It contains two transcription units and a total of four genes.
     The first (leftmost) unit contains the \textit{lacI} gene and is expressed 
     constitutively (continuously).
@@ -258,6 +260,7 @@ concentration of its protein to remain constant.
     As the concentration of glucose increases, less lactose is pumped into the
     cell and so the lac operon becomes less active, reducing transcription of
     the second unit.
+    \tiny{[Image Credit: Wikimedia Commons]}
   }
   \label{fig:lac_operon}
 \end{figure}
@@ -321,7 +324,8 @@ concentration of its protein to remain constant.
     \draw [->] (break)  -| node[pos=0.95] {$+$} (s3);
 
   \end{tikzpicture}
-  \caption{Simplified block diagram of the lac operon, showing only the most
+  \caption{
+    \textbf{Simplified block diagram of the lac operon}, showing only the most
     important interconnections. 
     In the presence of lactose, transcription is turned on and more
     extracellular lactose is pumped into the cell, causing a positive feedback
@@ -409,17 +413,23 @@ and laborious process.
 Synthetic biologists were able to extract the metabolic pathway responsible for
 the biosynthesis of artemisinic acid (a natural precursor) and insert it into 
 yeast \citep{yeast}.
-Artemisinin produced in this manner has yet to be approved for sale, but it is
-hoped that it should be available at some point during 2013, at a considerably
-lower price than any other known method of production.
+Artemisinin produced in this manner was approved for sale by the World Health
+Organisation very recently (8 May, 2013).
+Shortly before the approval, long-term malaria campaigner Bill Gates said of 
+the project
+``by lowering the price and stabilising the supply, semi-synthetic artemisinin
+can be a breakthrough in the fight to control, eradicate, and eventually
+eliminate this disease''.
 
-The major limiting factor in this project was yield.
+Yield was the major limiting factor in making this project viable.
 In order to produce a useful amount of the drug, the metabolic pathway 
-involved had to be up-regulated -- i.e. more metabolic flux directed though it.
-This led to a difficult balance -- too little and very little
+involved had to be up-regulated -- i.e. more metabolic flux had to be directed 
+though it.
+This led to a difficult balance -- too little flux and very little
 artemisinic acid would be produced, too high and too much of the cell's
 energy would be used, causing the cells to grow slowly if at all.
-As well as this, growing yeast on an industrial scale is relatively expensive.
+As well as this, growing yeast on an industrial scale is relatively expensive,
+and requires specialist equipment.
 It is desirable therefore search for host platforms which are better suited to
 biosynthesis than yeast, in order to maximise the yield to cost ratio.
 
@@ -476,7 +486,7 @@ For example, attempting to synthesise useful chemicals at the wrong point in
 the circadian cycle would likely result in very poor growth and so we must be
 able to tap into the natural regulation system already present in the system.
 
-\section{Nucleotide Binding Proteins}
+\section{Nucleotide Sequence Binding Proteins}
 \label{sec:intro_binding}
 
 Accurately predicting the structure of a protein from its amino acid sequence 
@@ -506,11 +516,11 @@ which the protein will bind which can be hard to predict.
 Transcription activator-like effectors (TALEs) are modular repeat regions in
 which each repeat recognises a single DNA base via a simple code dependent on
 two hyper-variable amino acids within the repeat motif.
-The superior modularity of TALEs make them inherently easier to design than 
-zinc fingers and have been used for
-numerous novel applications, such as designing new transcription activators
-which work on arbitrary sequences or manipulating the genome to allow for novel
-studies of protein function \citep{Sun2013}.
+The superior modularity of TALEs makes them inherently easier to design than 
+zinc fingers.
+This has led to numerous novel applications, such as designing new 
+transcription activators, although their main use is in selectively editing 
+the genome to allow for novel studies of protein function \citep{Sun2013}.
 
 These two classes of proteins have opened up new and exciting methods for basic
 research, gene therapy and synthetic biology.
@@ -521,15 +531,21 @@ research, gene therapy and synthetic biology.
 
 \begin{figure}
   \begin{center}
-    \begin{tikzpicture}
+    \begin{tikzpicture}[node distance=5mm]
       \def\h{5mm}
       \def\n{10}
       \tikzstyle{signal}=[draw, rectangle, minimum height=\h, minimum
         width=2cm, anchor=west]
-      \tikzstyle{motif}=[draw, rectangle, fill=orange, 
+      \tikzstyle{motif}=[draw, rectangle, fill=BurntOrange, 
         minimum height=\h, minimum width=8mm, anchor=west]
-      \tikzstyle{tail}=[draw, dashed, rectangle, fill=blue!20,
-        minimum height=\h, minimum width=3cm, anchor=west]
+      \tikzstyle{Etail}=[draw, rectangle, fill=OliveGreen,
+        minimum height=\h, minimum width=1.5cm, anchor=west]
+      \tikzstyle{Eptail}=[draw, rectangle, fill=LimeGreen,
+        minimum height=\h, minimum width=5mm, anchor=west]
+      \tikzstyle{DYWtail}=[draw, rectangle, fill=CornflowerBlue,
+        minimum height=\h, minimum width=2cm, anchor=west]
+      \tikzstyle{typelabel}=[font=\small\bf]
+
 
       \tikzstyle{brace}=[
         very thick,
@@ -540,11 +556,57 @@ research, gene therapy and synthetic biology.
         },
         decorate]
 
+%%%%% Key
+      \node[signal, name=sigKey] at (-2,{-4.5*\h}) {};
+      \node[motif, name=motKey] at (1.8,{-4.5*\h}) {};
+      \node[Etail, name=eKey] at (4.4,{-4.5*\h}) {};
+      \node[Eptail, name=epKey] at (7.7,{-4.5*\h}) {};
+      \node[DYWtail, name=dywKey] at (10,{-4.5*\h}) {};
+
+      \node[label, above of=sigKey] {Signal};
+      \node[label, above of=motKey] {PPR motif};
+      \node[label, above of=eKey] {E sequence};
+      \node[label, above of=epKey] {E+ sequence};
+      \node[label, above of=dywKey] {DYW sequence};
+
+%%%%% P
+      \node[typelabel] at (-2,{7*\h}) {P}; 
+      \node[signal, name=signal] at (-2,{6*\h}) {};
+      \foreach \y in {1,...,\n}{
+        \node[motif] at ({0.8 * (\y-1)},{6*\h}) {};
+      }
+
+%%%%% E
+
+      \node[typelabel] at (-2,{5*\h}) {E}; 
+      \node[signal, name=signal] at (-2,{4*\h}) {};
+      \foreach \y in {1,...,\n}{
+        \node[motif] at ({0.8 * (\y-1)},{4*\h}) {};
+      }
+      \node[Etail, name=tail] at ({0.8 * \n},{4*\h}) {};
+      
+%%%%% E+
+
+      \node[typelabel] at (-2,{3*\h}) {E+}; 
+      \node[signal, name=signal] at (-2,{2*\h}) {};
+      \foreach \y in {1,...,\n}{
+        \node[motif] at ({0.8 * (\y-1)},{2*\h}) {};
+      }
+      \node[Etail, name=tail] at ({0.8 * \n},{2*\h}) {};
+      \node[Eptail, name=tail] at ({0.8 * \n + 1.5},{2*\h}) {};
+
+%%%%% DYW
+
+      \node[typelabel] at (-2,{1*\h}) {DYW}; 
       \node[signal, name=signal] at (-2,0) {};
       \foreach \y in {1,...,\n}{
         \node[motif] at ({0.8 * (\y-1)},0) {};
       }
-      \node[tail, name=tail] at ({0.8 * \n},0) {};
+      \node[Etail, name=tail] at ({0.8 * \n},0) {};
+      \node[Eptail, name=tail] at ({0.8 * \n + 1.5},0) {};
+      \node[DYWtail, name=tail] at ({0.8 * \n + 2},0) {};
+
+%%%%% BRACES
 
       \draw [brace] (-2,0) -- (-0.1,0)
         node [key, pos=0.5,anchor=north,yshift=-7mm] {A}; 
@@ -555,24 +617,26 @@ research, gene therapy and synthetic biology.
     \end{tikzpicture}
   \end{center}
   \caption[LoF entry]{
-    The three regions within a PPR protein.
-    (\textbf{A}) The signal peptide acts as a header, essentially encoding the
-    address of the target location of the PPR within the cell
-    (\textbf{B}) The repeat regions contain 2-30 PPR motifs which specify the binding
-    preferences of the protein
+    \textbf{Anatomy of the four classes of PPR protein.}
+    (\textbf{A}) The signal peptide acts like an address header, essentially 
+      encoding the target location of the PPR within the cell
+    (\textbf{B}) The binding region contains between 2-30 PPR motifs which 
+      specify the binding preferences of the protein
     (\textbf{C}) The tail region is optional contains either E, E and E+ or 
-    E, E+ and DYW motifs.
+      E, E+ and DYW conserved sequences.
   }
   \label{fig:ppr_anatomy}
 \end{figure}
 
-The PPR family is a group of proteins commonly found in plants and are known
-to bind specific RNA sequences and display many similarities with TALEs.
+The PPR family is a group of proteins commonly found in plants which show some
+similarities with TALEs, but bind to specific RNA sequences rather than DNA.
 They contain tandem degenerate repeating motifs which are referred to as PPR 
-motifs and share many similarities with the tetratricopeptide repeat (TPR) 
-motif which are known to aid protein-protein binding \citep{Small2000}.
+motifs, so called due to their similarity to the tetratricopeptide repeat (TPR) 
+protein family which are known to be involved in protein-protein binding 
+\citep{Small2000}.
 
-PPRs are found exclusively in the nuclear genome, and are commonly targeted to
+PPRs are found exclusively in the nuclear genome, with the mature proteins
+commonly being transported to
 organelles such as the chloroplast or mitochondria, where they are known to
 affect translation in numerous ways.
 
@@ -580,12 +644,13 @@ The typical PPR protein contains three regions, shown in figure
 \ref{fig:ppr_anatomy}.
 The first is a signal peptide which targets the protein to a particular 
 organelle.
-This mechanism is common to many proteins which are sent to particular
+The mechanism behind this is common to many proteins which are sent to 
+particular
 locations within the cell (such as the chloroplast of mitochondria) and not a
 particularity of the PPR family. 
 
 The second region is the repeating PPR motif array which contains between 2 and
-30 PPR motifs.
+30 PPR motifs and is the region which binds with RNA.
 The motifs are degenerate -- although they contain many similarities, they are
 not identical and in fact have quite considerable differences in some cases.
 The standard PPR motif is the P motif which is 35 amino acids long, 
@@ -595,19 +660,20 @@ and it is believed that pairs of contiguous motifs confer the particular
 protein's binding preference \citep{Kobayashi2012}.
 
 The third region is a tail sequence which is only present in some PPRs.
-The tail regions are known to contain a number of other motifs whose exact
-function is unknown.
+The tail regions are known to contain a number of other conserved sequences 
+whose exact function is unknown.
 Three main classes of tail sequence have been identified, 
 the E subgroup which contains
 only `E' motifs, the E+ subgroup which contains `E' and `E+' motifs and the DYW
 subgroup which contains `E', `E+' motifs and is terminated by a `DYW' motif
 \citep{Lurin2004}.
-The precise function of the tail remains unknown, but evidence suggests that it
-is related to the known RNA editing functions of some PPRs \citep{Yagi2013a}.
+Although the precise function of these tail motifs remains unknown, 
+evidence suggests that the tail as a whole is involved in editing the RNA
+sequence near to the binding region \citep{Yagi2013a}.
 
 \subsection{Known interactions with mRNA}
 
-PPRs can regulate gene expression and are involved in a variety of
+PPRs can modulate gene expression and are involved in a variety of
 post-transcriptional RNA processing steps such as RNA editing, splicing and
 stability \citep{Schmitz-Linneweber2008,Nakamura2012}.
 
@@ -630,8 +696,8 @@ stability \citep{Schmitz-Linneweber2008,Nakamura2012}.
       \end{scope}
     \end{tikzpicture}
   \end{center}
-  \caption{Summary of PPR activity once in the chloroplast. Similar processes
-    are known to occur in the mitochondria.
+  \caption[LoF entry]{
+    \textbf{Summary of PPR activity in the chloroplast.} 
     (\textbf{A}) Increased translation -- PPRs can promote ribosome recruitment
       and increase the translation rate of the transcript
     (\textbf{B}) RNA editing -- PPRs edit the RNA transcript, as well as
@@ -639,6 +705,7 @@ stability \citep{Schmitz-Linneweber2008,Nakamura2012}.
     (\textbf{C}) RNA stability -- PPRs can increase the stability
       of the transcript by protecting against degradation by endonucleases, or 
       decrease the stability, possibly by recruiting endonucleases.
+    Similar processes are known to occur in the mitochondria.
   }
   \label{fig:PPR_activity}
 \end{figure}
@@ -647,9 +714,9 @@ stability \citep{Schmitz-Linneweber2008,Nakamura2012}.
 Several PPR proteins with tail motifs have been associated with RNA editing and
 in these cases the PPR binding site has been located a short distance from the
 edit site \citep{Okuda2007,Yagi2013a}.
-A particular protein can be responsible for several edits by having multiple
-binding sites within the chloroplast genome \citep{Okuda2012}, allowing a single
-protein to edit multiple genes.
+A particular protein can be responsible for many edits within the chloroplast
+by having multiple binding sites within the chloroplast genome 
+\citep{Okuda2012}, allowing a single protein to edit multiple genes.
 
 C-U RNA editing has vital consequences for protein translation.
 Proteins begin with a start codon (AUG), which marks the position where
@@ -684,13 +751,14 @@ ribosome binding site.
 
 \subsubsection{Binding Rules}
 
-The mechanism behind PPR-RNA interactions remains unknown, and it is not yet
+The mechanism behind the PPR-RNA binding interaction remains unknown, 
+and it is not yet
 possible to accurately predict PPR binding domains from the amino acid sequence
 of the protein.
 One problem is that the exact structure of the tandem PPR motifs is not known,
 although other proteins which also contain PPR motifs appear to show a helical
-structure \citep{Ringel2011,Howard2012}, suggesting that PPR binding might be
-similar to that of TALE and PUF repeats \citep{Rubinson2012}.
+structure \citep{Ringel2011,Howard2012}, suggesting that PPR binding might act
+in a fashion similar to that of TALE repeats \citep{Rubinson2012}.
 
 As of writing, two major theories on the PPR binding rules exist, one due to
 Barkan \citep{Barkan2012} and another due to Yagi \citep{Yagi2013}.
@@ -757,8 +825,9 @@ PPR-RNA interactions and are discussed in more length in section
       
     \end{tikzpicture}
   \end{center}
-  \caption[LoF entry]{A profile HMM. Squares are \emph{match} states, 
-    which emit a symbol
+  \caption[LoF entry]{
+    \textbf{A profile HMM.}
+    Squares are \emph{match} states, which emit a symbol
     according to the consensus sequence, diamonds show \emph{insert} states, which
     insert one or more symbols into the sequence and circles are \emph{delete}
     states which emit no symbols and effectively skip one or more symbols in the
@@ -801,9 +870,44 @@ algorithm. A more in depth discussion of pHMMs and their use in bioinformatics
 is given in \citep{Durbin1998}.
 
 Searches are performed using the \emph{hmmsearch} program which makes heavy use
-of heuristics in order to efficiently search for possible match sequences.
+of heuristics in order to search efficiently for possible match sequences.
 The parameters for the particular heuristics used can be tuned using command
 line arguments so that the similarity required between a matching sequence 
 and the model can be set.
 
+\section{Project Outline}
+
+Since their initial discovery and characterisation, TAL effectors have enabled
+a great many exciting projects in both synthetic biology and basic research.
+However, PPRs offer several potential advantages over TALEs, particularly in 
+naturalistic control within the chloroplast and programmable translation-based 
+control of expression.
+PPRs are naturally able to influence expression upwards \emph{or downwards},
+giving them more flexibility than TALEs.
+
+There are still many problems which must be solved in order to effectively use
+PPRs, and the goal of this project is to explore these issues and investigate
+the potential of the PPR protein for synthetic biology.
+The particular goals of the project are to
+\begin{enumerate}
+  \item \label{item:a}
+    Implement an algorithm to accurately detect and annotate unlabelled PPR
+    proteins in DNA
+  \item \label{item:b}
+    Investigate the presence of PPR proteins in genomes other than 
+    \emph{A. thaliana}, a common model organism
+  \item \label{item:c}
+    Investigate the issues surrounding the prediction of binding domains
+    for naturally occurring proteins
+  \item \label{item:d}
+    Investigate the level of conservation of known PPR binding domains
+    across different chloroplast genomes
+  \item \label{item:e} 
+    Model the activity of theoretical networks of PPR proteins in order to
+    demonstrate their potential for creating biological circuits
+\end{enumerate}
+
+The first item is discussed in chapter~\ref{chap:methods}, items~\ref{item:b}
+to~\ref{item:d} in chapter~\ref{chap:results} and the final item is discussed
+in chapter~\ref{chap:simulation}.
 

@@ -34,25 +34,25 @@ genomes repository.
   \centering
   \begin{tabular}{l | c | p{7cm}}
     \textbf{Genome} & \textbf{Abbrv.} & \textbf{Description} \\ \hline
-    Arabidopsis thaliana     & At & Thale cress, winter annual \\ \hline  
-    Brachypodium distachyon  & Bd & Purple False Brome, grass species\\ \hline
-    Citrus sinensis          & Cs & Orange \\ \hline
-    Eutrema parvulum         & Ep & Small herb\\ \hline
-    Eutrema salsugineum      & Es & Halophyte (tolerates high salt) \\ \hline
-    Glycine max              & Gm & Soya Bean, legume \\ \hline
-    Gossypium raimondii      & Gr & Cotton \\ \hline
-    Malus x domestica        & Mx & Apple \\ \hline
-    Medicago truncatula      & Mt & Barrel Clover, legume \\ \hline
-    Oryza brachyantha        & Ob & Grass species, distant rice relative\\ \hline
-    Oryza sativa             & Os & Rice \\ \hline
-    Ostreococcus tauri       & Ot & Unicellular green algae \\ \hline
-    Plasmodium falciparum    & Pf & Malarial parasite, contains apicoplasts \\ \hline
-    Solanum lycopersicum     & Sl & Tomato \\ \hline
-    Sorghum bicolor          & Sb & Grass species \\ \hline
-    Zea mays                 & Zm & Maize \\ \hline
+    \emph{Arabidopsis thaliana   }  & At & Thale cress, winter annual \\ \hline  
+    \emph{Brachypodium distachyon}  & Bd & Purple False Brome, grass species\\ \hline
+    \emph{Citrus sinensis        }  & Cs & Orange \\ \hline
+    \emph{Eutrema parvulum       }  & Ep & Small herb\\ \hline
+    \emph{Eutrema salsugineum    }  & Es & Halophyte (tolerates high salt) \\ \hline
+    \emph{Glycine max            }  & Gm & Soya Bean, legume \\ \hline
+    \emph{Gossypium raimondii    }  & Gr & Cotton \\ \hline
+    \emph{Malus x domestica      }  & Mx & Apple \\ \hline
+    \emph{Medicago truncatula    }  & Mt & Barrel Clover, legume \\ \hline
+    \emph{Oryza brachyantha      }  & Ob & Grass species, distant rice relative\\ \hline
+    \emph{Oryza sativa           }  & Os & Rice \\ \hline
+    \emph{Ostreococcus tauri     }  & Ot & Unicellular green algae \\ \hline
+    \emph{Plasmodium falciparum  }  & Pf & Malarial parasite, contains apicoplasts \\ \hline
+    \emph{Solanum lycopersicum   }  & Sl & Tomato \\ \hline
+    \emph{Sorghum bicolor        }  & Sb & Grass species \\ \hline
+    \emph{Zea mays               }  & Zm & Maize \\ \hline
   \end{tabular}
-  \caption{Target genomes searched for PPR proteins}
-  \label{tab:genomes}
+  \caption{\textbf{Target genomes searched for PPR proteins}
+    \label{tab:genomes}}
 \end{table}
 
 \subsection{Extraction Results}
@@ -117,7 +117,13 @@ smaller.
 
       \end{axis}
     \end{tikzpicture}
-    \caption{The number of PPR proteins found in each genome, by type
+    \caption{
+      \textbf{The number of PPR proteins found in each genome}, 
+      stacked by type (as defined in figure~\ref{fig:ppr_anatomy}).
+      The two non-plants, \emph{O. tauri} and \emph{P. falciparum} contain none
+      or very few, whereas most of the plants surveyed contain a similar number
+      of PPRs, with the exception of \emph{G. max} which contains an unusually
+      large number.
       \label{fig:ppr_numbers}}
   \end{center}
 \end{figure}
@@ -152,54 +158,16 @@ smaller.
 
       \end{axis}
     \end{tikzpicture}
-    \caption{Histogram showing the number of motifs found in the proteins
+    \caption{
+      \textbf{The distribution of the number of motifs found in proteins}, 
+      summed over each of the organisms surveyed and stacked by type.
+      PPRs are most commonly between 10 and 15 motifs long, which gives enough
+      specificity to make finding a particular sequence by chance unlikely ($p
+      \approx 3.4 \times 10^{-3}$ for 13 motifs) assuming only a single 
+      possible binding sequence. 
       \label{fig:ppr_family_lengths}}
   \end{center}
 \end{figure}
-
-%\begin{figure}
-%  \begin{center}
-%    \begin{tikzpicture}
-%      \begin{axis}[
-%          ybar stacked,
-%          xtick=data,% crucial line for the xticklabels directive
-%          ymin=0,
-%          ymax=100,
-%          xlabel={Genome Abbreviation},
-%          ylabel={Percentage or PPRs},
-%          xticklabels from table={Data/ppr_localization.dat}{genome},
-%          width=0.9\textwidth,
-%          height=7cm,
-%          legend style = {
-%            at={(0.5,1.05)},
-%            column sep = 3mm,
-%            anchor=south},
-%          legend columns = 4
-%        ]
-%
-%        \addplot[fill=green!50!black!20]
-%          table [x expr=\coordindex,y=c]{Data/ppr_localization.dat};
-%        \addplot table [x expr=\coordindex,y=m]{Data/ppr_localization.dat};
-%        \addplot table [x expr=\coordindex,y=s]{Data/ppr_localization.dat};
-%        \addplot table [x expr=\coordindex,y=other]{Data/ppr_localization.dat};
-%
-%        \addlegendentry{Chloroplast}
-%        \addlegendentry{Mitochondria}
-%        \addlegendentry{Secretory Pathway}
-%        \addlegendentry{Other}
-%
-%      \end{axis}
-%    \end{tikzpicture}
-%    \caption{The percentage of PPRs localized to different areas of the cell
-%      \label{fig:ppr_localization}}
-%  \end{center}
-%\end{figure}
-%
-%The sub-cellular localisation of the discovered PPRs as predicted by the
-%targetP program is shown in figure~\ref{fig:ppr_localization}.
-
-
-
 
 \section{Binding Locations}
 
