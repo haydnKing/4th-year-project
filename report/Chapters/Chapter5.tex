@@ -2,26 +2,34 @@
 \chapter{Conclusions and Further Work}
 \label{chap:Conclusions} 
 
+\lettrine{A}{} brief summary of the work carried out during the project and a 
+description of the work required to make PPR technology a reality are given in 
+this chapter.
+
 \section{Summary of the Work}
 
 Pentatricopeptide repeat proteins are a vital class of proteins for a large
 number of plants.
 During this project, software was developed to automatically identify, extract 
-and characterise PPRs from un-annotated DNA sequence.
+and characterise PPRs from unannotated DNA sequence.
+It was found that the majority of plants for which nuclear genomes are 
+available contain roughly the same number of PPR proteins, suggesting that the
+function of these proteins is consistent across these plants.
 
 A comparison of current theories regarding the prediction of PPR binding
 preferences was made, and it was shown that while current models of PPR binding
 sites score a genuine match highly, they allow too much variation in the
 sequence such that any reasonably long random sequence will contain matches 
-which are just as good if not better, making accurate prediction impossibly.
+which are just as good if not better, making accurate prediction impossible.
 
 It was also shown that there appears to be considerable conservation of PPR 
 binding sites across different organisms.
-If this is indeed the case then there must also be considerable conservation of
-both PPR function and PPR binding preferences across the same organisms.
+If this is confirmed experimentally then there must also be considerable 
+conservation of both PPR function and PPR binding preferences across the same 
+organisms.
 This conservation would make experimentally extracting and characterising new
-proteins from these organisms relatively simple, drastically increasing the
-number of PPR-RNA pair of which we are aware.
+proteins from these organisms relatively simple, which would drastically 
+increase the number of PPR-RNA pairs of which we are aware.
 
 In order to assess the potential of the PPR protein as a tool for the wider
 field of synbio, a general model of PPR activity based on known interactions
@@ -31,12 +39,22 @@ used to perform various simple logic operations at the translation level within
 the cell.
 Since each PPR can be programmed to recognise a large sequence of RNA (up to at
 least $30$bp) this leads to an enormous address space for signalling (a maximum
-of $4^{30}$), solving the problem of cross-talk in molecular circuit design.
+of $4^{30}$), effectively solving the problem of cross-talk in molecular 
+circuit design.
 
 \section{Future Work and Directions}
 
-Discussion of the limits of our knowledge of PPRs -- limited information about
-binding rules, details of the molecular interactions causing increased or
-reduced translation and degradation, or of the mechanism or true purpose of RNA
-editing.
+A thorough understanding of the rules governing binding domain preference in
+only part of the way to realising the potential of PPR-based technology.
+An understanding of the molecular basis behind it's interactions with
+translation of mRNA transcripts is also vital in order to exploit these
+interactions for our own purposes.
+
+Plausible theories exist suggesting RNA stabilisation, ribosome recruitment and
+degradation of mRNA, and there is some evidence for some of these interactions
+\emph{in vitro} \citep[see][]{Prikryl2011}, but there is little hard evidence 
+that these mechanisms occurs naturally \emph{in vivo}.
+Being able to target PPRs to specific regions of the mRNA message will
+certainly aid with this investigation, as will knowledge of the three
+dimensional structure of the PPR-RNA complex.
 

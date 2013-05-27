@@ -223,23 +223,23 @@ within the motif.
 Both the Barkan and Yagi coding schemes were implemented in python and tested
 using the PSSM prediction algorithm described in section
 \ref{sec:pssm_binding}.
-Characterised PPRs (taken from \citet{Yagi2013}) were searched against the
+Characterised PPRs (given in \citet{Yagi2013}) were searched against the
 \emph{A. thaliana} chromosome and the scores were compared to the average 
-output for anentirely random sequence of equal length.
-It was found that neither scheme produced a score which was high enough to be 
-statistically significant.
+output for an entirely random sequence of equal length.
+It was found that neither scheme produced any matches with scores high enough 
+to be statistically significant.
 In fact, in most cases the known PPR binding site was not even in the top 10\%
 of matches.
 Clearly there is some way to go in developing an understanding of this
 phenomenon.
 
 There are two main problems which came to light while studying these papers.
-\begin{itemize}
+\begin{enumerate}
   \item PPR motifs are often not very well defined -- the two papers even use
     differing conventions on where exactly the motif starts, but neither make
     mention of this fact
   \item There are few well known PPR-RNA interactions
-\end{itemize}
+\end{enumerate}
 The first of these problems will improve with the second -- we can only improve
 our prediction of where exactly motifs should be defined when we understand
 more about them.
@@ -254,18 +254,22 @@ considerably easier and cheaper to sequence than the nuclear genome.
 Chloroplast genomes are generally well conserved between different organisms --
 although genes are sometimes rearranged or duplicated, most chloroplast genomes
 contain roughly the same thing.
-We can use this to our advantage by looking for potential homologs of our known
+This can be used to our advantage by looking for potential homologs of our known
 PPR binding sites in other chloroplasts to predict the presence of a homologous
 protein in the nuclear genome.
-Discovering such proteins would be most helpful as the similarity in binding
-footprint means that differences in the protein's sequence do not affect the
-binding of the protein.
+Homologs could then be confirmed experimentally with relative ease, as we would 
+known enough about the sequence of the homologs to be able to extract them from 
+the nuclear genome (e.g. by PCR) and we would also already have a good idea of 
+what the binding footprint is.
+Having a large group of proteins whose binding footprint changes only slightly
+would be a great aid in elucidating the binding scheme.
 
-This theory was tested using the 340 chloroplast and other closely related
+This theory was tested using the 340 chloroplast (and closely related
+organelle)
 genomes available from the NCBI's Organelle Genome Resource.
 Directly searching other genomes for sequences similar to known binding domains
 would not produce results of much significance as the size of the genome means
-they could be there randomly.
+that similar sequences are likely to exist there by chance.
 Instead, the genomes were first searched for proteins which had high protein
 sequence similarity to the gene nearest to the PPR binding site in Arabidopsis
 using HMMER's \emph{phmmer} program.
@@ -273,5 +277,7 @@ The overwhelming majority of the other 339 genomes were found to have proteins
 with very strong sequence similarity to those in Arabidopsis. 
 The DNA sequence of these proteins was then searched for regions similar to the
 original binding sites using a PSSM approach.
+Since DNA to amino acid coding is a overcomplete, even if a protein is found
+with an identical amino acid sequence the DNA sequence could be very different.
 
 

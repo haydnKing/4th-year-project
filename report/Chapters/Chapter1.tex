@@ -24,7 +24,7 @@ referred to as the central dogma of molecular biology --
 DNA makes RNA makes proteins.
 This central dogma describes the flow of information within a cell and the
 mechanisms which regulate this flow.
-Naturally, many of these processes are highly complicated and poorly
+Many of these processes are highly complicated and remain poorly
 understood, but much progress has been made since the discovery of DNA in the
 1950s to understand these mechanisms.
 Figure~\ref{fig:processes} shows the most important of these and how
@@ -41,7 +41,7 @@ they convert between the three most important classes of molecules in the cell.
     \draw[general, bend left] (D) to node {\small \textit{transcription}} (R);
     \draw[general, bend left] (R) to node {\small \textit{translation}} (P);
     \draw[general] (D) to [out=110,in=70,looseness=8] 
-                node {\small\textit{replication}} (D);
+          node[anchor=south east] {\small\textit{DNA replication}} (D);
 
     \draw[special, bend left] 
       (R) to node {\small \textit{reverse transcription}} (D);
@@ -55,29 +55,101 @@ they convert between the three most important classes of molecules in the cell.
 \end{figure}
 
 Molecules of DNA are the cell's long term storage mechanism -- recent research
-estimates the half-life of DNA to be 521 years\citep{DNAhalflife}.
-DNA molecules are long sequences of simple nucleotides which encode all the
-genetic information of the cell.
+estimates the half-life of DNA to be 521 years \citep{DNAhalflife}.
+DNA molecules are long sequences of simple molecules called nucleotides, the
+sequence of  which encodes all the genetic information of the cell.
 Each nucleotide contains a nucleobase which is either Adenine, Guanine,
 Thymine or Cytosine (A, C, G or T) and it is the sequence of bases 
 which determines the information content of the molecule.
-The nucleotides are linked together in a chain which is only read in one 
+The nucleotides are linked together in a strand which is only read in one 
 direction, known as the 5' to 3' direction.
-Each base in the chain forms a hydrogen bond with a particular base from a 
-complementary chain of DNA, forming a double stranded structure.
-These strands are coiled around each other into DNA's characteristic 
+
+These strands do not normally exist independently, but instead form hydrogen
+bonds with each nucleobase in a complementary strand, forming double stranded
+DNA.
+The sequence of the complementary strand is determined by the hydrogen bonds
+formed between bases -- A binds with T, G binds with C.
+The strands bind such that they are read in opposite directions -- the 5' to 3' 
+direction on the reverse strand is in the reverse direction to that of the 
+forward strand -- hence converting a sequence from the
+forward to reverse strand is referred to as a \emph{reverse complement}.
+
+The two strands are coiled around each other into DNA's characteristic 
 double-helix structure.
 
+\begin{figure}
+  \centering
+  \begin{tikzpicture}[auto, node distance=2cm,>=latex]
+    % We start by placing the blocks
+    \matrix[row sep=0.15cm, column sep=0.6cm] {
+      \node[name=a5p] {\emph{5'}}; &
+      \node[name=a1] {G}; &
+      \node[name=a2] {A}; &
+      \node[name=a3] {A}; &
+      \node[name=a4] {T}; &
+      \node[name=a5] {T}; &
+      \node[name=a6] {C}; &
+      \node[name=a3p] {\emph{3'}}; &
+    \\
+      \node[name=b3p] {\emph{3'}}; &
+      \node[name=b1] {C}; &
+      \node[name=b2] {T}; &
+      \node[name=b3] {T}; &
+      \node[name=b4] {A}; &
+      \node[name=b5] {A}; &
+      \node[name=b6] {G}; &
+      \node[name=b5p] {\emph{5'}}; &
+    \\};
+
+    \draw (a5p) to (a1);
+    \draw (a1)  to (a2);
+    \draw (a2)  to (a3);
+    \draw (a3)  to (a4);
+    \draw (a4)  to (a5);
+    \draw (a5)  to (a6);
+    \draw (a6)  to (a3p);
+
+    \draw (b3p) to (b1);
+    \draw (b1)  to (b2);
+    \draw (b2)  to (b3);
+    \draw (b3)  to (b4);
+    \draw (b4)  to (b5);
+    \draw (b5)  to (b6);
+    \draw (b6)  to (b5p);
+
+    \draw[dotted] (a1) to (b1);
+    \draw[dotted] (a2) to (b2);
+    \draw[dotted] (a3) to (b3);
+    \draw[dotted] (a4) to (b4);
+    \draw[dotted] (a5) to (b5);
+    \draw[dotted] (a6) to (b6);
+  \end{tikzpicture}
+  \caption{
+    An example of a DNA fragment. 
+    Covalent bonding along the strands is shown with solid lines and hydrogen 
+    bonding between the two strands is shown using dotted lines.
+    In this case the forward and reverse strand happen to be palindromic, 
+    although this is by no means necessary.
+    Note that the decision as to which strand is considered the forward and
+    which is the reverse is arbitrary -- in fact other naming schemes (such as
+    Watson/Crick) also exist.
+  }
+  \label{fig:dna_pairing}
+\end{figure}
+
+
 The data stored in DNA is read by a molecule called RNA polymerase which 
-produces an RNA copy of a section of the DNA in a process called
+produces a single stranded RNA copy of a section of the DNA in a process called
 \textit{transcription}.
 RNA is similar to DNA, but is short-lived (lasting minutes to hours) and so the
 RNA copy is referred to as a messenger-RNA (mRNA) molecule.
 This message is then read by a ribosome, a molecule which translates the mRNA 
 into a protein in a process referred to as \textit{translation}.
-Proteins a chain of amino acids which fold into a very specific shape and 
-perform many important functions within the cell.
-The region of DNA which encodes a particular protein is called a \textit{gene}.
+Proteins are linear chains of amino acids linked by flexible joints which fold 
+into a very specific shape and perform many important functions within the 
+cell.
+The region of DNA which codes for a particular protein is called a 
+\textit{gene}.
 
 The processes of transcription and translation through which genes are 
 expressed (produce proteins) are typically very tightly
@@ -88,7 +160,7 @@ various proteins within the cell and thus the cell's overall activity.
 \label{sec:transcription}
 
 Both DNA and RNA have an alphabet of four symbols and so during transcription
-DNA's alphabet, $\{A,C,G,T\}$, is mapped one-to-one to that
+DNA's alphabet, $\{A,C,G,T\}$, is mapped directly to that
 of RNA, $\{A,C,G,U\}$, where thymine is replaced with uracil.
 Transcription is clearly bijective, and indeed a less common process called
 reverse-transcription performs the inverse mapping from RNA to DNA.
@@ -99,10 +171,10 @@ contains one or many genes.
 These units are marked by promoters which are regions of DNA upstream
 of the transcription unit that initiate transcription by causing RNA polymerase
 to bind.
-They are terminated by terminator regions, which cause the RNA polymerase to
-cease transcription and release the mRNA.
 Modulating promoter activity in response to the concentration of another 
 molecule is a common control motif.
+Transcription units are terminated by terminator regions, which cause the RNA 
+polymerase to cease transcription and release the mRNA.
 
 Transcripts often include non-coding regions at either end called the 5' and 3'
 untraslated regions (UTR) respectively.
@@ -111,7 +183,7 @@ which often found within gene sequences and are removed from the message in a
 process called RNA splicing before translation.
 Introns do not contain any useful sequence and tend to complicate matters 
 significantly as efforts to predict their location accurately and reliably 
-have thus far failed.
+have thus far failed -- they are best detected using reverse transcription.
 
 \subsection{Translation}
 \label{sec:translation}
@@ -127,30 +199,34 @@ of 20 amino acids.
 Each acid is coded for by 3 bases of RNA, which are referred to collectively 
 as a codon.
 Since there are 64 possible codons and only 20 amino acids, the code is
-over complete -- several different codons map to the same amino acid.
-As well as coding for amino acids, three special codons (UAG, UAA and UGA) are
-known as stop codons as they terminate the translation of the protein.
+overcomplete -- several different codons map to the same amino acid -- and
+thus a definitive reverse mapping from protein to DNA sequence is impossible.
+As well as coding for amino acids, special codons mark the start and end of a
+protein.
+A start codon (AUG) marks the beginning of a protein and one of the three stop 
+codons (UAG, UAA and UGA) terminate the translation of the protein.
 
 In translation, molecules called ribosomes bind to the mRNA, reading the
 sequence 3 bases (one codon) at a time and constructing the appropriate protein
 until a stop codon is found, when the ribosome detaches and releases the
 protein.
-The point where the ribosome binds is calls a ribosome binding sequence (RBS),
-and one of the most common sites is a Shine-Dalgarno sequence, which is
-typically found a few bases upstream of a start codon.
+The point where the ribosome binds is called a ribosome binding sequence (RBS),
+a common class of which is the Shine-Dalgarno sequence, which is found a few 
+bases upstream of the start codon.
 
 Because of the 3:1 nature of translation, proteins are sensitive to frame
 shifts -- where translation is shifted by one or two bases, the resulting amino
-acid is effectively unrelated to the encoded one.
-This can be the case if an intron is present as introns need not be multiples
-of three codons long.
+acid sequence is effectively unrelated to the encoded one.
+This can be the case if an unexpected intron is present as introns need not be 
+multiples of three codons long.
 
 mRNA is more fragile than DNA but is also targeted by exonucleases, a class of
 enzyme which degrade RNA molecules, preventing the production of more protein.
 Similar processes exist which degrade proteins over time, recycling their amino
 acids to form new proteins.
-These degradation processes mean that a gene must continue to be transcribed at
-a constant rate for the concentration of its protein to remain constant.
+These degradation processes mean that a gene must continue to be 
+\emph{expressed} (transcribed and translated) at a constant rate for the 
+concentration of its protein to remain constant.
 
 \subsection{Controlling Expression}
 \label{sec:mbio_control}
@@ -161,7 +237,7 @@ a constant rate for the concentration of its protein to remain constant.
   \end{center}
   \caption[LoF entry]{Annotated diagram of the lac operon.
     It contains two transcription units and a total of four genes.
-    The first (leftmost) unit contains \textit{lacI} and is expressed 
+    The first (leftmost) unit contains the \textit{lacI} gene and is expressed 
     constitutively (continuously).
     The protein which is produced is called the lac repressor, and in the
     absence of lactose it binds tightly to the operator region, preventing
@@ -262,7 +338,7 @@ For example, the lac operon controls the production of enzymes which allows the
 cell to metabolise lactose, a carbon source.
 The cell would prefer to directly metabolise glucose if it is available as
 lactose is harder to process, and so the cell can save energy by only turning
-on it's lactose processing machinery when only lactose is available.
+on its lactose processing machinery when only lactose is available.
 This is achieved by the lac operon as described in figure~\ref{fig:lac_operon} 
 and shown schematically in figure~\ref{fig:lac_block}.
 
@@ -287,15 +363,15 @@ underlying principals.
 
 Synbio can be thought of as programming, but with DNA instead of machine
 code.
-An example project which captures this idea is Tabor's bacterial edge
-detector\citep{edgeDetector}.
+An example project which nicely captures this idea is Tabor's bacterial edge
+detector \citep{edgeDetector}.
 Bacteria were programmed to produce a colourless chemical messenger in the 
 absence of light and to produce a dark pigment in the presence of both light 
 and the chemical messenger.
 When a film of these bacteria is exposed to a pattern of light and dark, the
 messenger is produced in the dark regions and diffuses into the light, where it
 stimulates the production of the pigment, 
-leading to an edge detection like effect.
+leading to an edge detection effect.
 
 While this and other such simple demonstrations show some of the potential 
 of synbio, they lack immediate application and are of somewhat limited scope.
@@ -313,24 +389,25 @@ The effect of the molecules AHL and cI on $P_{lux-\lambda}$ is one of a small
 but growing number of well understood control motifs.
 Since reusing the same promoter/signal combination in the same cell is 
 impossible due to cross-talk, there are simply not enough signalling modalities 
-available to perform more complex logic within the cell.
+or characterised promoters available to perform more complex logic within the 
+cell.
 Indeed, it is often the case that signalling molecules have multiple functions
 within the cell such that changing the concentration of one molecule to suit
 our goals may cause a seemingly unrelated area of the cell's metabolism to
 malfunction with undesirable consequences.
 
-A more applicable synbio project was the effort to produce 
+A quite separate and more applicable synbio project was the effort to produce 
 artemisinin (the most effective known anti-malarial) in a cheaper and more 
 scalable way.
-Malaria is a treatable disease which in 2010 caused roughly 2,000 deaths 
-\emph{per day}, mainly because it mostly affects the developing world where
-access to anti-malarials is poor\citep{malaria}.
+Malaria is a treatable disease which caused roughly 2,000 deaths 
+\emph{per day} in 2010, mainly because it mostly affects the developing world 
+where access to anti-malarials is poor \citep{malaria}.
 Artemisinin is found naturally in sweet wormwood, but it is slow and expensive
 to extract directly from the plant and chemical synthesis is also an expensive
 and laborious process.
 Synthetic biologists were able to extract the metabolic pathway responsible for
 the biosynthesis of artemisinic acid (a natural precursor) and insert it into 
-yeast\citep{yeast}.
+yeast \citep{yeast}.
 Artemisinin produced in this manner has yet to be approved for sale, but it is
 hoped that it should be available at some point during 2013, at a considerably
 lower price than any other known method of production.
@@ -352,10 +429,11 @@ Chloroplasts are a major centre for biosynthesis in plants as they perform
 photosynthesis to provide energy for the plant.
 The result of an ancient symbiosis, up to 1000 of these primitive cells can be 
 found within each plant cell, where they make an excellent target for synbio.
-They are similar to previous synbio hosts, but with access to the more
-sophisticated plant cell machinery and superb potential for biosynthesis.
-The native enzyme RuBisCO is so abundant in the chloroplasts that it 
-can be up to 50\% of overall soluble leaf protein.
+Their primitive nature makes them similar to previous synbio hosts, 
+but with access to the more sophisticated plant cell machinery and 
+superb potential for biosynthesis.
+For example, the native enzyme RuBisCO is so abundant in the chloroplasts that 
+it can represent up to 50\% of overall soluble leaf protein.
 
 Chloroplasts contain limited genetic information and expression machinery 
 separate from that of the plant cell, which produces the molecules required 
@@ -365,18 +443,18 @@ nucleus and then imported into the chloroplast.
 
 The style of operon-based control common in prokaryotic cells does not appear 
 to be used in the chloroplast -- instead most genes are 
-transcribed constitutively\citep{Sugita1996}, leading to constant mRNA levels.
+transcribed constitutively \citep{Sugita1996}, leading to constant mRNA levels.
 It is also known that the mRNA transcripts in chloroplasts often do not 
 contain a ribosome binding site (such as a Shine-Dalgarno sequence) at all or 
 that such a sequence is not in the correct 
-location\citep{Sugiura1998,Zerges2000}.
+location \citep{Sugiura1998,Zerges2000}.
 
-This does not reflect the protein levels found in the chloroplast, which vary
-considerably during the chloroplast's circadian cycle -- energy is stored
-during the day and only consumed at night.
+This does not reflect the clear variation in protein levels found in the 
+chloroplast, whose activity varies considerably during the chloroplast's 
+circadian cycle -- energy is stored during the day and consumed at night.
 Since mRNA levels are constant, this control must occur at a 
 post-transcriptional level, and there is evidence to suggest that the nucleus
-is involved in controlling the cycle\citep{Matsuo2006}.
+is involved in controlling the cycle \citep{Matsuo2006}.
 
 Chloroplast mRNAs also undergo significant post-transcriptional processing such
 as C-U editing (where a genome-encoded C is converted to a U) and less 
@@ -392,6 +470,9 @@ chloroplasts.
 
 Understanding regulation in chloroplasts is a vital step before they can be
 effectively used for synthetic biology.
+For example, attempting to synthesise useful chemicals at the wrong point in 
+the circadian cycle would likely result in very poor growth and so we must be
+able to tap into the natural regulation system already present in the system.
 
 \section{Nucleotide Binding Proteins}
 \label{sec:intro_binding}
@@ -403,8 +484,8 @@ very flexible, giving amino acids a very high number of degrees of freedom,
 which often thwarts attempts to find the structure with minimum free energy.
 Even when this can be found, protein folding is often a complex process
 involving several interactions with other chaperone proteins which guide
-protein folding, meaning that the minimum energy solution may not represent the
-actual shape of the protein.
+protein folding, meaning that the global minimum energy solution may not 
+represent the actual shape of the protein.
 
 As a result, modelling interactions between proteins and nucleotides such as
 DNA and RNA is impossible in the general case and these interactions are
@@ -415,7 +496,7 @@ protein motif whose folding structure is stabilised by the incorporation of a
 zinc ion into the structure.
 Zinc fingers are common in many organisms and recognise and bind to a specific 
 triplet of nucleotides, and have been reverse-engineered such that they can now
-be designed to bind to effectively arbitrary sequences\citep{Gaj2013}.
+be designed to bind to effectively arbitrary sequences \citep{Gaj2013}.
 
 However, zinc fingers have limited modularity as each motif binds to three
 bases with varying specificity, meaning that there are often other sequences to
@@ -423,10 +504,11 @@ which the protein will bind which can be hard to predict.
 Transcription activator-like effectors (TALEs) are modular repeat regions in
 which each repeat recognises a single DNA base via a simple code dependent on
 two hyper-variable amino acids within the repeat motif.
-TALEs are inherently easier to design than zinc fingers and have been used for
+The superior modularity of TALEs make them inherently easier to design than 
+zinc fingers and have been used for
 numerous novel applications, such as designing new transcription activators
 which work on arbitrary sequences or manipulating the genome to allow for novel
-studies of protein function\citep{Sun2013}.
+studies of protein function \citep{Sun2013}.
 
 These two classes of proteins have opened up new and exciting methods for basic
 research, gene therapy and synthetic biology.
@@ -476,7 +558,7 @@ research, gene therapy and synthetic biology.
     address of the target location of the PPR within the cell
     (\textbf{B}) The repeat regions contain 2-30 PPR motifs which specify the binding
     preferences of the protein
-    (\textbf{C}) The tail region is optional contains either E, E andE+ or 
+    (\textbf{C}) The tail region is optional contains either E, E and E+ or 
     E, E+ and DYW motifs.
   }
   \label{fig:ppr_anatomy}
@@ -486,7 +568,7 @@ The PPR family is a group of proteins commonly found in plants and are known
 to bind specific RNA sequences and display many similarities with TALEs.
 They contain tandem degenerate repeating motifs which are referred to as PPR 
 motifs and share many similarities with the tetratricopeptide repeat (TPR) 
-motif which are known to aid protein-protein binding\citep{Small2000}.
+motif which are known to aid protein-protein binding \citep{Small2000}.
 
 PPRs are found exclusively in the nuclear genome, and are commonly targeted to
 organelles such as the chloroplast or mitochondria, where they are known to
@@ -508,7 +590,7 @@ The standard PPR motif is the P motif which is 35 amino acids long,
 but long (L) and short (S) variants are common in some proteins.
 The PPR motifs cause the protein to bind tightly to a specific mRNA sequence,
 and it is believed that pairs of contiguous motifs confer the particular
-protein's binding preference\citep{Kobayashi2012}.
+protein's binding preference \citep{Kobayashi2012}.
 
 The third region is a tail sequence which is only present in some PPRs.
 The tail regions are known to contain a number of other motifs whose exact
@@ -519,13 +601,13 @@ only `E' motifs, the E+ subgroup which contains `E' and `E+' motifs and the DYW
 subgroup which contains `E', `E+' motifs and is terminated by a `DYW' motif
 \citep{Lurin2004}.
 The precise function of the tail remains unknown, but evidence suggests that it
-is related to the known RNA editing functions of some PPRs\citep{Yagi2013a}.
+is related to the known RNA editing functions of some PPRs \citep{Yagi2013a}.
 
 \subsection{Known interactions with mRNA}
 
 PPRs can regulate gene expression and are involved in a variety of
 post-transcriptional RNA processing steps such as RNA editing, splicing and
-stability\citep{Schmitz-Linneweber2008,Nakamura2012}.
+stability \citep{Schmitz-Linneweber2008,Nakamura2012}.
 
 \subsubsection{RNA editing}
 
@@ -562,9 +644,9 @@ stability\citep{Schmitz-Linneweber2008,Nakamura2012}.
 
 Several PPR proteins with tail motifs have been associated with RNA editing and
 in these cases the PPR binding site has been located a short distance from the
-edit site\citep{Okuda2007,Yagi2013a}.
+edit site \citep{Okuda2007,Yagi2013a}.
 A particular protein can be responsible for several edits by having multiple
-binding sites within the chloroplast genome\citep{Okuda2012}, allowing a single
+binding sites within the chloroplast genome \citep{Okuda2012}, allowing a single
 protein to edit multiple genes.
 
 C-U RNA editing has vital consequences for protein translation.
@@ -580,7 +662,7 @@ be terminated.
 
 It has been shown that PPR binding to the 5' and 3' UTRs can stabilise mRNA
 transcripts and reduce degradation by
-ribonucleases\citep{Pfalz2009,Prikryl2011}.
+ribonucleases \citep{Pfalz2009,Prikryl2011}.
 This increases protein yield as more mRNA will be present at any time,
 increasing the rate at which protein is created.
 In addition to stabilisation, PPR binding can facilitate ribosome recruitment
@@ -589,12 +671,12 @@ and can thus be responsible for the initiation of translation.
 \subsubsection{Decreasing Translation}
 
 PPRs have been shown to be responsible for restoring fertility to plants
-affected by Cytoplasmic Male Sterility (CMS)\citep{Bentolila2002}, which is of
+affected by Cytoplasmic Male Sterility (CMS) \citep{Bentolila2002}, which is of
 commercial importance in breeding.
 PPRs prevent sterility by preventing the production of specific proteins which
-cause the condition\citep{Kazama2008}.
+cause the condition \citep{Kazama2008}.
 While the specific interaction preventing translation is unknown, it is thought
-to be due to cleavage of the mRNA transcript or degradation\citep{Wang2006}.
+to be due to cleavage of the mRNA transcript or degradation \citep{Wang2006}.
 It is also possible that the PPR out competes the ribosome when binding to the
 ribosome binding site.
 
@@ -605,11 +687,11 @@ possible to accurately predict PPR binding domains from the amino acid sequence
 of the protein.
 One problem is that the exact structure of the tandem PPR motifs is not known,
 although other proteins which also contain PPR motifs appear to show a helical
-structure\citep{Ringel2011,Howard2012}, suggesting that PPR binding might be
-similar to that of TALE and PUF repeats\citep{Rubinson2012}.
+structure \citep{Ringel2011,Howard2012}, suggesting that PPR binding might be
+similar to that of TALE and PUF repeats \citep{Rubinson2012}.
 
 As of writing, two major theories on the PPR binding rules exist, one due to
-Barkan\citep{Barkan2012} and another due to Yagi\citep{Yagi2013}.
+Barkan \citep{Barkan2012} and another due to Yagi \citep{Yagi2013}.
 Both are based on statistical inference on the small number of characterised
 PPR-RNA interactions and are discussed in more length in section
 \ref{sec:ppr_binding_prediction}.
@@ -694,7 +776,7 @@ current state and it is the sequence of symbols which is observed rather than
 the states themselves. 
 
 HMMs are commonly used in bioinformatics in order to describe and predict
-repeating patterns in the sequence\citep{Durbin1998}.
+repeating patterns in the sequence \citep{Durbin1998}.
 The Pfam database, maintained by the Wellcome Trust Sanger Institute,
 is an open library of HMMs describing a large range of protein families which
 are freely available to all.
@@ -703,7 +785,7 @@ are freely available to all.
 \label{ssec:hmmer}
 
 HMMER is a collection of command line tools implementing all the basic
-algorithms required for using HMMs in a biological context\citep{HMMERguide}.
+algorithms required for using HMMs in a biological context \citep{HMMERguide}.
 HMMER is capable of constructing models from aligned sequences and of searching
 a target sequence for instances of the model.
 
