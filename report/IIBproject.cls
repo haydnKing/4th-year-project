@@ -53,10 +53,8 @@
 
 \fancypagestyle{mainstyle}{
   \fancyhf{}
-  \fancyhead[RE]{\textit{\nouppercase{\leftmark}} }
-  \fancyhead[LE]{\thepage}
-  \fancyhead[LO]{\textit{\nouppercase{\@name}} }
-  \fancyhead[RO]{\thepage}
+  \fancyhead[L]{\textit{\nouppercase{\leftmark}} }
+  \fancyhead[R]{\thepage}
 }
 
 \fancypagestyle{abstractstyle}{
