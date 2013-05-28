@@ -106,7 +106,71 @@
 
 \abstract{
 
-TODO\ldots
+Synthetic biology is a new and developing engineering field which attempts to
+apply proven engineering concepts and techniques such as standardisation,
+characterisation and encapsulation to biology in order to design new and useful
+forms of life.
+
+The field often makes use of analogies with electrical engineering -- in
+synthetic biology, well characterised components or parts are combined and 
+interact together to form biological circuits.
+Circuits have been designed to perform a wide variety of tasks, such as
+the production of useful chemicals, detecting the presence of harmful toxins
+or producing bioluminescent light.
+
+Since designing novel proteins from scratch is beyond our technological reach 
+at present, progress in synthetic biology usually results from the
+characterisation of natural systems found in one organism which are then
+applied in different situations.
+
+This project investigates such a system commonly found in plant cells, where
+the cell nucleus is thought to control gene expression in the chloroplasts and
+other organelles using signals encoded by members of the Pentatricopeptide
+Repeat (PPR) protein family.
+This system is particularly interesting for synthetic biology as there is a
+deficit of well characterised parts for accurately controlling the production
+of an arbitrary protein.
+PPRs have been shown to be able to do this naturally -- by binding with 
+targeted mRNA molecules in the chloroplast, they are able to either increase of
+decrease expression levels of particular proteins.
+It is hoped that characterisation of this class of proteins will allow the
+design of PPRs which can control expression of an arbitrary protein.
+
+In addition to their development as a tool for synthetic biology, an
+understanding of the interactions between PPRs and mRNA will be vital to
+understanding the control mechanisms at work in the chloroplast, which is a
+necessary step if we wish to exploit the large potential for biosynthesis
+within the chloroplast.
+
+The first part of the project is concerned with automating the detection and
+annotation of naturally occurring PPRs in existing genomes.
+While PPRs have been discovered in a wide variety of plants, a specific, 
+clearly defined and repeatable method for their detection and extraction has 
+not.
+An algorithm for reliable and repeatable PPR discovery was developed in the
+first part of the project.
+
+In the second part, this algorithm was applied to a large variety of plant 
+genomes in order to assess the abundance of the proteins.
+It was found that the majority of the plants surveyed had a similar number of
+PPRs (between 400 and 600).
+It is hypothesised that this is due to a considerable conservation of function
+of PPRs across genomes.
+
+Attempts to directly predict the RNA binding domains of PPRs were thwarted by
+our limited number of well characterised PPRs, but the binding sites of
+a set of characterised PPRs was identified in the model organism 
+\emph{A. thaliana}.
+Likely homologs of the genes containing these binding sites were then found in
+the chloroplast genomes of numerous other plants and regions of very high
+sequence similarity to the original binding sites were found, supporting the
+hypothesis that PPR function is highly conserved across different species.
+
+The final part of the project studied the usefulness of PPRs in the context of
+synthetic biology.
+In particular, it was established that if PPRs could be designed to bind to 
+arbitrary sequences, then it would be possible to construct simple logic gates
+using known PPR-RNA interactions.
 
 }
 
@@ -147,11 +211,12 @@ TODO\ldots
 
 \appendix % Cue to tell LaTeX that the following 'chapters' are Appendices
 
+\renewcommand{\chaptermark}[1]{ \markboth{Appendix \thechapter.\ #1}{} }
 % Include the appendices of the thesis as separate files from the Appendices folder
 % Uncomment the lines as you write the Appendices
 
 \input{./Appendices/AppendixA}
-%\input{./Appendices/AppendixB}
+\input{./Appendices/AppendixB}
 %\input{./Appendices/AppendixC}
 
 \addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
@@ -168,5 +233,3 @@ TODO\ldots
 \bibliography{Bibliography} % The references (bibliography) information are stored in the file named "Bibliography.bib"
 
 \end{document}  
-\end{document}
-\end{document}
