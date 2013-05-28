@@ -14,7 +14,7 @@ class Network:
 	tl = 0.693 / vol #[prot]/(min*transcript)
 
 	rna_halflife = 2
-	p_halflife = 10
+	p_halflife = 40
 
 	rna_decay = log(2) / rna_halflife # min^-1
 	p_decay   = log(2) / p_halflife # min^-1
@@ -23,7 +23,7 @@ class Network:
 	complex_decay_fast = 0.9 # min^-1
 
 	kD_ppr = 7.6e-9 # Moles / litre
-	k_fwd = 2.0 * tr_high
+	k_fwd = 0.5
 	k_rev = kD_ppr * k_fwd
 
 	def __init__(self, N, interactions, translation):

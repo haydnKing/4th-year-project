@@ -2,12 +2,18 @@
 \chapter{Simulating PPR Activity} 
 \label{chap:simulation}
 
-\lettrine{S}{ince} we know a reasonably large amount about the effects that 
-PPR-RNA
-interactions can have on protein levels, it is interesting to try and simulate
-the behaviour of logic networks constructed with these proteins.
-This chapter develops a simple ODE model of a general network and demonstrates
-that simple boolean algebra is possible with networks of PPRs.
+\lettrine{S}{ynthetic} biologist often draw on analogies with electrical
+engineering when designing new systems.
+Individual components are assembled to form biological circuits, where the rate
+of expression is seen as analogous to the current flowing through the device.
+
+If we imagine that we were able to solve the issues discussed in the previous
+chapter and that PPRs could be designed to bind to arbitrary RNA sequences,
+what kind of components could we build for our biological circuits?
+
+In this chapter, a generalised ODE model of a network of interacting PPRs is
+developed and used to show that PPRs could potentially be used to perform basic
+logic operations at the translational level.
 
 \section{Simulation Model}
 \label{sec:sim_model}
@@ -55,9 +61,12 @@ cell's expression machinery and RNA-PPR binding.
 This is most simply done using and ODE model, where each process is modelled
 using a rate equation.
 
-The simplest processes are transcription and translation, which are simple to
-model as none of the molecules we are interested in are consumed in either 
-reaction. 
+The first two processes to model are transcription and translation. 
+Assuming that the substrates necessary for RNA and protein production are
+readily available and inexhaustible, these processes simple to
+model as neither DNA nor RNA are consumed in either reaction.
+This is not always the case in a cell, but for low enough rates of
+transcription and translation this assumption holds.
 Thus, the rate of production is simply proportional to the amount of DNA or RNA
 present respectively.
 
@@ -75,7 +84,8 @@ direction.
 In addition to these processes, we need to model translation of the
 \ce{RNA_i-P_j} complex and also degradation of \ce{RNA}, \ce{P} and \ce{RNA-P}.
 Each of these reactions is simple to model in isolation as the rate is simply
-proportional to the concentration of the molecule.
+proportional to the concentration of the molecule, as we again assume that all
+the necessary substrates are available.
 Figure~\ref{fig:simulation} summarises these reactions for the $i^\mathrm{th}$
 protein.
 
@@ -140,6 +150,29 @@ PPR interactions are represented by lines between the proteins -- an arrow
 between A and B represents that protein A binds to RNA B causing excitatory
 binding, while a perpendicular bar represents repressive binding.
 
+\begin{table}
+  \centering
+  \begin{tabular}{l | c | c }
+    Description  & Value \\ \hline
+    High transcription rate & $30 \mathrm{transcripts} \mathrm{minute}^{-1}$ \\
+    Low transcription rate & $0.03 \mathrm{transcripts} \mathrm{minute}^{-1}$ \\
+    On translation rate & $0.693 \mathrm{proteins}
+      \mathrm{(transcript}\times \mathrm{minute)}^{-1}$ \\
+    RNA half-life & $2$ minutes \\
+    Protein half-life & $40$ minutes \\
+    Long Complex half-life & 10 minutes \\
+    Short Complex half-life & 1 minute \\
+    Binding Rate & 0.5 $\mathrm{minute}^{-1}$ \\
+    Unbinding Rate & $4\times 10^{-9}$ $\mathrm{minute}^{-1}$ \\
+  \end{tabular}
+  \caption{Rates used for the simulations shown in sections~\ref{sec:sim_logic}
+  and~\ref{sec:sim_tabor}. Each was taken from estimates from the literature,
+  although only the ration of binding to unbinding rate has been measured (via
+  the disassociation constant. The plots shown were stable for a large range of
+  binding rate.}
+  \label{tab:sim_values}
+\end{table}
+
 \section{Simulation Results for Logic Gates}
 \label{sec:sim_logic}
 
@@ -187,6 +220,10 @@ speculation.
             cycle list name=color list,
             legend pos=north west,
             ytick = \empty,
+            ticklabel style={ 
+              /pgf/number format/fixed, 
+              /pgf/number format/precision=5 
+            }, scaled ticks=false 
           ]
           \addplot table[x=time, y=0]{Data/logic_NOT.dat};
           \addplot table[x=time, y=1]{Data/logic_NOT.dat};
@@ -227,6 +264,10 @@ speculation.
             no markers,
             legend pos=north west,
             ytick = \empty,
+            ticklabel style={ 
+              /pgf/number format/fixed, 
+              /pgf/number format/precision=5 
+            }, scaled ticks=false 
           ]
           \addplot table[x=time, y=00]{Data/logic_OR.dat};
           \addplot table[x=time, y=01]{Data/logic_OR.dat};
@@ -274,6 +315,10 @@ speculation.
             no markers,
             legend pos=north west,
             ytick = \empty,
+            ticklabel style={ 
+              /pgf/number format/fixed, 
+              /pgf/number format/precision=5 
+            }, scaled ticks=false 
           ]
           \addplot table[x=time, y=00]{Data/logic_NAND.dat};
           \addplot table[x=time, y=01]{Data/logic_NAND.dat};
