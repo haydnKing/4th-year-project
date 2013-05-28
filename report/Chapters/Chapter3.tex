@@ -15,9 +15,9 @@ the nuclear genome and the organelles in most plants.
 \subsection{Selected Genomes}
 \label{sec:survey_genomes}
 
-Despite recent advances, whole genome sequencing is still somewhat expensive,
-time consuming and error prone and so only a small subset of plants have been
-fully sequenced.
+Despite recent advances, whole genome sequencing is still expensive,
+time consuming and error prone and as a result only a small subset of plant
+genomes have been fully sequenced.
 Those genomes selected as part of the survey are shown in \ref{tab:genomes} and
 consist mostly of plants, since this is where most PPRs are known to reside.
 
@@ -27,8 +27,8 @@ It is included here because \emph{P. falciparum} contain an apicoplast --
 an organelle similar to the chloroplasts found in plants and thought to be the 
 result of a secondary endo-symbiosis. 
 
-Complete sequences for the selected genomes were fetched from the NCBI genbank
-genomes repository.
+Complete sequences for the selected genomes were fetched from the National
+Centre for Biotechnology Information (NCBI) genbank genomes repository.
 
 \begin{table}
   \centering
@@ -64,8 +64,8 @@ Figure \ref{fig:ppr_numbers} shows the number and type of PPRs found in each
 genome of interest, ordered by number found.
 
 It is clear that \emph{P. falciparum} contains no PPRs at all and so
-although the apicoplasts  is similar to the chloroplast, an entirely
-different control mechanism is at work in them.
+although the apicoplast is superficially similar to the chloroplast, 
+an entirely different control mechanism is at work in them.
 \emph{O. tauri} contains very few PPRs, which is unsurprising as it is a
 relatively simple unicellular organism.
 
@@ -73,18 +73,21 @@ The majority of the plants surveyed contain between 400 and 600 PPR proteins,
 however, the clear exception to this is \emph{G. max}, the soya bean, 
 which contains considerably more putative PPR proteins than any other of the 
 surveyed plants -- 940 in total.
-The reasons behind this are a mystery, however they genome is known to contain
+The reasons behind this are uncertain, however they genome is known to contain
 several repeats of each protein \citep{Schmutz2010}.
 
 Figure~\ref{fig:ppr_family_lengths} shows a histogram of the number of motifs
 found in each PPR stacked by family.
-We see that the most common length is around 13 motifs, but that some PPRs are
-around 30 repeat regions in length.
-The number of repeat regions corresponds to the size of the binding footprint
-of the protein, and thus the longer proteins are more specific than the shorter
-ones, as the change of a longer sequence appearing by chance is significantly
-smaller.
+PPRs most commonly have between 10 and 15 motifs, the most common being 13, 
+although some PPRs are around 30 repeat regions in length.
+Figure~\ref{fig:ppr_family_lengths} also shows the probability of a binding
+domain appearing in a random sequence of 150,000bp -- the approximate length of
+a chloroplast genome.
+This distribution is derived in appendix~\ref{AppendixA}.
 
+It is interesting that the majority of PPRs appear to the right of the sharp
+drop in probability, which shows that most PPRs are potentially specific enough
+to bind to one region only within the chloroplast.
 
 \begin{figure}
   \begin{center}
@@ -133,6 +136,7 @@ smaller.
     \begin{tikzpicture}
       \begin{axis}[
           ybar stacked,
+          axis y line*=left,
           ymin=0,
           xlabel={Number of Motifs},
           ylabel={Number of Proteins},
@@ -157,14 +161,25 @@ smaller.
         \addlegendentry{DYW type}
 
       \end{axis}
+      \begin{axis}[
+          hide x axis,
+          axis y line*=right,
+          height=7cm,
+          width=0.9\textwidth,
+          ymin=0,
+          ylabel={Probability of Random Occurrence}
+        ]
+        \addplot[no marks] table[x=x,y=y] {Data/random_bind.dat};
+      \end{axis}
     \end{tikzpicture}
     \caption{
       \textbf{The distribution of the number of motifs found in proteins}, 
-      summed over each of the organisms surveyed and stacked by type.
+      summed over each of the organisms surveyed and stacked by type, shown
+      plotted alongside the probability of a sequence of that length appearing
+      by chance in a random DNA sequence of length 150000bp.
       PPRs are most commonly between 10 and 15 motifs long, which gives enough
-      specificity to make finding a particular sequence by chance unlikely ($p
-      \approx 3.4 \times 10^{-3}$ for 13 motifs) assuming only a single 
-      possible binding sequence. 
+      specificity to make finding a particular sequence by chance unlikely
+      assuming only a single possible binding sequence per protein.
       \label{fig:ppr_family_lengths}}
   \end{center}
 \end{figure}
@@ -187,6 +202,10 @@ and the second in \citet{Yagi2013}.
 These mappings are similar in many senses, they both predict a distribution
 over the four bases based on the amino acids found at particular locations
 within the motif.
+Barkan coding makes use of the amino acids found at positions 6 and 1' (where
+1' is the first amino acid in the next motif), while Yagi coding uses the amino
+acids found at 3, 6 and 1' (referred to as positions 1, 4 and ii in 
+\citet{Yagi2013}).
 
 Both the Barkan and Yagi coding schemes were implemented in python and tested
 using the PSSM prediction algorithm described in section
@@ -198,14 +217,15 @@ It was found that neither scheme produced any matches with scores high enough
 to be statistically significant.
 In fact, in most cases the known PPR binding site was not even in the top 10\%
 of matches.
-Clearly there is some way to go in developing an understanding of this
-phenomenon.
+While there is statistical evidence to support that the identified amino acids
+are involved in binding, there is clearly there is some way to go in developing 
+an understanding of this phenomenon.
 
 There are two main problems which came to light while studying these papers.
 \begin{enumerate}
   \item PPR motifs are often not very well defined -- the two papers even use
-    differing conventions on where exactly the motif starts, but neither make
-    mention of this fact
+    differing conventions on where exactly the motif starts, and although this
+    discrepancy is noted in the latter paper it is not justified
   \item There are few well known PPR-RNA interactions
 \end{enumerate}
 The first of these problems will improve with the second -- we can only improve
@@ -222,11 +242,11 @@ considerably easier and cheaper to sequence than the nuclear genome.
 Chloroplast genomes are generally well conserved between different organisms --
 although genes are sometimes rearranged or duplicated, most chloroplast genomes
 contain roughly the same thing.
-This can be used to our advantage by looking for potential homologs of our known
-PPR binding sites in other chloroplasts to predict the presence of a homologous
-protein in the nuclear genome.
+This can be used to our advantage by looking for potentially homologous binding
+sites in other chloroplasts to predict the presence of a similar protein in 
+the nuclear genome.
 Homologs could then be confirmed experimentally with relative ease, as we would 
-known enough about the sequence of the homologs to be able to extract them from 
+know enough about the sequence of the homologs to be able to extract them from 
 the nuclear genome (e.g. by PCR) and we would also already have a good idea of 
 what the binding footprint is.
 Having a large group of proteins whose binding footprint changes only slightly
@@ -238,14 +258,36 @@ genomes available from the NCBI's Organelle Genome Resource.
 Directly searching other genomes for sequences similar to known binding domains
 would not produce results of much significance as the size of the genome means
 that similar sequences are likely to exist there by chance.
-Instead, the genomes were first searched for proteins which had high protein
-sequence similarity to the gene nearest to the PPR binding site in Arabidopsis
-using HMMER's \emph{phmmer} program.
-The overwhelming majority of the other 339 genomes were found to have proteins 
-with very strong sequence similarity to those in Arabidopsis. 
-The DNA sequence of these proteins was then searched for regions similar to the
-original binding sites using a PSSM approach.
+Instead, the protein sequence of the gene closest to the known binding site was 
+used to search the other genomes for potential homologs using HMMER's
+\emph{phmmer} program.
 Since DNA to amino acid coding is a overcomplete, even if a protein is found
 with an identical amino acid sequence the DNA sequence could be very different.
 
+The overwhelming majority of the other 339 genomes were found to have proteins 
+with very strong sequence similarity to those in Arabidopsis. 
+
+The DNA sequence of these possibly homologous proteins was then searched for 
+regions similar to the original binding sites using a PSSM approach.
+Many of them contained sequences with very high homology
+with the original binding domain in Arabidopsis ($>90\%$ in some cases).
+In addition, where a genome had multiple potential homologs, the same sequence
+differences between the binding sites was observed, suggesting that there might
+indeed be a similar PPR protein acting on the region.
+
+As a concrete example, the Arabidopsis PPR protein PDE247 is known to have two 
+binding domains, `\emph{acacgtgcaa}' and `\emph{agaagcccaa}'.
+These exact sequences are found in the chloroplast genes \emph{psbK}, 
+\emph{trnH}, and \emph{ycf2}.
+A total of 10 potential homologs for these genes were found in the chloroplast
+genome of the tree fern \emph{Alsophila spinulosa}, one for \emph{psbK} and 9
+for \emph{ycf2}.
+Eight of these potential homologs contained the exact sequence 
+`\emph{agaagcctaa}', which differs from the known binding domain in Arabidopsis
+by only one base.
+
+Clearly experimental work is required to verify these potential homologs and to
+attempt to characterise the PPRs which may be present, but it seems hopeful
+that there are a large number of PPRs similar to those already characterised
+present in the genomes of other plants.
 

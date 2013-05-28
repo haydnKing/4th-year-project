@@ -1,9 +1,58 @@
-% Appendix A
 
-\chapter{Appendix Title Here} % Main appendix title
+\chapter{Probability of a Binding Domain Appearing by Chance} % Main appendix title
 
 \label{AppendixA} % For referencing this appendix elsewhere, use \ref{AppendixA}
 
-\lhead{Appendix A. \emph{Appendix Title Here}} % This is for the header on each page - perhaps a shortened title
+%\lhead{Appendix A. \emph{Appendix Title Here}} % This is for the header on each page - perhaps a shortened title
 
-Write your Appendix content here.
+We are interested in the probability of a particular sequence $S$ of length $N$
+appearing within a larger sequence of length $M$ one or more times.
+Both sequences are assumed to be made up of an alphabet of size $K$, and the
+larger sequence is assumed to be a series of independent, uniform draws where
+each symbol has equal probability $\frac{1}{K}$.
+
+In order to avoid some rather involved combinatorics, we calculate the expected
+number of draws until $S$ appears.
+Letting $a$ equal the expected number of draws until we draw the first symbol
+in $S$, we see that
+\begin{align*}
+  a &= 1 + \frac{K-1}{K}~a \\
+  \Rightarrow a &= K
+\end{align*}
+since we must draw at least one symbol and there is a $\frac{K-1}{K}$ chance of
+us being returned to $a$.
+
+Now let $b$ equal the number of draws until we find the first two symbols in
+$S$.
+The second symbol is drawn on the $(a+1)^{\mathrm{th}}$, and these is a
+$\frac{K-1}{K}$ chance of us returning to $b$ so that
+\begin{align*}
+  b &= (a+1) + \frac{K-1}{K}~b \\
+  \Rightarrow b &= K (K+1)
+\end{align*}
+Having seen this pattern, we can easily invoke proof by induction to show that
+the expected number of draws until the entirety of $S$ is drawn is
+\begin{equation*}
+  \sum_{n=1}^{n=N} K^n
+\end{equation*}
+
+This, the expected number of occurrences of S in a random sequence of length $M$
+is
+\begin{equation*}
+  \frac{M}{\sum_{n=1}^{n=N} K^n}
+\end{equation*}
+We can now use the Poisson distribution to calculate the probability of at
+least one occurrence of S, which is given by
+\begin{equation*}
+  P = e^{-\frac{M}{\sum_{n=1}^{n=N} K^n}}
+\end{equation*}
+
+Since out binding site can be located on the forward or reverse strand, we are
+actually interested in finding the sequence S itself, or the reverse complement
+of S, which is equally likely as out probability distribution is uniform.
+The probability of finding at least one instance of S or it's reverse
+complement is thus given by
+\begin{equation*}
+  2P - P^2
+\end{equation*}
+

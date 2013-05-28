@@ -130,11 +130,15 @@ def find_homologs():
 											f.type.lower() == "{}_exact".format(ppr.name.lower())]
 		ppr.genes = [get_closest_gene(f, ara_genes) for f in footprints]
 
-		print "\tFound {} original genes".format(len(ppr.genes))
+		print "\tFound {} original genes, {}".format(len(ppr.genes), 
+				[g.qualifiers['gene'] for g in ppr.genes])
 
 		ppr.potentialHomologs = {}
 
 		for i,plastid in enumerate(plastids):
+
+			if plastid.name != "Alsophila spinulosa":
+				continue
 
 			print "\t\tSearch {}/{}".format(i+1, len(plastids))
 
@@ -143,13 +147,15 @@ def find_homologs():
 			for gene in ppr.genes:
 				g = SeqRecord(gene.extract(known_binding.seq).translate())
 				search = HMMER.jackhmmer(g, plastid)
-				homologs += search.getFeatures(type="{}_hl".format(gene.id))
+				print "{} -> {} homologs".format(gene.qualifiers['gene'],
+						len(search.matches))
+				homologs += search.getFeatures(type="{}_hl".format(gene.qualifiers['gene']))
 			
 			#extract the sequence surrounding each homolog
 			for h in homologs:
 				h.location = FeatureLocation(
-						max(0,h.location.start - 1000),
-						min(len(plastid), h.location.end+1000))
+						max(0,h.location.start - 500),
+						min(len(plastid), h.location.end+500))
 			homologs = [SeqRecord(h.extract(plastid.seq)) for h in homologs]
 
 			#find exact or close to exact binding domains for each and add to the
@@ -167,13 +173,22 @@ def find_homologs():
 					seq = str(domains[0].extract(h).seq)
 					similarity = max([sequence_similarity(original, seq) for 
 																									original in ppr.footprints])
+					print "  {} -> \'{}\'".format(h.type, seq)
 					ph.append((similarity, seq))
 
 			ph.sort(key=lambda p: -p[0])
 			ppr.potentialHomologs[plastid.name] = ph
-
+			
 			#try and avoid running out of RAM
 			gc.collect()
+
+	for ppr in pprs:
+		print "\'{}\' footprints = {}".format(ppr.name, ppr.footprints)
+		print "potential homologs"
+		for key,value in ppr.potentialHomologs.iteritems():
+			print "{}: {}".format(key, value)
+
+	return
 
 	
 	stats = []
