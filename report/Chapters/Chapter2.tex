@@ -8,14 +8,14 @@ encode a specific locations.
 These annotations are usually very helpful when navigating the genome as many
 are the result of empirical study.
 The majority of PPRs have not been studied in detail, however, and thus their
-annotation is usually fairly unreliable and certainly doesn't contain
-information about the PPR motifs found within the proteins.
+annotation is often unreliable and certainly doesn't contain information about 
+the PPR motifs found within the proteins.
 
 For this reason it was necessary to develop routines for discovering and
 extracting PPR proteins from unannotated genomes, using a hidden Markov model
 of the characteristic repeat motifs to find likely targets.
-Having identified PPRs, it is interesting to try and predict their binding
-locations within the organelles.
+Having identified PPRs, we would like to be able to predict their binding
+locations within organelles.
 
 The development of algorithms to achieve these things is discussed in this
 chapter.
@@ -32,8 +32,9 @@ any programming language.
 HMMER reads inputs from files, and writes out tabular output data to file which
 would be very time consuming to parse by hand.
 
-HMMER can only compare a protein model with a protein
-target, and so the genome must be translated before it can be searched.
+HMMER cannot translate sequences on the fly -- is can only compare a protein 
+model with a protein target, and so the genome must be translated before 
+HMMER is invoked.
 There are a total of six possible reading frames (3 forwards and 3 backwards, 
 due to the 3:1 nature of translation) and the genome must be searched in each
 of these six frames.
@@ -41,16 +42,18 @@ of these six frames.
 HMMER is not commercial software and is developed by a group of scientists at
 the Howard Hughes Medical Institute (HHMI) under an open licence for research
 purposes.
-As such, it contains a number of minor bugs which can sometimes cause problems
-under particular circumstances, the most problematic of which causes enormous
+As such, it contains a number of minor bugs which are not fatal to the
+software's functionality, but can sometimes cause problems
+under particular circumstances.
+The most problematic of these causes enormous
 memory usage (over 20GB\footnote{One particular instance of this error is due
 to an unsigned integer wrap-around which causes significantly more memory to be
 requested from the operating system than could possibly be needed}) and
 prevents the program from completing.
 
 In order to overcome these issues, a python wrapper for HMMER called
-pyHMMER was designed and written.
-Python was chosen as the main language for this project mainly because of its
+pyHMMER was designed and written as part of this project.
+Python was chosen as the main language mainly because of its
 excellent library support -- for example the biopython library solved many of 
 the difficulties when working with biological sequences without extra effort.
 
@@ -66,11 +69,13 @@ Its main features are -
     handling the creation and removal of all the necessary 
     temporary files automatically
   \item Seamlessly perform six-frame translations on the fly (implemented in C
-    for best performance)
-    and map the returned matches to the correct location
+    for best performance) and correctly map the location of each match to the 
+    original target alphabet
   \item Automatically terminate HMMER processes which attempt to allocate more
-    memory than the system can sensibly be expected to provide and then call
-    HMMER sequentially with subsections of the target\footnote{Linux only}
+    memory than the system can sensibly be expected to 
+    provide\footnote{Linux only} and then call
+    HMMER sequentially with subsections of the target, automatically mapping
+    all matches back to the original target
   \item Fully unit-tested with python's \emph{unittest} framework
 \end{itemize}
 pyHMMER has been developed under an open-source licence and is freely available
@@ -91,8 +96,8 @@ There are four such models available in
 Pfam\footnote{http://pfam.sanger.ac.uk/search/keyword?query=PPR}, and each one
 was tested on known PPRs in order to discover which model worked best when
 searching for motifs.
-It was found the PPR\_3 model is most sensitive to the motifs, and still
-returns relatively few false positives.
+It was found the PPR\_3 model is most sensitive to the motifs, yet still
+returns few false positives.
 
 Armed with this model, the final algorithm for discovering PPRs proceeds as
 follows for each chromosome within the genome
@@ -101,8 +106,8 @@ follows for each chromosome within the genome
     Perform a HMM search on the whole sequence. This will discover the most
     obvious motifs only
   \item \label{alg:grouping}
-    Group the motifs into clusters such that motifs which are on the same
-    strand and are within a certain distance are put in the same cluster
+    Cluster the motifs into groups such that members of the same group are on
+    the same strand and are within a certain distance of each other
   \item \label{alg:envelopes} 
     For each group, extract and `envelope' region containing each motif in the
     group along with large margins either side. 
@@ -119,7 +124,7 @@ follows for each chromosome within the genome
     Check for PPRs which overlap. 
     Each set of overlapping proteins should be removed and a new, larger
     envelope extracted. The algorithm then continues again from step
-    \ref{alg:second_pass} with only the new envelopes
+    \ref{alg:second_pass} with the new envelopes
   \item \label{alg:large_proteins}
     Check for PPRs where the motifs have filled the envelopes -- i.e. ones
     which are missing a start or a stop codon due to not having searched far
@@ -149,11 +154,11 @@ steps follows.
 The reason why the motifs found in step \ref{alg:first_pass} cannot simply be
 accepted is due to the degenerate nature of the motifs.
 It would be possible to decrease HMMER's reporting threshold as to return all
-possible motifs but since the search space is very large, there would be a
-large number of false positives.
+possible motifs but since the search space is large and the model accepts a
+wide range of sequences, there would be a large number of false positives.
 By using default values for these thresholds there is unlikely to be a problem 
-as HMMER is designed to show only the most probable matches and only a few of
-the false positives.
+as HMMER is designed to show the most probable matches and only a few of
+the possible false positives.
 The presence of a few false positives at this stage is not an issue because the
 chance of finding several false positives immediately adjacent to each other 
 (as would be required to pass the later stages of the algorithm) is highly 
@@ -162,10 +167,10 @@ unlikely.
 Having found the most obvious motifs, step \ref{alg:grouping} groups motifs
 which are believed to belong to the same protein.
 Initially this was restricted to motifs which were in the same reading frame
-(i.e. the gaps between starts were multiples of three), but this was later
-expanded to all motifs on the same strand, as introns (see sections
-\ref{sec:transcription} and \ref{sec:translation}) are known to be
-present in some PPR motifs.
+(i.e. the gaps between start of each motif were multiples of three), 
+but this was later expanded to all motifs on the same strand, as introns 
+(see sections \ref{sec:transcription} and \ref{sec:translation}) 
+are known to be present in some PPR motifs.
 Experiment showed that grouping motifs which were within $1500bp$ of each other
 gave good results.
 Grouping was implemented by first sorting the motifs into ascending order and 
@@ -175,23 +180,23 @@ cost of $O(n^2)$ required for exhaustively comparing each motif.
 Envelopes are then extracted from these groups in step \ref{alg:envelopes}.
 The term `envelope' is borrowed from HMMER's output and refers to the fact that
 we expect there to be a PPR somewhere within this region, but we are not sure
-where yet.
+where exactly.
 For envelopes on the reverse strand, the sequence is extracted such that it
-reads correctly from left-to-right.
+reads in the 5' to 3' direction on that strand.
 It is important to maintain a record of where in the target sequence the
 envelope came from, as this information may be required later in the algorithm.
 A margin of $1000bp$ either side of the group was found to give good results.
 
-The search space in step \ref{alg:second_pass} is orders of magnitudes smaller
-than the first pass and so the chances of finding a high-scoring match by
-chance are negligible.
+The search space in step \ref{alg:second_pass} is several orders of magnitude 
+smaller than the first pass and so the chances of finding multiple high-scoring 
+matches by chance are negligible.
 Shortening the target in this way effectively moves HMMER's baseline for
 scoring matches such that lower scoring matches which would previously have 
 been written off as noise are now treated as legitimate matches.
 
 Steps \ref{alg:overlap} and \ref{alg:large_proteins} effectively correct for
 situations where the parameter values chosen for grouping and envelope
-extraction to not perform well.
+extraction do not perform well.
 For example, if step \ref{alg:first_pass} detects the first and last motifs
 from a particularly long PPR then these will be treated as belonging to 
 separate proteins up until this point.
@@ -201,7 +206,7 @@ may be larger than the envelope which is extracted.
 These two steps introduce loops into the algorithm and thus introduce the
 worrying possibility of an infinite loop preventing the algorithm from
 completing.
-In the case of step \ref{alg:overlap} this is not the case as for each
+In the case of step \ref{alg:overlap} this cannot happen as for each
 iteration of the loop the number of putative proteins is half that of the
 previous loop, meaning that no infinite loop is possible.
 An infinite loop is also impossible in \ref{alg:large_proteins}, as the growth
@@ -221,7 +226,7 @@ relatively well conserved (and thus well folded) regions on either side of the
 degenerate motif increases its tendency to fold correctly.
 However it could also be the case that these regions simply represent a gap in
 the recognition chain (where any base would be accepted) or an intron; more
-empirical results are needed in order to determine this.
+empirical results are needed in order to determine this in every case.
 Setting each of the parameters \emph{F1}, \emph{F2} and \emph{F3} to $0.5$ 
 gave a reasonable trade-off between finding likely reclusive motifs and 
 rejecting random sequences.
@@ -276,10 +281,10 @@ emission probabilities at each node, insert probabilities can be uniform and
 the transition probabilities can be determined empirically.
 
 The first issue which arises is that pHMM models which are used for searching
-with HMMER must be normalised in order for the score calculations.
-This involves calculating the expected score of the model for random sequences
-in order to assess the significance of a particular match.
-A program exists called \emph{hmmsim} exists in the HMMER package for just 
+with HMMER must be normalised in order to make score calculations.
+This involves estimating the parameters of the distribution of model scores 
+for random sequences.
+A program called \emph{hmmsim} exists in the HMMER package for just 
 this purpose, however the program is not a mainstream part of the HMMER package
 and is present more as a tool for testing HMMER's internals rather than use by
 the end user.

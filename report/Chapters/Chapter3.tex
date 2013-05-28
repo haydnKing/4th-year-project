@@ -84,8 +84,8 @@ The majority of the plants surveyed contain between 400 and 600 PPR proteins,
 however, the clear exception to this is \emph{G. max}, the soya bean, 
 which contains considerably more putative PPR proteins than any other of the 
 surveyed plants -- 940 in total.
-The reasons behind this are uncertain, however they genome is known to contain
-several repeats of each protein \citep{Schmutz2010}.
+The reasons behind this are uncertain, although the genome is known to contain
+several repeats of some proteins \citep{Schmutz2010}.
 
 Figure~\ref{fig:ppr_family_lengths} shows a histogram of the number of motifs
 found in each PPR stacked by family.
@@ -140,9 +140,9 @@ to bind to one region only within the chloroplast.
       large number.
       \label{fig:ppr_numbers}}
   \end{center}
-\end{figure}
+%\end{figure}
 
-\begin{figure}
+%\begin{figure}
   \begin{center}
     \begin{tikzpicture}
       \begin{axis}[
@@ -206,7 +206,7 @@ the chloroplast and secondly in order to make designing PPRs with pre-specified
 binding preferences a reality.
 This section focusses on the former problem.
 
-We wish do discover a mapping between the amino acid sequence of a repeat
+We wish to discover a mapping between the amino acid sequence of a repeat
 motif in a PPR and the RNA base to which it binds.
 Two such mappings have been proposed recently, the first in \citet{Barkan2012}
 and the second in \citet{Yagi2013}.
@@ -257,9 +257,10 @@ This can be used to our advantage by looking for potentially homologous binding
 sites in other chloroplasts to predict the presence of a similar protein in 
 the nuclear genome.
 Homologs could then be confirmed experimentally with relative ease, as we would 
-know enough about the sequence of the homologs to be able to extract them from 
-the nuclear genome (e.g. by PCR) and we would also already have a good idea of 
-what the binding footprint is.
+know enough about the sequence of the homologs to be able to physically extract 
+them from 
+the nuclear genome (\emph{e.g.} by PCR) and we would also already have a good 
+idea of what the binding footprint is.
 Having a large group of proteins whose binding footprint changes only slightly
 would be a great aid in elucidating the binding scheme.
 
@@ -276,7 +277,7 @@ Since DNA to amino acid coding is a overcomplete, even if a protein is found
 with an identical amino acid sequence the DNA sequence could be very different.
 
 The overwhelming majority of the other 339 genomes were found to have proteins 
-with very strong sequence similarity to those in Arabidopsis. 
+with very strong sequence similarity to those in Arabidopsis, as expected. 
 
 The DNA sequence of these possibly homologous proteins was then searched for 
 regions similar to the original binding sites using a PSSM approach.
@@ -296,6 +297,8 @@ for \emph{ycf2}.
 Eight of these potential homologs contained the exact sequence 
 `\emph{agaagcctaa}', which differs from the known binding domain in Arabidopsis
 by only one base.
+Sequence similarities such as this were found to be common in many of the
+available chloroplasts.
 
 Clearly experimental work is required to verify these potential homologs and to
 attempt to characterise the PPRs which may be present, but it seems hopeful

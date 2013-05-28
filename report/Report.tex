@@ -40,6 +40,7 @@
 \captionsetup{margin={15pt},parskip=10pt,format=hang,indention=-.8cm}
 
 \usepackage{type1cm}
+\usepackage{minitoc}
 \usepackage{lettrine}
 \usepackage{mathtools}
 \usepackage[version=3]{mhchem}
@@ -112,8 +113,8 @@ characterisation and encapsulation to biology in order to design new and useful
 forms of life.
 
 The field often makes use of analogies with electrical engineering -- in
-synthetic biology, well characterised components or parts are combined and 
-interact together to form biological circuits.
+synthetic biology, well characterised components are combined and 
+interact together in biological circuits.
 Circuits have been designed to perform a wide variety of tasks, such as
 the production of useful chemicals, detecting the presence of harmful toxins
 or producing bioluminescent light.
@@ -145,22 +146,23 @@ within the chloroplast.
 The first part of the project is concerned with automating the detection and
 annotation of naturally occurring PPRs in existing genomes.
 While PPRs have been discovered in a wide variety of plants, a specific, 
-clearly defined and repeatable method for their detection and extraction has 
-not.
+clearly defined and repeatable method for their detection and localisation
+has not.
 An algorithm for reliable and repeatable PPR discovery was developed in the
 first part of the project.
 
 In the second part, this algorithm was applied to a large variety of plant 
-genomes in order to assess the abundance of the proteins.
+genomes in order to assess the abundance of PPR proteins.
 It was found that the majority of the plants surveyed had a similar number of
 PPRs (between 400 and 600).
 It is hypothesised that this is due to a considerable conservation of function
 of PPRs across genomes.
 
-Attempts to directly predict the RNA binding domains of PPRs were thwarted by
-our limited number of well characterised PPRs, but the binding sites of
-a set of characterised PPRs was identified in the model organism 
-\emph{A. thaliana}.
+Each member of the PPR family binds to a particular RNA sequence, but
+attempts to directly predict the RNA binding sequence of a given PPR 
+were thwarted by the limited number of well characterised PPRs.
+However, the binding sites of a set of characterised PPRs was identified in 
+the model organism \emph{A. thaliana}.
 Likely homologs of the genes containing these binding sites were then found in
 the chloroplast genomes of numerous other plants and regions of very high
 sequence similarity to the original binding sites were found, supporting the
@@ -168,9 +170,14 @@ hypothesis that PPR function is highly conserved across different species.
 
 The final part of the project studied the usefulness of PPRs in the context of
 synthetic biology.
-In particular, it was established that if PPRs could be designed to bind to 
-arbitrary sequences, then it would be possible to construct simple logic gates
-using known PPR-RNA interactions.
+If, given a target binding sequence, we could design a PPR protein which would
+bind to this sequence then it was established that it should be possible to 
+construct logic gates using known PPR-RNA interactions.
+
+The fact that each each PPR would act as an isolated signalling modality has
+the potential to revolutionise the field as in most projects problems due to
+cross-talk of reporter molecules fundamentally limit the complexity of the
+circuit.
 
 }
 
@@ -207,7 +214,7 @@ using known PPR-RNA interactions.
 %	THESIS CONTENT - APPENDICES
 %----------------------------------------------------------------------------------------
 
-\addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
+\addtocontents{toc}{\vspace{1em}} % Add a gap in the Contents, for aesthetics
 
 \appendix % Cue to tell LaTeX that the following 'chapters' are Appendices
 
@@ -219,7 +226,7 @@ using known PPR-RNA interactions.
 \input{./Appendices/AppendixB}
 %\input{./Appendices/AppendixC}
 
-\addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
+%\addtocontents{toc}{\vspace{1em}} % Add a gap in the Contents, for aesthetics
 
 
 %----------------------------------------------------------------------------------------

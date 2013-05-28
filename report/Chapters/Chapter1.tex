@@ -59,8 +59,8 @@ Molecules of DNA are the cell's long term storage mechanism -- recent research
 estimates the half-life of DNA to be 521 years \citep{DNAhalflife}.
 DNA molecules are long sequences of simple molecules called nucleotides, the
 sequence of  which encodes all the genetic information of the cell.
-Each nucleotide contains a nucleobase which is either Adenine, Guanine,
-Thymine or Cytosine (A, C, G or T) and it is the sequence of bases 
+Each nucleotide contains a nucleobase which is either Adenine, Cytosine, 
+Guanine or Thymine (A, C, G or T) and it is the sequence of bases 
 which determines the information content of the molecule.
 The nucleotides are linked together in a strand which is only read in one 
 direction, known as the 5' to 3' direction.
@@ -170,18 +170,18 @@ Transcription does not act on an entire DNA strand at once but instead
 transcribes a subsequence of the DNA called a transcription unit, which
 contains one or many genes.
 These units are marked by promoters which are regions of DNA upstream
-of the transcription unit that initiate transcription by causing RNA polymerase
-to bind.
+of the transcription unit that initiate transcription by promoting 
+RNA polymerase binding.
 Modulating promoter activity in response to the concentration of another 
 molecule is a common control motif.
 Transcription units are terminated by terminator regions, which cause the RNA 
 polymerase to cease transcription and release the mRNA.
 
-Transcripts often include non-coding regions at either end called the 5' and 3'
-untraslated regions (UTR) respectively.
-They also contain other non-coding regions called \textit{introns}
-which often found within gene sequences and are removed from the message in a 
-process called RNA splicing before translation.
+Transcripts don't just contain genes, they usually include non-coding regions at 
+either end called the 5' and 3' untranslated regions (UTRs) respectively.
+They can also contain other non-coding regions called \textit{introns}
+which are often found within gene sequences and are removed from the RNA message 
+in a process called RNA splicing before translation.
 Introns do not contain any useful sequence and tend to complicate matters 
 significantly as efforts to predict their location accurately and reliably 
 have thus far failed -- they are best detected using reverse transcription.
@@ -199,7 +199,7 @@ Proteins are a sequence of amino acids, where each acid comes from an alphabet
 of 20 amino acids.
 Each acid is coded for by 3 bases of RNA, which are referred to collectively 
 as a codon.
-Since there are 64 possible codons and only 20 amino acids, the code is
+Since there are $4^3$ possible codons and only 20 amino acids, the code is
 overcomplete -- several different codons map to the same amino acid -- and
 thus a definitive reverse mapping from protein to DNA sequence is impossible.
 As well as coding for amino acids, special codons mark the start and end of a
@@ -216,8 +216,9 @@ a common class of which is the Shine-Dalgarno sequence, which is found a few
 bases upstream of the start codon.
 
 Because of the 3:1 nature of translation, proteins are sensitive to frame
-shifts -- where translation is shifted by one or two bases, the resulting amino
-acid sequence is effectively unrelated to the encoded one.
+shifts -- since bases are read three at a time, if the reading frame is shifted 
+by one or two bases, the resulting amino acid sequence is effectively unrelated 
+to the encoded one.
 This can be the case if an unexpected intron is present as introns need not be 
 multiples of three codons long.
 
@@ -237,17 +238,17 @@ concentration of its protein to remain constant.
     \includegraphics[width=\textwidth]{Lac_operon1}
   \end{center}
   \caption[LoF entry]{
-    \textbf{Annotated diagram of the lac operon.}
+    \textbf{Annotated impression of the lac operon.}
     It contains two transcription units and a total of four genes.
     The first (leftmost) unit contains the \textit{lacI} gene and is expressed 
     constitutively (continuously).
-    The protein which is produced is called the lac repressor, and in the
+    The protein which is produced is known as the lac repressor, and in the
     absence of lactose it binds tightly to the operator region, preventing
     transcription of the second transcriptional unit.
     However, when lactose is present outside the cell, a small amount will
     diffuse across the cell wall and into the cell, where it binds with the lac
-    repressor, preventing it from binding to the operator and allowing
-    transcription of the second unit.
+    repressor, preventing it from binding to the operator and thus allowing
+    transcription of the second unit to begin.
     
     Of the three genes that are then expressed, two are directly relevant.
     \textit{lacY} encodes a membrane protein which actively pumps more lactose
@@ -392,7 +393,7 @@ both light and AHL are required to cause the pigment to be produced.
 
 The effect of the molecules AHL and cI on $P_{lux-\lambda}$ is one of a small
 but growing number of well understood control motifs.
-Since reusing the same promoter/signal combination in the same cell is 
+But since reusing the same promoter/signal combination in the same cell is 
 impossible due to cross-talk, there are simply not enough signalling modalities 
 or characterised promoters available to perform more complex logic within the 
 cell.
@@ -416,12 +417,14 @@ yeast \citep{yeast}.
 Artemisinin produced in this manner was approved for sale by the World Health
 Organisation very recently (8 May, 2013).
 Shortly before the approval, long-term malaria campaigner Bill Gates said of 
-the project
-``by lowering the price and stabilising the supply, semi-synthetic artemisinin
-can be a breakthrough in the fight to control, eradicate, and eventually
-eliminate this disease''.
+the project -
+\begin{quote}
+  ``By lowering the price and stabilising the supply, semi-synthetic artemisinin
+  can be a breakthrough in the fight to control, eradicate, and eventually
+  eliminate this disease''.
+\end{quote}
 
-Yield was the major limiting factor in making this project viable.
+The major limiting factor this project becoming viable was yield.
 In order to produce a useful amount of the drug, the metabolic pathway 
 involved had to be up-regulated -- i.e. more metabolic flux had to be directed 
 though it.
@@ -464,7 +467,7 @@ location \citep{Sugiura1998,Zerges2000}.
 This does not reflect the clear variation in protein levels found in the 
 chloroplast, whose activity varies considerably during the chloroplast's 
 circadian cycle -- energy is stored during the day and consumed at night.
-Since mRNA levels are constant, this control must occur at a 
+Since mRNA levels are constant, this modulation must occur at a 
 post-transcriptional level, and there is evidence to suggest that the nucleus
 is involved in controlling the cycle \citep{Matsuo2006}.
 
@@ -483,7 +486,8 @@ chloroplasts.
 Understanding regulation in chloroplasts is a vital step before they can be
 effectively used for synthetic biology.
 For example, attempting to synthesise useful chemicals at the wrong point in 
-the circadian cycle would likely result in very poor growth and so we must be
+the circadian cycle (\emph{i.e.} during the day) would likely result in very 
+poor growth and so we must be
 able to tap into the natural regulation system already present in the system.
 
 \section{Nucleotide Sequence Binding Proteins}
@@ -503,24 +507,27 @@ As a result, modelling interactions between proteins and nucleotides such as
 DNA and RNA is impossible in the general case and these interactions are
 instead found and characterised using empirical techniques.
 
-One of the first such interactions to be discovered were zinc fingers, a
+One of the first such interactions to be characterised were zinc fingers, a
 protein motif whose folding structure is stabilised by the incorporation of a
 zinc ion into the structure.
-Zinc fingers are common in many organisms and recognise and bind to a specific 
-triplet of nucleotides, and have been reverse-engineered such that they can now
-be designed to bind to effectively arbitrary sequences \citep{Gaj2013}.
+Zinc fingers are common in many organisms and each one recognises and binds to 
+a specific triplet of nucleotides.
+Zinc fingers have since been reverse-engineered such that a chain of them can
+be designed to bind to effectively arbitrary sequences 
+\citep[reviewed in][]{Gaj2013}.
 
 However, zinc fingers have limited modularity as each motif binds to three
 bases with varying specificity, meaning that there are often other sequences to
 which the protein will bind which can be hard to predict.
 Transcription activator-like effectors (TALEs) are modular repeat regions in
-which each repeat recognises a single DNA base via a simple code dependent on
-two hyper-variable amino acids within the repeat motif.
+which each repeat recognises a single DNA base via a simple code which is
+dependent on two hyper-variable amino acids within the repeat motif.
 The superior modularity of TALEs makes them inherently easier to design than 
 zinc fingers.
 This has led to numerous novel applications, such as designing new 
 transcription activators, although their main use is in selectively editing 
-the genome to allow for novel studies of protein function \citep{Sun2013}.
+the genome to allow for novel studies of protein function 
+\citep[reviewed in][]{Sun2013}.
 
 These two classes of proteins have opened up new and exciting methods for basic
 research, gene therapy and synthetic biology.
@@ -649,8 +656,10 @@ particular
 locations within the cell (such as the chloroplast of mitochondria) and not a
 particularity of the PPR family. 
 
-The second region is the repeating PPR motif array which contains between 2 and
-30 PPR motifs and is the region which binds with RNA.
+The second region is an array of PPR motifs containing between 2 and
+30 motifs.
+This is the region which binds with RNA, and thus the region which specifies
+the sequence which is bound.
 The motifs are degenerate -- although they contain many similarities, they are
 not identical and in fact have quite considerable differences in some cases.
 The standard PPR motif is the P motif which is 35 amino acids long, 
@@ -867,13 +876,23 @@ transition, emission and insertion probabilities have to be learnt.
 This restriction places minimal constraints on the type of sequence which can
 be modelled and allows learning to be done using an expectation maximisation
 algorithm. A more in depth discussion of pHMMs and their use in bioinformatics
-is given in \citep{Durbin1998}.
+is given in \citet{Durbin1998}.
 
-Searches are performed using the \emph{hmmsearch} program which makes heavy use
-of heuristics in order to search efficiently for possible match sequences.
+A sequence can be searched for likely matches with a pHHM model using the 
+\emph{hmmsearch} program which makes heavy use of heuristics in order to search 
+efficiently for possible match sequences.
 The parameters for the particular heuristics used can be tuned using command
 line arguments so that the similarity required between a matching sequence 
 and the model can be set.
+
+The \emph{jackhmmer} program was also used during the project. 
+This program iteratively searches a protein sequence with a consensus protein 
+sequence.
+First, the consensus sequence is aligned with the target, and an initial pHMM
+is created.
+The target is searched using the pHMM, and the resulting matches are used to 
+create
+a better pHMM until convergence is reached and the final matches are reached.
 
 \section{Project Outline}
 
@@ -897,11 +916,11 @@ The particular goals of the project are to
     Investigate the presence of PPR proteins in genomes other than 
     \emph{A. thaliana}, a common model organism
   \item \label{item:c}
-    Investigate the issues surrounding the prediction of binding domains
-    for naturally occurring proteins
+    Attempt to predict binding locations of naturally occurring proteins, and
+    find potential ways of improving the estimates
   \item \label{item:d}
-    Investigate the level of conservation of known PPR binding domains
-    across different chloroplast genomes
+    Discover whether known PPR binding domains are conserved across different 
+    chloroplast genomes
   \item \label{item:e} 
     Model the activity of theoretical networks of PPR proteins in order to
     demonstrate their potential for creating biological circuits
