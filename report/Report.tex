@@ -77,6 +77,15 @@
 
 \usepackage{subcaption}
 
+\newcommand{\blankpage}{
+  \newpage
+  \thispagestyle{empty}
+  \vspace*{\fill}
+  \begin{center} 
+    [This page is intentionally left blank]
+  \end{center}
+  \newpage
+}
 
 \begin{document}
 
@@ -99,6 +108,8 @@
 \title{A Cross-Genome Study of the Pentatricopeptide Repeat Protein}
 \projectgroup{F}
 \maketitle
+
+\blankpage
 
 %----------------------------------------------------------------------------------------
 %	ABSTRACT PAGE
@@ -191,6 +202,7 @@ circuit.
 \tableofcontents % Write out the Table of Contents
 
 \clearpage % Start a new page
+\blankpage
 
 %----------------------------------------------------------------------------------------
 %	CONTENT - CHAPTERS
