@@ -2,15 +2,15 @@
 \chapter{Simulating PPR Activity} 
 \label{chap:simulation}
 
-\lettrine{S}{ynthetic} biologist often draw on analogies with electrical
+\lettrine{S}{ynthetic} biologists often draw on analogies with electrical
 engineering when designing new systems.
-Individual components are assembled to form biological circuits, where the rate
-of expression is seen as analogous to the current flowing through the device.
+Individual components can be assembled to form biological circuits, where the 
+transcription rates can be seen as analogous to the current flowing through 
+the device.
 
-If we imagine that we were able to solve the issues discussed in the previous
-chapter and that PPRs could be designed to bind to arbitrary RNA sequences,
-what kind of components could we build for our biological circuits?
-
+Once we solve the issues discussed in the previous chapter,
+PPRs could be designed to bind to arbitrary RNA sequences.
+What kind of components could we then build for our biological circuits?
 In this chapter, a generalised ODE model of a network of interacting PPRs is
 developed and used to show that PPRs could potentially be used to perform basic
 logic operations at the translational level.
@@ -58,7 +58,7 @@ logic operations at the translational level.
 
 In order to capture PPR activity, we need to model the interaction between the
 cell's expression machinery and RNA-PPR binding.
-This is most simply done using and ODE model, where each process is modelled
+This is most simply done using an ODE model, where each process is modelled
 using a rate equation.
 
 The first two processes to model are transcription and translation. 
@@ -154,20 +154,22 @@ binding, while a perpendicular bar represents repressive binding.
   \centering
   \begin{tabular}{l | c | c }
     Description  & Value \\ \hline
-    High transcription rate & $30 \mathrm{transcripts} \mathrm{minute}^{-1}$ \\
-    Low transcription rate & $0.03 \mathrm{transcripts} \mathrm{minute}^{-1}$ \\
-    On translation rate & $0.693 \mathrm{proteins}
-      \mathrm{(transcript}\times \mathrm{minute)}^{-1}$ \\
+    High transcription rate & $30~\text{transcripts minute}^{-1}$ \\
+    Low transcription rate & $0.03~\text{transcripts minute}^{-1}$ \\
+    On translation rate & $0.693~\mathrm{proteins}
+      \text{(transcript $\times$ minute)}^{-1}$ \\
     RNA half-life & $2$ minutes \\
     Protein half-life & $40$ minutes \\
     Long Complex half-life & 10 minutes \\
     Short Complex half-life & 1 minute \\
-    Binding Rate & 0.5 $\mathrm{minute}^{-1}$ \\
-    Unbinding Rate & $4\times 10^{-9}$ $\mathrm{minute}^{-1}$ \\
+    Binding Rate & 0.5 $\text{minute}^{-1}$ \\
+    Unbinding Rate & $4\times 10^{-9}$ $\text{minute}^{-1}$ \\
   \end{tabular}
   \caption{Rates used for the simulations shown in sections~\ref{sec:sim_logic}
-  and~\ref{sec:sim_tabor}. Each was taken from estimates from the literature,
-  although only the ration of binding to unbinding rate has been measured (via
+  and~\ref{sec:sim_tabor}. Each was taken from  
+  \citet{So2011,Andersen1998}, although some of the values are known to vary
+  greatly in the cell.
+  Although only the ration of binding to unbinding rate has been measured (via
   the disassociation constant. The plots shown were stable for a large range of
   binding rate.}
   \label{tab:sim_values}
@@ -193,8 +195,8 @@ Both of these things can happen in reality since there is nothing to prevent a
 second PPR from binding at a different location on the same transcript.
 We could attempt to model these interactions (possibly using stochastic
 simulations rather than ODEs), but since so very little is known of the 
-molecular processes driving PPR-RNA interactions such a model would be mostly
-speculation.
+molecular processes driving PPR-RNA interactions such a model would be 
+largely speculative.
 
 \begin{figure}
   \begin{center}

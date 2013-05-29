@@ -74,7 +74,6 @@ The strands bind such that they are read in opposite directions -- the 5' to 3'
 direction on the reverse strand is in the reverse direction to that of the 
 forward strand -- hence converting a sequence from the
 forward to reverse strand is referred to as a \emph{reverse complement}.
-
 The two strands are coiled around each other into DNA's characteristic 
 double-helix structure.
 
@@ -163,8 +162,9 @@ various proteins within the cell and thus the cell's overall activity.
 Both DNA and RNA have an alphabet of four symbols and so during transcription
 DNA's alphabet, $\{A,C,G,T\}$, is mapped directly to that
 of RNA, $\{A,C,G,U\}$, where thymine is replaced with uracil.
-Transcription is clearly bijective, and indeed a less common process called
-reverse-transcription performs the inverse mapping from RNA to DNA.
+Transcription is a one-to-on mapping and is thus bijective, and indeed a less 
+common process called reverse-transcription performs the inverse mapping from 
+RNA to DNA.
 
 Transcription does not act on an entire DNA strand at once but instead
 transcribes a subsequence of the DNA called a transcription unit, which
@@ -191,9 +191,8 @@ have thus far failed -- they are best detected using reverse transcription.
 
 Translation is the process by which an RNA message is converted into a protein.
 In higher cells (eukaryotes), mRNA undergoes further processing and is exported
-from the nucleus before translation while lower organisms (prokaryotes)
-translation begins immediately, possibly concurrently with
-transcription.
+from the nucleus before translation while in lower organisms (prokaryotes)
+translation begins immediately after transcription.
 
 Proteins are a sequence of amino acids, where each acid comes from an alphabet
 of 20 amino acids.
@@ -212,10 +211,10 @@ sequence 3 bases (one codon) at a time and constructing the appropriate protein
 until a stop codon is found, when the ribosome detaches and releases the
 protein.
 The point where the ribosome binds is called a ribosome binding sequence (RBS),
-a common class of which is the Shine-Dalgarno sequence, which is found a few 
+the consensus is termed the Shine-Dalgarno sequence, which is found a few 
 bases upstream of the start codon.
 
-Because of the 3:1 nature of translation, proteins are sensitive to frame
+Because of the triplet nature of translation, proteins are sensitive to frame
 shifts -- since bases are read three at a time, if the reading frame is shifted 
 by one or two bases, the resulting amino acid sequence is effectively unrelated 
 to the encoded one.
@@ -238,7 +237,7 @@ concentration of its protein to remain constant.
     \includegraphics[width=\textwidth]{Lac_operon1}
   \end{center}
   \caption[LoF entry]{
-    \textbf{Annotated impression of the lac operon.}
+    \textbf{Annotated impression of the lac operon.} (not to scale)
     It contains two transcription units and a total of four genes.
     The first (leftmost) unit contains the \textit{lacI} gene and is expressed 
     constitutively (continuously).
@@ -341,7 +340,8 @@ Control of protein production is typically achieved using several layers of
 control at different stages.
 For example, the lac operon controls the production of enzymes which allows the
 cell to metabolise lactose, a carbon source.
-The cell would prefer to directly metabolise glucose if it is available as
+It is energetically favourable for the cell to directly metabolise glucose if 
+it is available as
 lactose is harder to process, and so the cell can save energy by only turning
 on its lactose processing machinery when only lactose is available.
 This is achieved by the lac operon as described in figure~\ref{fig:lac_operon} 
@@ -362,9 +362,9 @@ such as standardisation, characterisation and encapsulation to biology.
 Synthetic Biology aims to use these design principles to combine existing 
 phenomena to build new, artificial forms of life.
 The field is often confused with its spiritual predecessor, genetic 
-engineering, which although similar in some respects does not design new
-organisms, but tinkers with existing ones without trying to understand the
-underlying principals.
+engineering, which although similar in some respects does not explicitly
+embrace engineering principals such as standardisation with the attendant
+benefits of modularity of abstraction.
 
 Synthetic biology can be thought of as programming, but with DNA instead of 
 machine code.
@@ -373,16 +373,15 @@ detector \citep{edgeDetector}.
 Bacteria were programmed to produce a colourless chemical messenger in the 
 absence of light and to produce a dark pigment in the presence of both light 
 and the chemical messenger.
-When a film of these bacteria is exposed to a pattern of light and dark, the
-messenger is produced in the dark regions and diffuses into the light, where it
-stimulates the production of the pigment, 
-leading to an edge detection effect.
+When a film of these bacteria was exposed to a pattern of light and dark, the
+messenger produced in the dark regions diffuses into the light, where it
+stimulated the production of the pigment, resulting in an edge detection effect.
 
 While this and other such simple demonstrations show some of the potential 
-of synthetic biology, they lack immediate application and are of somewhat 
-limited scope.
+of synthetic biology, they lack wider applications and are of somewhat 
+limited scale.
 A major problem in expanding this work is the lack of targeted reporter
-molecules.
+molecules, which carry signals through the biological circuit.
 In the edge detector example, two molecular signals are produced when light is 
 not present -- AHL, a cell-to-cell signalling molecule and cI, a
 transcriptional repressor molecule.
@@ -402,7 +401,7 @@ within the cell such that changing the concentration of one molecule to suit
 our goals may cause a seemingly unrelated area of the cell's metabolism to
 malfunction with undesirable consequences.
 
-A quite separate and more applicable project was the effort to produce 
+A separate and more practical project was the effort to produce 
 artemisinin (the most effective known anti-malarial) in a cheaper and more 
 scalable way.
 Malaria is a treatable disease which caused roughly 2,000 deaths 
@@ -433,20 +432,20 @@ artemisinic acid would be produced, too high and too much of the cell's
 energy would be used, causing the cells to grow slowly if at all.
 As well as this, growing yeast on an industrial scale is relatively expensive,
 and requires specialist equipment.
-It is desirable therefore search for host platforms which are better suited to
-biosynthesis than yeast, in order to maximise the yield to cost ratio.
+Therefore it is desirable to search for host platforms which are better suited 
+to biosynthesis than yeast, in order to maximise the yield to cost ratio.
 
 \section{The Chloroplast}
 \label{sec:intro_chloroplast}
 
 Chloroplasts are a major centre for biosynthesis in plants as they perform
 photosynthesis to provide energy for the plant.
-The result of an ancient symbiosis, up to 1000 of these primitive cells can be 
-found within each plant cell, where they make an excellent target for synthetic
-biology.
-Their primitive nature makes them similar to previous hosts, 
+The result of an ancient symbiosis, up to 1000 of these primitive relic cells 
+can be found within each plant cell, where they make an excellent target for 
+synthetic biology.
+Their primitive nature makes them similar to bacteria, 
 but with access to the more sophisticated plant cell machinery and 
-superb potential for biosynthesis.
+good potential for biosynthesis.
 For example, the native enzyme RuBisCO is so abundant in the chloroplasts that 
 it can represent up to 50\% of overall soluble leaf protein.
 
@@ -456,12 +455,12 @@ for expression and several proteins vital to the photosystem.
 However, many proteins found in the chloroplast are in fact produced by the
 nucleus and then imported into the chloroplast.
 
-The style of operon-based control common in prokaryotic cells does not appear 
-to be used in the chloroplast -- instead most genes are 
+The style of operon-based control common in prokaryotic cells has bot been
+identified in the chloroplast -- instead most genes are 
 transcribed constitutively \citep{Sugita1996}, leading to constant mRNA levels.
 It is also known that the mRNA transcripts in chloroplasts often do not 
 contain a ribosome binding site (such as a Shine-Dalgarno sequence) at all or 
-that such a sequence is not in the correct 
+that such a sequence is not in the expected 
 location \citep{Sugiura1998,Zerges2000}.
 
 This does not reflect the clear variation in protein levels found in the 
@@ -495,8 +494,9 @@ able to tap into the natural regulation system already present in the system.
 
 Accurately predicting the structure of a protein from its amino acid sequence 
 is very difficult and in most cases impossible.
-The main difficulty is that the joints between amino acids in a protein are
-very flexible, giving amino acids a very high number of degrees of freedom,
+The main difficulty is that the bonds between amino acids in a protein have
+high rotational flexibility, giving amino acids a very high number of degrees 
+of freedom,
 which often thwarts attempts to find the structure with minimum free energy.
 Even when this can be found, protein folding is often a complex process
 involving several interactions with other chaperone proteins which guide
@@ -635,10 +635,12 @@ research, gene therapy and synthetic biology.
   \label{fig:ppr_anatomy}
 \end{figure}
 
-The PPR family is a group of proteins commonly found in plants which show some
+The Pentatricopeptide Repeat (PPR) family is a group of proteins commonly found 
+in plants which show some
 similarities with TALEs, but bind to specific RNA sequences rather than DNA.
-They contain tandem degenerate repeating motifs which are referred to as PPR 
-motifs, so called due to their similarity to the tetratricopeptide repeat (TPR) 
+They contain tandem degenerate repeating motifs, most commonly 35aa in length,
+which are referred to as PPR motifs, so called due to their similarity to the 
+tetratricopeptide repeat (TPR) 
 protein family which are known to be involved in protein-protein binding 
 \citep{Small2000}.
 
@@ -769,8 +771,8 @@ although other proteins which also contain PPR motifs appear to show a helical
 structure \citep{Ringel2011,Howard2012}, suggesting that PPR binding might act
 in a fashion similar to that of TALE repeats \citep{Rubinson2012}.
 
-As of writing, two major theories on the PPR binding rules exist, one due to
-Barkan \citep{Barkan2012} and another due to Yagi \citep{Yagi2013}.
+As of writing, two major theories on the PPR binding rules exist,
+\citep{Barkan2012,Yagi2013}.
 Both are based on statistical inference on the small number of characterised
 PPR-RNA interactions and are discussed in more length in section
 \ref{sec:ppr_binding_prediction}.
@@ -907,14 +909,14 @@ giving them more flexibility than TALEs.
 There are still many problems which must be solved in order to effectively use
 PPRs, and the goal of this project is to explore these issues and investigate
 the potential of the PPR protein for synthetic biology.
-The particular goals of the project are to
+The particular goals of the project are to :
 \begin{enumerate}
   \item \label{item:a}
     Implement an algorithm to accurately detect and annotate unlabelled PPR
     proteins in DNA
   \item \label{item:b}
     Investigate the presence of PPR proteins in genomes other than 
-    \emph{A. thaliana}, a common model organism
+    \emph{A. thaliana}, a model plant
   \item \label{item:c}
     Attempt to predict binding locations of naturally occurring proteins, and
     find potential ways of improving the estimates

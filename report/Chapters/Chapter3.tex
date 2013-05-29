@@ -12,7 +12,7 @@ the nuclear genome and the organelles in most plants.
 Two recently published methods of predicting binding domains were compared and
 found to be inaccurate when searching in sequences as long as the chloroplast
 genome.
-Instead, the chloroplasts of a large set of chloroplast genomes were searched
+Instead, a large set of chloroplast genomes were searched
 for putative homologs of the binding domain of a set of 12 characterised PPRs 
 from Arabidopsis.
 It was found that these binding domains in the chloroplast appear to be highly 
@@ -38,7 +38,7 @@ It is included here because \emph{P. falciparum} contain an apicoplast --
 an organelle similar to the chloroplasts found in plants and thought to be the 
 result of a secondary endo-symbiosis. 
 
-Complete sequences for the selected genomes were fetched from the National
+Complete sequences for the selected genomes were obtained from the National
 Centre for Biotechnology Information (NCBI) genbank genomes repository.
 
 \begin{table}
@@ -206,8 +206,8 @@ the chloroplast and secondly in order to make designing PPRs with pre-specified
 binding preferences a reality.
 This section focusses on the former problem.
 
-We wish to discover a mapping between the amino acid sequence of a repeat
-motif in a PPR and the RNA base to which it binds.
+We wish to discover a method to map from the amino acid sequence of a repeat
+motif in a PPR to the RNA base to which it binds.
 Two such mappings have been proposed recently, the first in \citet{Barkan2012}
 and the second in \citet{Yagi2013}.
 These mappings are similar in many senses, they both predict a distribution
@@ -218,7 +218,7 @@ Barkan coding makes use of the amino acids found at positions 6 and 1' (where
 acids found at 3, 6 and 1' (referred to as positions 1, 4 and ii in 
 \citet{Yagi2013}).
 
-Both the Barkan and Yagi coding schemes were implemented in python and tested
+Both the Barkan and Yagi coding schemes were implemented in Python and tested
 using the PSSM prediction algorithm described in section
 \ref{sec:pssm_binding}.
 Characterised PPRs (given in \citet{Yagi2013}) were searched against the
@@ -240,8 +240,7 @@ There are two main problems which came to light while studying these papers.
   \item There are few well known PPR-RNA interactions
 \end{enumerate}
 The first of these problems will improve with the second -- we can only improve
-our prediction of where exactly motifs should be defined when we understand
-more about them.
+our prediction of exact motifs when we understand more about them.
 
 \subsubsection{Discovering More PPR-RNA Pairs}
 
@@ -252,7 +251,7 @@ considerably easier and cheaper to sequence than the nuclear genome.
 
 Chloroplast genomes are generally well conserved between different organisms --
 although genes are sometimes rearranged or duplicated, most chloroplast genomes
-contain roughly the same thing.
+contain roughly the same gene content.
 This can be used to our advantage by looking for potentially homologous binding
 sites in other chloroplasts to predict the presence of a similar protein in 
 the nuclear genome.
@@ -279,7 +278,7 @@ with an identical amino acid sequence the DNA sequence could be very different.
 The overwhelming majority of the other 339 genomes were found to have proteins 
 with very strong sequence similarity to those in Arabidopsis, as expected. 
 
-The DNA sequence of these possibly homologous proteins was then searched for 
+The DNA sequence of these homologous proteins was then searched for 
 regions similar to the original binding sites using a PSSM approach.
 Many of them contained sequences with very high homology
 with the original binding domain in Arabidopsis ($>90\%$ in some cases).
@@ -287,7 +286,7 @@ In addition, where a genome had multiple potential homologs, the same sequence
 differences between the binding sites was observed, suggesting that there might
 indeed be a similar PPR protein acting on the region.
 
-As a concrete example, the Arabidopsis PPR protein PDE247 is known to have two 
+In one example, the Arabidopsis PPR protein PDE247 is known to have two 
 binding domains, `\emph{acacgtgcaa}' and `\emph{agaagcccaa}'.
 These exact sequences are found in the chloroplast genes \emph{psbK}, 
 \emph{trnH}, and \emph{ycf2}.
